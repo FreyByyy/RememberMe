@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- A colonist who died in an old game walks in and asks to join. -->
+  <IncidentDef>
+    <defName>PastLives_DeadReturns</defName>
+    <label>echo of a past life</label>
+    <category>Misc</category>
+    <targetTags>
+      <li>Map_PlayerHome</li>
+    </targetTags>
+    <workerClass>PastLives.IncidentWorker_DeadReturnsQuest</workerClass>
+    <questScriptDef>WandererJoins</questScriptDef>
+    <pawnKind>Villager</pawnKind>
+    <populationEffect>IncreaseEasy</populationEffect>
+    <baseChance>0.12</baseChance>
+    <earliestDay>15</earliestDay>
+    <minRefireDays>60</minRefireDays>
+    <refireCheckTags>
+      <li>PastLives_DeadReturn</li>
+    </refireCheckTags>
+    <modExtensions>
+      <li Class="PastLives.DeadReturnExtension">
+        <variant>Wanderer</variant>
+      </li>
+    </modExtensions>
+  </IncidentDef>
+
+  <!-- Anomaly: the dead colonist comes back as a creepjoiner. -->
+  <IncidentDef ParentName="AnomalyIncidentBase" MayRequire="Ludeon.RimWorld.Anomaly">
+    <defName>PastLives_DeadReturns_CreepJoiner</defName>
+    <label>echo of a past life (creepjoiner)</label>
+    <category>Misc</category>
+    <targetTags>
+      <li>Map_PlayerHome</li>
+    </targetTags>
+    <workerClass>PastLives.IncidentWorker_DeadReturnsQuest</workerClass>
+    <questScriptDef>CreepJoinerArrival</questScriptDef>
+    <baseChance>0.1</baseChance>
+    <earliestDay>15</earliestDay>
+    <minRefireDays>60</minRefireDays>
+    <requireColonistsPresent>True</requireColonistsPresent>
+    <refireCheckTags>
+      <li>PastLives_DeadReturn</li>
+      <li>CreepjoinerJoin</li>
+    </refireCheckTags>
+    <modExtensions>
+      <li Class="PastLives.DeadReturnExtension">
+        <variant>CreepJoiner</variant>
+      </li>
+    </modExtensions>
+  </IncidentDef>
+
+  <!-- Anomaly: the dead colonist shambles in among other shamblers. -->
+  <IncidentDef ParentName="EntitySwarmBase" MayRequire="Ludeon.RimWorld.Anomaly">
+    <defName>PastLives_DeadReturns_Shambler</defName>
+    <label>echo of a past life (shambler)</label>
+    <workerClass>PastLives.IncidentWorker_DeadReturnsShambler</workerClass>
+    <baseChance>0.1</baseChance>
+    <earliestDay>20</earliestDay>
+    <minRefireDays>60</minRefireDays>
+    <refireCheckTags>
+      <li>PastLives_DeadReturn</li>
+    </refireCheckTags>
+    <modExtensions>
+      <li Class="PastLives.DeadReturnExtension">
+        <variant>Shambler</variant>
+      </li>
+    </modExtensions>
+  </IncidentDef>
+
+  <HediffDef>
+    <defName>PastLives_Returned</defName>
+    <label>returned from beyond</label>
+    <description>This person died once, in another life. Somehow they are here again: a little distant, strangely calm, as if the world were thinner than it looks.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0.65, 0.8, 1.0)</defaultLabelColor>
+    <isBad>false</isBad>
+    <everCurableByItem>false</everCurableByItem>
+    <stages>
+      <li>
+        <statOffsets>
+          <PsychicSensitivity>0.2</PsychicSensitivity>
+          <MentalBreakThreshold>-0.03</MentalBreakThreshold>
+        </statOffsets>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <PawnRelationDef>
+    <defName>PastLives_OldComrade</defName>
+    <label>old comrade</label>
+    <importance>40</importance>
+    <opinionOffset>25</opinionOffset>
+    <generationChanceFactor>0</generationChanceFactor>
+    <implied>false</implied>
+    <reflexive>true</reflexive>
+  </PawnRelationDef>
+
+</Defs>

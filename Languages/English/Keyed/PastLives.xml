@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <PastLives_ModName>Remember Me?</PastLives_ModName>
+
+  <!-- Settings -->
+  <PastLives_Enabled>Past colonists can appear in the world</PastLives_Enabled>
+  <PastLives_EventChance>Chance per event: {0}</PastLives_EventChance>
+  <PastLives_EventChanceDesc>Rolled once per raid, caravan, visitor group, wanderer or refugee quest, and per slave for sale. If it succeeds, one pawn of that event becomes a past colonist.</PastLives_EventChanceDesc>
+  <PastLives_LeaderChance>Chance per new faction leader: {0}</PastLives_LeaderChance>
+  <PastLives_LeaderChanceDesc>Rolled whenever a faction gets a new leader, including at world generation. Former ideology leaders and nobles are far more likely to be picked.</PastLives_LeaderChanceDesc>
+  <PastLives_Cooldown>Minimum days between appearances: {0}</PastLives_Cooldown>
+  <PastLives_CooldownDesc>Does not apply to faction leaders or to the return of the dead.</PastLives_CooldownDesc>
+  <PastLives_MaxWorldLeaders>Max past colonists leading factions at world start: {0}</PastLives_MaxWorldLeaders>
+  <PastLives_Letters>Send a letter when a past colonist is recognised</PastLives_Letters>
+  <PastLives_IncludeChildren>Include colonists who were children</PastLives_IncludeChildren>
+  <PastLives_IncludeChildrenDesc>They come back grown up, with their childhood intact and a new adult life.</PastLives_IncludeChildrenDesc>
+  <PastLives_Roles>Who they can become:</PastLives_Roles>
+  <PastLives_Role_Joiner>Wanderer who joins</PastLives_Role_Joiner>
+  <PastLives_Role_Refugee>Refugee (hospitality quests)</PastLives_Role_Refugee>
+  <PastLives_Role_Visitor>Visitor or guest</PastLives_Role_Visitor>
+  <PastLives_Role_Trader>Trader</PastLives_Role_Trader>
+  <PastLives_Role_Raider>Raider</PastLives_Role_Raider>
+  <PastLives_Role_Slave>Slave for sale</PastLives_Role_Slave>
+  <PastLives_Role_Leader>Faction leader</PastLives_Role_Leader>
+  <PastLives_Role_DeadReturn>The dead return</PastLives_Role_DeadReturn>
+  <PastLives_Role_DeadReturnDesc>Colonists who died in old games come back through their own rare event: as a wanderer, and with Anomaly as a creepjoiner or a shambler.</PastLives_Role_DeadReturnDesc>
+  <PastLives_Scanning>Reading old saves... {0}</PastLives_Scanning>
+  <PastLives_ArchiveStatus>Archive: {0} living and {1} dead colonists from {2} colonies.</PastLives_ArchiveStatus>
+  <PastLives_Rescan>Re-read saves</PastLives_Rescan>
+  <PastLives_Colonies>Old colonies (untick to leave out):</PastLives_Colonies>
+
+  <!-- Inspect pane -->
+  <PastLives_Inspect>Past life: colony "{COLONY}"</PastLives_Inspect>
+  <PastLives_InspectDead>Past life: died in colony "{COLONY}"</PastLives_InspectDead>
+
+  <!-- Letters -->
+  <PastLives_LetterLabel>Familiar face: {PAWN_labelShort}</PastLives_LetterLabel>
+  <PastLives_LetterLabel_Dead>Returned: {PAWN_labelShort}</PastLives_LetterLabel_Dead>
+
+  <PastLives_Letter_Joiner>{PAWN_nameFull}. The name sounds familiar. In another life {PAWN_pronoun} was a colonist of "{COLONY}". Now {PAWN_pronoun} is looking for a new home.</PastLives_Letter_Joiner>
+  <PastLives_Letter_Refugee>Among the refugees is {PAWN_nameFull}, once a colonist of "{COLONY}". Life has uprooted {PAWN_objective} again.</PastLives_Letter_Refugee>
+  <PastLives_Letter_Visitor>{PAWN_nameFull}, who once lived in the colony "{COLONY}", has come to visit with {FACTION}.</PastLives_Letter_Visitor>
+  <PastLives_Letter_Trader>The caravan of {FACTION} is led by {PAWN_nameFull}, once a colonist of "{COLONY}". It seems {PAWN_pronoun} took up trade.</PastLives_Letter_Trader>
+  <PastLives_Letter_Raider>Among the raiders of {FACTION} is {PAWN_nameFull}. Once {PAWN_pronoun} defended the colony "{COLONY}". Now {PAWN_pronoun} has come for yours.</PastLives_Letter_Raider>
+  <PastLives_Letter_Slave>Among the slaves for sale is {PAWN_nameFull}, once a colonist of "{COLONY}". Fate can be cruel.</PastLives_Letter_Slave>
+  <PastLives_Letter_Leader>{FACTION} has a new leader: {PAWN_nameFull}, the very same one who once lived in the colony "{COLONY}".</PastLives_Letter_Leader>
+  <PastLives_Letter_Dead_Wanderer>{PAWN_nameFull}. You remember how {PAWN_pronoun} died in the colony "{COLONY}". Yet here {PAWN_pronoun} is, alive, quiet, with a faraway look, as if {PAWN_pronoun} had walked a very long road back.</PastLives_Letter_Dead_Wanderer>
+  <PastLives_Letter_Dead_CreepJoiner>This stranger looks exactly like {PAWN_nameFull}, who died long ago in the colony "{COLONY}". The same voice, the same habits... but something about {PAWN_objective} is wrong.</PastLives_Letter_Dead_CreepJoiner>
+  <PastLives_Letter_Dead_Shambler>Among the shambling dead you recognise {PAWN_nameFull}, who died in the colony "{COLONY}". Death never let {PAWN_objective} go.</PastLives_Letter_Dead_Shambler>
+
+  <PastLives_LetterLabel_WorldLeaders>Past lives</PastLives_LetterLabel_WorldLeaders>
+  <PastLives_Letter_WorldLeaders>This world remembers your past lives. Some of your former colonists now lead factions:</PastLives_Letter_WorldLeaders>
+  <PastLives_LeaderLine>- {PAWN} (colony "{COLONY}") leads {FACTION}</PastLives_LeaderLine>
+
+</LanguageData>

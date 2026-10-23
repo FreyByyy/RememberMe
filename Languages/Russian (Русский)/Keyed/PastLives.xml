@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <PastLives_ModName>Remember Me?</PastLives_ModName>
+
+  <!-- Настройки -->
+  <PastLives_Enabled>Колонисты из прошлых игр могут появляться в мире</PastLives_Enabled>
+  <PastLives_EventChance>Шанс на событие: {0}</PastLives_EventChance>
+  <PastLives_EventChanceDesc>Бросается один раз на рейд, караван, группу гостей, квест странника или беженцев, а также на каждого раба на продажу. При успехе одна пешка из события становится колонистом из прошлого.</PastLives_EventChanceDesc>
+  <PastLives_LeaderChance>Шанс при смене лидера фракции: {0}</PastLives_LeaderChance>
+  <PastLives_LeaderChanceDesc>Бросается каждый раз, когда у фракции появляется новый лидер, в том числе при создании мира. Бывшие лидеры идеологий и дворяне выбираются намного чаще.</PastLives_LeaderChanceDesc>
+  <PastLives_Cooldown>Минимум дней между появлениями: {0}</PastLives_Cooldown>
+  <PastLives_CooldownDesc>Не действует на лидеров фракций и на возвращение погибших.</PastLives_CooldownDesc>
+  <PastLives_MaxWorldLeaders>Максимум бывших колонистов-лидеров при создании мира: {0}</PastLives_MaxWorldLeaders>
+  <PastLives_Letters>Присылать письмо, когда кого-то узнали</PastLives_Letters>
+  <PastLives_IncludeChildren>Учитывать колонистов, которые были детьми</PastLives_IncludeChildren>
+  <PastLives_IncludeChildrenDesc>Они возвращаются повзрослевшими: детство остаётся прежним, взрослая жизнь новая.</PastLives_IncludeChildrenDesc>
+  <PastLives_Roles>Кем они могут стать:</PastLives_Roles>
+  <PastLives_Role_Joiner>Странник, который присоединяется</PastLives_Role_Joiner>
+  <PastLives_Role_Refugee>Беженец (квесты гостеприимства)</PastLives_Role_Refugee>
+  <PastLives_Role_Visitor>Гость</PastLives_Role_Visitor>
+  <PastLives_Role_Trader>Торговец</PastLives_Role_Trader>
+  <PastLives_Role_Raider>Рейдер</PastLives_Role_Raider>
+  <PastLives_Role_Slave>Раб на продажу</PastLives_Role_Slave>
+  <PastLives_Role_Leader>Лидер фракции</PastLives_Role_Leader>
+  <PastLives_Role_DeadReturn>Возвращение погибших</PastLives_Role_DeadReturn>
+  <PastLives_Role_DeadReturnDesc>Колонисты, погибшие в старых играх, возвращаются через отдельное редкое событие: странником, а с Anomaly ещё жутким странником или бродячим мертвецом.</PastLives_Role_DeadReturnDesc>
+  <PastLives_Scanning>Читаю старые сохранения... {0}</PastLives_Scanning>
+  <PastLives_ArchiveStatus>Архив: живых {0}, погибших {1}, колоний {2}.</PastLives_ArchiveStatus>
+  <PastLives_Rescan>Перечитать сохранения</PastLives_Rescan>
+  <PastLives_Colonies>Старые колонии (снимите галочку, чтобы исключить):</PastLives_Colonies>
+
+  <!-- Панель осмотра -->
+  <PastLives_Inspect>Прошлая жизнь: колония «{COLONY}»</PastLives_Inspect>
+  <PastLives_InspectDead>Прошлая жизнь: {PAWN_gender ? погиб : погибла} в колонии «{COLONY}»</PastLives_InspectDead>
+
+  <!-- Письма -->
+  <PastLives_LetterLabel>Знакомое лицо: {PAWN_labelShort}</PastLives_LetterLabel>
+  <PastLives_LetterLabel_Dead>{PAWN_gender ? Вернувшийся : Вернувшаяся}: {PAWN_labelShort}</PastLives_LetterLabel_Dead>
+
+  <PastLives_Letter_Joiner>{PAWN_nameFull}. Это имя вам знакомо. В другой жизни {PAWN_gender ? он был колонистом : она была колонисткой} поселения «{COLONY}». Теперь {PAWN_gender ? он ищет : она ищет} новый дом.</PastLives_Letter_Joiner>
+  <PastLives_Letter_Refugee>Среди беженцев {PAWN_nameFull}, {PAWN_gender ? бывший колонист : бывшая колонистка} «{COLONY}». Жизнь снова сорвала {PAWN_gender ? его : её} с места.</PastLives_Letter_Refugee>
+  <PastLives_Letter_Visitor>{PAWN_nameFull}, {PAWN_gender ? живший : жившая} когда-то в колонии «{COLONY}», {PAWN_gender ? пришёл : пришла} в гости вместе с фракцией «{FACTION}».</PastLives_Letter_Visitor>
+  <PastLives_Letter_Trader>Караван фракции «{FACTION}» ведёт {PAWN_nameFull}, {PAWN_gender ? бывший колонист : бывшая колонистка} «{COLONY}». Похоже, {PAWN_gender ? он : она} теперь торгует.</PastLives_Letter_Trader>
+  <PastLives_Letter_Raider>В рядах налётчиков фракции «{FACTION}» {PAWN_nameFull}. Когда-то {PAWN_gender ? он защищал : она защищала} колонию «{COLONY}». Теперь {PAWN_gender ? он пришёл : она пришла} за вашей.</PastLives_Letter_Raider>
+  <PastLives_Letter_Slave>Среди рабов на продажу {PAWN_nameFull}, {PAWN_gender ? бывший колонист : бывшая колонистка} «{COLONY}». Судьба бывает жестока.</PastLives_Letter_Slave>
+  <PastLives_Letter_Leader>У фракции «{FACTION}» новый лидер: {PAWN_nameFull}, {PAWN_gender ? тот самый : та самая} из колонии «{COLONY}».</PastLives_Letter_Leader>
+  <PastLives_Letter_Dead_Wanderer>{PAWN_nameFull}. Вы помните, как {PAWN_gender ? он погиб : она погибла} в колонии «{COLONY}». И всё же {PAWN_gender ? он стоит : она стоит} перед вами, {PAWN_gender ? живой : живая}, {PAWN_gender ? тихий : тихая}, с отсутствующим взглядом, будто {PAWN_gender ? прошёл : прошла} очень долгий путь назад.</PastLives_Letter_Dead_Wanderer>
+  <PastLives_Letter_Dead_CreepJoiner>Этот странник выглядит в точности как {PAWN_nameFull}, {PAWN_gender ? погибший : погибшая} когда-то в колонии «{COLONY}». Тот же голос, те же привычки... но что-то в {PAWN_gender ? нём : ней} не так.</PastLives_Letter_Dead_CreepJoiner>
+  <PastLives_Letter_Dead_Shambler>Среди бредущих мертвецов вы узнаёте {PAWN_nameFull}. {PAWN_gender ? Он погиб : Она погибла} в колонии «{COLONY}», и смерть так и не отпустила {PAWN_gender ? его : её}.</PastLives_Letter_Dead_Shambler>
+
+  <PastLives_LetterLabel_WorldLeaders>Прошлые жизни</PastLives_LetterLabel_WorldLeaders>
+  <PastLives_Letter_WorldLeaders>Этот мир помнит ваши прошлые жизни. Некоторые бывшие колонисты теперь возглавляют фракции:</PastLives_Letter_WorldLeaders>
+  <PastLives_LeaderLine>- {PAWN} (колония «{COLONY}») возглавляет фракцию «{FACTION}»</PastLives_LeaderLine>
+
+</LanguageData>
