@@ -177,7 +177,7 @@ namespace PastLives
                 BodyPartRecord part = null;
                 if (h.PartIndex >= 0)
                 {
-                    if (h.Body != body.defName) continue;
+                    if (h.Body != body.defName && h.Body != ArchivePawn.OwnBody) continue;
                     part = body.GetPartAtIndex(h.PartIndex);
                     if (part == null) continue;
                 }

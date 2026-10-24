@@ -137,6 +137,21 @@ namespace PastLives
             return result.GroupBy(p => p.Key).Select(g => g.First()).ToList();
         }
 
+        // A file holding one pawn in the game's own save format, as Pawn Editor writes them
+        // (the root element is the pawn). Returns null if it is not a person.
+        public static ArchivePawn ScanPawnFile(string path)
+        {
+            var root = XDocument.Load(path).Root;
+            if (root == null || !IsColonistCandidate(root)) return null;
+            var p = ReadPawn(root, false, out _, out var birthAbs);
+            if (p == null) return null;
+            p.SourceFile = Path.GetFileName(path);
+            p.SourceTimeUtc = File.GetLastWriteTimeUtc(path);
+            p.GameVersion = root.Element("meta")?.Element("gameVersion")?.Value;
+            p.AgeChronoTicks = p.AgeBioTicks;   // the file has no game clock to measure birth against
+            return p;
+        }
+
         private static bool IsColonistCandidate(XElement el)
         {
             if (el.Element("kindDef") == null || el.Element("ageTracker") == null || el.Element("def") == null) return false;
@@ -250,7 +265,8 @@ namespace PastLives
         private static string V(XElement e, string child)
         {
             var c = e?.Element(child);
-            if (c == null || c.Attribute("IsNull") != null) return null;
+            // Missing, IsNull and empty (<sourceGene /> as Pawn Editor writes it) all mean "no value".
+            if (c == null || c.Attribute("IsNull") != null || c.Value.Length == 0) return null;
             return c.Value;
         }
 

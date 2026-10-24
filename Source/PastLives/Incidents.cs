@@ -85,7 +85,7 @@ namespace PastLives
                 return;
             }
             entry.notified = true;
-            var text = "PastLives_Letter_Dead_Shambler".Translate(returned.Named("PAWN"), entry.colony.Named("COLONY"), "".Named("FACTION"));
+            var text = ("PastLives_Letter_Dead_Shambler" + GameComponent_PastLives.SavedSuffix(entry)).Translate(returned.Named("PAWN"), entry.colony.Named("COLONY"), "".Named("FACTION"));
             if (entities.Count > 1) text += "\n\n" + "LetterShamblerSwarmArrived".Translate(entities.Count - 1);
             SendStandardLetter("PastLives_LetterLabel_Dead".Translate(returned.Named("PAWN")), text, def.letterDef, parms, new LookTargets(returned));
         }

@@ -22,7 +22,24 @@ namespace PastLives
         public bool roleLeader = true;
         public bool roleDead = true;
 
+        // "My list": pawns remembered in game plus editor imports.
+        public float listWeight = 3f;
+        public bool onlyMyList;
+        public bool allowRepeats;
+        public bool importPawnEditor = true;
+        public bool importCharacterEditor;   // experimental
+
         public List<string> excludedColonies = new List<string>();
+
+        public bool SourceEnabled(string source)
+        {
+            switch (source)
+            {
+                case ArchivePawn.SourcePawnEditor: return importPawnEditor;
+                case ArchivePawn.SourceCharacterEditor: return importCharacterEditor;
+                default: return true;
+            }
+        }
 
         public bool RoleEnabled(PastRole role)
         {
@@ -57,6 +74,11 @@ namespace PastLives
             Scribe_Values.Look(ref roleSlave, "roleSlave", true);
             Scribe_Values.Look(ref roleLeader, "roleLeader", true);
             Scribe_Values.Look(ref roleDead, "roleDead", true);
+            Scribe_Values.Look(ref listWeight, "listWeight", 3f);
+            Scribe_Values.Look(ref onlyMyList, "onlyMyList");
+            Scribe_Values.Look(ref allowRepeats, "allowRepeats");
+            Scribe_Values.Look(ref importPawnEditor, "importPawnEditor", true);
+            Scribe_Values.Look(ref importCharacterEditor, "importCharacterEditor");
             Scribe_Collections.Look(ref excludedColonies, "excludedColonies", LookMode.Value);
             if (excludedColonies == null) excludedColonies = new List<string>();
         }

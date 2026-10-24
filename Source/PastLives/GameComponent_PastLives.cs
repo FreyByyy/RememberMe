@@ -48,7 +48,28 @@ namespace PastLives
 
         public GameComponent_PastLives(Game game) { }
 
-        public bool IsUsed(string key) => usedKeys.Contains(key);
+        private HashSet<string> aliveCache;
+        private int aliveCacheFrame = -1;
+
+        // With repeats on, a "my list" pawn may come back again once every earlier version of them in this
+        // world is dead or gone.
+        public bool IsUsed(ArchivePawn p)
+        {
+            if (!usedKeys.Contains(p.Key)) return false;
+            if (!PastLivesMod.Settings.allowRepeats || !p.IsListPawn) return true;
+            var alive = AliveThingIds();
+            return entries.Any(e => e.key == p.Key && e.thingId != null && alive.Contains(e.thingId));
+        }
+
+        private HashSet<string> AliveThingIds()
+        {
+            if (aliveCache == null || aliveCacheFrame != UnityEngine.Time.frameCount)
+            {
+                aliveCache = new HashSet<string>(PawnsFinder.AllMapsWorldAndTemporary_Alive.Select(x => x.ThingID));
+                aliveCacheFrame = UnityEngine.Time.frameCount;
+            }
+            return aliveCache;
+        }
 
         public bool CooldownOver => Find.TickManager == null
             || Find.TickManager.TicksGame - lastAppearanceTick >= PastLivesMod.Settings.cooldownDays * GenDate.TicksPerDay;
@@ -90,7 +111,7 @@ namespace PastLives
         private void LinkComrades(Pawn pawn, PastLifeEntry entry)
         {
             var def = PastLivesDefOf.PastLives_OldComrade;
-            if (def == null || pawn.relations == null) return;
+            if (def == null || pawn.relations == null || string.IsNullOrEmpty(entry.colony)) return;
             var ids = new HashSet<string>(entries.Where(e => e != entry && e.colony == entry.colony && e.thingId != null).Select(e => e.thingId));
             if (ids.Count == 0) return;
             foreach (var other in PawnsFinder.AllMapsWorldAndTemporary_Alive)
@@ -123,7 +144,7 @@ namespace PastLives
             if (pending.Count == 0) return;
             foreach (var e in pending) e.notified = true;
             if (!PastLivesMod.Settings.letters) return;
-            var lines = pending.Select(e => "PastLives_LeaderLine".Translate(e.name.Named("PAWN"), e.colony.Named("COLONY"), (e.factionName ?? "?").Named("FACTION")).Resolve());
+            var lines = pending.Select(e => ("PastLives_LeaderLine" + SavedSuffix(e)).Translate(e.name.Named("PAWN"), e.colony.Named("COLONY"), (e.factionName ?? "?").Named("FACTION")).Resolve());
             Find.LetterStack.ReceiveLetter("PastLives_LetterLabel_WorldLeaders".Translate(),
                 "PastLives_Letter_WorldLeaders".Translate() + "\n\n" + string.Join("\n", lines), LetterDefOf.NeutralEvent);
         }
@@ -153,11 +174,14 @@ namespace PastLives
             }
         }
 
+        // Pawns from "my list" without a known colony get texts that say "one of your saved colonists".
+        public static string SavedSuffix(PastLifeEntry e) => string.IsNullOrEmpty(e.colony) ? "_Saved" : "";
+
         public void SendLetter(PastLifeEntry e, Pawn pawn)
         {
             e.notified = true;
             if (!PastLivesMod.Settings.letters) return;
-            string key = e.role == PastRole.DeadReturn ? "PastLives_Letter_Dead_" + e.variant : "PastLives_Letter_" + e.role;
+            string key = (e.role == PastRole.DeadReturn ? "PastLives_Letter_Dead_" + e.variant : "PastLives_Letter_" + e.role) + SavedSuffix(e);
             var text = key.Translate(pawn.Named("PAWN"), e.colony.Named("COLONY"), (pawn.Faction?.Name ?? e.factionName ?? "").Named("FACTION"));
             var label = (e.role == PastRole.DeadReturn ? "PastLives_LetterLabel_Dead" : "PastLives_LetterLabel").Translate(pawn.Named("PAWN"));
             LetterDef type = e.role == PastRole.Raider ? LetterDefOf.ThreatSmall

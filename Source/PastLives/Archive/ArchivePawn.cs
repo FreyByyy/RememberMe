@@ -10,7 +10,17 @@ namespace PastLives
     // built on a background thread without touching game defs; defs are resolved when the pawn is used.
     public class ArchivePawn
     {
+        // Where a pawn came from. Everything except old saves counts as "my list".
+        public const string SourceSave = "save";
+        public const string SourceList = "list";
+        public const string SourcePawnEditor = "pawneditor";
+        public const string SourceCharacterEditor = "chareditor";
+
+        // HediffEntry.Body value meaning "whatever body the pawn's race has" (editors store no body def).
+        public const string OwnBody = "*";
+
         public string Key;              // "<world seed>#<pawn id>", stable across autosaves of one colony
+        public string Source = SourceSave;
         public string SourceFile;
         public DateTime SourceTimeUtc;
         public string GameVersion;
@@ -40,6 +50,7 @@ namespace PastLives
         public List<TitleEntry> Titles = new List<TitleEntry>();
         public List<string> IdeoRoles = new List<string>();
         public List<float> Records = new List<float>();
+        public float Kills = -1f;       // known kill count when records come by name (editors); -1 = use Records
 
         public bool Dead;
         public bool Slave;
@@ -55,6 +66,13 @@ namespace PastLives
                 return (NameFirst + " " + NameLast).Trim();
             }
         }
+
+        public bool IsListPawn => Source != null && Source != SourceSave;
+
+        public bool HasColony => !string.IsNullOrEmpty(Colony);
+
+        // Used to recognise one person who is both in an old save and in "my list".
+        public string IdentityKey => HasColony ? Colony + "|" + DisplayName : null;
 
         public string ShortName => !string.IsNullOrEmpty(NameNick) ? NameNick : (NameSingle ?? NameFirst ?? "?");
 
@@ -72,7 +90,7 @@ namespace PastLives
         public XElement ToXml()
         {
             var e = new XElement("pawn",
-                A("key", Key), A("file", SourceFile), A("time", SourceTimeUtc.Ticks.ToString(CultureInfo.InvariantCulture)),
+                A("key", Key), A("src", Source == SourceSave ? null : Source), A("file", SourceFile), A("time", SourceTimeUtc.Ticks.ToString(CultureInfo.InvariantCulture)),
                 A("ver", GameVersion), A("colony", Colony), A("id", PawnId), A("race", RaceDef), A("kind", KindDef),
                 A("gender", Gender), A("first", NameFirst), A("nick", NameNick), A("last", NameLast), A("single", NameSingle),
                 A("child", Childhood), A("adult", Adulthood), A("body", BodyType), A("head", HeadType), A("hair", HairDef),
@@ -80,7 +98,8 @@ namespace PastLives
                 A("beard", Beard), A("faceTat", FaceTattoo), A("bodyTat", BodyTattoo),
                 A("ageBio", AgeBioTicks.ToString(CultureInfo.InvariantCulture)), A("ageChrono", AgeChronoTicks.ToString(CultureInfo.InvariantCulture)),
                 A("hasGenes", HasGenes ? "1" : null), A("xeno", Xenotype), A("xenoName", XenotypeName), A("xenoIcon", XenotypeIcon),
-                A("dead", Dead ? "1" : null), A("slave", Slave ? "1" : null), A("creep", CreepJoiner ? "1" : null));
+                A("dead", Dead ? "1" : null), A("slave", Slave ? "1" : null), A("creep", CreepJoiner ? "1" : null),
+                A("kills", Kills >= 0f ? Kills.ToString(CultureInfo.InvariantCulture) : null));
             foreach (var t in Traits) e.Add(new XElement("trait", A("def", t.Def), A("deg", t.Degree.ToString(CultureInfo.InvariantCulture))));
             foreach (var s in Skills) e.Add(new XElement("skill", A("def", s.Def), A("lvl", s.Level.ToString(CultureInfo.InvariantCulture)), A("passion", s.Passion)));
             foreach (var g in Endogenes) e.Add(new XElement("endo", A("def", g)));
@@ -98,7 +117,7 @@ namespace PastLives
         {
             var p = new ArchivePawn
             {
-                Key = S(e, "key"), SourceFile = S(e, "file"), SourceTimeUtc = new DateTime(L(e, "time"), DateTimeKind.Utc),
+                Key = S(e, "key"), Source = S(e, "src") ?? SourceSave, Kills = e.Attribute("kills") != null ? F(e, "kills") : -1f, SourceFile = S(e, "file"), SourceTimeUtc = new DateTime(L(e, "time"), DateTimeKind.Utc),
                 GameVersion = S(e, "ver"), Colony = S(e, "colony"), PawnId = S(e, "id"), RaceDef = S(e, "race"), KindDef = S(e, "kind"),
                 Gender = S(e, "gender"), NameFirst = S(e, "first"), NameNick = S(e, "nick"), NameLast = S(e, "last"), NameSingle = S(e, "single"),
                 Childhood = S(e, "child"), Adulthood = S(e, "adult"), BodyType = S(e, "body"), HeadType = S(e, "head"), HairDef = S(e, "hair"),

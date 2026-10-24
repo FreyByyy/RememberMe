@@ -23,13 +23,11 @@ namespace PastLives
             var weighted = new List<(ArchivePawn pawn, float weight)>();
             foreach (var p in PastLivesArchive.All)
             {
-                if (p.Dead != wantDead || comp.IsUsed(p.Key)) continue;
-                if (settings.excludedColonies.Contains(p.Colony)) continue;
-                if (!RaceCompatible(p.RaceDef, race)) continue;
-                if (!settings.includeChildren && IsChild(p, race)) continue;
+                if (!Eligible(p, wantDead, race, comp)) continue;
                 if (request.FixedGender.HasValue && race.race.hasGenders && p.Gender != request.FixedGender.Value.ToString()) continue;
                 if (request.MustBeCapableOfViolence && IncapableOfViolence(p)) continue;
                 float w = RoleWeight(p, role) * FactionFit(p, request.Faction);
+                if (p.IsListPawn) w *= settings.listWeight;
                 if (w > 0f) weighted.Add((p, w));
             }
             if (weighted.Count == 0) return null;
@@ -39,10 +37,17 @@ namespace PastLives
         public static bool AnyCandidate(PastRole role, ThingDef race, GameComponent_PastLives comp)
         {
             bool wantDead = role == PastRole.DeadReturn;
+            return PastLivesArchive.All.Any(p => Eligible(p, wantDead, race, comp));
+        }
+
+        private static bool Eligible(ArchivePawn p, bool wantDead, ThingDef race, GameComponent_PastLives comp)
+        {
             var settings = PastLivesMod.Settings;
-            return PastLivesArchive.All.Any(p => p.Dead == wantDead && !comp.IsUsed(p.Key)
-                && !settings.excludedColonies.Contains(p.Colony) && RaceCompatible(p.RaceDef, race)
-                && (settings.includeChildren || !IsChild(p, race)));
+            if (p.Dead != wantDead || comp.IsUsed(p)) return false;
+            // Colony switches are for old saves; anything in "my list" was chosen on purpose.
+            if (!p.IsListPawn && settings.excludedColonies.Contains(p.Colony)) return false;
+            if (p.RaceDef == null || !RaceCompatible(p.RaceDef, race)) return false;
+            return settings.includeChildren || !IsChild(p, race);
         }
 
         // Creepjoiners use their own race def, which is a human in every way that matters here.
@@ -161,6 +166,7 @@ namespace PastLives
         // Records are stored by def index, so they only mean something when the record list matches ours.
         private static float Kills(ArchivePawn p)
         {
+            if (p.Kills >= 0f) return p.Kills;
             var kills = RecordDefOf.Kills;
             if (kills == null || p.Records.Count != DefDatabase<RecordDef>.DefCount || kills.index >= p.Records.Count) return 0f;
             return p.Records[kills.index];

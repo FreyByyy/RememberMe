@@ -111,7 +111,7 @@ namespace PastLives
         {
             var entry = GameComponent_PastLives.Instance?.EntryFor(__instance);
             if (entry == null) return;
-            var line = (entry.wasDead ? "PastLives_InspectDead" : "PastLives_Inspect").Translate(__instance.Named("PAWN"), entry.colony.Named("COLONY")).Resolve();
+            var line = ((entry.wasDead ? "PastLives_InspectDead" : "PastLives_Inspect") + GameComponent_PastLives.SavedSuffix(entry)).Translate(__instance.Named("PAWN"), entry.colony.Named("COLONY")).Resolve();
             __result = __result.NullOrEmpty() ? line : __result + "\n" + line;
         }
     }

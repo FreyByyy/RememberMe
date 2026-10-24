@@ -21,7 +21,7 @@ namespace PastLives
         public static PendingSubstitution TryBegin(ref PawnGenerationRequest request)
         {
             var settings = PastLivesMod.Settings;
-            if (!settings.enabled || Current.Game == null || PastLivesArchive.Count == 0) return null;
+            if (!settings.enabled || Current.Game == null) return null;
             var comp = GameComponent_PastLives.Instance;
             if (comp == null) return null;
             var kind = request.KindDef;

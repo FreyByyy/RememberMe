@@ -12,7 +12,7 @@ namespace PastLives
     // taken from the most recent save.
     public class ArchiveStore
     {
-        public const int FormatVersion = 2;   // bump to force a full re-read after scanner fixes
+        public const int FormatVersion = 3;   // bump to force a full re-read after scanner fixes
 
         public Dictionary<string, ArchivePawn> Pawns = new Dictionary<string, ArchivePawn>();
         public Dictionary<string, string> FileStamps = new Dictionary<string, string>();   // file name -> "size:mtime"
@@ -54,6 +54,20 @@ namespace PastLives
         }
 
         public static string Stamp(FileInfo f) => f.Length.ToString(CultureInfo.InvariantCulture) + ":" + f.LastWriteTimeUtc.Ticks.ToString(CultureInfo.InvariantCulture);
+
+        // Pawns imported from editor mods are kept here too, so they survive the other mod losing its list.
+        public void MergeImported(IEnumerable<ArchivePawn> pawns)
+        {
+            foreach (var p in pawns)
+                if (p.Key != null) Pawns[p.Key] = p;
+        }
+
+        public int RemoveSource(string source)
+        {
+            var keys = Pawns.Values.Where(p => p.Source == source).Select(p => p.Key).ToList();
+            foreach (var k in keys) Pawns.Remove(k);
+            return keys.Count;
+        }
 
         // Scans every save that is new or changed since the last run. Returns the number of files parsed.
         public int Update(string savesFolder, ICollection<string> playerFactionDefs, Action<string> warn, Action<int, int> progress = null)

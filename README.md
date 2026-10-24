@@ -20,9 +20,23 @@ Colonists who died come back through their own rare event: as a wanderer, and wi
 
 Settings: chance per event, chance per new faction leader, cooldown, letters, which roles are used, which old colonies count.
 
+## My list
+
+Besides old saves, the mod keeps your own list of pawns:
+
+- **Remember button** on every colonist adds them to the list (press again to forget). Each pawn is a file in `SaveData/PastLives/MyList`; a pawn file in the game's own format dropped there works too.
+- **Pawn Editor**: pawns saved with Pawn Editor are picked up from its save folder.
+- **Character Editor (experimental)**: pawns from Character Editor's slots. Its slot format is undocumented, so this may break with a Character Editor update. Off by default.
+
+Neither editor is a dependency; only their files are read. Imported pawns are kept by this mod, so they are not lost if the editor's own list is reset.
+
+List settings: how much more often list pawns are picked (weight slider), "only my list" (ignore old saves), and repeat appearances (a list pawn may come back if their previous version in this world died; off by default). Pawns from the list without a known colony are introduced as "one of your saved colonists".
+
 ## Русский
 
 Колонисты из ваших старых игр никуда не делись. Мод читает старые сохранения, собирает архив всех колонистов и иногда возвращает кого-то из них в новый мир: гостем, торговцем, рейдером, беженцем, рабом на продажу, лидером фракции или новым членом колонии. Кем станет человек, зависит от его прошлой жизни. Погибшие возвращаются отдельным событием, а с Anomaly приходят жутким странником или бродячим мертвецом.
+
+Кроме сейвов есть «Мой список»: кнопка «Запомнить» на колонисте, папка с файлами пешек, импорт из Pawn Editor и (экспериментально) из Character Editor. Пешки из списка выбираются чаще (ползунок веса), можно включить режим «только мой список» и повторные появления.
 
 ## Requirements
 

@@ -52,5 +52,43 @@
   <PastLives_LetterLabel_WorldLeaders>Прошлые жизни</PastLives_LetterLabel_WorldLeaders>
   <PastLives_Letter_WorldLeaders>Этот мир помнит ваши прошлые жизни. Некоторые бывшие колонисты теперь возглавляют фракции:</PastLives_Letter_WorldLeaders>
   <PastLives_LeaderLine>- {PAWN} (колония «{COLONY}») возглавляет фракцию «{FACTION}»</PastLives_LeaderLine>
+  <PastLives_LeaderLine_Saved>- {PAWN} (из сохранённых) возглавляет фракцию «{FACTION}»</PastLives_LeaderLine_Saved>
+
+  <!-- Мой список -->
+  <PastLives_MyListHeader>Мой список</PastLives_MyListHeader>
+  <PastLives_MyListDesc>Колонисты, которых вы запомнили кнопкой «Запомнить», файлы в папке списка и пешки, импортированные из Pawn Editor и Character Editor.</PastLives_MyListDesc>
+  <PastLives_ListWeight>Вес моего списка: ×{0}</PastLives_ListWeight>
+  <PastLives_ListWeightDesc>Во сколько раз чаще выбираются пешки из вашего списка по сравнению с колонистами из старых сохранений.</PastLives_ListWeightDesc>
+  <PastLives_OnlyMyList>Только мой список</PastLives_OnlyMyList>
+  <PastLives_OnlyMyListDesc>Старые сохранения не используются, появляются только пешки из вашего списка.</PastLives_OnlyMyListDesc>
+  <PastLives_AllowRepeats>Повторные появления</PastLives_AllowRepeats>
+  <PastLives_AllowRepeatsDesc>Пешка из вашего списка может появиться в этом мире снова, если её прошлая версия здесь погибла или исчезла.</PastLives_AllowRepeatsDesc>
+  <PastLives_ImportPawnEditor>Брать пешек из Pawn Editor</PastLives_ImportPawnEditor>
+  <PastLives_ImportPawnEditorDesc>Читает пешек, сохранённых в Pawn Editor. Сам мод Pawn Editor не нужен, достаточно его файлов.</PastLives_ImportPawnEditorDesc>
+  <PastLives_ImportCharacterEditor>Брать пешек из Character Editor (экспериментально)</PastLives_ImportCharacterEditor>
+  <PastLives_ImportCharacterEditorDesc>Читает слоты пешек Character Editor. Формат слотов нигде не описан и может измениться в новых версиях Character Editor. Импортированные пешки сохраняются у нас и не пропадут, даже если Character Editor потеряет свой список.</PastLives_ImportCharacterEditorDesc>
+  <PastLives_MyListStatus>Мой список: запомнено {0}, из Pawn Editor {1}, из Character Editor {2}.</PastLives_MyListStatus>
+  <PastLives_OpenMyList>Открыть папку списка</PastLives_OpenMyList>
+
+  <PastLives_Remember>Запомнить</PastLives_Remember>
+  <PastLives_RememberDesc>Добавить {PAWN_nameFull} в ваш список. Однажды {PAWN_gender ? он может : она может} появиться в другом мире.</PastLives_RememberDesc>
+  <PastLives_Forget>Забыть</PastLives_Forget>
+  <PastLives_ForgetDesc>Убрать {PAWN_nameFull} из вашего списка.</PastLives_ForgetDesc>
+  <PastLives_Remembered>{PAWN_nameFull} теперь в вашем списке.</PastLives_Remembered>
+  <PastLives_Forgotten>{PAWN_nameFull} {PAWN_gender ? убран : убрана} из вашего списка.</PastLives_Forgotten>
+
+  <!-- Пешки из списка без колонии -->
+  <PastLives_Inspect_Saved>Прошлая жизнь: из сохранённых</PastLives_Inspect_Saved>
+  <PastLives_InspectDead_Saved>Прошлая жизнь: из сохранённых, {PAWN_gender ? погиб : погибла}</PastLives_InspectDead_Saved>
+  <PastLives_Letter_Joiner_Saved>{PAWN_nameFull}. Это имя вам знакомо: {PAWN_gender ? он : она} из ваших сохранённых колонистов. Теперь {PAWN_gender ? он ищет : она ищет} новый дом.</PastLives_Letter_Joiner_Saved>
+  <PastLives_Letter_Refugee_Saved>Среди беженцев {PAWN_nameFull}, {PAWN_gender ? один : одна} из ваших сохранённых колонистов.</PastLives_Letter_Refugee_Saved>
+  <PastLives_Letter_Visitor_Saved>{PAWN_nameFull}, {PAWN_gender ? один : одна} из ваших сохранённых колонистов, {PAWN_gender ? пришёл : пришла} в гости вместе с фракцией «{FACTION}».</PastLives_Letter_Visitor_Saved>
+  <PastLives_Letter_Trader_Saved>Караван фракции «{FACTION}» ведёт {PAWN_nameFull}, {PAWN_gender ? один : одна} из ваших сохранённых колонистов. Похоже, {PAWN_gender ? он : она} теперь торгует.</PastLives_Letter_Trader_Saved>
+  <PastLives_Letter_Raider_Saved>В рядах налётчиков фракции «{FACTION}» {PAWN_nameFull}, {PAWN_gender ? один : одна} из ваших сохранённых колонистов. Теперь {PAWN_gender ? он пришёл : она пришла} за вами.</PastLives_Letter_Raider_Saved>
+  <PastLives_Letter_Slave_Saved>Среди рабов на продажу {PAWN_nameFull}, {PAWN_gender ? один : одна} из ваших сохранённых колонистов. Судьба бывает жестока.</PastLives_Letter_Slave_Saved>
+  <PastLives_Letter_Leader_Saved>У фракции «{FACTION}» новый лидер: {PAWN_nameFull}, {PAWN_gender ? один : одна} из ваших сохранённых колонистов.</PastLives_Letter_Leader_Saved>
+  <PastLives_Letter_Dead_Wanderer_Saved>{PAWN_nameFull}, {PAWN_gender ? один : одна} из ваших сохранённых колонистов. Вы помните, что {PAWN_gender ? он погиб : она погибла}. И всё же {PAWN_gender ? он стоит : она стоит} перед вами, тихо глядя куда-то сквозь вас.</PastLives_Letter_Dead_Wanderer_Saved>
+  <PastLives_Letter_Dead_CreepJoiner_Saved>Этот странник выглядит в точности как {PAWN_nameFull}, {PAWN_gender ? один : одна} из ваших сохранённых колонистов. Но что-то в {PAWN_gender ? нём : ней} не так.</PastLives_Letter_Dead_CreepJoiner_Saved>
+  <PastLives_Letter_Dead_Shambler_Saved>Среди бредущих мертвецов вы узнаёте {PAWN_nameFull}, {PAWN_gender ? одного : одну} из ваших сохранённых колонистов.</PastLives_Letter_Dead_Shambler_Saved>
 
 </LanguageData>

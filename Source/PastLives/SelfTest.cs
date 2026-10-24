@@ -36,13 +36,19 @@ namespace PastLives
             s.eventChance = 1f;
             s.leaderChance = 1f;
             s.cooldownDays = 0f;
+            s.importPawnEditor = true;
+            s.importCharacterEditor = true;
         }
 
         private static void Run()
         {
             var comp = GameComponent_PastLives.Instance;
             var map = Find.CurrentMap;
-            Out("archive=" + PastLivesArchive.Count + " entriesAfterWorldGen=" + comp.Entries.Count);
+            Out("saves=" + PastLivesArchive.SavedColonists.Count() + " myList=" + PastLivesArchive.CountMyList
+                + " pawnEditor=" + PastLivesArchive.CountSource(ArchivePawn.SourcePawnEditor)
+                + " characterEditor=" + PastLivesArchive.CountSource(ArchivePawn.SourceCharacterEditor)
+                + " eligible=" + PastLivesArchive.All.Count() + " entriesAfterWorldGen=" + comp.Entries.Count
+                + " listLeaders=" + comp.Entries.Count(e => e.role == PastRole.Leader && PastLivesArchive.All.Any(p => p.Key == e.key && p.IsListPawn)));
 
             foreach (var name in new[] { "RaidEnemy", "VisitorGroup", "TraderCaravanArrival", "WandererJoin",
                          "PastLives_DeadReturns", "PastLives_DeadReturns_CreepJoiner", "PastLives_DeadReturns_Shambler" })
@@ -69,6 +75,8 @@ namespace PastLives
                 Out("leader change in " + faction.Name + ": newPastColonists=" + (comp.Entries.Count - before));
             }
 
+            TestMyList(comp, map);
+
             comp.CheckSpawned();
 
             foreach (var e in comp.Entries)
@@ -84,7 +92,7 @@ namespace PastLives
                     $"gender={pawn.gender}/{a.Gender} traits={traitsHave}/{traitsWanted} skills>={skillsOk}/{a.Skills.Count} " +
                     $"child={pawn.story?.Childhood?.defName}/{a.Childhood} adult={pawn.story?.Adulthood?.defName}/{a.Adulthood} " +
                     $"xeno={pawn.genes?.XenotypeLabel}/{a.Xenotype} hair={pawn.story?.hairDef?.defName}/{a.HairDef} notified={e.notified} " +
-                    $"inspect={pawn.Spawned && pawn.GetInspectString().Contains(a.Colony)}");
+                    $"src={a.Source} inspect={(pawn.Spawned ? pawn.GetInspectString().Split('\n').LastOrDefault() : "-")}");
             }
             Out("letters=" + string.Join(" | ", Find.LetterStack.LettersListForReading.Select(l => l.Label.ToString())));
 
@@ -96,6 +104,38 @@ namespace PastLives
             Out("save: exists=" + File.Exists(path) + " hasComponent=" + text.Contains("PastLives.GameComponent_PastLives")
                 + " entriesSaved=" + (text.Split(new[] { "<thingId>" }, StringSplitOptions.None).Length - 1));
             if (File.Exists(path)) File.Delete(path);
+        }
+
+        // Remember / Forget on a real colonist, the gizmo, "only my list" and the "saved" letter texts.
+        // Leaves the player's list folder exactly as it found it.
+        private static void TestMyList(GameComponent_PastLives comp, Map map)
+        {
+            var colonist = map.mapPawns.FreeColonists.FirstOrDefault();
+            if (colonist == null) { Out("mylist: no colonist"); return; }
+            var gizmo = colonist.GetGizmos().OfType<Command_Action>().FirstOrDefault(g => g.icon == MyListTextures.Remember);
+            Out("mylist: gizmo=" + (gizmo != null) + " label=" + gizmo?.defaultLabel);
+            bool wasThere = MyList.Contains(colonist);
+            MyList.Remember(colonist);
+            var entry = PastLivesArchive.MyListEntry(MyList.KeyFor(colonist));
+            Out("mylist: remembered=" + (entry != null) + " file=" + (entry != null && File.Exists(entry.SourceFile))
+                + " name=" + entry?.DisplayName + " colony=" + entry?.Colony + " traits=" + entry?.Traits.Count + " skills=" + entry?.Skills.Count
+                + " forgetGizmo=" + colonist.GetGizmos().OfType<Command_Action>().Any(g => g.icon == MyListTextures.Forget));
+            string file = entry?.SourceFile;
+            if (!wasThere) MyList.Forget(colonist);
+            Out("mylist: forgotten=" + (PastLivesArchive.MyListEntry(MyList.KeyFor(colonist)) == null) + " fileGone=" + (file == null || !File.Exists(file)));
+
+            var s = PastLivesMod.Settings;
+            s.onlyMyList = true;
+            Out("onlyMyList: eligible=" + PastLivesArchive.All.Count() + " allFromList=" + PastLivesArchive.All.All(p => p.IsListPawn));
+            var def = IncidentDefOf.VisitorGroup;
+            int before = comp.Entries.Count;
+            var parms = StorytellerUtility.DefaultParmsNow(def.category, map);
+            parms.forced = true;
+            def.Worker.TryExecute(parms);
+            var added = comp.Entries.Skip(before).ToList();
+            Out("onlyMyList visitor: new=" + added.Count + " fromList=" + added.All(e => PastLivesArchive.All.Any(p => p.Key == e.key))
+                + " sources=" + string.Join(",", added.Select(e => PastLivesArchive.All.FirstOrDefault(p => p.Key == e.key)?.Source)));
+            s.onlyMyList = false;
         }
 
         private static void Out(string msg) => Log.Message("[PastLives][selftest] " + msg);

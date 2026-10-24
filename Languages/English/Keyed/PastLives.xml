@@ -52,5 +52,43 @@
   <PastLives_LetterLabel_WorldLeaders>Past lives</PastLives_LetterLabel_WorldLeaders>
   <PastLives_Letter_WorldLeaders>This world remembers your past lives. Some of your former colonists now lead factions:</PastLives_Letter_WorldLeaders>
   <PastLives_LeaderLine>- {PAWN} (colony "{COLONY}") leads {FACTION}</PastLives_LeaderLine>
+  <PastLives_LeaderLine_Saved>- {PAWN} (one of your saved colonists) leads {FACTION}</PastLives_LeaderLine_Saved>
+
+  <!-- My list -->
+  <PastLives_MyListHeader>My list</PastLives_MyListHeader>
+  <PastLives_MyListDesc>Colonists you saved with the Remember button, files in the list folder, and pawns imported from Pawn Editor and Character Editor.</PastLives_MyListDesc>
+  <PastLives_ListWeight>My list weight: x{0}</PastLives_ListWeight>
+  <PastLives_ListWeightDesc>How many times more often pawns from your list are picked than colonists from old saves.</PastLives_ListWeightDesc>
+  <PastLives_OnlyMyList>Only my list</PastLives_OnlyMyList>
+  <PastLives_OnlyMyListDesc>Old saves are not used; only pawns from your list appear.</PastLives_OnlyMyListDesc>
+  <PastLives_AllowRepeats>Allow repeat appearances</PastLives_AllowRepeats>
+  <PastLives_AllowRepeatsDesc>A pawn from your list can appear in this world again if their previous version here died or is gone.</PastLives_AllowRepeatsDesc>
+  <PastLives_ImportPawnEditor>Use pawns saved in Pawn Editor</PastLives_ImportPawnEditor>
+  <PastLives_ImportPawnEditorDesc>Reads pawns saved with Pawn Editor. Pawn Editor itself does not need to be active, only its files.</PastLives_ImportPawnEditorDesc>
+  <PastLives_ImportCharacterEditor>Use pawns saved in Character Editor (experimental)</PastLives_ImportCharacterEditor>
+  <PastLives_ImportCharacterEditorDesc>Reads Character Editor's pawn slots. The slot format is undocumented and may change in new Character Editor versions. Imported pawns are kept on our side and are not lost even if Character Editor loses its list.</PastLives_ImportCharacterEditorDesc>
+  <PastLives_MyListStatus>My list: {0} remembered, {1} from Pawn Editor, {2} from Character Editor.</PastLives_MyListStatus>
+  <PastLives_OpenMyList>Open list folder</PastLives_OpenMyList>
+
+  <PastLives_Remember>Remember</PastLives_Remember>
+  <PastLives_RememberDesc>Add {PAWN_nameFull} to your list. One day {PAWN_pronoun} may turn up in another world.</PastLives_RememberDesc>
+  <PastLives_Forget>Forget</PastLives_Forget>
+  <PastLives_ForgetDesc>Remove {PAWN_nameFull} from your list.</PastLives_ForgetDesc>
+  <PastLives_Remembered>{PAWN_nameFull} is now in your list.</PastLives_Remembered>
+  <PastLives_Forgotten>{PAWN_nameFull} was removed from your list.</PastLives_Forgotten>
+
+  <!-- List pawns without a colony -->
+  <PastLives_Inspect_Saved>Past life: one of your saved colonists</PastLives_Inspect_Saved>
+  <PastLives_InspectDead_Saved>Past life: one of your saved colonists, died</PastLives_InspectDead_Saved>
+  <PastLives_Letter_Joiner_Saved>{PAWN_nameFull}. The name sounds familiar: one of your saved colonists. Now {PAWN_pronoun} is looking for a new home.</PastLives_Letter_Joiner_Saved>
+  <PastLives_Letter_Refugee_Saved>Among the refugees is {PAWN_nameFull}, one of your saved colonists.</PastLives_Letter_Refugee_Saved>
+  <PastLives_Letter_Visitor_Saved>{PAWN_nameFull}, one of your saved colonists, has come to visit with {FACTION}.</PastLives_Letter_Visitor_Saved>
+  <PastLives_Letter_Trader_Saved>The caravan of {FACTION} is led by {PAWN_nameFull}, one of your saved colonists. It seems {PAWN_pronoun} took up trade.</PastLives_Letter_Trader_Saved>
+  <PastLives_Letter_Raider_Saved>Among the raiders of {FACTION} is {PAWN_nameFull}, one of your saved colonists. Now {PAWN_pronoun} has come for you.</PastLives_Letter_Raider_Saved>
+  <PastLives_Letter_Slave_Saved>Among the slaves for sale is {PAWN_nameFull}, one of your saved colonists. Fate can be cruel.</PastLives_Letter_Slave_Saved>
+  <PastLives_Letter_Leader_Saved>{FACTION} has a new leader: {PAWN_nameFull}, one of your saved colonists.</PastLives_Letter_Leader_Saved>
+  <PastLives_Letter_Dead_Wanderer_Saved>{PAWN_nameFull}, one of your saved colonists. You remember that {PAWN_pronoun} died. Yet here {PAWN_pronoun} is, quietly looking through you.</PastLives_Letter_Dead_Wanderer_Saved>
+  <PastLives_Letter_Dead_CreepJoiner_Saved>This stranger looks exactly like {PAWN_nameFull}, one of your saved colonists. But something about {PAWN_objective} is wrong.</PastLives_Letter_Dead_CreepJoiner_Saved>
+  <PastLives_Letter_Dead_Shambler_Saved>Among the shambling dead you recognise {PAWN_nameFull}, one of your saved colonists.</PastLives_Letter_Dead_Shambler_Saved>
 
 </LanguageData>
