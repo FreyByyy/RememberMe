@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using RimWorld;
 using Verse;
@@ -48,7 +50,7 @@ namespace PastLives
 
         public GameComponent_PastLives(Game game) { }
 
-        private HashSet<string> aliveCache;
+        private HashSet<string> aliveCache, aliveNamesCache;
         private int aliveCacheFrame = -1;
 
         // With repeats on, a "my list" pawn may come back again once every earlier version of them in this
@@ -57,18 +59,39 @@ namespace PastLives
         {
             if (!usedKeys.Contains(p.Key)) return false;
             if (!PastLivesMod.Settings.allowRepeats || !p.IsListPawn) return true;
-            var alive = AliveThingIds();
-            return entries.Any(e => e.key == p.Key && e.thingId != null && alive.Contains(e.thingId));
+            RefreshAlive();
+            return entries.Any(e => e.key == p.Key && e.thingId != null && aliveCache.Contains(e.thingId));
         }
 
-        private HashSet<string> AliveThingIds()
+        // The archive also reads saves of the game being played, and "my list" may hold its colonists:
+        // nobody from this world may take a new pawn's place, and neither may anyone who shares a name
+        // with a living pawn (e.g. a current colonist exported to Pawn Editor).
+        public bool AlreadyHere(ArchivePawn p)
         {
-            if (aliveCache == null || aliveCacheFrame != UnityEngine.Time.frameCount)
-            {
-                aliveCache = new HashSet<string>(PawnsFinder.AllMapsWorldAndTemporary_Alive.Select(x => x.ThingID));
-                aliveCacheFrame = UnityEngine.Time.frameCount;
-            }
-            return aliveCache;
+            if (FromThisWorld(p)) return true;
+            RefreshAlive();
+            var name = p.DisplayName;
+            return !string.IsNullOrEmpty(name) && aliveNamesCache.Contains(name);
+        }
+
+        private static bool FromThisWorld(ArchivePawn p)
+        {
+            var info = Find.World?.info;
+            if (info == null) return false;
+            if (p.WorldId != null) return p.WorldId == info.persistentRandomValue.ToString(CultureInfo.InvariantCulture);
+            // No world id (a save without one, or a "my list" file written before ids were stored): old saves
+            // and the Remember button both key pawns by world seed.
+            return (p.Source == ArchivePawn.SourceSave || p.Source == ArchivePawn.SourceList)
+                && p.Key != null && p.Key.StartsWith(info.seedString + "#", StringComparison.Ordinal);
+        }
+
+        private void RefreshAlive()
+        {
+            if (aliveCache != null && aliveCacheFrame == UnityEngine.Time.frameCount) return;
+            var alive = PawnsFinder.AllMapsWorldAndTemporary_Alive;
+            aliveCache = new HashSet<string>(alive.Select(x => x.ThingID));
+            aliveNamesCache = new HashSet<string>(alive.Where(x => x.RaceProps.Humanlike && x.Name != null).Select(x => x.Name.ToStringFull));
+            aliveCacheFrame = UnityEngine.Time.frameCount;
         }
 
         public bool CooldownOver => Find.TickManager == null

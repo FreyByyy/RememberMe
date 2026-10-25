@@ -27,7 +27,7 @@ namespace PastLives
             var playerFactions = new Dictionary<string, string>();   // "Faction_16" -> colony name
             var roles = new Dictionary<string, List<string>>();       // "Thing_Human12" -> role defs
             var openPawns = new HashSet<XElement>();                  // pawn elements still being read
-            string version = null, seed = null;
+            string version = null, seed = null, worldId = null;
             long ticksGame = 0, gameStartAbsTick = 0;
 
             var settings = new XmlReaderSettings
@@ -78,6 +78,7 @@ namespace PastLives
                 {
                     case "gameVersion" when version == null: version = el.Value; return;
                     case "seedString" when parent == "info": seed = el.Value; return;
+                    case "persistentRandomValue" when parent == "info": worldId = el.Value; return;
                     case "ticksGame" when parent == "tickManager": long.TryParse(el.Value, out ticksGame); return;
                     case "gameStartAbsTick" when parent == "tickManager": long.TryParse(el.Value, out gameStartAbsTick); return;
                     case "kindDef" when parent == "li" || parent == "thing": openPawns.Add(el.Parent); return;
@@ -126,6 +127,7 @@ namespace PastLives
                 var p = pp.Pawn;
                 p.Colony = string.IsNullOrWhiteSpace(colony) ? Path.GetFileNameWithoutExtension(path) : colony;
                 p.GameVersion = version;
+                p.WorldId = worldId;
                 p.SourceFile = Path.GetFileName(path);
                 p.SourceTimeUtc = info.LastWriteTimeUtc;
                 p.Key = (seed ?? Path.GetFileNameWithoutExtension(path)) + "#" + p.PawnId;

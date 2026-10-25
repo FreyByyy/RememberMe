@@ -119,7 +119,8 @@ namespace PastLives
             var entry = PastLivesArchive.MyListEntry(MyList.KeyFor(colonist));
             Out("mylist: remembered=" + (entry != null) + " file=" + (entry != null && File.Exists(entry.SourceFile))
                 + " name=" + entry?.DisplayName + " colony=" + entry?.Colony + " traits=" + entry?.Traits.Count + " skills=" + entry?.Skills.Count
-                + " forgetGizmo=" + colonist.GetGizmos().OfType<Command_Action>().Any(g => g.icon == MyListTextures.Forget));
+                + " forgetGizmo=" + colonist.GetGizmos().OfType<Command_Action>().Any(g => g.icon == MyListTextures.Forget)
+                + " excludedInThisWorld=" + (entry != null && comp.AlreadyHere(entry)));
             string file = entry?.SourceFile;
             if (!wasThere) MyList.Forget(colonist);
             Out("mylist: forgotten=" + (PastLivesArchive.MyListEntry(MyList.KeyFor(colonist)) == null) + " fileGone=" + (file == null || !File.Exists(file)));

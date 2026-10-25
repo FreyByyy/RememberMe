@@ -16,6 +16,8 @@ Where they end up depends on who they were:
 - children from old colonies come back grown up;
 - two people from the same old colony get an "old comrade" relation.
 
+Pawns from the game you are playing (its own saves and autosaves) are never used, and neither is anyone who shares a name with a living pawn.
+
 Colonists who died come back through their own rare event: as a wanderer, and with Anomaly as a creepjoiner or a shambler.
 
 Settings: chance per event, chance per new faction leader, cooldown, letters, which roles are used, which old colonies count.

@@ -43,7 +43,7 @@ namespace PastLives
         private static bool Eligible(ArchivePawn p, bool wantDead, ThingDef race, GameComponent_PastLives comp)
         {
             var settings = PastLivesMod.Settings;
-            if (p.Dead != wantDead || comp.IsUsed(p)) return false;
+            if (p.Dead != wantDead || comp.IsUsed(p) || comp.AlreadyHere(p)) return false;
             // Colony switches are for old saves; anything in "my list" was chosen on purpose.
             if (!p.IsListPawn && settings.excludedColonies.Contains(p.Colony)) return false;
             if (p.RaceDef == null || !RaceCompatible(p.RaceDef, race)) return false;

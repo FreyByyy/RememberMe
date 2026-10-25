@@ -37,6 +37,7 @@ namespace PastLives
             {
                 Source = ArchivePawn.SourceList,
                 PawnId = p.ThingID,
+                WorldId = Find.World?.info?.persistentRandomValue.ToString(CultureInfo.InvariantCulture),
                 RaceDef = p.def.defName,
                 KindDef = p.kindDef?.defName,
                 Gender = p.gender.ToString(),

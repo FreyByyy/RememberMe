@@ -12,7 +12,7 @@ namespace PastLives
     // taken from the most recent save.
     public class ArchiveStore
     {
-        public const int FormatVersion = 3;   // bump to force a full re-read after scanner fixes
+        public const int FormatVersion = 4;   // bump to force a full re-read after scanner fixes
 
         public Dictionary<string, ArchivePawn> Pawns = new Dictionary<string, ArchivePawn>();
         public Dictionary<string, string> FileStamps = new Dictionary<string, string>();   // file name -> "size:mtime"

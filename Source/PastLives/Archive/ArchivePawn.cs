@@ -26,6 +26,7 @@ namespace PastLives
         public string GameVersion;
         public string Colony;
         public string PawnId;
+        public string WorldId;          // persistentRandomValue of the world the pawn lived in; null if unknown
 
         public string RaceDef;
         public string KindDef;
@@ -91,7 +92,7 @@ namespace PastLives
         {
             var e = new XElement("pawn",
                 A("key", Key), A("src", Source == SourceSave ? null : Source), A("file", SourceFile), A("time", SourceTimeUtc.Ticks.ToString(CultureInfo.InvariantCulture)),
-                A("ver", GameVersion), A("colony", Colony), A("id", PawnId), A("race", RaceDef), A("kind", KindDef),
+                A("ver", GameVersion), A("colony", Colony), A("id", PawnId), A("world", WorldId), A("race", RaceDef), A("kind", KindDef),
                 A("gender", Gender), A("first", NameFirst), A("nick", NameNick), A("last", NameLast), A("single", NameSingle),
                 A("child", Childhood), A("adult", Adulthood), A("body", BodyType), A("head", HeadType), A("hair", HairDef),
                 A("hairColor", HairColor), A("skin", SkinColorOverride), A("fur", FurDef), A("favColor", FavoriteColor),
@@ -118,7 +119,7 @@ namespace PastLives
             var p = new ArchivePawn
             {
                 Key = S(e, "key"), Source = S(e, "src") ?? SourceSave, Kills = e.Attribute("kills") != null ? F(e, "kills") : -1f, SourceFile = S(e, "file"), SourceTimeUtc = new DateTime(L(e, "time"), DateTimeKind.Utc),
-                GameVersion = S(e, "ver"), Colony = S(e, "colony"), PawnId = S(e, "id"), RaceDef = S(e, "race"), KindDef = S(e, "kind"),
+                GameVersion = S(e, "ver"), Colony = S(e, "colony"), PawnId = S(e, "id"), WorldId = S(e, "world"), RaceDef = S(e, "race"), KindDef = S(e, "kind"),
                 Gender = S(e, "gender"), NameFirst = S(e, "first"), NameNick = S(e, "nick"), NameLast = S(e, "last"), NameSingle = S(e, "single"),
                 Childhood = S(e, "child"), Adulthood = S(e, "adult"), BodyType = S(e, "body"), HeadType = S(e, "head"), HairDef = S(e, "hair"),
                 HairColor = S(e, "hairColor"), SkinColorOverride = S(e, "skin"), FurDef = S(e, "fur"), FavoriteColor = S(e, "favColor"),
