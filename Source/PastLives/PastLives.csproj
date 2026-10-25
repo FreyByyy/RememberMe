@@ -1,22 +1,27 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
+  <!-- One source tree, two builds: net10.0 for RimWorld 1.7 (Waylith), net472 for RimWorld 1.6 (Unity). -->
   <PropertyGroup>
-    <TargetFramework>net10.0</TargetFramework>
+    <TargetFrameworks>net10.0;net472</TargetFrameworks>
     <AssemblyName>PastLives</AssemblyName>
     <RootNamespace>PastLives</RootNamespace>
     <LangVersion>latest</LangVersion>
     <Nullable>disable</Nullable>
     <ImplicitUsings>disable</ImplicitUsings>
-    <OutputPath>..\..\1.7\Assemblies\</OutputPath>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <GenerateDependencyFile>false</GenerateDependencyFile>
     <DebugType>none</DebugType>
+  </PropertyGroup>
+
+  <!-- RimWorld 1.7 -->
+  <PropertyGroup Condition="'$(TargetFramework)' == 'net10.0'">
+    <OutputPath>..\..\1.7\Assemblies\</OutputPath>
     <!-- Override on the command line if the game or Harmony live elsewhere. -->
     <RimWorldDir Condition="'$(RimWorldDir)' == ''">C:\Program Files (x86)\Steam\steamapps\common\RimWorld</RimWorldDir>
     <HarmonyDir Condition="'$(HarmonyDir)' == ''">C:\Program Files (x86)\Steam\steamapps\workshop\content\294100\2009463077\1.7\Assemblies</HarmonyDir>
   </PropertyGroup>
 
-  <ItemGroup>
+  <ItemGroup Condition="'$(TargetFramework)' == 'net10.0'">
     <Reference Include="Assembly-CSharp">
       <HintPath>$(RimWorldDir)\Assembly-CSharp.dll</HintPath>
       <Private>false</Private>
@@ -33,6 +38,16 @@
       <HintPath>$(HarmonyDir)\0Harmony.dll</HintPath>
       <Private>false</Private>
     </Reference>
+  </ItemGroup>
+
+  <!-- RimWorld 1.6: reference assemblies come from NuGet, no game install needed. -->
+  <PropertyGroup Condition="'$(TargetFramework)' == 'net472'">
+    <OutputPath>..\..\1.6\Assemblies\</OutputPath>
+  </PropertyGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net472'">
+    <PackageReference Include="Krafs.Rimworld.Ref" Version="1.6.4871" />
+    <PackageReference Include="Lib.Harmony" Version="2.3.6" ExcludeAssets="runtime" />
   </ItemGroup>
 
 </Project>

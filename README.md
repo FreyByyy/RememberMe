@@ -2,7 +2,7 @@
 
 ![Remember Me?](About/Preview.png)
 
-A RimWorld 1.7 (Waylith) mod: colonists from your old games turn up in your new world.
+A RimWorld 1.6 and 1.7 (Waylith) mod: colonists from your old games turn up in your new world.
 
 The mod reads your old saves in the background and keeps an archive of every colonist who ever lived in them, alive or dead. With a small chance, a pawn the game is about to create becomes one of those people instead, with the same name, look, traits, skills, backstory, genes and prosthetics.
 
@@ -40,23 +40,26 @@ List settings: how much more often list pawns are picked (weight slider), "only 
 
 ## Requirements
 
-- RimWorld 1.7
+- RimWorld 1.6 or 1.7
 - [Harmony](https://steamcommunity.com/sharedfiles/filedetails/?id=2009463077)
 - DLCs are optional; Royalty, Ideology, Biotech and Anomaly content is used when present.
 
 ## Installing
 
-Copy `About`, `Defs`, `Languages` and `1.7` into `RimWorld/Mods/RememberMe` and enable the mod after Harmony.
+Copy `About`, `Defs`, `Languages`, `Textures`, `1.6` and `1.7` into `RimWorld/Mods/RememberMe` and enable the mod after Harmony.
 
 ## Building
 
-Needs the .NET 10 SDK.
+Needs the .NET 10 SDK. One project builds both versions from the same source:
 
 ```bash
-dotnet build Source/PastLives/PastLives.csproj -c Release
+dotnet build Source/PastLives/PastLives.csproj -c Release            # both
+dotnet build Source/PastLives/PastLives.csproj -c Release -f net10.0 # 1.7 only
+dotnet build Source/PastLives/PastLives.csproj -c Release -f net472  # 1.6 only
 ```
 
-The project expects RimWorld at the default Steam path and Harmony from the Workshop. Override with `-p:RimWorldDir=...` and `-p:HarmonyDir=...` if yours are elsewhere. The output goes to `1.7/Assemblies`.
+- **1.7** (`net10.0`, output `1.7/Assemblies`) expects RimWorld 1.7 at the default Steam path and Harmony from the Workshop. Override with `-p:RimWorldDir=...` and `-p:HarmonyDir=...` if yours are elsewhere.
+- **1.6** (`net472`, output `1.6/Assemblies`) takes the game and Harmony reference assemblies from NuGet (`Krafs.Rimworld.Ref`, `Lib.Harmony`), so no 1.6 install is needed.
 
 ## Self-test
 
