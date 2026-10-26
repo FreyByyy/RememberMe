@@ -13,7 +13,7 @@ namespace PastLives
     {
         None,
         Pirate,         // a pirate faction of this world
-        SpacePirate,    // with Odyssey the salvagers, otherwise any pirates
+        SpacePirate,    // space stories: with Odyssey the salvagers, otherwise any pirates
         Peaceful,       // any faction that is not a pirate one, hostile or not
     }
 
@@ -69,7 +69,8 @@ namespace PastLives
             if (arc.faction == StoryFaction.SpacePirate && ModsConfig.OdysseyActive
                 && all.Where(f => f.def.defName == "Salvagers").TryRandomElement(out var salvagers))
                 return salvagers;
-            var pirates = all.Where(f => f.def.permanentEnemy).ToList();
+            // Salvagers are kept for space stories; on the ground "pirates" means the ordinary kind.
+            var pirates = all.Where(f => f.def.permanentEnemy && f.def.defName != "Salvagers").ToList();
             // Savage tribes are permanent enemies too, but "pirates" means guns and ships.
             if (pirates.Where(f => f.def.techLevel >= TechLevel.Industrial).TryRandomElement(out var modern)) return modern;
             return pirates.TryRandomElement(out var any) ? any : null;
