@@ -3,7 +3,7 @@
   <name>Remember Me?</name>
   <author>frbyyy</author>
   <packageId>frbyyy.rememberme</packageId>
-  <modVersion>1.0.0</modVersion>
+  <modVersion>1.1.0</modVersion>
   <supportedVersions>
     <li>1.6</li>
     <li>1.7</li>
@@ -32,9 +32,11 @@ Where they end up depends on who they were. Former ideology leaders and nobles t
 
 Colonists who died get their own way back: they may walk in and ask to join, and with Anomaly they may come as a creepjoiner or shamble in among the dead.
 
-Settings: chances, cooldown, letters on or off, which roles are used, which old colonies count.
+Each returning colonist tells a story of the years in between: shipwrecks and pirate cages, caravans and tribes, burned colonies, and for the dead, mostly silence. Optionally (experimental) they bear the marks of it: old scars and a new trait.
+
+Settings: chances, cooldown, letters and stories on or off, which roles are used, which old colonies count, the Remember button on or off.
 
 ---
 
-Колонисты из ваших старых игр никуда не делись. Иногда кто-то из них появляется в новом мире: гостем, торговцем, рейдером, беженцем, рабом на продажу, лидером фракции или новым членом колонии. Кем станет человек, зависит от его прошлой жизни. Погибшие возвращаются отдельным событием, а с Anomaly приходят жутким странником или бродячим мертвецом.</description>
+Колонисты из ваших старых игр никуда не делись. Иногда кто-то из них появляется в новом мире: гостем, торговцем, рейдером, беженцем, рабом на продажу, лидером фракции или новым членом колонии. Кем станет человек, зависит от его прошлой жизни. Погибшие возвращаются отдельным событием, а с Anomaly приходят жутким странником или бродячим мертвецом. Каждый вернувшийся рассказывает историю своих лет между жизнями, а по желанию (экспериментально) несёт её следы: старые шрамы и новую черту.</description>
 </ModMetaData>

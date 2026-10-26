@@ -8,162 +8,910 @@
   -->
 
   <PastLives_StoryCommon.rulePack.rulesStrings>
-    <li>colony(hasColony==True)->колонии «[COLONY]»</li>
-    <li>colony(hasColony==False)->давно забытой колонии</li>
-    <li>comrade(hasComrade==True,PAWN_gender==Male)->Среди ваших людей он узнал [COMRADE_nameDef] — они вместе жили в [colony].</li>
-    <li>comrade(hasComrade==True,PAWN_gender==Female)->Среди ваших людей она узнала [COMRADE_nameDef] — они вместе жили в [colony].</li>
-    <li>comrade(hasComrade==False)-></li>
-    <li>childhood(grownUp==True,PAWN_gender==Male)->Тогда он был ещё ребёнком; с тех пор прошло [YEARS].</li>
-    <li>childhood(grownUp==True,PAWN_gender==Female)->Тогда она была ещё ребёнком; с тех пор прошло [YEARS].</li>
-    <li>childhood(grownUp==False)-></li>
+    <li>colony(hasColony==True)-&gt;колонии «[COLONY]»</li>
+    <li>colony(hasColony==False)-&gt;давно забытой колонии</li>
+    <li>comrade(hasComrade==True,PAWN_gender==Male)-&gt;Среди ваших людей он узнал [COMRADE_nameDef] — когда-то они вместе жили в [colony].</li>
+    <li>comrade(hasComrade==True,PAWN_gender==Female)-&gt;Среди ваших людей она узнала [COMRADE_nameDef] — когда-то они вместе жили в [colony].</li>
+    <li>comrade(hasComrade==True,PAWN_gender==Male)-&gt;Увидев [COMRADE_nameDef], он замер: они делили кров ещё в [colony].</li>
+    <li>comrade(hasComrade==True,PAWN_gender==Female)-&gt;Увидев [COMRADE_nameDef], она замерла: они делили кров ещё в [colony].</li>
+    <li>comrade(hasComrade==True)-&gt;[COMRADE_nameDef] сразу узнаёт [PAWN_objective]: они знакомы ещё по жизни в [colony].</li>
+    <li>comrade(hasComrade==False)-&gt;</li>
+    <li>childhood(grownUp==True,PAWN_gender==Male)-&gt;В [colony] он был ещё ребёнком; с тех пор прошло [YEARS].</li>
+    <li>childhood(grownUp==True,PAWN_gender==Female)-&gt;В [colony] она была ещё ребёнком; с тех пор прошло [YEARS].</li>
+    <li>childhood(grownUp==True)-&gt;С детства, проведённого в [colony], прошло [YEARS].</li>
+    <li>childhood(grownUp==True)-&gt;Вы помните [PAWN_objective] ребёнком из [colony]; это было [YEARS] назад.</li>
+    <li>childhood(grownUp==False)-&gt;</li>
   </PastLives_StoryCommon.rulePack.rulesStrings>
 
-  <!-- Бродяги и беженцы -->
-
   <PastLives_Story_Shipwreck.rulePack.rulesStrings>
-    <li>r_story->[leave] [childhood] [journey] [disaster] [aftermath] [arrival] [comrade]</li>
-    <li>leave(PAWN_gender==Male)->[PAWN_nameDef] рассказал, что однажды решил уйти из [colony] и отправиться к звёздам.</li>
-    <li>leave(PAWN_gender==Female)->[PAWN_nameDef] рассказала, что однажды решила уйти из [colony] и отправиться к звёздам.</li>
-    <li>leave(PAWN_gender==Male)->[PAWN_nameDef] говорит, что жизнь в [colony] стала ему тесна, и одной весной он просто ушёл.</li>
-    <li>leave(PAWN_gender==Female)->[PAWN_nameDef] говорит, что жизнь в [colony] стала ей тесна, и одной весной она просто ушла.</li>
-    <li>journey(PAWN_gender==Male)->Он нашёл группу космических путешественников и вместе с ними стал открывать для себя новые планеты.</li>
-    <li>journey(PAWN_gender==Female)->Она нашла группу космических путешественников и вместе с ними стала открывать для себя новые планеты.</li>
-    <li>journey(PAWN_gender==Male)->Он нанялся на потрёпанный грузовой корабль и повидал миры, о которых раньше только слышал.</li>
-    <li>journey(PAWN_gender==Female)->Она нанялась на потрёпанный грузовой корабль и повидала миры, о которых раньше только слышала.</li>
-    <li>disaster(hasFaction==True,PAWN_gender==Male)->Но корабль взяли на абордаж бойцы фракции «[FACTION_name]», и [PAWN_nameDef] спасся на транспортной капсуле.</li>
-    <li>disaster(hasFaction==True,PAWN_gender==Female)->Но корабль взяли на абордаж бойцы фракции «[FACTION_name]», и [PAWN_nameDef] спаслась на транспортной капсуле.</li>
-    <li>disaster(hasFaction==True,PAWN_gender==Male)->У мёртвой луны корабль настигли бойцы фракции «[FACTION_name]»; до капсул добрался только [PAWN_nameDef].</li>
-    <li>disaster(hasFaction==True,PAWN_gender==Female)->У мёртвой луны корабль настигли бойцы фракции «[FACTION_name]»; до капсул добралась только [PAWN_nameDef].</li>
-    <li>disaster(hasFaction==False,PAWN_gender==Male)->Но корабль взяли на абордаж пираты, и [PAWN_nameDef] спасся на транспортной капсуле.</li>
-    <li>disaster(hasFaction==False,PAWN_gender==Female)->Но корабль взяли на абордаж пираты, и [PAWN_nameDef] спаслась на транспортной капсуле.</li>
-    <li>aftermath(scars==True)->Капсула падала, охваченная огнём, и шрамы от той посадки видны до сих пор.</li>
-    <li>aftermath(scars==False)->Капсула жёстко рухнула вдали от всякого жилья.</li>
-    <li>arrival(PAWN_gender==Male)->Спустя дни скитаний он пришёл к вам.</li>
-    <li>arrival(PAWN_gender==Female)->Спустя дни скитаний она пришла к вам.</li>
-    <li>arrival(PAWN_gender==Male)->Много дней он шёл, пока не увидел дым вашей колонии.</li>
-    <li>arrival(PAWN_gender==Female)->Много дней она шла, пока не увидела дым вашей колонии.</li>
+    <li>r_story-&gt;[leave] [journey] [disaster] [aftermath] [arrival] [childhood] [comrade]</li>
+    <li>leave(PAWN_gender==Male)-&gt;[PAWN_nameDef] рассказал, что ушёл из прежней колонии, когда звёзды стали казаться ближе соседей, и сел на первый же корабль.</li>
+    <li>leave(PAWN_gender==Female)-&gt;[PAWN_nameDef] рассказала, что ушла из прежней колонии, когда звёзды стали казаться ближе соседей, и села на первый же корабль.</li>
+    <li>leave(PAWN_gender==Male)-&gt;[PAWN_nameDef] признался, что продал всё, что имел, и купил место на грузовом корабле, уходившем к дальним мирам.</li>
+    <li>leave(PAWN_gender==Female)-&gt;[PAWN_nameDef] призналась, что продала всё, что имела, и купила место на грузовом корабле, уходившем к дальним мирам.</li>
+    <li>leave(PAWN_gender==Male)-&gt;[PAWN_nameDef] вспоминает, что покинул прежнюю колонию после третьей тяжёлой зимы, надеясь найти за небом землю потеплее.</li>
+    <li>leave(PAWN_gender==Female)-&gt;[PAWN_nameDef] вспоминает, что покинула прежнюю колонию после третьей тяжёлой зимы, надеясь найти за небом землю потеплее.</li>
+    <li>leave(PAWN_gender==Male)-&gt;[PAWN_nameDef] сказал, что ничто больше не держало его в прежней колонии, и нанялся в экипаж корабля, идущего к окраинным мирам.</li>
+    <li>leave(PAWN_gender==Female)-&gt;[PAWN_nameDef] сказала, что ничто больше не держало её в прежней колонии, и нанялась в экипаж корабля, идущего к окраинным мирам.</li>
+    <li>leave(PAWN_gender==Male)-&gt;[PAWN_nameDef] объяснил, что ушёл из прежней колонии посмотреть на далёкие миры, о которых рассказывали одни торговцы.</li>
+    <li>leave(PAWN_gender==Female)-&gt;[PAWN_nameDef] объяснила, что ушла из прежней колонии посмотреть на далёкие миры, о которых рассказывали одни торговцы.</li>
+    <li>leave(PAWN_gender==Male)-&gt;[PAWN_nameDef] упомянул, что однажды холодным утром собрал вещи и отработал проезд на звёздном корабле, а прежняя колония осталась позади.</li>
+    <li>leave(PAWN_gender==Female)-&gt;[PAWN_nameDef] упомянула, что однажды холодным утром собрала вещи и отработала проезд на звёздном корабле, а прежняя колония осталась позади.</li>
+    <li>journey(PAWN_gender==Male)-&gt;Несколько лет [PAWN_pronoun] грузил трюмы и латал обшивку на корабле, заходившем в десяток миров, ни один из которых не стал домом.</li>
+    <li>journey(PAWN_gender==Female)-&gt;Несколько лет [PAWN_pronoun] грузила трюмы и латала обшивку на корабле, заходившем в десяток миров, ни один из которых не стал домом.</li>
+    <li>journey(PAWN_gender==Male)-&gt;Долгие сезоны [PAWN_pronoun] провёл среди космических бродяг, привык засыпать под гул двигателей и не верить обещаниям, данным в порту.</li>
+    <li>journey(PAWN_gender==Female)-&gt;Долгие сезоны [PAWN_pronoun] провела среди космических бродяг, привыкла засыпать под гул двигателей и не верить обещаниям, данным в порту.</li>
+    <li>journey(PAWN_gender==Male)-&gt;Жизнь на борту была тесной и шумной, но в иллюминатор [PAWN_pronoun] видел, как проплывают ледяные миры, станции и выгоревшие поселения.</li>
+    <li>journey(PAWN_gender==Female)-&gt;Жизнь на борту была тесной и шумной, но в иллюминатор [PAWN_pronoun] видела, как проплывают ледяные миры, станции и выгоревшие поселения.</li>
+    <li>journey(PAWN_gender==Male)-&gt;[PAWN_pronoun] работал на грузовых палубах старого корабля, отрабатывая проезд от одного мира окраины к другому.</li>
+    <li>journey(PAWN_gender==Female)-&gt;[PAWN_pronoun] работала на грузовых палубах старого корабля, отрабатывая проезд от одного мира окраины к другому.</li>
+    <li>journey(PAWN_gender==Male)-&gt;Корабль за кораблём уносил [PAWN_objective] через темноту, и в их узких коридорах [PAWN_pronoun] научился готовить, чинить и торговаться.</li>
+    <li>journey(PAWN_gender==Female)-&gt;Корабль за кораблём уносил [PAWN_objective] через темноту, и в их узких коридорах [PAWN_pronoun] научилась готовить, чинить и торговаться.</li>
+    <li>journey(PAWN_gender==Male)-&gt;[PAWN_nameDef] годами скитался по портам, нанимаясь в любой экипаж, где не хватало рабочих рук.</li>
+    <li>journey(PAWN_gender==Female)-&gt;[PAWN_nameDef] годами скиталась по портам, нанимаясь в любой экипаж, где не хватало рабочих рук.</li>
+    <li>disaster(hasFaction==True,PAWN_gender==Male)-&gt;Но корабль настигли бойцы фракции «[FACTION_name]», и [PAWN_nameDef] спасся на транспортной капсуле, пока горел корпус.</li>
+    <li>disaster(hasFaction==True,PAWN_gender==Female)-&gt;Но корабль настигли бойцы фракции «[FACTION_name]», и [PAWN_nameDef] спаслась на транспортной капсуле, пока горел корпус.</li>
+    <li>disaster(hasFaction==False,PAWN_gender==Male)-&gt;Но корабль настигли пираты, и [PAWN_nameDef] спасся на транспортной капсуле, пока горел корпус.</li>
+    <li>disaster(hasFaction==False,PAWN_gender==Female)-&gt;Но корабль настигли пираты, и [PAWN_nameDef] спаслась на транспортной капсуле, пока горел корпус.</li>
+    <li>disaster(hasFaction==True,PAWN_gender==Male)-&gt;Затем абордажная команда фракции «[FACTION_name]» прорезала шлюз, и [PAWN_nameDef] едва успел добраться до транспортной капсулы, пока экипаж ещё держался.</li>
+    <li>disaster(hasFaction==True,PAWN_gender==Female)-&gt;Затем абордажная команда фракции «[FACTION_name]» прорезала шлюз, и [PAWN_nameDef] едва успела добраться до транспортной капсулы, пока экипаж ещё держался.</li>
+    <li>disaster(hasFaction==False,PAWN_gender==Male)-&gt;Затем пиратская абордажная команда прорезала шлюз, и [PAWN_nameDef] едва успел добраться до транспортной капсулы, пока экипаж ещё держался.</li>
+    <li>disaster(hasFaction==False,PAWN_gender==Female)-&gt;Затем пиратская абордажная команда прорезала шлюз, и [PAWN_nameDef] едва успела добраться до транспортной капсулы, пока экипаж ещё держался.</li>
+    <li>disaster(hasFaction==True,PAWN_gender==Male)-&gt;Бойцы фракции «[FACTION_name]» устроили засаду у мёртвой точки перехода, и [PAWN_nameDef] бросился к капсуле, когда отказали двигатели.</li>
+    <li>disaster(hasFaction==True,PAWN_gender==Female)-&gt;Бойцы фракции «[FACTION_name]» устроили засаду у мёртвой точки перехода, и [PAWN_nameDef] бросилась к капсуле, когда отказали двигатели.</li>
+    <li>disaster(hasFaction==False,PAWN_gender==Male)-&gt;Пираты устроили засаду у мёртвой точки перехода, и [PAWN_nameDef] бросился к капсуле, когда отказали двигатели.</li>
+    <li>disaster(hasFaction==False,PAWN_gender==Female)-&gt;Пираты устроили засаду у мёртвой точки перехода, и [PAWN_nameDef] бросилась к капсуле, когда отказали двигатели.</li>
+    <li>disaster(hasFaction==True,PAWN_gender==Male)-&gt;Боевые корабли фракции «[FACTION_name]» открыли огонь без предупреждения, и [PAWN_nameDef] ушёл в транспортной капсуле, пока коридоры наполнялись дымом.</li>
+    <li>disaster(hasFaction==True,PAWN_gender==Female)-&gt;Боевые корабли фракции «[FACTION_name]» открыли огонь без предупреждения, и [PAWN_nameDef] ушла в транспортной капсуле, пока коридоры наполнялись дымом.</li>
+    <li>disaster(hasFaction==False,PAWN_gender==Male)-&gt;Пиратский корабль открыл огонь без предупреждения, и [PAWN_nameDef] ушёл в транспортной капсуле, пока коридоры наполнялись дымом.</li>
+    <li>disaster(hasFaction==False,PAWN_gender==Female)-&gt;Пиратский корабль открыл огонь без предупреждения, и [PAWN_nameDef] ушла в транспортной капсуле, пока коридоры наполнялись дымом.</li>
+    <li>disaster(hasFaction==True,PAWN_gender==Male)-&gt;Налётчики фракции «[FACTION_name]» поднялись на борт глухой ночью, и в суматохе [PAWN_nameDef] заполз в транспортную капсулу и дёрнул рычаг пуска.</li>
+    <li>disaster(hasFaction==True,PAWN_gender==Female)-&gt;Налётчики фракции «[FACTION_name]» поднялись на борт глухой ночью, и в суматохе [PAWN_nameDef] заползла в транспортную капсулу и дёрнула рычаг пуска.</li>
+    <li>disaster(hasFaction==False,PAWN_gender==Male)-&gt;Налётчики поднялись на борт глухой ночью, и в суматохе [PAWN_nameDef] заполз в транспортную капсулу и дёрнул рычаг пуска.</li>
+    <li>disaster(hasFaction==False,PAWN_gender==Female)-&gt;Налётчики поднялись на борт глухой ночью, и в суматохе [PAWN_nameDef] заползла в транспортную капсулу и дёрнула рычаг пуска.</li>
+    <li>disaster(hasFaction==True,PAWN_gender==Male)-&gt;Целый час экипаж отбивался от бойцов фракции «[FACTION_name]», потом капитан приказал запускать капсулы, и [PAWN_nameDef] улетел в числе последних.</li>
+    <li>disaster(hasFaction==True,PAWN_gender==Female)-&gt;Целый час экипаж отбивался от бойцов фракции «[FACTION_name]», потом капитан приказал запускать капсулы, и [PAWN_nameDef] улетела в числе последних.</li>
+    <li>disaster(hasFaction==False,PAWN_gender==Male)-&gt;Целый час экипаж отбивался от пиратов, потом капитан приказал запускать капсулы, и [PAWN_nameDef] улетел в числе последних.</li>
+    <li>disaster(hasFaction==False,PAWN_gender==Female)-&gt;Целый час экипаж отбивался от пиратов, потом капитан приказал запускать капсулы, и [PAWN_nameDef] улетела в числе последних.</li>
+    <li>aftermath(scars==True)-&gt;Капсула ударилась о землю и вспыхнула, и ожоги на [PAWN_possessive] коже так и не зажили до конца, оставив шрамы.</li>
+    <li>aftermath(scars==False,PAWN_gender==Male)-&gt;Капсула ударилась о землю и вспыхнула, но [PAWN_pronoun] выполз из неё, отделавшись опалёнными волосами и звоном в голове.</li>
+    <li>aftermath(scars==False,PAWN_gender==Female)-&gt;Капсула ударилась о землю и вспыхнула, но [PAWN_pronoun] выползла из неё, отделавшись опалёнными волосами и звоном в голове.</li>
+    <li>aftermath(scars==True)-&gt;Капсула вошла в атмосферу слишком быстро, и удар при посадке оставил шрамы, которые [PAWN_pronoun] носит до сих пор.</li>
+    <li>aftermath(scars==False,PAWN_gender==Male)-&gt;Капсула вошла в атмосферу слишком быстро, и посадка вышла жёсткой, но [PAWN_pronoun] отделался синяками, прошедшими за неделю.</li>
+    <li>aftermath(scars==False,PAWN_gender==Female)-&gt;Капсула вошла в атмосферу слишком быстро, и посадка вышла жёсткой, но [PAWN_pronoun] отделалась синяками, прошедшими за неделю.</li>
+    <li>aftermath(scars==True,PAWN_gender==Male)-&gt;На спуске капсулу наполнил огонь; [PAWN_pronoun] выбрался из неё живым, но ожоги зажили метками, которые так и не поблекли.</li>
+    <li>aftermath(scars==True,PAWN_gender==Female)-&gt;На спуске капсулу наполнил огонь; [PAWN_pronoun] выбралась из неё живым, но ожоги зажили метками, которые так и не поблекли.</li>
+    <li>aftermath(scars==False,PAWN_gender==Male)-&gt;На спуске выли сирены, но капсула выдержала, и [PAWN_pronoun] ступил на пыльную землю целым и невредимым.</li>
+    <li>aftermath(scars==False,PAWN_gender==Female)-&gt;На спуске выли сирены, но капсула выдержала, и [PAWN_pronoun] ступила на пыльную землю целой и невредимой.</li>
+    <li>aftermath(scars==True)-&gt;При посадке [PAWN_objective] швырнуло на раму капсулы, и шрамы от того удара ноют в холодную погоду до сих пор.</li>
+    <li>aftermath(scars==False,PAWN_gender==Male)-&gt;Посадка вышла тяжёлой, но ремни выдержали, и [PAWN_pronoun] вылез из капсулы потрясённым, но целым.</li>
+    <li>aftermath(scars==False,PAWN_gender==Female)-&gt;Посадка вышла тяжёлой, но ремни выдержали, и [PAWN_pronoun] вылезла из капсулы потрясённой, но целой.</li>
+    <li>aftermath(scars==True,PAWN_gender==Male)-&gt;Капсула врезалась в бархан и смялась, и несколько дней [PAWN_pronoun] выбирался из обломков; шрамы от этого остались навсегда.</li>
+    <li>aftermath(scars==True,PAWN_gender==Female)-&gt;Капсула врезалась в бархан и смялась, и несколько дней [PAWN_pronoun] выбиралась из обломков; шрамы от этого остались навсегда.</li>
+    <li>aftermath(scars==False,PAWN_gender==Male)-&gt;Капсула врезалась в бархан и смялась, но [PAWN_pronoun] откопался за час, не получив ни царапины.</li>
+    <li>aftermath(scars==False,PAWN_gender==Female)-&gt;Капсула врезалась в бархан и смялась, но [PAWN_pronoun] откопалась за час, не получив ни царапины.</li>
+    <li>aftermath(scars==True)-&gt;При входе в атмосферу обшивку и [PAWN_possessive] руки опалило, и следы ожогов [PAWN_pronoun] носит до сих пор.</li>
+    <li>aftermath(scars==False,PAWN_gender==Male)-&gt;При входе в атмосферу обшивку опалило, но последний парашют раскрылся, и [PAWN_pronoun] коснулся земли мягко, без единой травмы.</li>
+    <li>aftermath(scars==False,PAWN_gender==Female)-&gt;При входе в атмосферу обшивку опалило, но последний парашют раскрылся, и [PAWN_pronoun] коснулась земли мягко, без единой травмы.</li>
+    <li>arrival(PAWN_gender==Male)-&gt;Несколько недель [PAWN_pronoun] брёл по чужой земле, пока не увидел огни вашей колонии и не решил попроситься на ночлег.</li>
+    <li>arrival(PAWN_gender==Female)-&gt;Несколько недель [PAWN_pronoun] брела по чужой земле, пока не увидела огни вашей колонии и не решила попроситься на ночлег.</li>
+    <li>arrival(PAWN_gender==Male)-&gt;[PAWN_pronoun] скитался с места на место, голодный и промёрзший, пока дорога не вывела [PAWN_objective] на холм у вашей колонии.</li>
+    <li>arrival(PAWN_gender==Female)-&gt;[PAWN_pronoun] скиталась с места на место, голодная и промёрзшая, пока дорога не вывела [PAWN_objective] на холм у вашей колонии.</li>
+    <li>arrival(PAWN_gender==Male)-&gt;В конце концов [PAWN_pronoun] добрался до вашей колонии и без особой надежды спросил, найдётся ли место для ещё одного человека.</li>
+    <li>arrival(PAWN_gender==Female)-&gt;В конце концов [PAWN_pronoun] добралась до вашей колонии и без особой надежды спросила, найдётся ли место для ещё одного человека.</li>
+    <li>arrival(PAWN_gender==Male)-&gt;Дальше завтрашнего дня [PAWN_nameDef] не загадывает: [PAWN_pronoun] оказался в вашей колонии только потому, что там нашлись крыша и огонь.</li>
+    <li>arrival(PAWN_gender==Female)-&gt;Дальше завтрашнего дня [PAWN_nameDef] не загадывает: [PAWN_pronoun] оказалась в вашей колонии только потому, что там нашлись крыша и огонь.</li>
+    <li>arrival(PAWN_gender==Male)-&gt;Никто [PAWN_objective] не посылал: [PAWN_pronoun] просто шёл, пока из-за холмов не показался дым вашей колонии, и остановился там.</li>
+    <li>arrival(PAWN_gender==Female)-&gt;Никто [PAWN_objective] не посылал: [PAWN_pronoun] просто шла, пока из-за холмов не показался дым вашей колонии, и остановилась там.</li>
+    <li>arrival(PAWN_gender==Male)-&gt;Устав скитаться, [PAWN_pronoun] решил попробовать жизнь в вашей колонии и надеется оказаться полезным.</li>
+    <li>arrival(PAWN_gender==Female)-&gt;Устав скитаться, [PAWN_pronoun] решила попробовать жизнь в вашей колонии и надеется оказаться полезной.</li>
   </PastLives_Story_Shipwreck.rulePack.rulesStrings>
 
   <PastLives_Story_Caravans.rulePack.rulesStrings>
-    <li>r_story->[leave] [childhood] [road] [end] [arrival] [comrade]</li>
-    <li>leave(PAWN_gender==Male)->[PAWN_nameDef] рассказал, что после [colony] уже не мог усидеть на одном месте.</li>
-    <li>leave(PAWN_gender==Female)->[PAWN_nameDef] рассказала, что после [colony] уже не могла усидеть на одном месте.</li>
-    <li>leave(PAWN_gender==Male)->[PAWN_nameDef] говорит, что ушёл из [colony] с одним рюкзаком и винтовкой.</li>
-    <li>leave(PAWN_gender==Female)->[PAWN_nameDef] говорит, что ушла из [colony] с одним рюкзаком и винтовкой.</li>
-    <li>road(hasFaction==True,PAWN_gender==Male)->Годами он ходил с караванами фракции «[FACTION_name]», охранял их товары и учил их песни.</li>
-    <li>road(hasFaction==True,PAWN_gender==Female)->Годами она ходила с караванами фракции «[FACTION_name]», охраняла их товары и учила их песни.</li>
-    <li>road(hasFaction==False,PAWN_gender==Male)->Годами он ходил с попутными караванами, охранял их товары и учил их песни.</li>
-    <li>road(hasFaction==False,PAWN_gender==Female)->Годами она ходила с попутными караванами, охраняла их товары и учила их песни.</li>
-    <li>end->Одной зимой караван распался, и все разошлись кто куда.</li>
-    <li>end(PAWN_gender==Male)->В конце концов он устал от дорог, которые никогда не вели домой.</li>
-    <li>end(PAWN_gender==Female)->В конце концов она устала от дорог, которые никогда не вели домой.</li>
-    <li>arrival->Слухи о молодой колонии привели [PAWN_objective] к вашим воротам.</li>
-    <li>arrival->[PAWN_nameDef] надеется, что ваша колония станет последней остановкой.</li>
+    <li>r_story-&gt;[leave] [road] [end] [arrival] [childhood] [comrade]</li>
+    <li>leave(PAWN_gender==Male)-&gt;[PAWN_nameDef] рассказал, что прежняя колония перестала кормить всех, и [PAWN_pronoun] ушёл с одним мешком за плечами и флягой воды.</li>
+    <li>leave(PAWN_gender==Female)-&gt;[PAWN_nameDef] рассказала, что прежняя колония перестала кормить всех, и [PAWN_pronoun] ушла с одним мешком за плечами и флягой воды.</li>
+    <li>leave(PAWN_gender==Male)-&gt;[PAWN_nameDef] вспоминает, что, когда прежняя колония лишилась лучших полей из-за болезни растений, [PAWN_pronoun] решил искать работу в других местах.</li>
+    <li>leave(PAWN_gender==Female)-&gt;[PAWN_nameDef] вспоминает, что, когда прежняя колония лишилась лучших полей из-за болезни растений, [PAWN_pronoun] решила искать работу в других местах.</li>
+    <li>leave(PAWN_gender==Male)-&gt;[PAWN_nameDef] сообщил, что поссорился с главами прежней колонии и ушёл до наступления весны.</li>
+    <li>leave(PAWN_gender==Female)-&gt;[PAWN_nameDef] сообщила, что поссорилась с главами прежней колонии и ушла до наступления весны.</li>
+    <li>leave(PAWN_gender==Male)-&gt;[PAWN_nameDef] признался, что ушёл из прежней колонии после плохого урожая, потому что было стыдно есть хлеб, добытый чужим трудом.</li>
+    <li>leave(PAWN_gender==Female)-&gt;[PAWN_nameDef] призналась, что ушла из прежней колонии после плохого урожая, потому что было стыдно есть хлеб, добытый чужим трудом.</li>
+    <li>leave(PAWN_gender==Male)-&gt;[PAWN_nameDef] объяснил, что всегда хотел увидеть мир за стенами прежней колонии, и однажды осенью просто ушёл.</li>
+    <li>leave(PAWN_gender==Female)-&gt;[PAWN_nameDef] объяснила, что всегда хотела увидеть мир за стенами прежней колонии, и однажды осенью просто ушла.</li>
+    <li>leave(PAWN_gender==Male)-&gt;[PAWN_nameDef] упомянул, что прежняя колония пустела год за годом, пока и [PAWN_pronoun] не запер дверь и не ушёл.</li>
+    <li>leave(PAWN_gender==Female)-&gt;[PAWN_nameDef] упомянула, что прежняя колония пустела год за годом, пока и [PAWN_pronoun] не заперла дверь и не ушла.</li>
+    <li>road(hasFaction==True,PAWN_gender==Male)-&gt;Годами [PAWN_pronoun] ходил с караванами фракции «[FACTION_name]», охранял повозки и узнавал цену всему на свете.</li>
+    <li>road(hasFaction==True,PAWN_gender==Female)-&gt;Годами [PAWN_pronoun] ходила с караванами фракции «[FACTION_name]», охраняла повозки и узнавала цену всему на свете.</li>
+    <li>road(hasFaction==False,PAWN_gender==Male)-&gt;Годами [PAWN_pronoun] ходил с торговым караваном, охранял повозки и узнавал цену всему на свете.</li>
+    <li>road(hasFaction==False,PAWN_gender==Female)-&gt;Годами [PAWN_pronoun] ходила с торговым караваном, охраняла повозки и узнавала цену всему на свете.</li>
+    <li>road(hasFaction==True,PAWN_gender==Male)-&gt;[PAWN_pronoun] нанялся в караван фракции «[FACTION_name]» простым работником и целые сезоны шёл рядом с вьючными животными от поселения к поселению.</li>
+    <li>road(hasFaction==True,PAWN_gender==Female)-&gt;[PAWN_pronoun] нанялась в караван фракции «[FACTION_name]» простым работником и целые сезоны шла рядом с вьючными животными от поселения к поселению.</li>
+    <li>road(hasFaction==False,PAWN_gender==Male)-&gt;[PAWN_pronoun] нанялся в купеческий караван простым работником и целые сезоны шёл рядом с вьючными животными от поселения к поселению.</li>
+    <li>road(hasFaction==False,PAWN_gender==Female)-&gt;[PAWN_pronoun] нанялась в купеческий караван простым работником и целые сезоны шла рядом с вьючными животными от поселения к поселению.</li>
+    <li>road(hasFaction==True,PAWN_gender==Male)-&gt;Среди торговцев фракции «[FACTION_name]» [PAWN_pronoun] научился торговаться, читать погоду и спать, не выпуская из рук винтовку.</li>
+    <li>road(hasFaction==True,PAWN_gender==Female)-&gt;Среди торговцев фракции «[FACTION_name]» [PAWN_pronoun] научилась торговаться, читать погоду и спать, не выпуская из рук винтовку.</li>
+    <li>road(hasFaction==False,PAWN_gender==Male)-&gt;Среди бродячих торговцев [PAWN_pronoun] научился торговаться, читать погоду и спать, не выпуская из рук винтовку.</li>
+    <li>road(hasFaction==False,PAWN_gender==Female)-&gt;Среди бродячих торговцев [PAWN_pronoun] научилась торговаться, читать погоду и спать, не выпуская из рук винтовку.</li>
+    <li>road(hasFaction==True,PAWN_gender==Male)-&gt;Караваны фракции «[FACTION_name]» взяли [PAWN_objective] в охрану, и [PAWN_pronoun] пересекал пустыни и промёрзшие равнины рядом с ними.</li>
+    <li>road(hasFaction==True,PAWN_gender==Female)-&gt;Караваны фракции «[FACTION_name]» взяли [PAWN_objective] в охрану, и [PAWN_pronoun] пересекала пустыни и промёрзшие равнины рядом с ними.</li>
+    <li>road(hasFaction==False,PAWN_gender==Male)-&gt;Один торговый караван взял [PAWN_objective] в охрану, и [PAWN_pronoun] пересекал пустыни и промёрзшие равнины рядом с ним.</li>
+    <li>road(hasFaction==False,PAWN_gender==Female)-&gt;Один торговый караван взял [PAWN_objective] в охрану, и [PAWN_pronoun] пересекала пустыни и промёрзшие равнины рядом с ним.</li>
+    <li>road(hasFaction==True,PAWN_gender==Male)-&gt;Свой хлеб [PAWN_pronoun] добывал, перевозя грузы для фракции «[FACTION_name]», и узнал их песни, их костры и их долгое терпение в пути.</li>
+    <li>road(hasFaction==True,PAWN_gender==Female)-&gt;Свой хлеб [PAWN_pronoun] добывала, перевозя грузы для фракции «[FACTION_name]», и узнала их песни, их костры и их долгое терпение в пути.</li>
+    <li>road(hasFaction==False,PAWN_gender==Male)-&gt;Свой хлеб [PAWN_pronoun] добывал, перевозя грузы для купеческого каравана, и узнал его песни, его костры и его долгое терпение в пути.</li>
+    <li>road(hasFaction==False,PAWN_gender==Female)-&gt;Свой хлеб [PAWN_pronoun] добывала, перевозя грузы для купеческого каравана, и узнала его песни, его костры и его долгое терпение в пути.</li>
+    <li>road(hasFaction==True,PAWN_gender==Male)-&gt;Сезон за сезоном [PAWN_nameDef] ходил по торговым дорогам с людьми фракции «[FACTION_name]», торговал, охранял и по ночам слушал их рассказы.</li>
+    <li>road(hasFaction==True,PAWN_gender==Female)-&gt;Сезон за сезоном [PAWN_nameDef] ходила по торговым дорогам с людьми фракции «[FACTION_name]», торговала, охраняла и по ночам слушала их рассказы.</li>
+    <li>road(hasFaction==False,PAWN_gender==Male)-&gt;Сезон за сезоном [PAWN_nameDef] ходил по торговым дорогам с бродячими купцами, торговал, охранял и по ночам слушал их рассказы.</li>
+    <li>road(hasFaction==False,PAWN_gender==Female)-&gt;Сезон за сезоном [PAWN_nameDef] ходила по торговым дорогам с бродячими купцами, торговала, охраняла и по ночам слушала их рассказы.</li>
+    <li>end-&gt;Но однажды зимой торговый путь закрылся навсегда, и места в дороге больше не осталось.</li>
+    <li>end(PAWN_gender==Male)-&gt;В конце концов [PAWN_pronoun] устал спать на промёрзшей земле и захотел снова иметь собственную крышу над головой.</li>
+    <li>end(PAWN_gender==Female)-&gt;В конце концов [PAWN_pronoun] устала спать на промёрзшей земле и захотела снова иметь собственную крышу над головой.</li>
+    <li>end-&gt;Потом наступил тяжёлый сезон с пустыми рынками и тощими кошельками, и лишний рот в караване стал не нужен.</li>
+    <li>end(PAWN_gender==Male)-&gt;Но годы пути измотали [PAWN_objective], и однажды [PAWN_pronoun] понял, что вечно двигаться вперёд нельзя.</li>
+    <li>end(PAWN_gender==Female)-&gt;Но годы пути измотали [PAWN_objective], и однажды [PAWN_pronoun] поняла, что вечно двигаться вперёд нельзя.</li>
+    <li>end(PAWN_gender==Male)-&gt;После ссоры из-за долга жизнь в дороге кончилась, и [PAWN_pronoun] расстался со всеми, с кем шёл рядом.</li>
+    <li>end(PAWN_gender==Female)-&gt;После ссоры из-за долга жизнь в дороге кончилась, и [PAWN_pronoun] рассталась со всеми, с кем шла рядом.</li>
+    <li>end(PAWN_gender==Male)-&gt;Потом дороги стали опасными: налётчики и токсичные осадки закрывали один путь за другим, и [PAWN_pronoun] решил остановиться.</li>
+    <li>end(PAWN_gender==Female)-&gt;Потом дороги стали опасными: налётчики и токсичные осадки закрывали один путь за другим, и [PAWN_pronoun] решила остановиться.</li>
+    <li>arrival(PAWN_gender==Male)-&gt;Не имея определённой цели, [PAWN_pronoun] свернул с большой дороги и добрёл до вашей колонии.</li>
+    <li>arrival(PAWN_gender==Female)-&gt;Не имея определённой цели, [PAWN_pronoun] свернула с большой дороги и добрела до вашей колонии.</li>
+    <li>arrival(PAWN_gender==Male)-&gt;Увидев вдали дым, [PAWN_pronoun] пошёл на него и оказался возле вашей колонии.</li>
+    <li>arrival(PAWN_gender==Female)-&gt;Увидев вдали дым, [PAWN_pronoun] пошла на него и оказалась возле вашей колонии.</li>
+    <li>arrival(PAWN_gender==Male)-&gt;[PAWN_pronoun] услышал о вашей колонии от случайного путника и решил попросить места у чужого очага.</li>
+    <li>arrival(PAWN_gender==Female)-&gt;[PAWN_pronoun] услышала о вашей колонии от случайного путника и решила попросить места у чужого очага.</li>
+    <li>arrival(PAWN_gender==Male)-&gt;Последние дни пути [PAWN_pronoun] шёл один по холодным холмам и наконец добрался до вашей колонии.</li>
+    <li>arrival(PAWN_gender==Female)-&gt;Последние дни пути [PAWN_pronoun] шла одна по холодным холмам и наконец добралась до вашей колонии.</li>
+    <li>arrival(PAWN_gender==Male)-&gt;С пустым мешком и стёртыми ногами [PAWN_pronoun] пришёл к воротам вашей колонии и попросил работы.</li>
+    <li>arrival(PAWN_gender==Female)-&gt;С пустым мешком и стёртыми ногами [PAWN_pronoun] пришла к воротам вашей колонии и попросила работы.</li>
+    <li>arrival(PAWN_gender==Male)-&gt;Устав от дорог, [PAWN_pronoun] остановился возле вашей колонии и спросил, не нужны ли здесь лишние руки.</li>
+    <li>arrival(PAWN_gender==Female)-&gt;Устав от дорог, [PAWN_pronoun] остановилась возле вашей колонии и спросила, не нужны ли здесь лишние руки.</li>
   </PastLives_Story_Caravans.rulePack.rulesStrings>
 
   <PastLives_Story_Captivity.rulePack.rulesStrings>
-    <li>r_story->[leave] [childhood] [capture] [escape] [arrival] [comrade]</li>
-    <li>leave(PAWN_gender==Male)->[PAWN_nameDef] рассказал, что ушёл из [colony] искать лучшей доли.</li>
-    <li>leave(PAWN_gender==Female)->[PAWN_nameDef] рассказала, что ушла из [colony] искать лучшей доли.</li>
-    <li>capture(hasFaction==True,PAWN_gender==Male)->В пути его схватили бойцы фракции «[FACTION_name]», и он долго просидел в их клетках.</li>
-    <li>capture(hasFaction==True,PAWN_gender==Female)->В пути её схватили бойцы фракции «[FACTION_name]», и она долго просидела в их клетках.</li>
-    <li>capture(hasFaction==False,PAWN_gender==Male)->В пути его схватили пираты, и он долго просидел в их клетках.</li>
-    <li>capture(hasFaction==False,PAWN_gender==Female)->В пути её схватили пираты, и она долго просидела в их клетках.</li>
-    <li>escape(scars==True,PAWN_gender==Male)->Однажды ночью он вырвался, оставив за собой много крови; шрамы остались, как и страх.</li>
-    <li>escape(scars==True,PAWN_gender==Female)->Однажды ночью она вырвалась, оставив за собой много крови; шрамы остались, как и страх.</li>
-    <li>escape(scars==False,PAWN_gender==Male)->Однажды ночью он ускользнул, пока охрана была пьяна.</li>
-    <li>escape(scars==False,PAWN_gender==Female)->Однажды ночью она ускользнула, пока охрана была пьяна.</li>
-    <li>arrival(PAWN_gender==Male)->С тех пор он в бегах, и ваша колония — первое место, где он решился остановиться.</li>
-    <li>arrival(PAWN_gender==Female)->С тех пор она в бегах, и ваша колония — первое место, где она решилась остановиться.</li>
+    <li>r_story-&gt;[leave] [capture] [escape] [arrival] [childhood] [comrade]</li>
+    <li>leave(PAWN_gender==Male)-&gt;[PAWN_nameDef] сказал, что ушёл из прежней колонии, когда та потеряла слишком много людей и уцелевшие разбрелись.</li>
+    <li>leave(PAWN_gender==Female)-&gt;[PAWN_nameDef] сказала, что ушла из прежней колонии, когда та потеряла слишком много людей и уцелевшие разбрелись.</li>
+    <li>leave(PAWN_gender==Male)-&gt;[PAWN_nameDef] вспоминает, что вышел из прежней колонии в ранние заморозки без всякого плана, кроме одного: идти дальше.</li>
+    <li>leave(PAWN_gender==Female)-&gt;[PAWN_nameDef] вспоминает, что вышла из прежней колонии в ранние заморозки без всякого плана, кроме одного: идти дальше.</li>
+    <li>leave(PAWN_gender==Male)-&gt;[PAWN_nameDef] рассказал, что отправился из прежней колонии искать родню, жившую далеко.</li>
+    <li>leave(PAWN_gender==Female)-&gt;[PAWN_nameDef] рассказала, что отправилась из прежней колонии искать родню, жившую далеко.</li>
+    <li>leave(PAWN_gender==Male)-&gt;[PAWN_nameDef] признался, что жить в прежней колонии стало невыносимо, и [PAWN_pronoun] взял что мог унести и ушёл.</li>
+    <li>leave(PAWN_gender==Female)-&gt;[PAWN_nameDef] призналась, что жить в прежней колонии стало невыносимо, и [PAWN_pronoun] взяла что могла унести и ушла.</li>
+    <li>leave(PAWN_gender==Male)-&gt;[PAWN_nameDef] объяснил, что неурожай и тяжёлая зима погнали [PAWN_objective] из прежней колонии на поиски работы.</li>
+    <li>leave(PAWN_gender==Female)-&gt;[PAWN_nameDef] объяснила, что неурожай и тяжёлая зима погнали [PAWN_objective] из прежней колонии на поиски работы.</li>
+    <li>leave(PAWN_gender==Male)-&gt;[PAWN_nameDef] говорит, что ушёл из прежней колонии в поисках безопасного места, но дороги оказались опаснее любых стен.</li>
+    <li>leave(PAWN_gender==Female)-&gt;[PAWN_nameDef] говорит, что ушла из прежней колонии в поисках безопасного места, но дороги оказались опаснее любых стен.</li>
+    <li>capture(hasFaction==True,PAWN_gender==Male)-&gt;На дороге [PAWN_pronoun] попал в руки пиратов фракции «[FACTION_name]» и долгие месяцы просидел в клетке на объедках под неусыпным надзором.</li>
+    <li>capture(hasFaction==True,PAWN_gender==Female)-&gt;На дороге [PAWN_pronoun] попала в руки пиратов фракции «[FACTION_name]» и долгие месяцы просидела в клетке на объедках под неусыпным надзором.</li>
+    <li>capture(hasFaction==False,PAWN_gender==Male)-&gt;На дороге [PAWN_pronoun] попал в руки пиратов и долгие месяцы просидел в клетке на объедках под неусыпным надзором.</li>
+    <li>capture(hasFaction==False,PAWN_gender==Female)-&gt;На дороге [PAWN_pronoun] попала в руки пиратов и долгие месяцы просидела в клетке на объедках под неусыпным надзором.</li>
+    <li>capture(hasFaction==True,PAWN_gender==Male)-&gt;Налётчики фракции «[FACTION_name]» взяли [PAWN_objective] в плен посреди ночи, и [PAWN_pronoun] сбился со счёта дням за железными прутьями.</li>
+    <li>capture(hasFaction==True,PAWN_gender==Female)-&gt;Налётчики фракции «[FACTION_name]» взяли [PAWN_objective] в плен посреди ночи, и [PAWN_pronoun] сбилась со счёта дням за железными прутьями.</li>
+    <li>capture(hasFaction==False,PAWN_gender==Male)-&gt;Пираты взяли [PAWN_objective] в плен посреди ночи, и [PAWN_pronoun] сбился со счёта дням за железными прутьями.</li>
+    <li>capture(hasFaction==False,PAWN_gender==Female)-&gt;Пираты взяли [PAWN_objective] в плен посреди ночи, и [PAWN_pronoun] сбилась со счёта дням за железными прутьями.</li>
+    <li>capture(hasFaction==True,PAWN_gender==Male)-&gt;[PAWN_pronoun] угодил в засаду бойцов фракции «[FACTION_name]» и оказался в их клетках среди десятка других пленников.</li>
+    <li>capture(hasFaction==True,PAWN_gender==Female)-&gt;[PAWN_pronoun] угодила в засаду бойцов фракции «[FACTION_name]» и оказалась в их клетках среди десятка других пленников.</li>
+    <li>capture(hasFaction==False,PAWN_gender==Male)-&gt;[PAWN_pronoun] угодил в пиратскую засаду и оказался в их клетках среди десятка других пленников.</li>
+    <li>capture(hasFaction==False,PAWN_gender==Female)-&gt;[PAWN_pronoun] угодила в пиратскую засаду и оказалась в их клетках среди десятка других пленников.</li>
+    <li>capture(hasFaction==True,PAWN_gender==Male)-&gt;Пираты фракции «[FACTION_name]» схватили [PAWN_objective] у переправы, и целый сезон [PAWN_pronoun] знал только цепи, жажду и смех стражников.</li>
+    <li>capture(hasFaction==True,PAWN_gender==Female)-&gt;Пираты фракции «[FACTION_name]» схватили [PAWN_objective] у переправы, и целый сезон [PAWN_pronoun] знала только цепи, жажду и смех стражников.</li>
+    <li>capture(hasFaction==False,PAWN_gender==Male)-&gt;Пираты схватили [PAWN_objective] у переправы, и целый сезон [PAWN_pronoun] знал только цепи, жажду и смех стражников.</li>
+    <li>capture(hasFaction==False,PAWN_gender==Female)-&gt;Пираты схватили [PAWN_objective] у переправы, и целый сезон [PAWN_pronoun] знала только цепи, жажду и смех стражников.</li>
+    <li>capture(hasFaction==True,PAWN_gender==Male)-&gt;Долгий сезон [PAWN_nameDef] провёл в плену у фракции «[FACTION_name]», слушал скрип клеток и ждал, когда [PAWN_objective] продадут или убьют.</li>
+    <li>capture(hasFaction==True,PAWN_gender==Female)-&gt;Долгий сезон [PAWN_nameDef] провела в плену у фракции «[FACTION_name]», слушала скрип клеток и ждала, когда [PAWN_objective] продадут или убьют.</li>
+    <li>capture(hasFaction==False,PAWN_gender==Male)-&gt;Долгий сезон [PAWN_nameDef] провёл в плену у пиратов, слушал скрип клеток и ждал, когда [PAWN_objective] продадут или убьют.</li>
+    <li>capture(hasFaction==False,PAWN_gender==Female)-&gt;Долгий сезон [PAWN_nameDef] провела в плену у пиратов, слушала скрип клеток и ждала, когда [PAWN_objective] продадут или убьют.</li>
+    <li>capture(hasFaction==True)-&gt;Люди фракции «[FACTION_name]» утащили [PAWN_objective] с дороги и заперли в вонючем загоне, где дни слились в один.</li>
+    <li>capture(hasFaction==False)-&gt;Пираты утащили [PAWN_objective] с дороги и заперли в вонючем загоне, где дни слились в один.</li>
+    <li>escape(scars==True,PAWN_gender==Male)-&gt;Одной ночью [PAWN_pronoun] расшатал прут и протиснулся наружу, порвав кожу о металл; порезы зажили шрамами, которые остались навсегда.</li>
+    <li>escape(scars==True,PAWN_gender==Female)-&gt;Одной ночью [PAWN_pronoun] расшатала прут и протиснулась наружу, порвав кожу о металл; порезы зажили шрамами, которые остались навсегда.</li>
+    <li>escape(scars==False,PAWN_gender==Male)-&gt;Одной ночью [PAWN_pronoun] расшатал прут и выскользнул из лагеря незамеченным, не получив ни царапины.</li>
+    <li>escape(scars==False,PAWN_gender==Female)-&gt;Одной ночью [PAWN_pronoun] расшатала прут и выскользнула из лагеря незамеченной, не получив ни царапины.</li>
+    <li>escape(scars==True,PAWN_gender==Male)-&gt;Во время налёта на лагерь [PAWN_pronoun] сбросил цепь и побежал через колючие заросли; царапины остались шрамами.</li>
+    <li>escape(scars==True,PAWN_gender==Female)-&gt;Во время налёта на лагерь [PAWN_pronoun] сбросила цепь и побежала через колючие заросли; царапины остались шрамами.</li>
+    <li>escape(scars==False,PAWN_gender==Male)-&gt;Во время налёта на лагерь [PAWN_pronoun] сбросил цепь и побежал через колючие заросли, целый и невредимый.</li>
+    <li>escape(scars==False,PAWN_gender==Female)-&gt;Во время налёта на лагерь [PAWN_pronoun] сбросила цепь и побежала через колючие заросли, целая и невредимая.</li>
+    <li>escape(scars==True,PAWN_gender==Male)-&gt;Стражник уснул, и [PAWN_pronoun] перетёр верёвки об осколок стекла; следы на [PAWN_possessive] запястьях не сошли до сих пор.</li>
+    <li>escape(scars==True,PAWN_gender==Female)-&gt;Стражник уснул, и [PAWN_pronoun] перетёрла верёвки об осколок стекла; следы на [PAWN_possessive] запястьях не сошли до сих пор.</li>
+    <li>escape(scars==False,PAWN_gender==Male)-&gt;Стражник уснул, и [PAWN_pronoun] выскользнул из пут и растворился в темноте.</li>
+    <li>escape(scars==False,PAWN_gender==Female)-&gt;Стражник уснул, и [PAWN_pronoun] выскользнула из пут и растворилась в темноте.</li>
+    <li>escape(scars==True,PAWN_gender==Male)-&gt;[PAWN_pronoun] вырвался на волю в бурю, и колючая проволока оставила на [PAWN_possessive] руках шрамы.</li>
+    <li>escape(scars==True,PAWN_gender==Female)-&gt;[PAWN_pronoun] вырвалась на волю в бурю, и колючая проволока оставила на [PAWN_possessive] руках шрамы.</li>
+    <li>escape(scars==False,PAWN_gender==Male)-&gt;[PAWN_pronoun] вырвался на волю в бурю, пока стража пряталась от непогоды, и никто не заметил побега.</li>
+    <li>escape(scars==False,PAWN_gender==Female)-&gt;[PAWN_pronoun] вырвалась на волю в бурю, пока стража пряталась от непогоды, и никто не заметил побега.</li>
+    <li>escape(scars==True,PAWN_gender==Male)-&gt;Однажды ночью [PAWN_pronoun] выломал дверцу клетки в отчаянной возне, и порезы с той ночи видны до сих пор.</li>
+    <li>escape(scars==True,PAWN_gender==Female)-&gt;Однажды ночью [PAWN_pronoun] выломала дверцу клетки в отчаянной возне, и порезы с той ночи видны до сих пор.</li>
+    <li>escape(scars==False,PAWN_gender==Male)-&gt;Однажды ночью дверцу клетки забыли запереть, и [PAWN_pronoun] вышел наружу без единого звука.</li>
+    <li>escape(scars==False,PAWN_gender==Female)-&gt;Однажды ночью дверцу клетки забыли запереть, и [PAWN_pronoun] вышла наружу без единого звука.</li>
+    <li>escape(scars==True,PAWN_gender==Male)-&gt;[PAWN_pronoun] украл нож, перепилил прутья и выполз в пролом; порезы от этого остались шрамами.</li>
+    <li>escape(scars==True,PAWN_gender==Female)-&gt;[PAWN_pronoun] украла нож, перепилила прутья и выползла в пролом; порезы от этого остались шрамами.</li>
+    <li>escape(scars==False,PAWN_gender==Male)-&gt;[PAWN_pronoun] украл нож, перепилил прутья и выполз в пролом, не оставив следов.</li>
+    <li>escape(scars==False,PAWN_gender==Female)-&gt;[PAWN_pronoun] украла нож, перепилила прутья и выползла в пролом, не оставив следов.</li>
+    <li>arrival(PAWN_gender==Male)-&gt;Несколько дней [PAWN_pronoun] бежал по открытой местности, вздрагивая от каждого шороха, пока не добрался до вашей колонии.</li>
+    <li>arrival(PAWN_gender==Female)-&gt;Несколько дней [PAWN_pronoun] бежала по открытой местности, вздрагивая от каждого шороха, пока не добралась до вашей колонии.</li>
+    <li>arrival(PAWN_gender==Male)-&gt;[PAWN_pronoun] держался оврагов и шёл по ночам, боясь погони, пока впереди не показались огни вашей колонии.</li>
+    <li>arrival(PAWN_gender==Female)-&gt;[PAWN_pronoun] держалась оврагов и шла по ночам, боясь погони, пока впереди не показались огни вашей колонии.</li>
+    <li>arrival(PAWN_gender==Male)-&gt;Голодный и осторожный с чужими, [PAWN_pronoun] дошёл до вашей колонии и просил только место для ночлега.</li>
+    <li>arrival(PAWN_gender==Female)-&gt;Голодная и осторожная с чужими, [PAWN_pronoun] дошла до вашей колонии и просила только место для ночлега.</li>
+    <li>arrival(PAWN_gender==Male)-&gt;Прячась с одного места на другое, [PAWN_pronoun] в конце концов очутился в вашей колонии.</li>
+    <li>arrival(PAWN_gender==Female)-&gt;Прячась с одного места на другое, [PAWN_pronoun] в конце концов очутилась в вашей колонии.</li>
+    <li>arrival(PAWN_gender==Male)-&gt;[PAWN_pronoun] до сих пор оглядывается на горизонт, но след оборвался у вашей колонии, и [PAWN_pronoun] попросил разрешения остаться.</li>
+    <li>arrival(PAWN_gender==Female)-&gt;[PAWN_pronoun] до сих пор оглядывается на горизонт, но след оборвался у вашей колонии, и [PAWN_pronoun] попросила разрешения остаться.</li>
+    <li>arrival(PAWN_gender==Male)-&gt;Без еды и без карты [PAWN_pronoun] пошёл на дым у горизонта и добрался до вашей колонии.</li>
+    <li>arrival(PAWN_gender==Female)-&gt;Без еды и без карты [PAWN_pronoun] пошла на дым у горизонта и добралась до вашей колонии.</li>
   </PastLives_Story_Captivity.rulePack.rulesStrings>
 
   <PastLives_Story_Wilds.rulePack.rulesStrings>
-    <li>r_story->[leave] [childhood] [wilds] [beast] [arrival] [comrade]</li>
-    <li>leave(PAWN_gender==Male)->[PAWN_nameDef] рассказал, что ушёл из [colony], чтобы жить охотой, подальше от людей.</li>
-    <li>leave(PAWN_gender==Female)->[PAWN_nameDef] рассказала, что ушла из [colony], чтобы жить охотой, подальше от людей.</li>
-    <li>wilds(PAWN_gender==Male)->Долгое время он охотился, собирал коренья и разговаривал только с ветром.</li>
-    <li>wilds(PAWN_gender==Female)->Долгое время она охотилась, собирала коренья и разговаривала только с ветром.</li>
-    <li>beast(scars==True,PAWN_gender==Male)->Потом на лагерь вышла голодная стая; он выжил, но следы зубов остались.</li>
-    <li>beast(scars==True,PAWN_gender==Female)->Потом на лагерь вышла голодная стая; она выжила, но следы зубов остались.</li>
-    <li>beast(scars==False)->Потом пришла суровая зима, и земле стало нечего дать.</li>
-    <li>arrival(PAWN_gender==Male)->На запах дыма от очагов он и вышел к вашей колонии.</li>
-    <li>arrival(PAWN_gender==Female)->На запах дыма от очагов она и вышла к вашей колонии.</li>
+    <li>r_story-&gt;[leave] [wilds] [beast] [arrival] [childhood] [comrade]</li>
+    <li>leave(PAWN_gender==Male)-&gt;[PAWN_nameDef] сказал, что ушёл из прежней колонии, потому что больше не выносил людской толпы и хотел жить один.</li>
+    <li>leave(PAWN_gender==Female)-&gt;[PAWN_nameDef] сказала, что ушла из прежней колонии, потому что больше не выносила людской толпы и хотела жить одна.</li>
+    <li>leave(PAWN_gender==Male)-&gt;[PAWN_nameDef] вспоминает, что после ссоры повернулся спиной к прежней колонии и ушёл в холмы с топором и луком.</li>
+    <li>leave(PAWN_gender==Female)-&gt;[PAWN_nameDef] вспоминает, что после ссоры повернулась спиной к прежней колонии и ушла в холмы с топором и луком.</li>
+    <li>leave(PAWN_gender==Male)-&gt;[PAWN_nameDef] рассказал, что после бед прежней колонии тишина стала дороже любого общества, и ушёл в глушь.</li>
+    <li>leave(PAWN_gender==Female)-&gt;[PAWN_nameDef] рассказала, что после бед прежней колонии тишина стала дороже любого общества, и ушла в глушь.</li>
+    <li>leave(PAWN_gender==Male)-&gt;[PAWN_nameDef] признался, что однажды просто ушёл из прежней колонии, собираясь жить тем, что даст земля.</li>
+    <li>leave(PAWN_gender==Female)-&gt;[PAWN_nameDef] призналась, что однажды просто ушла из прежней колонии, собираясь жить тем, что даст земля.</li>
+    <li>leave(PAWN_gender==Male)-&gt;[PAWN_nameDef] объяснил, что горе по погибшим в прежней колонии погнало [PAWN_objective] в дикие места.</li>
+    <li>leave(PAWN_gender==Female)-&gt;[PAWN_nameDef] объяснила, что горе по погибшим в прежней колонии погнало [PAWN_objective] в дикие места.</li>
+    <li>leave(PAWN_gender==Male)-&gt;[PAWN_nameDef] упомянул, что искал тихую долину, где никто ни о чём не спросит, и покинул прежнюю колонию.</li>
+    <li>leave(PAWN_gender==Female)-&gt;[PAWN_nameDef] упомянула, что искала тихую долину, где никто ни о чём не спросит, и покинула прежнюю колонию.</li>
+    <li>wilds(PAWN_gender==Male)-&gt;Годами [PAWN_pronoun] жил на пойманных в силки зайцах, лесных ягодах и дождевой воде, строил шалаши из веток и глины.</li>
+    <li>wilds(PAWN_gender==Female)-&gt;Годами [PAWN_pronoun] жила на пойманных в силки зайцах, лесных ягодах и дождевой воде, строила шалаши из веток и глины.</li>
+    <li>wilds(PAWN_gender==Male)-&gt;Один в лесах, [PAWN_pronoun] научился читать следы, коптить мясо на зиму и неделями ни с кем не разговаривать.</li>
+    <li>wilds(PAWN_gender==Female)-&gt;Одна в лесах, [PAWN_pronoun] научилась читать следы, коптить мясо на зиму и неделями ни с кем не разговаривать.</li>
+    <li>wilds(PAWN_gender==Male)-&gt;[PAWN_pronoun] кочевал вслед за временами года: летом ловил рыбу в ручьях, а долгие холода пережидал в пещерах.</li>
+    <li>wilds(PAWN_gender==Female)-&gt;[PAWN_pronoun] кочевала вслед за временами года: летом ловила рыбу в ручьях, а долгие холода пережидала в пещерах.</li>
+    <li>wilds(PAWN_gender==Male)-&gt;Одиночество какое-то время устраивало [PAWN_objective]: [PAWN_pronoun] охотился, собирал коренья и не давал костру погаснуть под дождём.</li>
+    <li>wilds(PAWN_gender==Female)-&gt;Одиночество какое-то время устраивало [PAWN_objective]: [PAWN_pronoun] охотилась, собирала коренья и не давала костру погаснуть под дождём.</li>
+    <li>wilds(PAWN_gender==Male)-&gt;Сезон за сезоном [PAWN_pronoun] становился суше и молчаливее, тенью бродя между хребтом и рекой.</li>
+    <li>wilds(PAWN_gender==Female)-&gt;Сезон за сезоном [PAWN_pronoun] становилась суше и молчаливее, тенью бродя между хребтом и рекой.</li>
+    <li>wilds(PAWN_gender==Male)-&gt;[PAWN_pronoun] построил навес у ручья, посеял горстку припасённого зерна и жил на том, что позволяла глушь.</li>
+    <li>wilds(PAWN_gender==Female)-&gt;[PAWN_pronoun] построила навес у ручья, посеяла горстку припасённого зерна и жила на том, что позволяла глушь.</li>
+    <li>beast(scars==True)-&gt;Потом на безлюдной тропе [PAWN_objective] настиг хищник, и укусы после схватки зажили шрамами.</li>
+    <li>beast(scars==False,PAWN_gender==Male)-&gt;Потом пришла зима, сковавшая ручьи и опустошившая силки, и [PAWN_pronoun] жил на отварах из коры и упрямстве до самой оттепели.</li>
+    <li>beast(scars==False,PAWN_gender==Female)-&gt;Потом пришла зима, сковавшая ручьи и опустошившая силки, и [PAWN_pronoun] жила на отварах из коры и упрямстве до самой оттепели.</li>
+    <li>beast(scars==True,PAWN_gender==Male)-&gt;Однажды вечером [PAWN_objective] окружила стая диких зверей; [PAWN_pronoun] спасся, забравшись на скалу, но когти оставили шрамы.</li>
+    <li>beast(scars==True,PAWN_gender==Female)-&gt;Однажды вечером [PAWN_objective] окружила стая диких зверей; [PAWN_pronoun] спаслась, забравшись на скалу, но когти оставили шрамы.</li>
+    <li>beast(scars==False,PAWN_gender==Male)-&gt;Однажды зима пришла рано, снег скрыл всё съедобное, и [PAWN_pronoun] едва не умер от голода до оттепели.</li>
+    <li>beast(scars==False,PAWN_gender==Female)-&gt;Однажды зима пришла рано, снег скрыл всё съедобное, и [PAWN_pronoun] едва не умерла от голода до оттепели.</li>
+    <li>beast(scars==True)-&gt;В зарослях на тропу вылетел раненый вепрь, и его клыки оставили шрамы, видные до сих пор.</li>
+    <li>beast(scars==False,PAWN_gender==Male)-&gt;Сухое лето убило ягоды и прогнало дичь, и [PAWN_pronoun] голодал неделями.</li>
+    <li>beast(scars==False,PAWN_gender==Female)-&gt;Сухое лето убило ягоды и прогнало дичь, и [PAWN_pronoun] голодала неделями.</li>
+    <li>beast(scars==True)-&gt;Крупная кошка прыгнула с уступа, и следы когтей на [PAWN_possessive] спине зажили шрамами.</li>
+    <li>beast(scars==False,PAWN_gender==Male)-&gt;Потом метель на несколько дней заперла [PAWN_objective] в пещере, и [PAWN_pronoun] доел последнее вяленое мясо.</li>
+    <li>beast(scars==False,PAWN_gender==Female)-&gt;Потом метель на несколько дней заперла [PAWN_objective] в пещере, и [PAWN_pronoun] доела последнее вяленое мясо.</li>
+    <li>beast(scars==True)-&gt;Дикий зверь укусил [PAWN_objective] в темноте, во сне, и укус зажил шрамом, который остался навсегда.</li>
+    <li>beast(scars==False,PAWN_gender==Male)-&gt;После первого снега начались жар и долгий голодный месяц, и [PAWN_pronoun] с трудом дотянул до весны.</li>
+    <li>beast(scars==False,PAWN_gender==Female)-&gt;После первого снега начались жар и долгий голодный месяц, и [PAWN_pronoun] с трудом дотянула до весны.</li>
+    <li>beast(scars==True,PAWN_gender==Male)-&gt;Три ночи волки шли по [PAWN_possessive] следу; [PAWN_pronoun] отбился огнём, но зубы оставили шрамы.</li>
+    <li>beast(scars==True,PAWN_gender==Female)-&gt;Три ночи волки шли по [PAWN_possessive] следу; [PAWN_pronoun] отбилась огнём, но зубы оставили шрамы.</li>
+    <li>beast(scars==False,PAWN_gender==Male)-&gt;Лютый холод сковал землю камнем, и [PAWN_pronoun] выжил, лишь сжигая почти всё, что имел при себе.</li>
+    <li>beast(scars==False,PAWN_gender==Female)-&gt;Лютый холод сковал землю камнем, и [PAWN_pronoun] выжила, лишь сжигая почти всё, что имела при себе.</li>
+    <li>arrival(PAWN_gender==Male)-&gt;Когда кончились еда и силы, [PAWN_pronoun] пошёл на дым и добрался до вашей колонии.</li>
+    <li>arrival(PAWN_gender==Female)-&gt;Когда кончились еда и силы, [PAWN_pronoun] пошла на дым и добралась до вашей колонии.</li>
+    <li>arrival(PAWN_gender==Male)-&gt;Однажды [PAWN_pronoun] наткнулся на чужие следы, два дня шёл по ним, и они закончились у вашей колонии.</li>
+    <li>arrival(PAWN_gender==Female)-&gt;Однажды [PAWN_pronoun] наткнулась на чужие следы, два дня шла по ним, и они закончились у вашей колонии.</li>
+    <li>arrival(PAWN_gender==Male)-&gt;Крыши над головой [PAWN_pronoun] не видел годами, и жизнь в вашей колонии кажется странной, но желанной.</li>
+    <li>arrival(PAWN_gender==Female)-&gt;Крыши над головой [PAWN_pronoun] не видела годами, и жизнь в вашей колонии кажется странной, но желанной.</li>
+    <li>arrival(PAWN_gender==Male)-&gt;Голодный и оборванный, [PAWN_pronoun] вышел из леса возле вашей колонии и спросил, нет ли работы.</li>
+    <li>arrival(PAWN_gender==Female)-&gt;Голодная и оборванная, [PAWN_pronoun] вышла из леса возле вашей колонии и спросила, нет ли работы.</li>
+    <li>arrival(PAWN_gender==Male)-&gt;Одиночество в конце концов перевесило гордость, и [PAWN_pronoun] пришёл к воротам вашей колонии проситься к огню.</li>
+    <li>arrival(PAWN_gender==Female)-&gt;Одиночество в конце концов перевесило гордость, и [PAWN_pronoun] пришла к воротам вашей колонии проситься к огню.</li>
+    <li>arrival(PAWN_gender==Male)-&gt;[PAWN_nameDef] говорит, что глушь научила [PAWN_objective] всему, чему могла: теперь хочется людей рядом, и [PAWN_pronoun] добрался до вашей колонии.</li>
+    <li>arrival(PAWN_gender==Female)-&gt;[PAWN_nameDef] говорит, что глушь научила [PAWN_objective] всему, чему могла: теперь хочется людей рядом, и [PAWN_pronoun] добралась до вашей колонии.</li>
   </PastLives_Story_Wilds.rulePack.rulesStrings>
 
-  <!-- Гости и торговцы -->
+  <PastLives_Story_Mechanoids.rulePack.rulesStrings>
+    <li>r_story-&gt;[leave] [ruins] [awakening] [arrival] [childhood] [comrade]</li>
+    <li>leave(PAWN_gender==Male)-&gt;[PAWN_nameDef] рассказал, что ушёл из [colony] собирать вещи в руинах, потому что держаться там было уже не за что.</li>
+    <li>leave(PAWN_gender==Female)-&gt;[PAWN_nameDef] рассказала, что ушла из [colony] собирать вещи в руинах, потому что держаться там было уже не за что.</li>
+    <li>leave(PAWN_gender==Male)-&gt;[PAWN_nameDef] вспоминает, что ушёл из [colony] с пустым рюкзаком, решив жить тем, что оставил после себя старый мир.</li>
+    <li>leave(PAWN_gender==Female)-&gt;[PAWN_nameDef] вспоминает, что ушла из [colony] с пустым рюкзаком, решив жить тем, что оставил после себя старый мир.</li>
+    <li>leave(PAWN_gender==Male)-&gt;[PAWN_nameDef] сказал, что вышел из [colony] зимним утром, чтобы кормиться находками из заброшенных мест.</li>
+    <li>leave(PAWN_gender==Female)-&gt;[PAWN_nameDef] сказала, что вышла из [colony] зимним утром, чтобы кормиться находками из заброшенных мест.</li>
+    <li>leave(PAWN_gender==Male)-&gt;[PAWN_nameDef] признался, что ушёл из [colony] после неурожая, надеясь выменять на еду найденные древние вещи.</li>
+    <li>leave(PAWN_gender==Female)-&gt;[PAWN_nameDef] призналась, что ушла из [colony] после неурожая, надеясь выменять на еду найденные древние вещи.</li>
+    <li>leave(PAWN_gender==Male)-&gt;[PAWN_nameDef] объяснил, что устал ждать лучших времён в [colony] и занялся поисками старого хлама.</li>
+    <li>leave(PAWN_gender==Female)-&gt;[PAWN_nameDef] объяснила, что устала ждать лучших времён в [colony] и занялась поисками старого хлама.</li>
+    <li>leave(PAWN_gender==Male)-&gt;[PAWN_nameDef] обмолвился, что ушёл из [colony] с ржавым ломом и головой, полной слухов о нетронутых руинах.</li>
+    <li>leave(PAWN_gender==Female)-&gt;[PAWN_nameDef] обмолвилась, что ушла из [colony] с ржавым ломом и головой, полной слухов о нетронутых руинах.</li>
+    <li>ruins(PAWN_gender==Male)-&gt;Годы прошли в мёртвых городах и запечатанных комплексах, где [PAWN_pronoun] выковыривал из обвалившихся стен обломки архотеха и старые схемы.</li>
+    <li>ruins(PAWN_gender==Female)-&gt;Годы прошли в мёртвых городах и запечатанных комплексах, где [PAWN_pronoun] выковыривала из обвалившихся стен обломки архотеха и старые схемы.</li>
+    <li>ruins(PAWN_gender==Male)-&gt;[PAWN_nameDef] целыми сезонами лазил по брошенным бункерам и менял найденную старую технику на еду и патроны.</li>
+    <li>ruins(PAWN_gender==Female)-&gt;[PAWN_nameDef] целыми сезонами лазила по брошенным бункерам и меняла найденную старую технику на еду и патроны.</li>
+    <li>ruins(PAWN_gender==Male)-&gt;В руинах [PAWN_pronoun] научился читать пыль, отличать надёжный коридор от гнилого пола и не трогать запертые двери.</li>
+    <li>ruins(PAWN_gender==Female)-&gt;В руинах [PAWN_pronoun] научилась читать пыль, отличать надёжный коридор от гнилого пола и не трогать запертые двери.</li>
+    <li>ruins(PAWN_gender==Male)-&gt;Большинство дней были холодными и тихими: [PAWN_pronoun] перебирал обломки былой цивилизации в поисках хоть чего-нибудь, что ещё гудело.</li>
+    <li>ruins(PAWN_gender==Female)-&gt;Большинство дней были холодными и тихими: [PAWN_pronoun] перебирала обломки былой цивилизации в поисках хоть чего-нибудь, что ещё гудело.</li>
+    <li>ruins(PAWN_gender==Male)-&gt;[PAWN_pronoun] обшаривал древние хранилища и разбитые форпосты и порой находил деталь, которой хватало на месяц сытой жизни.</li>
+    <li>ruins(PAWN_gender==Female)-&gt;[PAWN_pronoun] обшаривала древние хранилища и разбитые форпосты и порой находила деталь, которой хватало на месяц сытой жизни.</li>
+    <li>ruins-&gt;Работа была медленной и одинокой: копать, нести, продавать и идти к следующему обвалившемуся зданию, пока не испортилась погода.</li>
+    <li>awakening(scars==True,PAWN_gender==Male)-&gt;В запечатанном зале разом проснулись спящие механоиды, и [PAWN_nameDef] выполз из-под их огня, унеся на теле шрамы, которые уже не сошли.</li>
+    <li>awakening(scars==True,PAWN_gender==Female)-&gt;В запечатанном зале разом проснулись спящие механоиды, и [PAWN_nameDef] выползла из-под их огня, унеся на теле шрамы, которые уже не сошли.</li>
+    <li>awakening(scars==True,PAWN_gender==Male)-&gt;Скрытое скопление механоидов ожило, когда [PAWN_nameDef] проходил мимо; [PAWN_pronoun] едва выбрался наружу, и следы той ночи остались на теле навсегда.</li>
+    <li>awakening(scars==True,PAWN_gender==Female)-&gt;Скрытое скопление механоидов ожило, когда [PAWN_nameDef] проходила мимо; [PAWN_pronoun] едва выбралась наружу, и следы той ночи остались на теле навсегда.</li>
+    <li>awakening(scars==True,PAWN_gender==Male)-&gt;Пол задрожал, старые машины открыли глаза, и [PAWN_nameDef] бросился к поверхности; шрамы с того пути остались на всю жизнь.</li>
+    <li>awakening(scars==True,PAWN_gender==Female)-&gt;Пол задрожал, старые машины открыли глаза, и [PAWN_nameDef] бросилась к поверхности; шрамы с того пути остались на всю жизнь.</li>
+    <li>awakening(scars==True,PAWN_gender==Male)-&gt;[PAWN_nameDef] наступил на что-то, разбудившее механоидов, спавших в стенах, и выжил, но отметины остались навсегда.</li>
+    <li>awakening(scars==True,PAWN_gender==Female)-&gt;[PAWN_nameDef] наступила на что-то, разбудившее механоидов, спавших в стенах, и выжила, но отметины остались навсегда.</li>
+    <li>awakening(scars==True,PAWN_gender==Male)-&gt;Когда древние механоиды зашевелились, думать было некогда: [PAWN_pronoun] выбрался через разбитую вентиляцию, а шрамы носит до сих пор.</li>
+    <li>awakening(scars==True,PAWN_gender==Female)-&gt;Когда древние механоиды зашевелились, думать было некогда: [PAWN_pronoun] выбралась через разбитую вентиляцию, а шрамы носит до сих пор.</li>
+    <li>awakening(scars==True,PAWN_gender==Male)-&gt;Машины проснулись беззвучно и открыли огонь, и [PAWN_nameDef] едва спасся, а шрамы остались на всю жизнь.</li>
+    <li>awakening(scars==True,PAWN_gender==Female)-&gt;Машины проснулись беззвучно и открыли огонь, и [PAWN_nameDef] едва спаслась, а шрамы остались на всю жизнь.</li>
+    <li>awakening(scars==False,PAWN_gender==Male)-&gt;В запечатанном зале разом проснулись спящие механоиды, и [PAWN_nameDef] выбежал из-под их огня, каким-то чудом не получив ни царапины.</li>
+    <li>awakening(scars==False,PAWN_gender==Female)-&gt;В запечатанном зале разом проснулись спящие механоиды, и [PAWN_nameDef] выбежала из-под их огня, каким-то чудом не получив ни царапины.</li>
+    <li>awakening(scars==False,PAWN_gender==Male)-&gt;Скрытое скопление механоидов ожило, когда [PAWN_nameDef] проходил мимо; [PAWN_pronoun] едва выбрался наружу, и всё обошлось без единой отметины.</li>
+    <li>awakening(scars==False,PAWN_gender==Female)-&gt;Скрытое скопление механоидов ожило, когда [PAWN_nameDef] проходила мимо; [PAWN_pronoun] едва выбралась наружу, и всё обошлось без единой отметины.</li>
+    <li>awakening(scars==False,PAWN_gender==Male)-&gt;Пол задрожал, старые машины открыли глаза, и [PAWN_nameDef] бросился к поверхности, не получив серьёзных повреждений.</li>
+    <li>awakening(scars==False,PAWN_gender==Female)-&gt;Пол задрожал, старые машины открыли глаза, и [PAWN_nameDef] бросилась к поверхности, не получив серьёзных повреждений.</li>
+    <li>awakening(scars==False,PAWN_gender==Male)-&gt;[PAWN_nameDef] наступил на что-то, разбудившее механоидов, спавших в стенах, и выбрался живым и, по чистой случайности, без единой отметины.</li>
+    <li>awakening(scars==False,PAWN_gender==Female)-&gt;[PAWN_nameDef] наступила на что-то, разбудившее механоидов, спавших в стенах, и выбралась живой и, по чистой случайности, без единой отметины.</li>
+    <li>awakening(scars==False,PAWN_gender==Male)-&gt;Когда древние механоиды зашевелились, думать было некогда: [PAWN_pronoun] выбрался через разбитую вентиляцию, отделавшись лишь бешено колотящимся сердцем.</li>
+    <li>awakening(scars==False,PAWN_gender==Female)-&gt;Когда древние механоиды зашевелились, думать было некогда: [PAWN_pronoun] выбралась через разбитую вентиляцию, отделавшись лишь бешено колотящимся сердцем.</li>
+    <li>awakening(scars==False,PAWN_gender==Male)-&gt;Машины проснулись беззвучно и открыли огонь, и [PAWN_nameDef] едва спасся, не унеся с собой ни одной отметины.</li>
+    <li>awakening(scars==False,PAWN_gender==Female)-&gt;Машины проснулись беззвучно и открыли огонь, и [PAWN_nameDef] едва спаслась, не унеся с собой ни одной отметины.</li>
+    <li>arrival(PAWN_gender==Male)-&gt;Спустя недели пути с полупустым рюкзаком [PAWN_nameDef] увидел дым вашей колонии и решил попроситься под крышу.</li>
+    <li>arrival(PAWN_gender==Female)-&gt;Спустя недели пути с полупустым рюкзаком [PAWN_nameDef] увидела дым вашей колонии и решила попроситься под крышу.</li>
+    <li>arrival(PAWN_gender==Male)-&gt;[PAWN_nameDef] шёл по старой дороге, пока она не упёрлась в вашу колонию, и здесь остановился, не в силах идти дальше.</li>
+    <li>arrival(PAWN_gender==Female)-&gt;[PAWN_nameDef] шла по старой дороге, пока она не упёрлась в вашу колонию, и здесь остановилась, не в силах идти дальше.</li>
+    <li>arrival(PAWN_gender==Male)-&gt;Голодный и без добычи, [PAWN_pronoun] услышал, что ваша колония принимает людей, и пришёл проверить, правда ли это.</li>
+    <li>arrival(PAWN_gender==Female)-&gt;Голодная и без добычи, [PAWN_pronoun] услышала, что ваша колония принимает людей, и пришла проверить, правда ли это.</li>
+    <li>arrival(PAWN_gender==Male)-&gt;В конце концов [PAWN_pronoun] заметил огни вашей колонии за равниной и пошёл к ним почти без надежды.</li>
+    <li>arrival(PAWN_gender==Female)-&gt;В конце концов [PAWN_pronoun] заметила огни вашей колонии за равниной и пошла к ним почти без надежды.</li>
+    <li>arrival(PAWN_gender==Male)-&gt;Искать хлам больше было негде, и ваша колония оказалась единственной крышей, которую [PAWN_nameDef] сумел найти.</li>
+    <li>arrival(PAWN_gender==Female)-&gt;Искать хлам больше было негде, и ваша колония оказалась единственной крышей, которую [PAWN_nameDef] сумела найти.</li>
+    <li>arrival(PAWN_gender==Male)-&gt;Проезжий торговец упомянул вашу колонию, и [PAWN_nameDef] свернул в ту сторону.</li>
+    <li>arrival(PAWN_gender==Female)-&gt;Проезжий торговец упомянул вашу колонию, и [PAWN_nameDef] свернула в ту сторону.</li>
+  </PastLives_Story_Mechanoids.rulePack.rulesStrings>
+
+  <PastLives_Story_Cryptosleep.rulePack.rulesStrings>
+    <li>r_story-&gt;[leave] [voyage] [sleep] [arrival] [childhood] [comrade]</li>
+    <li>leave(PAWN_gender==Male)-&gt;[PAWN_nameDef] рассказал, что улетел из [colony] на грузовом корабле, отдав за место всё, что у него было.</li>
+    <li>leave(PAWN_gender==Female)-&gt;[PAWN_nameDef] рассказала, что улетела из [colony] на грузовом корабле, отдав за место всё, что у неё было.</li>
+    <li>leave(PAWN_gender==Male)-&gt;[PAWN_nameDef] сказал, что сел на отлетающий корабль, когда жить в [colony] стало невыносимо, и надеялся найти мир получше.</li>
+    <li>leave(PAWN_gender==Female)-&gt;[PAWN_nameDef] сказала, что села на отлетающий корабль, когда жить в [colony] стало невыносимо, и надеялась найти мир получше.</li>
+    <li>leave(PAWN_gender==Male)-&gt;[PAWN_nameDef] вспоминает, что улетел из [colony] на потрёпанном грузовике и смотрел, как за иллюминатором уменьшается планета.</li>
+    <li>leave(PAWN_gender==Female)-&gt;[PAWN_nameDef] вспоминает, что улетела из [colony] на потрёпанном грузовике и смотрела, как за иллюминатором уменьшается планета.</li>
+    <li>leave(PAWN_gender==Male)-&gt;[PAWN_nameDef] признался, что нанялся палубным рабочим, лишь бы убраться из [colony] в темноту между звёзд.</li>
+    <li>leave(PAWN_gender==Female)-&gt;[PAWN_nameDef] призналась, что нанялась палубным рабочим, лишь бы убраться из [colony] в темноту между звёзд.</li>
+    <li>leave(PAWN_gender==Male)-&gt;[PAWN_nameDef] объяснил, что занял место на первом же корабле, уходившем с орбиты, потому что оставаться в [colony] значило медленно разоряться.</li>
+    <li>leave(PAWN_gender==Female)-&gt;[PAWN_nameDef] объяснила, что заняла место на первом же корабле, уходившем с орбиты, потому что оставаться в [colony] значило медленно разоряться.</li>
+    <li>leave(PAWN_gender==Male)-&gt;[PAWN_nameDef] обмолвился, что улетел из [colony] на корабле, шедшем куда-то в лучшие края, хотя никто на борту не знал, куда именно.</li>
+    <li>leave(PAWN_gender==Female)-&gt;[PAWN_nameDef] обмолвилась, что улетела из [colony] на корабле, шедшем куда-то в лучшие края, хотя никто на борту не знал, куда именно.</li>
+    <li>voyage-&gt;Где-то между звёздами отказал реактор, погас свет, и корабль начал дрейфовать: починить его было некому.</li>
+    <li>voyage-&gt;Какое-то время полёт шёл гладко, пока утечка хладагента не расползлась по палубам и экипаж не потерял управление кораблём.</li>
+    <li>voyage-&gt;Спустя месяцы пути навигация умерла, и корабль сошёл с курса в пустоту.</li>
+    <li>voyage-&gt;Буря микрометеоритов вспорола обшивку, и корабль ковылял дальше, теряя одну систему за другой.</li>
+    <li>voyage-&gt;В машинном отделении сломалось то, что никто на борту не умел чинить, и корабль медленно терял ход.</li>
+    <li>voyage-&gt;Старый бортовой компьютер начал сбоить: сперва двери, потом свет, потом жизнеобеспечение, палуба за палубой.</li>
+    <li>sleep-&gt;[PAWN_nameDef] помнит лишь, как закрывалась холодная крышка саркофага, а потом — пробуждение в обломках корабля на этой планете, без малейшего понятия, сколько прошло лет.</li>
+    <li>sleep(PAWN_gender==Male)-&gt;[PAWN_pronoun] очнулся в криптосонном саркофаге среди искорёженного металла на этой планете и не мог сказать, прошли месяцы или десятилетия.</li>
+    <li>sleep(PAWN_gender==Female)-&gt;[PAWN_pronoun] очнулась в криптосонном саркофаге среди искорёженного металла на этой планете и не могла сказать, прошли месяцы или десятилетия.</li>
+    <li>sleep(PAWN_gender==Male)-&gt;Саркофаг продержал [PAWN_objective] во сне всё время дрейфа, а когда крышка открылась, [PAWN_pronoun] лежал в развороченном корпусе корабля на чужой планете.</li>
+    <li>sleep(PAWN_gender==Female)-&gt;Саркофаг продержал [PAWN_objective] во сне всё время дрейфа, а когда крышка открылась, [PAWN_pronoun] лежала в развороченном корпусе корабля на чужой планете.</li>
+    <li>sleep(PAWN_gender==Male)-&gt;[PAWN_nameDef] выбрался из криптосонного саркофага в обломки и пыль, с пересохшим горлом и без единого воспоминания о посадке.</li>
+    <li>sleep(PAWN_gender==Female)-&gt;[PAWN_nameDef] выбралась из криптосонного саркофага в обломки и пыль, с пересохшим горлом и без единого воспоминания о посадке.</li>
+    <li>sleep(PAWN_gender==Male)-&gt;Замороженный в саркофаге, [PAWN_pronoun] дрейфовал неизвестно сколько, а потом проснулся в разбитом корпусе корабля, упавшего на эту планету.</li>
+    <li>sleep(PAWN_gender==Female)-&gt;Замороженная в саркофаге, [PAWN_pronoun] дрейфовала неизвестно сколько, а потом проснулась в разбитом корпусе корабля, упавшего на эту планету.</li>
+    <li>sleep(PAWN_gender==Male)-&gt;Когда крышка саркофага наконец со свистом отъехала, [PAWN_nameDef] увидел вокруг только мёртвую проводку и не смог понять, как долго спал.</li>
+    <li>sleep(PAWN_gender==Female)-&gt;Когда крышка саркофага наконец со свистом отъехала, [PAWN_nameDef] увидела вокруг только мёртвую проводку и не смогла понять, как долго спала.</li>
+    <li>arrival(PAWN_gender==Male)-&gt;С флягой из обломков и горстью корабельных пайков [PAWN_nameDef] шёл, пока не добрался до вашей колонии.</li>
+    <li>arrival(PAWN_gender==Female)-&gt;С флягой из обломков и горстью корабельных пайков [PAWN_nameDef] шла, пока не добралась до вашей колонии.</li>
+    <li>arrival(PAWN_gender==Male)-&gt;[PAWN_nameDef] несколько дней бродил по незнакомой земле, пока не нашёл вашу колонию, и первым делом спросил, какой сейчас год.</li>
+    <li>arrival(PAWN_gender==Female)-&gt;[PAWN_nameDef] несколько дней бродила по незнакомой земле, пока не нашла вашу колонию, и первым делом спросила, какой сейчас год.</li>
+    <li>arrival(PAWN_gender==Male)-&gt;По ниточке дыма над холмами [PAWN_pronoun] вышел к вашей колонии, усталый, измученный жаждой.</li>
+    <li>arrival(PAWN_gender==Female)-&gt;По ниточке дыма над холмами [PAWN_pronoun] вышла к вашей колонии, усталая, измученная жаждой.</li>
+    <li>arrival(PAWN_gender==Male)-&gt;К вашей колонии [PAWN_pronoun] подошёл одиноким путником, без цели и без дома, и попросил места для отдыха.</li>
+    <li>arrival(PAWN_gender==Female)-&gt;К вашей колонии [PAWN_pronoun] подошла одинокой путником, без цели и без дома, и попросила места для отдыха.</li>
+    <li>arrival(PAWN_gender==Male)-&gt;Лишь спустя дни пешего пути [PAWN_pronoun] наткнулся на следы людей, и этим следом оказалась ваша колония.</li>
+    <li>arrival(PAWN_gender==Female)-&gt;Лишь спустя дни пешего пути [PAWN_pronoun] наткнулась на следы людей, и этим следом оказалась ваша колония.</li>
+    <li>arrival(PAWN_gender==Male)-&gt;[PAWN_nameDef] услышал голоса с гребня холма, пошёл на них и обнаружил вашу колонию.</li>
+    <li>arrival(PAWN_gender==Female)-&gt;[PAWN_nameDef] услышала голоса с гребня холма, пошла на них и обнаружила вашу колонию.</li>
+  </PastLives_Story_Cryptosleep.rulePack.rulesStrings>
+
+  <PastLives_Story_Tribe.rulePack.rulesStrings>
+    <li>r_story-&gt;[leave] [lost] [tribe] [farewell] [arrival] [childhood] [comrade]</li>
+    <li>leave(PAWN_gender==Male)-&gt;[PAWN_nameDef] рассказал, что ушёл из [colony] после долгой зимы, когда причин оставаться уже не осталось.</li>
+    <li>leave(PAWN_gender==Female)-&gt;[PAWN_nameDef] рассказала, что ушла из [colony] после долгой зимы, когда причин оставаться уже не осталось.</li>
+    <li>leave(PAWN_gender==Male)-&gt;[PAWN_nameDef] сказал, что ушёл из [colony] ночью: хотел оказаться там, где никто не знает [PAWN_objective].</li>
+    <li>leave(PAWN_gender==Female)-&gt;[PAWN_nameDef] сказала, что ушла из [colony] ночью: хотела оказаться там, где никто не знает [PAWN_objective].</li>
+    <li>leave(PAWN_gender==Male)-&gt;[PAWN_nameDef] вспоминает, что ушёл из [colony] после пожара, уничтожившего почти все запасы, в надежде найти место получше.</li>
+    <li>leave(PAWN_gender==Female)-&gt;[PAWN_nameDef] вспоминает, что ушла из [colony] после пожара, уничтожившего почти все запасы, в надежде найти место получше.</li>
+    <li>leave(PAWN_gender==Male)-&gt;[PAWN_nameDef] признался, что ушёл из [colony] в спешке, взяв только одеяло и нож.</li>
+    <li>leave(PAWN_gender==Female)-&gt;[PAWN_nameDef] призналась, что ушла из [colony] в спешке, взяв только одеяло и нож.</li>
+    <li>leave(PAWN_gender==Male)-&gt;[PAWN_nameDef] объяснил, что пал духом в [colony] и отправился в путь пешком, не зная куда.</li>
+    <li>leave(PAWN_gender==Female)-&gt;[PAWN_nameDef] объяснила, что пала духом в [colony] и отправилась в путь пешком, не зная куда.</li>
+    <li>leave(PAWN_gender==Male)-&gt;[PAWN_nameDef] обмолвился, что ушёл из [colony] после ссоры и собирался скоро вернуться, но так и не вернулся.</li>
+    <li>leave(PAWN_gender==Female)-&gt;[PAWN_nameDef] обмолвилась, что ушла из [colony] после ссоры и собиралась скоро вернуться, но так и не вернулась.</li>
+    <li>lost(PAWN_gender==Male)-&gt;Глушь оказалась недоброй: еда кончилась за неделю, и [PAWN_pronoun] брёл дальше на ягодах и талом снеге.</li>
+    <li>lost(PAWN_gender==Female)-&gt;Глушь оказалась недоброй: еда кончилась за неделю, и [PAWN_pronoun] брела дальше на ягодах и талом снеге.</li>
+    <li>lost(PAWN_gender==Male)-&gt;Лихорадка накрыла [PAWN_objective] посреди пустоши, и несколько дней [PAWN_pronoun] пролежал в ознобе под каменным навесом.</li>
+    <li>lost(PAWN_gender==Female)-&gt;Лихорадка накрыла [PAWN_objective] посреди пустоши, и несколько дней [PAWN_pronoun] пролежала в ознобе под каменным навесом.</li>
+    <li>lost(PAWN_gender==Male)-&gt;[PAWN_nameDef] потерял тропу, потом воду, а потом и всякое понимание, в какой стороне дом.</li>
+    <li>lost(PAWN_gender==Female)-&gt;[PAWN_nameDef] потеряла тропу, потом воду, а потом и всякое понимание, в какой стороне дом.</li>
+    <li>lost(PAWN_gender==Male)-&gt;Голодный и полузамёрзший, [PAWN_pronoun] брёл по глуши, питаясь корнями и лужами.</li>
+    <li>lost(PAWN_gender==Female)-&gt;Голодная и полузамёрзший, [PAWN_pronoun] брела по глуши, питаясь корнями и лужами.</li>
+    <li>lost(PAWN_gender==Male)-&gt;Плохая вода, больной живот и лютая зима так ослабили [PAWN_objective], что идти дальше [PAWN_pronoun] уже не мог.</li>
+    <li>lost(PAWN_gender==Female)-&gt;Плохая вода, больной живот и лютая зима так ослабили [PAWN_objective], что идти дальше [PAWN_pronoun] уже не могла.</li>
+    <li>lost(PAWN_gender==Male)-&gt;Холодные ночи и пустые дни измотали [PAWN_objective] до того, что [PAWN_pronoun] едва держался на ногах.</li>
+    <li>lost(PAWN_gender==Female)-&gt;Холодные ночи и пустые дни измотали [PAWN_objective] до того, что [PAWN_pronoun] едва держалась на ногах.</li>
+    <li>tribe(hasFaction==True,PAWN_gender==Male)-&gt;Охотники фракции «[FACTION_name]» подобрали [PAWN_objective] на грани смерти, отнесли в свой лагерь и выходили, и [PAWN_pronoun] на годы остался среди них.</li>
+    <li>tribe(hasFaction==True,PAWN_gender==Female)-&gt;Охотники фракции «[FACTION_name]» подобрали [PAWN_objective] на грани смерти, отнесли в свой лагерь и выходили, и [PAWN_pronoun] на годы осталась среди них.</li>
+    <li>tribe(hasFaction==True,PAWN_gender==Male)-&gt;Люди фракции «[FACTION_name]» дали [PAWN_objective] место у огня и миску похлёбки из общего котла, и [PAWN_pronoun] прожил с ними много сезонов.</li>
+    <li>tribe(hasFaction==True,PAWN_gender==Female)-&gt;Люди фракции «[FACTION_name]» дали [PAWN_objective] место у огня и миску похлёбки из общего котла, и [PAWN_pronoun] прожила с ними много сезонов.</li>
+    <li>tribe(hasFaction==True,PAWN_gender==Male)-&gt;[PAWN_nameDef] попал к людям фракции «[FACTION_name]», перенял их обычаи и годами охотился и чинил сети рядом с ними.</li>
+    <li>tribe(hasFaction==True,PAWN_gender==Female)-&gt;[PAWN_nameDef] попала к людям фракции «[FACTION_name]», переняла их обычаи и годами охотилась и чинила сети рядом с ними.</li>
+    <li>tribe(hasFaction==True,PAWN_gender==Male)-&gt;Знахарка фракции «[FACTION_name]» выхаживала [PAWN_objective], пока не спал жар, и [PAWN_pronoun] ещё долго жил в их лагере.</li>
+    <li>tribe(hasFaction==True,PAWN_gender==Female)-&gt;Знахарка фракции «[FACTION_name]» выхаживала [PAWN_objective], пока не спал жар, и [PAWN_pronoun] ещё долго жила в их лагере.</li>
+    <li>tribe(hasFaction==True,PAWN_gender==Male)-&gt;Среди фракции «[FACTION_name]» [PAWN_pronoun] нашёл еду, тепло и работу, а сезоны шли, и никто их не считал.</li>
+    <li>tribe(hasFaction==True,PAWN_gender==Female)-&gt;Среди фракции «[FACTION_name]» [PAWN_pronoun] нашла еду, тепло и работу, а сезоны шли, и никто их не считал.</li>
+    <li>tribe(hasFaction==True,PAWN_gender==Male)-&gt;Караван фракции «[FACTION_name]» подобрал [PAWN_objective] у дороги, и годами [PAWN_pronoun] делил с этими людьми костры и работу.</li>
+    <li>tribe(hasFaction==True,PAWN_gender==Female)-&gt;Караван фракции «[FACTION_name]» подобрал [PAWN_objective] у дороги, и годами [PAWN_pronoun] делила с этими людьми костры и работу.</li>
+    <li>tribe(hasFaction==False,PAWN_gender==Male)-&gt;Охотники из ближнего племени подобрали [PAWN_objective] на грани смерти, отнесли в свой лагерь и выходили, и [PAWN_pronoun] на годы остался среди них.</li>
+    <li>tribe(hasFaction==False,PAWN_gender==Female)-&gt;Охотники из ближнего племени подобрали [PAWN_objective] на грани смерти, отнесли в свой лагерь и выходили, и [PAWN_pronoun] на годы осталась среди них.</li>
+    <li>tribe(hasFaction==False,PAWN_gender==Male)-&gt;Люди из кочевого племени дали [PAWN_objective] место у огня и миску похлёбки из общего котла, и [PAWN_pronoun] прожил с ними много сезонов.</li>
+    <li>tribe(hasFaction==False,PAWN_gender==Female)-&gt;Люди из кочевого племени дали [PAWN_objective] место у огня и миску похлёбки из общего котла, и [PAWN_pronoun] прожила с ними много сезонов.</li>
+    <li>tribe(hasFaction==False,PAWN_gender==Male)-&gt;[PAWN_nameDef] попал к кочевникам, перенял их обычаи и годами охотился и чинил сети рядом с ними.</li>
+    <li>tribe(hasFaction==False,PAWN_gender==Female)-&gt;[PAWN_nameDef] попала к кочевникам, переняла их обычаи и годами охотилась и чинила сети рядом с ними.</li>
+    <li>tribe(hasFaction==False,PAWN_gender==Male)-&gt;Знахарка из небольшого племени выхаживала [PAWN_objective], пока не спал жар, и [PAWN_pronoun] ещё долго жил в их лагере.</li>
+    <li>tribe(hasFaction==False,PAWN_gender==Female)-&gt;Знахарка из небольшого племени выхаживала [PAWN_objective], пока не спал жар, и [PAWN_pronoun] ещё долго жила в их лагере.</li>
+    <li>tribe(hasFaction==False,PAWN_gender==Male)-&gt;Среди кочевников [PAWN_pronoun] нашёл еду, тепло и работу, а сезоны шли, и никто их не считал.</li>
+    <li>tribe(hasFaction==False,PAWN_gender==Female)-&gt;Среди кочевников [PAWN_pronoun] нашла еду, тепло и работу, а сезоны шли, и никто их не считал.</li>
+    <li>tribe(hasFaction==False,PAWN_gender==Male)-&gt;Странствующий караван подобрал [PAWN_objective] у дороги, и годами [PAWN_pronoun] делил с этими людьми костры и работу.</li>
+    <li>tribe(hasFaction==False,PAWN_gender==Female)-&gt;Странствующий караван подобрал [PAWN_objective] у дороги, и годами [PAWN_pronoun] делила с этими людьми костры и работу.</li>
+    <li>farewell(PAWN_gender==Male)-&gt;Одной весной [PAWN_nameDef] почувствовал, что пора идти дальше, и они расстались без обиды с обеих сторон.</li>
+    <li>farewell(PAWN_gender==Female)-&gt;Одной весной [PAWN_nameDef] почувствовала, что пора идти дальше, и они расстались без обиды с обеих сторон.</li>
+    <li>farewell(PAWN_gender==Male)-&gt;Никто не удерживал [PAWN_objective], когда [PAWN_pronoun] сказал, что хочет увидеть мир шире, и [PAWN_pronoun] ушёл с полным мешком и тёплыми словами на прощание.</li>
+    <li>farewell(PAWN_gender==Female)-&gt;Никто не удерживал [PAWN_objective], когда [PAWN_pronoun] сказала, что хочет увидеть мир шире, и [PAWN_pronoun] ушла с полным мешком и тёплыми словами на прощание.</li>
+    <li>farewell(PAWN_gender==Male)-&gt;[PAWN_nameDef] перерос это место и ушёл по-хорошему, ничего не обещая и ничего никому не задолжав.</li>
+    <li>farewell(PAWN_gender==Female)-&gt;[PAWN_nameDef] переросла это место и ушла по-хорошему, ничего не обещая и ничего никому не задолжав.</li>
+    <li>farewell(PAWN_gender==Male)-&gt;[PAWN_nameDef] снова почувствовал старое беспокойство, и расставание вышло тихим и дружеским, без обещаний встретиться.</li>
+    <li>farewell(PAWN_gender==Female)-&gt;[PAWN_nameDef] снова почувствовала старое беспокойство, и расставание вышло тихим и дружеским, без обещаний встретиться.</li>
+    <li>farewell(PAWN_gender==Male)-&gt;Когда земля оскудела и остальные собрались идти в другую сторону, [PAWN_nameDef] выбрал свой путь, и никто не стал упрекать [PAWN_objective].</li>
+    <li>farewell(PAWN_gender==Female)-&gt;Когда земля оскудела и остальные собрались идти в другую сторону, [PAWN_nameDef] выбрала свой путь, и никто не стал упрекать [PAWN_objective].</li>
+    <li>farewell(PAWN_gender==Male)-&gt;[PAWN_pronoun] ушёл с оттепелью, взяв мешок вяленого мяса и чужую куртку, и ни у кого не осталось зла.</li>
+    <li>farewell(PAWN_gender==Female)-&gt;[PAWN_pronoun] ушла с оттепелью, взяв мешок вяленого мяса и чужую куртку, и ни у кого не осталось зла.</li>
+    <li>arrival(PAWN_gender==Male)-&gt;Снова один, [PAWN_nameDef] шёл по старым тропам, пока не наткнулся на вашу колонию.</li>
+    <li>arrival(PAWN_gender==Female)-&gt;Снова одна, [PAWN_nameDef] шла по старым тропам, пока не наткнулась на вашу колонию.</li>
+    <li>arrival(PAWN_gender==Male)-&gt;После нескольких дней пути [PAWN_pronoun] увидел на горизонте вашу колонию и решил, что это место ничем не хуже других.</li>
+    <li>arrival(PAWN_gender==Female)-&gt;После нескольких дней пути [PAWN_pronoun] увидела на горизонте вашу колонию и решила, что это место ничем не хуже других.</li>
+    <li>arrival(PAWN_gender==Male)-&gt;От случайного путника [PAWN_nameDef] узнал, что вашей колонии нужны рабочие руки, и пришёл проверить, правда ли это.</li>
+    <li>arrival(PAWN_gender==Female)-&gt;От случайного путника [PAWN_nameDef] узнала, что вашей колонии нужны рабочие руки, и пришла проверить, правда ли это.</li>
+    <li>arrival(PAWN_gender==Male)-&gt;Уставший от дороги, [PAWN_pronoun] спросил у ваших ворот, найдётся ли место ещё для одного человека.</li>
+    <li>arrival(PAWN_gender==Female)-&gt;Уставшая от дороги, [PAWN_pronoun] спросила у ваших ворот, найдётся ли место ещё для одного человека.</li>
+    <li>arrival(PAWN_gender==Male)-&gt;Дорога закончилась у вашей колонии, и [PAWN_nameDef] не увидел причин идти дальше.</li>
+    <li>arrival(PAWN_gender==Female)-&gt;Дорога закончилась у вашей колонии, и [PAWN_nameDef] не увидела причин идти дальше.</li>
+    <li>arrival(PAWN_gender==Male)-&gt;Холодный дождь погнал [PAWN_objective] к первым стенам, которые [PAWN_pronoun] увидел, и это оказались стены вашей колонии.</li>
+    <li>arrival(PAWN_gender==Female)-&gt;Холодный дождь погнал [PAWN_objective] к первым стенам, которые [PAWN_pronoun] увидела, и это оказались стены вашей колонии.</li>
+  </PastLives_Story_Tribe.rulePack.rulesStrings>
 
   <PastLives_Story_Road.rulePack.rulesStrings>
-    <li>r_story->[past] [now] [comrade]</li>
-    <li>past(hasFaction==True,PAWN_gender==Male)->После [colony] [PAWN_nameDef] годами странствовал и торговал с фракцией «[FACTION_name]».</li>
-    <li>past(hasFaction==True,PAWN_gender==Female)->После [colony] [PAWN_nameDef] годами странствовала и торговала с фракцией «[FACTION_name]».</li>
-    <li>past(hasFaction==False,PAWN_gender==Male)->После [colony] [PAWN_nameDef] годами странствовал и торговал где придётся.</li>
-    <li>past(hasFaction==False,PAWN_gender==Female)->После [colony] [PAWN_nameDef] годами странствовала и торговала где придётся.</li>
-    <li>now(hasHome==True,PAWN_gender==Male)->Теперь он путешествует с фракцией «[HOME_name]» и рад видеть дружеское поселение.</li>
-    <li>now(hasHome==True,PAWN_gender==Female)->Теперь она путешествует с фракцией «[HOME_name]» и рада видеть дружеское поселение.</li>
-    <li>now(hasHome==False)->Теперь [PAWN_pronoun] путешествует в одиночку.</li>
+    <li>r_story-&gt;[past] [now] [childhood] [comrade]</li>
+    <li>past(hasFaction==True,PAWN_gender==Male)-&gt;После [colony] [PAWN_pronoun] провёл годы в дороге, торгуя с караванами фракции «[FACTION_name]» и запоминая, какие перевалы зимой остаются проходимыми.</li>
+    <li>past(hasFaction==True,PAWN_gender==Female)-&gt;После [colony] [PAWN_pronoun] провела годы в дороге, торгуя с караванами фракции «[FACTION_name]» и запоминая, какие перевалы зимой остаются проходимыми.</li>
+    <li>past(hasFaction==False,PAWN_gender==Male)-&gt;После [colony] [PAWN_pronoun] провёл годы в дороге, торгуя с местными купцами и запоминая, какие перевалы зимой остаются проходимыми.</li>
+    <li>past(hasFaction==False,PAWN_gender==Female)-&gt;После [colony] [PAWN_pronoun] провела годы в дороге, торгуя с местными купцами и запоминая, какие перевалы зимой остаются проходимыми.</li>
+    <li>past(hasFaction==True,PAWN_gender==Male)-&gt;[PAWN_nameDef] ушёл из [colony] и долгие сезоны водил вьючных животных для фракции «[FACTION_name]».</li>
+    <li>past(hasFaction==True,PAWN_gender==Female)-&gt;[PAWN_nameDef] ушла из [colony] и долгие сезоны водила вьючных животных для фракции «[FACTION_name]».</li>
+    <li>past(hasFaction==False,PAWN_gender==Male)-&gt;[PAWN_nameDef] ушёл из [colony] и долгие сезоны водил вьючных животных для тех купцов, что соглашались платить.</li>
+    <li>past(hasFaction==False,PAWN_gender==Female)-&gt;[PAWN_nameDef] ушла из [colony] и долгие сезоны водила вьючных животных для тех купцов, что соглашались платить.</li>
+    <li>past(hasFaction==True,PAWN_gender==Male)-&gt;После [colony] дорога стала для него новым домом, а караваны фракции «[FACTION_name]» — семьёй.</li>
+    <li>past(hasFaction==True,PAWN_gender==Female)-&gt;После [colony] дорога стала для неё новым домом, а караваны фракции «[FACTION_name]» — семьёй.</li>
+    <li>past(hasFaction==False,PAWN_gender==Male)-&gt;После [colony] дорога стала для него новым домом, а попутные караваны — семьёй.</li>
+    <li>past(hasFaction==False,PAWN_gender==Female)-&gt;После [colony] дорога стала для неё новым домом, а попутные караваны — семьёй.</li>
+    <li>past(hasFaction==True,PAWN_gender==Male)-&gt;После ухода из [colony] [PAWN_pronoun] годами шёл рядом с повозками фракции «[FACTION_name]», торгуясь за соль, ткань и лекарства.</li>
+    <li>past(hasFaction==True,PAWN_gender==Female)-&gt;После ухода из [colony] [PAWN_pronoun] годами шла рядом с повозками фракции «[FACTION_name]», торгуясь за соль, ткань и лекарства.</li>
+    <li>past(hasFaction==False,PAWN_gender==Male)-&gt;После ухода из [colony] [PAWN_pronoun] годами шёл рядом с купеческими повозками, торгуясь за соль, ткань и лекарства.</li>
+    <li>past(hasFaction==False,PAWN_gender==Female)-&gt;После ухода из [colony] [PAWN_pronoun] годами шла рядом с купеческими повозками, торгуясь за соль, ткань и лекарства.</li>
+    <li>past(hasFaction==True,PAWN_gender==Male)-&gt;После [colony] [PAWN_nameDef] нашёл работу у караванщиков фракции «[FACTION_name]», и торговые тракты стали ему домом.</li>
+    <li>past(hasFaction==True,PAWN_gender==Female)-&gt;После [colony] [PAWN_nameDef] нашла работу у караванщиков фракции «[FACTION_name]», и торговые тракты стали ей домом.</li>
+    <li>past(hasFaction==False,PAWN_gender==Male)-&gt;После [colony] [PAWN_nameDef] нашёл работу у бродячих караванщиков, и торговые тракты стали ему домом.</li>
+    <li>past(hasFaction==False,PAWN_gender==Female)-&gt;После [colony] [PAWN_nameDef] нашла работу у бродячих караванщиков, и торговые тракты стали ей домом.</li>
+    <li>past(hasFaction==True,PAWN_gender==Male)-&gt;Со времён ухода из [colony] [PAWN_nameDef] знал лишь дороги, костры и учётные книги фракции «[FACTION_name]».</li>
+    <li>past(hasFaction==True,PAWN_gender==Female)-&gt;Со времён ухода из [colony] [PAWN_nameDef] знала лишь дороги, костры и учётные книги фракции «[FACTION_name]».</li>
+    <li>past(hasFaction==False,PAWN_gender==Male)-&gt;Со времён ухода из [colony] [PAWN_nameDef] знал лишь дороги, костры и учётные книги бродячих торговцев.</li>
+    <li>past(hasFaction==False,PAWN_gender==Female)-&gt;Со времён ухода из [colony] [PAWN_nameDef] знала лишь дороги, костры и учётные книги бродячих торговцев.</li>
+    <li>now(hasHome==True,PAWN_gender==Male)-&gt;Теперь [PAWN_nameDef] путешествует с караванами фракции «[HOME_name]» и рад видеть дружелюбное поселение.</li>
+    <li>now(hasHome==True,PAWN_gender==Female)-&gt;Теперь [PAWN_nameDef] путешествует с караванами фракции «[HOME_name]» и рада видеть дружелюбное поселение.</li>
+    <li>now(hasHome==False,PAWN_gender==Male)-&gt;Теперь [PAWN_nameDef] путешествует один с парой вьючных животных и рад видеть дружелюбное поселение.</li>
+    <li>now(hasHome==False,PAWN_gender==Female)-&gt;Теперь [PAWN_nameDef] путешествует одна с парой вьючных животных и рада видеть дружелюбное поселение.</li>
+    <li>now(hasHome==True,PAWN_gender==Male)-&gt;Сегодня [PAWN_nameDef] пришёл с караваном фракции «[HOME_name]», усталый с дороги, но рад найти приветливую колонию.</li>
+    <li>now(hasHome==True,PAWN_gender==Female)-&gt;Сегодня [PAWN_nameDef] пришла с караваном фракции «[HOME_name]», усталая с дороги, но рада найти приветливую колонию.</li>
+    <li>now(hasHome==False,PAWN_gender==Male)-&gt;Сегодня [PAWN_nameDef] пришёл с небольшим караваном, усталый с дороги, но рад найти приветливую колонию.</li>
+    <li>now(hasHome==False,PAWN_gender==Female)-&gt;Сегодня [PAWN_nameDef] пришла с небольшим караваном, усталая с дороги, но рада найти приветливую колонию.</li>
+    <li>now(hasHome==True,PAWN_gender==Male)-&gt;Теперь [PAWN_nameDef] кочует с места на место в обозе фракции «[HOME_name]», и любому приветливому крову [PAWN_pronoun] рад.</li>
+    <li>now(hasHome==True,PAWN_gender==Female)-&gt;Теперь [PAWN_nameDef] кочует с места на место в обозе фракции «[HOME_name]», и любому приветливому крову [PAWN_pronoun] рада.</li>
+    <li>now(hasHome==False,PAWN_gender==Male)-&gt;Теперь [PAWN_nameDef] кочует с места на место один, и любому приветливому крову [PAWN_pronoun] рад.</li>
+    <li>now(hasHome==False,PAWN_gender==Female)-&gt;Теперь [PAWN_nameDef] кочует с места на место одна, и любому приветливому крову [PAWN_pronoun] рада.</li>
+    <li>now(hasHome==True)-&gt;В эти дни [PAWN_nameDef] ездит с торговцами фракции «[HOME_name]» и охотно задерживается в поселениях, где встречают по-доброму.</li>
+    <li>now(hasHome==False)-&gt;В эти дни [PAWN_nameDef] ездит с попутными торговцами и охотно задерживается в поселениях, где встречают по-доброму.</li>
+    <li>now(hasHome==True,PAWN_gender==Male)-&gt;Дорога привела [PAWN_objective] сюда вместе с людьми фракции «[HOME_name]», и [PAWN_nameDef] рад видеть дружелюбные лица.</li>
+    <li>now(hasHome==True,PAWN_gender==Female)-&gt;Дорога привела [PAWN_objective] сюда вместе с людьми фракции «[HOME_name]», и [PAWN_nameDef] рада видеть дружелюбные лица.</li>
+    <li>now(hasHome==False,PAWN_gender==Male)-&gt;Дорога привела [PAWN_objective] сюда с одним лишь нагруженным вьючным животным, и [PAWN_nameDef] рад видеть дружелюбные лица.</li>
+    <li>now(hasHome==False,PAWN_gender==Female)-&gt;Дорога привела [PAWN_objective] сюда с одним лишь нагруженным вьючным животным, и [PAWN_nameDef] рада видеть дружелюбные лица.</li>
+    <li>now(hasHome==True,PAWN_gender==Male)-&gt;[PAWN_nameDef] снова в пути с караванами фракции «[HOME_name]» и доволен, что эта остановка — у друзей.</li>
+    <li>now(hasHome==True,PAWN_gender==Female)-&gt;[PAWN_nameDef] снова в пути с караванами фракции «[HOME_name]» и довольна, что эта остановка — у друзей.</li>
+    <li>now(hasHome==False,PAWN_gender==Male)-&gt;[PAWN_nameDef] снова в пути с тяжёлой поклажей за плечами и доволен, что эта остановка — у друзей.</li>
+    <li>now(hasHome==False,PAWN_gender==Female)-&gt;[PAWN_nameDef] снова в пути с тяжёлой поклажей за плечами и довольна, что эта остановка — у друзей.</li>
   </PastLives_Story_Road.rulePack.rulesStrings>
 
   <PastLives_Story_Settled.rulePack.rulesStrings>
-    <li>r_story->[past] [now] [comrade]</li>
-    <li>past->[PAWN_nameDef] говорит, что до сих пор иногда видит во сне жизнь в [colony].</li>
-    <li>now(hasHome==True,PAWN_gender==Male)->Теперь он живёт среди фракции «[HOME_name]» и нашёл там тихий покой.</li>
-    <li>now(hasHome==True,PAWN_gender==Female)->Теперь она живёт среди фракции «[HOME_name]» и нашла там тихий покой.</li>
-    <li>now(hasHome==False,PAWN_gender==Male)->Теперь он нашёл тихий покой.</li>
-    <li>now(hasHome==False,PAWN_gender==Female)->Теперь она нашла тихий покой.</li>
+    <li>r_story-&gt;[past] [now] [childhood] [comrade]</li>
+    <li>past-&gt;[PAWN_nameDef] до сих пор вспоминает о [colony] и порой видит во сне знакомые стены и запах общей кухни.</li>
+    <li>past-&gt;Иногда по ночам [PAWN_nameDef] снова оказывается в [colony] и видит знакомые лица за общим столом.</li>
+    <li>past(PAWN_gender==Male)-&gt;[PAWN_pronoun] так и не перестал думать о [colony], хотя годы стёрли большую часть того, что там было.</li>
+    <li>past(PAWN_gender==Female)-&gt;[PAWN_pronoun] так и не перестала думать о [colony], хотя годы стёрли большую часть того, что там было.</li>
+    <li>past-&gt;В тихие минуты [PAWN_nameDef] вспоминает о [colony], как давно слышанную мелодию.</li>
+    <li>past-&gt;[PAWN_nameDef] часто просыпается ночью с мыслью о [colony] и не сразу понимает, где находится.</li>
+    <li>past-&gt;Спустя годы [PAWN_nameDef] всё ещё хранит в памяти кусочек жизни в [colony]: утренний гомон у колодца.</li>
+    <li>now(hasHome==True,PAWN_gender==Male)-&gt;Теперь [PAWN_nameDef] осел среди фракции «[HOME_name]» и обрёл немного покоя.</li>
+    <li>now(hasHome==True,PAWN_gender==Female)-&gt;Теперь [PAWN_nameDef] осела среди фракции «[HOME_name]» и обрела немного покоя.</li>
+    <li>now(hasHome==False,PAWN_gender==Male)-&gt;Теперь [PAWN_nameDef] осел в тихом уголке мира и обрёл немного покоя.</li>
+    <li>now(hasHome==False,PAWN_gender==Female)-&gt;Теперь [PAWN_nameDef] осела в тихом уголке мира и обрела немного покоя.</li>
+    <li>now(hasHome==True)-&gt;В эти дни [PAWN_nameDef] живёт среди фракции «[HOME_name]», возделывает небольшой надел и спит, не держа оружие под рукой.</li>
+    <li>now(hasHome==False)-&gt;В эти дни [PAWN_nameDef] живёт на окраине маленького посёлка, возделывает небольшой надел и спит, не держа оружие под рукой.</li>
+    <li>now(hasHome==True,PAWN_gender==Male)-&gt;[PAWN_nameDef] нашёл место среди фракции «[HOME_name]» и, наконец, хоть немного покоя.</li>
+    <li>now(hasHome==True,PAWN_gender==Female)-&gt;[PAWN_nameDef] нашла место среди фракции «[HOME_name]» и, наконец, хоть немного покоя.</li>
+    <li>now(hasHome==False,PAWN_gender==Male)-&gt;[PAWN_nameDef] нашёл тихое место, которое можно назвать своим, и, наконец, хоть немного покоя.</li>
+    <li>now(hasHome==False,PAWN_gender==Female)-&gt;[PAWN_nameDef] нашла тихое место, которое можно назвать своим, и, наконец, хоть немного покоя.</li>
+    <li>now(hasHome==True,PAWN_gender==Male)-&gt;Среди фракции «[HOME_name]» [PAWN_nameDef] теперь просто один из жителей, и этого достаточно.</li>
+    <li>now(hasHome==True,PAWN_gender==Female)-&gt;Среди фракции «[HOME_name]» [PAWN_nameDef] теперь просто одна из жительниц, и этого достаточно.</li>
+    <li>now(hasHome==False,PAWN_gender==Male)-&gt;В глухом хуторе [PAWN_nameDef] теперь просто один из жителей, и этого достаточно.</li>
+    <li>now(hasHome==False,PAWN_gender==Female)-&gt;В глухом хуторе [PAWN_nameDef] теперь просто одна из жительниц, и этого достаточно.</li>
+    <li>now(hasHome==True)-&gt;Жизнь среди фракции «[HOME_name]» проста, а порой сурова, но [PAWN_nameDef] наконец спит до утра.</li>
+    <li>now(hasHome==False)-&gt;Жизнь на собственном клочке земли проста, а порой сурова, но [PAWN_nameDef] наконец спит до утра.</li>
+    <li>now(hasHome==True,PAWN_gender==Male)-&gt;Теперь [PAWN_nameDef] свой среди людей фракции «[HOME_name]», и былая тревога почти улеглась.</li>
+    <li>now(hasHome==True,PAWN_gender==Female)-&gt;Теперь [PAWN_nameDef] своя среди людей фракции «[HOME_name]», и былая тревога почти улеглась.</li>
+    <li>now(hasHome==False)-&gt;Теперь [PAWN_nameDef] держит небольшое хозяйство вдали от бед, и былая тревога почти улеглась.</li>
   </PastLives_Story_Settled.rulePack.rulesStrings>
 
-  <!-- Рейдеры -->
+  <PastLives_Story_Mercenary.rulePack.rulesStrings>
+    <li>r_story-&gt;[past] [now] [childhood] [comrade]</li>
+    <li>past(hasFaction==True,PAWN_gender==Male)-&gt;После [colony] [PAWN_nameDef] нанялся охранником к фракции «[FACTION_name]» и годами сторожил обозы и заставы.</li>
+    <li>past(hasFaction==True,PAWN_gender==Female)-&gt;После [colony] [PAWN_nameDef] нанялась охранником к фракции «[FACTION_name]» и годами сторожила обозы и заставы.</li>
+    <li>past(hasFaction==False,PAWN_gender==Male)-&gt;После [colony] [PAWN_nameDef] нанялся охранником к первому купцу, что заплатил, и годами сторожил обозы и заставы.</li>
+    <li>past(hasFaction==False,PAWN_gender==Female)-&gt;После [colony] [PAWN_nameDef] нанялась охранником к первому купцу, что заплатил, и годами сторожила обозы и заставы.</li>
+    <li>past(hasFaction==True,PAWN_gender==Male)-&gt;Уйдя из [colony], [PAWN_nameDef] поступил на службу к фракции «[FACTION_name]» и долгими холодными ночами стоял в карауле за скромную плату.</li>
+    <li>past(hasFaction==True,PAWN_gender==Female)-&gt;Уйдя из [colony], [PAWN_nameDef] поступила на службу к фракции «[FACTION_name]» и долгими холодными ночами стояла в карауле за скромную плату.</li>
+    <li>past(hasFaction==False,PAWN_gender==Male)-&gt;Уйдя из [colony], [PAWN_nameDef] поступил на службу к первому же караванщику, что платил, и долгими холодными ночами стоял в карауле.</li>
+    <li>past(hasFaction==False,PAWN_gender==Female)-&gt;Уйдя из [colony], [PAWN_nameDef] поступила на службу к первому же караванщику, что платил, и долгими холодными ночами стояла в карауле.</li>
+    <li>past(hasFaction==True,PAWN_gender==Male)-&gt;После [colony] потянулись годы службы у фракции «[FACTION_name]»: [PAWN_nameDef] сражался, когда приказывали, и редко спрашивал, зачем.</li>
+    <li>past(hasFaction==True,PAWN_gender==Female)-&gt;После [colony] потянулись годы службы у фракции «[FACTION_name]»: [PAWN_nameDef] сражалась, когда приказывали, и редко спрашивала, зачем.</li>
+    <li>past(hasFaction==False,PAWN_gender==Male)-&gt;После [colony] потянулись годы наёмной службы: [PAWN_nameDef] сражался, когда приказывали, и редко спрашивал, зачем.</li>
+    <li>past(hasFaction==False,PAWN_gender==Female)-&gt;После [colony] потянулись годы наёмной службы: [PAWN_nameDef] сражалась, когда приказывали, и редко спрашивала, зачем.</li>
+    <li>past(hasFaction==True,PAWN_gender==Male)-&gt;Уйдя из [colony], [PAWN_nameDef] брал солдатское жалованье у фракции «[FACTION_name]» и научился ходить в конвое и стоять на часах.</li>
+    <li>past(hasFaction==True,PAWN_gender==Female)-&gt;Уйдя из [colony], [PAWN_nameDef] брала солдатское жалованье у фракции «[FACTION_name]» и научилась ходить в конвое и стоять на часах.</li>
+    <li>past(hasFaction==False,PAWN_gender==Male)-&gt;Уйдя из [colony], [PAWN_nameDef] брал солдатское жалованье у любого, кому нужно было ружьё, и научился ходить в конвое и стоять на часах.</li>
+    <li>past(hasFaction==False,PAWN_gender==Female)-&gt;Уйдя из [colony], [PAWN_nameDef] брала солдатское жалованье у любого, кому нужно было ружьё, и научилась ходить в конвое и стоять на часах.</li>
+    <li>past(hasFaction==True,PAWN_gender==Male)-&gt;После [colony] [PAWN_nameDef] вступил в отряд наёмников фракции «[FACTION_name]», променяв прежние клятвы на сытный ужин и койку.</li>
+    <li>past(hasFaction==True,PAWN_gender==Female)-&gt;После [colony] [PAWN_nameDef] вступила в отряд наёмников фракции «[FACTION_name]», променяв прежние клятвы на сытный ужин и койку.</li>
+    <li>past(hasFaction==False,PAWN_gender==Male)-&gt;После [colony] [PAWN_nameDef] вступил в отряд наёмников, променяв прежние клятвы на сытный ужин и койку.</li>
+    <li>past(hasFaction==False,PAWN_gender==Female)-&gt;После [colony] [PAWN_nameDef] вступила в отряд наёмников, променяв прежние клятвы на сытный ужин и койку.</li>
+    <li>past(hasFaction==True,PAWN_gender==Male)-&gt;Годами после ухода из [colony] [PAWN_nameDef] ходил в патрули и держал дорожные заставы для фракции «[FACTION_name]».</li>
+    <li>past(hasFaction==True,PAWN_gender==Female)-&gt;Годами после ухода из [colony] [PAWN_nameDef] ходила в патрули и держала дорожные заставы для фракции «[FACTION_name]».</li>
+    <li>past(hasFaction==False,PAWN_gender==Male)-&gt;Годами после ухода из [colony] [PAWN_nameDef] ходил в патрули и держал дорожные заставы для любого, кто платил.</li>
+    <li>past(hasFaction==False,PAWN_gender==Female)-&gt;Годами после ухода из [colony] [PAWN_nameDef] ходила в патрули и держала дорожные заставы для любого, кто платил.</li>
+    <li>now(hasHome==True)-&gt;Теперь [PAWN_nameDef] едет в охране людей фракции «[HOME_name]», и дорога привела их сюда.</li>
+    <li>now(hasHome==False)-&gt;Теперь [PAWN_nameDef] едет с горсткой наёмников, и дорога привела их сюда.</li>
+    <li>now(hasHome==True,PAWN_gender==Male)-&gt;Сегодня [PAWN_nameDef] пришёл с людьми фракции «[HOME_name]», ружьё за плечом, взгляд на горизонте.</li>
+    <li>now(hasHome==True,PAWN_gender==Female)-&gt;Сегодня [PAWN_nameDef] пришла с людьми фракции «[HOME_name]», ружьё за плечом, взгляд на горизонте.</li>
+    <li>now(hasHome==False,PAWN_gender==Male)-&gt;Сегодня [PAWN_nameDef] пришёл с небольшим наёмным отрядом, ружьё за плечом, взгляд на горизонте.</li>
+    <li>now(hasHome==False,PAWN_gender==Female)-&gt;Сегодня [PAWN_nameDef] пришла с небольшим наёмным отрядом, ружьё за плечом, взгляд на горизонте.</li>
+    <li>now(hasHome==True)-&gt;В эти дни [PAWN_nameDef] служит бок о бок с людьми фракции «[HOME_name]» и идёт туда, куда ведёт дорога.</li>
+    <li>now(hasHome==False)-&gt;В эти дни [PAWN_nameDef] служит бок о бок с другими наёмниками и идёт туда, где есть работа.</li>
+    <li>now(hasHome==True)-&gt;Теперь [PAWN_nameDef] едет с людьми фракции «[HOME_name]» и несёт караул, пока остальные отдыхают.</li>
+    <li>now(hasHome==False)-&gt;Теперь [PAWN_nameDef] едет со случайными спутниками-наёмниками и несёт караул, пока остальные отдыхают.</li>
+    <li>now(hasHome==True)-&gt;Сейчас [PAWN_pronoun] шагает среди бойцов фракции «[HOME_name]», ещё одна надёжная пара рук на долгой дороге.</li>
+    <li>now(hasHome==False)-&gt;Сейчас [PAWN_pronoun] шагает в небольшом отряде наёмников, ещё одна надёжная пара рук на долгой дороге.</li>
+    <li>now(hasHome==True)-&gt;Теперь [PAWN_nameDef] сторожит повозки фракции «[HOME_name]» в пути, и их дорога пролегла через эти места.</li>
+    <li>now(hasHome==False)-&gt;Теперь [PAWN_nameDef] сторожит чужие повозки в пути, и их дорога пролегла через эти места.</li>
+  </PastLives_Story_Mercenary.rulePack.rulesStrings>
 
   <PastLives_Story_Turned.rulePack.rulesStrings>
-    <li>r_story->[fall] [now]</li>
-    <li>fall(PAWN_gender==Male)->Говорят, жизнь в [colony] кончилась пожаром, и [PAWN_nameDef] — один из немногих, кто тогда уцелел.</li>
-    <li>fall(PAWN_gender==Female)->Говорят, жизнь в [colony] кончилась пожаром, и [PAWN_nameDef] — одна из немногих, кто тогда уцелел.</li>
-    <li>now(hasHome==True,PAWN_gender==Male)->Голод привёл его к фракции «[HOME_name]», и он больше не спрашивает, чей дом жжёт.</li>
-    <li>now(hasHome==True,PAWN_gender==Female)->Голод привёл её к фракции «[HOME_name]», и она больше не спрашивает, чей дом жжёт.</li>
-    <li>now(hasHome==False)->Голод научил [PAWN_objective] брать чужое.</li>
+    <li>r_story-&gt;[fall] [now] [childhood]</li>
+    <li>fall(PAWN_gender==Male)-&gt;Из [colony] после ночи огня выбрались немногие, и [PAWN_nameDef] был среди них.</li>
+    <li>fall(PAWN_gender==Female)-&gt;Из [colony] после ночи огня выбрались немногие, и [PAWN_nameDef] была среди них.</li>
+    <li>fall(PAWN_gender==Male)-&gt;В [colony] всё сгорело дотла, и [PAWN_nameDef] оказался среди горстки выживших, у которых не осталось ничего, кроме одежды на плечах.</li>
+    <li>fall(PAWN_gender==Female)-&gt;В [colony] всё сгорело дотла, и [PAWN_nameDef] оказалась среди горстки выживших, у которых не осталось ничего, кроме одежды на плечах.</li>
+    <li>fall(PAWN_gender==Male)-&gt;Из [colony] [PAWN_nameDef] выбрался вместе с несколькими уцелевшими, и тишина после пожара оказалась хуже самого огня.</li>
+    <li>fall(PAWN_gender==Female)-&gt;Из [colony] [PAWN_nameDef] выбралась вместе с несколькими уцелевшими, и тишина после пожара оказалась хуже самого огня.</li>
+    <li>fall(PAWN_gender==Male)-&gt;После той ночи в [colony] выжили немногие. [PAWN_nameDef] был одним из них, с дымом в лёгких и без единого человека, к кому можно вернуться.</li>
+    <li>fall(PAWN_gender==Female)-&gt;После той ночи в [colony] выжили немногие. [PAWN_nameDef] была одной из них, с дымом в лёгких и без единого человека, к кому можно вернуться.</li>
+    <li>fall(PAWN_gender==Male)-&gt;После гибели [colony] [PAWN_nameDef] долго бродил среди обгоревших стен, пока не осталось ничего, что стоило бы искать.</li>
+    <li>fall(PAWN_gender==Female)-&gt;После гибели [colony] [PAWN_nameDef] долго бродила среди обгоревших стен, пока не осталось ничего, что стоило бы искать.</li>
+    <li>fall(PAWN_gender==Male)-&gt;[PAWN_nameDef] уцелел в огне, что уничтожил жизнь в [colony], но потерял всех, кого стоило спасать.</li>
+    <li>fall(PAWN_gender==Female)-&gt;[PAWN_nameDef] уцелела в огне, что уничтожил жизнь в [colony], но потеряла всех, кого стоило спасать.</li>
+    <li>now(hasHome==True)-&gt;Голод и горе привели [PAWN_objective] к фракции «[HOME_name]», и теперь [PAWN_pronoun] ходит в набеги вместе с её бойцами и не спрашивает, чей дом горит.</li>
+    <li>now(hasHome==False)-&gt;Голод и горе привели [PAWN_objective] к шайке налётчиков, и теперь [PAWN_pronoun] ходит в набеги вместе с ними и не спрашивает, чей дом горит.</li>
+    <li>now(hasHome==True,PAWN_gender==Male)-&gt;Теперь [PAWN_nameDef] идёт в набег с бойцами фракции «[HOME_name]», слишком опустошён, чтобы спрашивать, чья крыша горит этой ночью.</li>
+    <li>now(hasHome==True,PAWN_gender==Female)-&gt;Теперь [PAWN_nameDef] идёт в набег с бойцами фракции «[HOME_name]», слишком опустошена, чтобы спрашивать, чья крыша горит этой ночью.</li>
+    <li>now(hasHome==False,PAWN_gender==Male)-&gt;Теперь [PAWN_nameDef] идёт в набег с шайкой налётчиков, слишком опустошён, чтобы спрашивать, чья крыша горит этой ночью.</li>
+    <li>now(hasHome==False,PAWN_gender==Female)-&gt;Теперь [PAWN_nameDef] идёт в набег с шайкой налётчиков, слишком опустошена, чтобы спрашивать, чья крыша горит этой ночью.</li>
+    <li>now(hasHome==True,PAWN_gender==Male)-&gt;Когда зима и голод не оставили выбора, [PAWN_nameDef] примкнул к фракции «[HOME_name]», а горе сделало эту работу лёгкой.</li>
+    <li>now(hasHome==True,PAWN_gender==Female)-&gt;Когда зима и голод не оставили выбора, [PAWN_nameDef] примкнула к фракции «[HOME_name]», а горе сделало эту работу лёгкой.</li>
+    <li>now(hasHome==False,PAWN_gender==Male)-&gt;Когда зима и голод не оставили выбора, [PAWN_nameDef] примкнул к шайке налётчиков, а горе сделало эту работу лёгкой.</li>
+    <li>now(hasHome==False,PAWN_gender==Female)-&gt;Когда зима и голод не оставили выбора, [PAWN_nameDef] примкнула к шайке налётчиков, а горе сделало эту работу лёгкой.</li>
+    <li>now(hasHome==True)-&gt;Теперь [PAWN_pronoun] сражается бок о бок с бойцами фракции «[HOME_name]» и уже не замирает при виде горящего дома.</li>
+    <li>now(hasHome==False)-&gt;Теперь [PAWN_pronoun] сражается бок о бок с другими налётчиками и уже не замирает при виде горящего дома.</li>
+    <li>now(hasHome==True)-&gt;Теперь [PAWN_nameDef] нападает под знамёнами фракции «[HOME_name]», и [PAWN_pronoun] уже не думает о том, чьи стены рухнут.</li>
+    <li>now(hasHome==False)-&gt;Теперь [PAWN_nameDef] нападает в составе потрёпанной шайки, и [PAWN_pronoun] уже не думает о том, чьи стены рухнут.</li>
+    <li>now(hasHome==True)-&gt;Горе и голод вели [PAWN_objective] от порога к порогу, пока не привели к фракции «[HOME_name]»; теперь [PAWN_pronoun] ходит в набеги и почти ничего не чувствует.</li>
+    <li>now(hasHome==False)-&gt;Горе и голод вели [PAWN_objective] от порога к порогу, пока не привели к шайке налётчиков; теперь [PAWN_pronoun] ходит в набеги и почти ничего не чувствует.</li>
   </PastLives_Story_Turned.rulePack.rulesStrings>
 
   <PastLives_Story_Hardened.rulePack.rulesStrings>
-    <li>r_story->[raid] [wounds] [now]</li>
-    <li>raid(hasFaction==True,PAWN_gender==Male)->Когда бойцы фракции «[FACTION_name]» жгли [colony], [PAWN_nameDef] сражался, пока не пала последняя стена.</li>
-    <li>raid(hasFaction==True,PAWN_gender==Female)->Когда бойцы фракции «[FACTION_name]» жгли [colony], [PAWN_nameDef] сражалась, пока не пала последняя стена.</li>
-    <li>raid(hasFaction==False,PAWN_gender==Male)->Когда рейдеры жгли поселение, [PAWN_nameDef] сражался, пока не пала последняя стена.</li>
-    <li>raid(hasFaction==False,PAWN_gender==Female)->Когда рейдеры жгли поселение, [PAWN_nameDef] сражалась, пока не пала последняя стена.</li>
-    <li>wounds(scars==True)->С того дня остались шрамы от пуль, а что-то внутри полюбило драку.</li>
-    <li>wounds(scars==False)->В тот день что-то внутри полюбило драку.</li>
-    <li>now(PAWN_gender==Male)->Теперь он сам нападает на других, как когда-то напали на него.</li>
-    <li>now(PAWN_gender==Female)->Теперь она сама нападает на других, как когда-то напали на неё.</li>
+    <li>r_story-&gt;[raid] [wounds] [now] [childhood]</li>
+    <li>raid(hasFaction==True,PAWN_gender==Male)-&gt;Когда пираты фракции «[FACTION_name]» ворвались в [colony] и подожгли постройки, [PAWN_nameDef] сражался до последнего и не отступил.</li>
+    <li>raid(hasFaction==True,PAWN_gender==Female)-&gt;Когда пираты фракции «[FACTION_name]» ворвались в [colony] и подожгли постройки, [PAWN_nameDef] сражалась до последнего и не отступила.</li>
+    <li>raid(hasFaction==False,PAWN_gender==Male)-&gt;Когда пираты ворвались в [colony] и подожгли постройки, [PAWN_nameDef] сражался до последнего и не отступил.</li>
+    <li>raid(hasFaction==False,PAWN_gender==Female)-&gt;Когда пираты ворвались в [colony] и подожгли постройки, [PAWN_nameDef] сражалась до последнего и не отступила.</li>
+    <li>raid(hasFaction==True,PAWN_gender==Male)-&gt;Пока пираты фракции «[FACTION_name]» поджигали дома в [colony], [PAWN_nameDef] держал оборону до самого конца.</li>
+    <li>raid(hasFaction==True,PAWN_gender==Female)-&gt;Пока пираты фракции «[FACTION_name]» поджигали дома в [colony], [PAWN_nameDef] держала оборону до самого конца.</li>
+    <li>raid(hasFaction==False,PAWN_gender==Male)-&gt;Пока пираты поджигали дома в [colony], [PAWN_nameDef] держал оборону до самого конца.</li>
+    <li>raid(hasFaction==False,PAWN_gender==Female)-&gt;Пока пираты поджигали дома в [colony], [PAWN_nameDef] держала оборону до самого конца.</li>
+    <li>raid(hasFaction==True,PAWN_gender==Male)-&gt;Пираты фракции «[FACTION_name]» пришли в [colony] на рассвете, и [PAWN_nameDef] дрался ещё долго после того, как бой был проигран.</li>
+    <li>raid(hasFaction==True,PAWN_gender==Female)-&gt;Пираты фракции «[FACTION_name]» пришли в [colony] на рассвете, и [PAWN_nameDef] дралась ещё долго после того, как бой был проигран.</li>
+    <li>raid(hasFaction==False,PAWN_gender==Male)-&gt;Пираты пришли в [colony] на рассвете, и [PAWN_nameDef] дрался ещё долго после того, как бой был проигран.</li>
+    <li>raid(hasFaction==False,PAWN_gender==Female)-&gt;Пираты пришли в [colony] на рассвете, и [PAWN_nameDef] дралась ещё долго после того, как бой был проигран.</li>
+    <li>raid(hasFaction==True,PAWN_gender==Male)-&gt;Против налётчиков фракции «[FACTION_name]» [PAWN_nameDef] бился за каждый дом в [colony] до последнего патрона, пока не вспыхнули пожары.</li>
+    <li>raid(hasFaction==True,PAWN_gender==Female)-&gt;Против налётчиков фракции «[FACTION_name]» [PAWN_nameDef] билась за каждый дом в [colony] до последнего патрона, пока не вспыхнули пожары.</li>
+    <li>raid(hasFaction==False,PAWN_gender==Male)-&gt;Против пиратского налёта [PAWN_nameDef] бился за каждый дом в [colony] до последнего патрона, пока не вспыхнули пожары.</li>
+    <li>raid(hasFaction==False,PAWN_gender==Female)-&gt;Против пиратского налёта [PAWN_nameDef] билась за каждый дом в [colony] до последнего патрона, пока не вспыхнули пожары.</li>
+    <li>raid(hasFaction==True,PAWN_gender==Male)-&gt;Когда бойцы фракции «[FACTION_name]» жгли дома в [colony], [PAWN_nameDef] стоял среди защитников и не ушёл, пока защищать было нечего.</li>
+    <li>raid(hasFaction==True,PAWN_gender==Female)-&gt;Когда бойцы фракции «[FACTION_name]» жгли дома в [colony], [PAWN_nameDef] стояла среди защитников и не ушла, пока защищать было нечего.</li>
+    <li>raid(hasFaction==False,PAWN_gender==Male)-&gt;Когда пираты жгли дома в [colony], [PAWN_nameDef] стоял среди защитников и не ушёл, пока защищать было нечего.</li>
+    <li>raid(hasFaction==False,PAWN_gender==Female)-&gt;Когда пираты жгли дома в [colony], [PAWN_nameDef] стояла среди защитников и не ушла, пока защищать было нечего.</li>
+    <li>raid(hasFaction==True,PAWN_gender==Male)-&gt;Пираты фракции «[FACTION_name]» смяли оборону в [colony], но [PAWN_nameDef] продолжал стрелять сквозь дым до самого конца.</li>
+    <li>raid(hasFaction==True,PAWN_gender==Female)-&gt;Пираты фракции «[FACTION_name]» смяли оборону в [colony], но [PAWN_nameDef] продолжала стрелять сквозь дым до самого конца.</li>
+    <li>raid(hasFaction==False,PAWN_gender==Male)-&gt;Пираты смяли оборону в [colony], но [PAWN_nameDef] продолжал стрелять сквозь дым до самого конца.</li>
+    <li>raid(hasFaction==False,PAWN_gender==Female)-&gt;Пираты смяли оборону в [colony], но [PAWN_nameDef] продолжала стрелять сквозь дым до самого конца.</li>
+    <li>wounds(scars==True)-&gt;От того дня остались шрамы на всю жизнь и вкус крови, который так и не ушёл.</li>
+    <li>wounds(scars==False)-&gt;От того дня не осталось следов на теле, только вкус крови, который так и не ушёл.</li>
+    <li>wounds(scars==True)-&gt;Шрамы с того боя ноют на холоде, и тяга к новому бою не стихает.</li>
+    <li>wounds(scars==False,PAWN_gender==Male)-&gt;[PAWN_pronoun] вышел из того боя без единой отметины, но с тягой к новому.</li>
+    <li>wounds(scars==False,PAWN_gender==Female)-&gt;[PAWN_pronoun] вышла из того боя без единой отметины, но с тягой к новому.</li>
+    <li>wounds(scars==True)-&gt;[PAWN_nameDef] носит шрамы того дня до сих пор, а бой стал единственным, что кажется настоящим.</li>
+    <li>wounds(scars==False)-&gt;Тот день не оставил на [PAWN_possessive] теле следов, но бой стал единственным, что кажется настоящим.</li>
+    <li>wounds(scars==True,PAWN_gender==Male)-&gt;От той ночи остались шрамы, а вместе с ними нечто более тёмное: [PAWN_pronoun] полюбил бой.</li>
+    <li>wounds(scars==True,PAWN_gender==Female)-&gt;От той ночи остались шрамы, а вместе с ними нечто более тёмное: [PAWN_pronoun] полюбила бой.</li>
+    <li>wounds(scars==False,PAWN_gender==Male)-&gt;От той ночи не осталось следов, только нечто тёмное: [PAWN_pronoun] полюбил бой.</li>
+    <li>wounds(scars==False,PAWN_gender==Female)-&gt;От той ночи не осталось следов, только нечто тёмное: [PAWN_pronoun] полюбила бой.</li>
+    <li>wounds(scars==True)-&gt;Тот бой отметил [PAWN_objective] на всю жизнь, и с тех пор [PAWN_pronoun] хочет крови.</li>
+    <li>wounds(scars==False)-&gt;Тот бой не оставил на теле ничего, но с тех пор [PAWN_pronoun] хочет крови.</li>
+    <li>wounds(scars==True)-&gt;Цена того дня — шрамы навсегда, а вкус крови достался в придачу.</li>
+    <li>wounds(scars==False)-&gt;Увечий на всю жизнь тот день не принёс, но вкус крови остался.</li>
+    <li>now-&gt;Теперь [PAWN_nameDef] нападает на чужие поселения так же, как когда-то напали на [PAWN_possessive] собственный дом, и почти не жалеет об этом.</li>
+    <li>now-&gt;Теперь [PAWN_pronoun] приносит в чужие колонии тот же огонь, что когда-то пришёл в [PAWN_possessive] собственный дом.</li>
+    <li>now(PAWN_gender==Male)-&gt;[PAWN_nameDef] стал тем, что когда-то разрушило [PAWN_possessive] дом, и без колебаний идёт на чужих.</li>
+    <li>now(PAWN_gender==Female)-&gt;[PAWN_nameDef] стала тем, что когда-то разрушило [PAWN_possessive] дом, и без колебаний идёт на чужих.</li>
+    <li>now-&gt;Теперь из-за гребня на рассвете выходит [PAWN_nameDef] с ружьём наготове, а другие смотрят, как поднимается дым.</li>
+    <li>now(PAWN_gender==Male)-&gt;Теперь [PAWN_pronoun] делает с другими то же, что когда-то делали с ним, и это не тревожит сна.</li>
+    <li>now(PAWN_gender==Female)-&gt;Теперь [PAWN_pronoun] делает с другими то же, что когда-то делали с ней, и это не тревожит сна.</li>
+    <li>now-&gt;Теперь [PAWN_nameDef] нападает так же, как когда-то нападали пираты: быстро, жёстко и без жалости к неготовым.</li>
   </PastLives_Story_Hardened.rulePack.rulesStrings>
 
-  <!-- Рабы -->
+  <PastLives_Story_Debt.rulePack.rulesStrings>
+    <li>r_story-&gt;[debt] [now] [childhood]</li>
+    <li>debt(hasFaction==True,PAWN_gender==Male)-&gt;[PAWN_nameDef] задолжал пиратам фракции «[FACTION_name]» так много, что платит по этому счёту уже годами.</li>
+    <li>debt(hasFaction==True,PAWN_gender==Female)-&gt;[PAWN_nameDef] задолжала пиратам фракции «[FACTION_name]» так много, что платит по этому счёту уже годами.</li>
+    <li>debt(hasFaction==False,PAWN_gender==Male)-&gt;[PAWN_nameDef] задолжал пиратам так много, что платит по этому счёту уже годами.</li>
+    <li>debt(hasFaction==False,PAWN_gender==Female)-&gt;[PAWN_nameDef] задолжала пиратам так много, что платит по этому счёту уже годами.</li>
+    <li>debt(hasFaction==True)-&gt;Когда-то пираты фракции «[FACTION_name]» пощадили [PAWN_objective], и цену этого милосердия не дают забыть.</li>
+    <li>debt(hasFaction==False)-&gt;Когда-то банда пиратов пощадила [PAWN_objective], и цену этого милосердия не дают забыть.</li>
+    <li>debt(hasFaction==True,PAWN_gender==Male)-&gt;[PAWN_nameDef] обязан фракции «[FACTION_name]» жизнью, и пираты взыскивают этот долг, когда пожелают.</li>
+    <li>debt(hasFaction==True,PAWN_gender==Female)-&gt;[PAWN_nameDef] обязана фракции «[FACTION_name]» жизнью, и пираты взыскивают этот долг, когда пожелают.</li>
+    <li>debt(hasFaction==False,PAWN_gender==Male)-&gt;[PAWN_nameDef] обязан жизнью банде пиратов, и они взыскивают этот долг, когда пожелают.</li>
+    <li>debt(hasFaction==False,PAWN_gender==Female)-&gt;[PAWN_nameDef] обязана жизнью банде пиратов, и они взыскивают этот долг, когда пожелают.</li>
+    <li>debt(hasFaction==True,PAWN_gender==Male)-&gt;Долг перед пиратами фракции «[FACTION_name]» старше любых планов, которые [PAWN_nameDef] успел построить.</li>
+    <li>debt(hasFaction==True,PAWN_gender==Female)-&gt;Долг перед пиратами фракции «[FACTION_name]» старше любых планов, которые [PAWN_nameDef] успела построить.</li>
+    <li>debt(hasFaction==False,PAWN_gender==Male)-&gt;Долг перед шайкой пиратов старше любых планов, которые [PAWN_nameDef] успел построить.</li>
+    <li>debt(hasFaction==False,PAWN_gender==Female)-&gt;Долг перед шайкой пиратов старше любых планов, которые [PAWN_nameDef] успела построить.</li>
+    <li>debt(hasFaction==True,PAWN_gender==Male)-&gt;Пираты фракции «[FACTION_name]» когда-то вытащили [PAWN_objective] из беды, и теперь [PAWN_pronoun] должен им больше, чем можно легко отдать.</li>
+    <li>debt(hasFaction==True,PAWN_gender==Female)-&gt;Пираты фракции «[FACTION_name]» когда-то вытащили [PAWN_objective] из беды, и теперь [PAWN_pronoun] должна им больше, чем можно легко отдать.</li>
+    <li>debt(hasFaction==False,PAWN_gender==Male)-&gt;Шайка пиратов когда-то вытащила [PAWN_objective] из беды, и теперь [PAWN_pronoun] должен им больше, чем можно легко отдать.</li>
+    <li>debt(hasFaction==False,PAWN_gender==Female)-&gt;Шайка пиратов когда-то вытащила [PAWN_objective] из беды, и теперь [PAWN_pronoun] должна им больше, чем можно легко отдать.</li>
+    <li>debt(hasFaction==True,PAWN_gender==Male)-&gt;[PAWN_nameDef] взял в долг под будущее, которого не случилось, и пираты фракции «[FACTION_name]» требуют платы.</li>
+    <li>debt(hasFaction==True,PAWN_gender==Female)-&gt;[PAWN_nameDef] взяла в долг под будущее, которого не случилось, и пираты фракции «[FACTION_name]» требуют платы.</li>
+    <li>debt(hasFaction==False,PAWN_gender==Male)-&gt;[PAWN_nameDef] взял в долг под будущее, которого не случилось, и шайка пиратов требует платы.</li>
+    <li>debt(hasFaction==False,PAWN_gender==Female)-&gt;[PAWN_nameDef] взяла в долг под будущее, которого не случилось, и шайка пиратов требует платы.</li>
+    <li>now(hasHome==True)-&gt;Теперь [PAWN_pronoun] ходит в набеги с бойцами фракции «[HOME_name]», чтобы расплатиться, и не находит в этом никакой радости.</li>
+    <li>now(hasHome==False)-&gt;Теперь [PAWN_pronoun] ходит в набеги с шайкой налётчиков, чтобы расплатиться, и не находит в этом никакой радости.</li>
+    <li>now(hasHome==True)-&gt;[PAWN_nameDef] едет в набег с людьми фракции «[HOME_name]», отрабатывая всё, что причитается, и не получая от этого удовольствия.</li>
+    <li>now(hasHome==False)-&gt;[PAWN_nameDef] едет в набег с шайкой налётчиков, отрабатывая всё, что причитается, и не получая от этого удовольствия.</li>
+    <li>now(hasHome==True)-&gt;Теперь [PAWN_pronoun] нападает вместе с бойцами фракции «[HOME_name]», набег за набегом расплачиваясь без всякой радости.</li>
+    <li>now(hasHome==False)-&gt;Теперь [PAWN_pronoun] нападает вместе с шайкой налётчиков, набег за набегом расплачиваясь без всякой радости.</li>
+    <li>now(hasHome==True,PAWN_gender==Male)-&gt;Теперь [PAWN_nameDef] сражается за фракцию «[HOME_name]» только потому, что обязан, и каждый набег кажется тяжёлой ношей.</li>
+    <li>now(hasHome==True,PAWN_gender==Female)-&gt;Теперь [PAWN_nameDef] сражается за фракцию «[HOME_name]» только потому, что обязана, и каждый набег кажется тяжёлой ношей.</li>
+    <li>now(hasHome==False,PAWN_gender==Male)-&gt;Теперь [PAWN_nameDef] сражается за шайку налётчиков только потому, что обязан, и каждый набег кажется тяжёлой ношей.</li>
+    <li>now(hasHome==False,PAWN_gender==Female)-&gt;Теперь [PAWN_nameDef] сражается за шайку налётчиков только потому, что обязана, и каждый набег кажется тяжёлой ношей.</li>
+    <li>now(hasHome==True)-&gt;С бойцами фракции «[HOME_name]» за спиной [PAWN_nameDef] нападает без рвения, считая оставшиеся набеги.</li>
+    <li>now(hasHome==False)-&gt;С шайкой налётчиков за спиной [PAWN_nameDef] нападает без рвения, считая оставшиеся набеги.</li>
+    <li>now(hasHome==True,PAWN_gender==Male)-&gt;Теперь [PAWN_nameDef] ходит в набеги с людьми фракции «[HOME_name]», усталый и молчаливый, делая что велят и не больше.</li>
+    <li>now(hasHome==True,PAWN_gender==Female)-&gt;Теперь [PAWN_nameDef] ходит в набеги с людьми фракции «[HOME_name]», усталая и молчаливая, делая что велят и не больше.</li>
+    <li>now(hasHome==False,PAWN_gender==Male)-&gt;Теперь [PAWN_nameDef] ходит в набеги с потрёпанной шайкой, усталый и молчаливый, делая что велят и не больше.</li>
+    <li>now(hasHome==False,PAWN_gender==Female)-&gt;Теперь [PAWN_nameDef] ходит в набеги с потрёпанной шайкой, усталая и молчаливая, делая что велят и не больше.</li>
+  </PastLives_Story_Debt.rulePack.rulesStrings>
 
   <PastLives_Story_Sold.rulePack.rulesStrings>
-    <li>r_story->[taken] [marks]</li>
-    <li>taken(hasFaction==True,PAWN_gender==Male)->Вскоре после ухода из [colony] [PAWN_nameDef] попал в руки фракции «[FACTION_name]», и с тех пор его перепродают из рук в руки.</li>
-    <li>taken(hasFaction==True,PAWN_gender==Female)->Вскоре после ухода из [colony] [PAWN_nameDef] попала в руки фракции «[FACTION_name]», и с тех пор её перепродают из рук в руки.</li>
-    <li>taken(hasFaction==False,PAWN_gender==Male)->Вскоре после ухода из [colony] [PAWN_nameDef] попал к работорговцам, и с тех пор его перепродают из рук в руки.</li>
-    <li>taken(hasFaction==False,PAWN_gender==Female)->Вскоре после ухода из [colony] [PAWN_nameDef] попала к работорговцам, и с тех пор её перепродают из рук в руки.</li>
-    <li>marks(scars==True)->Кнут оставил свои следы.</li>
-    <li>marks(scars==False)->[PAWN_pronoun] не поднимает глаз и почти не говорит.</li>
+    <li>r_story-&gt;[taken] [marks] [childhood]</li>
+    <li>taken(hasFaction==True,PAWN_gender==Male)-&gt;Вскоре после ухода из [colony] [PAWN_nameDef] попал в руки работорговцев фракции «[FACTION_name]», и с тех пор переходил от хозяина к хозяину.</li>
+    <li>taken(hasFaction==True,PAWN_gender==Female)-&gt;Вскоре после ухода из [colony] [PAWN_nameDef] попала в руки работорговцев фракции «[FACTION_name]», и с тех пор переходила от хозяина к хозяину.</li>
+    <li>taken(hasFaction==False,PAWN_gender==Male)-&gt;Вскоре после ухода из [colony] [PAWN_nameDef] попал в руки работорговцев, и с тех пор переходил от хозяина к хозяину.</li>
+    <li>taken(hasFaction==False,PAWN_gender==Female)-&gt;Вскоре после ухода из [colony] [PAWN_nameDef] попала в руки работорговцев, и с тех пор переходила от хозяина к хозяину.</li>
+    <li>taken(hasFaction==True,PAWN_gender==Male)-&gt;Не прошло и сезона после ухода из [colony], как люди фракции «[FACTION_name]» заковали [PAWN_objective] в цепи, а потом [PAWN_pronoun] пошёл по рукам.</li>
+    <li>taken(hasFaction==True,PAWN_gender==Female)-&gt;Не прошло и сезона после ухода из [colony], как люди фракции «[FACTION_name]» заковали [PAWN_objective] в цепи, а потом [PAWN_pronoun] пошла по рукам.</li>
+    <li>taken(hasFaction==False,PAWN_gender==Male)-&gt;Не прошло и сезона после ухода из [colony], как работорговцы заковали [PAWN_objective] в цепи, а потом [PAWN_pronoun] пошёл по рукам.</li>
+    <li>taken(hasFaction==False,PAWN_gender==Female)-&gt;Не прошло и сезона после ухода из [colony], как работорговцы заковали [PAWN_objective] в цепи, а потом [PAWN_pronoun] пошла по рукам.</li>
+    <li>taken(hasFaction==True,PAWN_gender==Male)-&gt;Работорговцы фракции «[FACTION_name]» взяли [PAWN_objective] за чужой долг, и с тех пор никто не спросил, согласен ли [PAWN_pronoun].</li>
+    <li>taken(hasFaction==True,PAWN_gender==Female)-&gt;Работорговцы фракции «[FACTION_name]» взяли [PAWN_objective] за чужой долг, и с тех пор никто не спросил, согласна ли [PAWN_pronoun].</li>
+    <li>taken(hasFaction==False,PAWN_gender==Male)-&gt;Работорговцы взяли [PAWN_objective] за чужой долг, и с тех пор никто не спросил, согласен ли [PAWN_pronoun].</li>
+    <li>taken(hasFaction==False,PAWN_gender==Female)-&gt;Работорговцы взяли [PAWN_objective] за чужой долг, и с тех пор никто не спросил, согласна ли [PAWN_pronoun].</li>
+    <li>taken(hasFaction==True)-&gt;После [colony] была только долгая дорога, потом клетка людей фракции «[FACTION_name]», потом длинная вереница покупателей.</li>
+    <li>taken(hasFaction==False)-&gt;После [colony] была только долгая дорога, потом клетка работорговцев, потом длинная вереница покупателей.</li>
+    <li>taken(hasFaction==True)-&gt;[PAWN_nameDef] не помнит, в какой день люди фракции «[FACTION_name]» схватили [PAWN_objective], помнит лишь, что дорога из [colony] кончилась цепями.</li>
+    <li>taken(hasFaction==False)-&gt;[PAWN_nameDef] не помнит, в какой день работорговцы схватили [PAWN_objective], помнит лишь, что дорога из [colony] кончилась цепями.</li>
+    <li>taken(hasFaction==True,PAWN_gender==Male)-&gt;Люди фракции «[FACTION_name]» нашли [PAWN_objective] одинокого и голодного и предложили хлеб в обмен на подпись, которую [PAWN_pronoun] не мог прочесть.</li>
+    <li>taken(hasFaction==True,PAWN_gender==Female)-&gt;Люди фракции «[FACTION_name]» нашли [PAWN_objective] одинокую и голодную и предложили хлеб в обмен на подпись, которую [PAWN_pronoun] не могла прочесть.</li>
+    <li>taken(hasFaction==False,PAWN_gender==Male)-&gt;Работорговцы нашли [PAWN_objective] одинокого и голодного и предложили хлеб в обмен на подпись, которую [PAWN_pronoun] не мог прочесть.</li>
+    <li>taken(hasFaction==False,PAWN_gender==Female)-&gt;Работорговцы нашли [PAWN_objective] одинокую и голодную и предложили хлеб в обмен на подпись, которую [PAWN_pronoun] не могла прочесть.</li>
+    <li>marks(scars==True)-&gt;Плеть оставила следы на спине и руках, и [PAWN_pronoun] вздрагивает, когда рядом поднимают ладонь.</li>
+    <li>marks(scars==False)-&gt;[PAWN_pronoun] смотрит в землю и отвечает, только когда спрашивают прямо.</li>
+    <li>marks(scars==True)-&gt;Старые рубцы от плети уходят под ворот, и [PAWN_pronoun] никогда не поворачивается к чужим спиной.</li>
+    <li>marks(scars==False,PAWN_gender==Male)-&gt;[PAWN_nameDef] усвоил, что молчание дешевле ответов, и не тратит ни того ни другого.</li>
+    <li>marks(scars==False,PAWN_gender==Female)-&gt;[PAWN_nameDef] усвоила, что молчание дешевле ответов, и не тратит ни того ни другого.</li>
+    <li>marks(scars==True)-&gt;Бледные следы плети пересекают плечи, зажившие плохо и без всякого ухода.</li>
+    <li>marks(scars==False)-&gt;Ничего не сломано, по крайней мере на вид, но [PAWN_pronoun] смотрит мимо покупателей, а не на них.</li>
+    <li>marks(scars==True)-&gt;«Удары считали», — говорит [PAWN_pronoun], и следы на руках с этим согласны.</li>
+    <li>marks(scars==False)-&gt;«Я делаю, что велят», — говорит [PAWN_pronoun], и это самая длинная фраза за весь день.</li>
+    <li>marks(scars==True)-&gt;Шрамы на запястьях и спине не из тех, что получают случайно.</li>
+    <li>marks(scars==False)-&gt;[PAWN_pronoun] стоит очень тихо, сложив руки, с тишиной того, кто давно перестал надеяться.</li>
+    <li>marks(scars==True)-&gt;[PAWN_nameDef] носит почерк плети на коже и не заговаривает о нём.</li>
+    <li>marks(scars==False,PAWN_gender==Male)-&gt;[PAWN_pronoun] выглядит усталым так, как не лечится сном, и говорит тихо и ровно.</li>
+    <li>marks(scars==False,PAWN_gender==Female)-&gt;[PAWN_pronoun] выглядит усталой так, как не лечится сном, и говорит тихо и ровно.</li>
   </PastLives_Story_Sold.rulePack.rulesStrings>
 
-  <!-- Умершие: много недосказанного -->
+  <PastLives_Story_Famine.rulePack.rulesStrings>
+    <li>r_story-&gt;[hunger] [now] [childhood]</li>
+    <li>hunger(PAWN_gender==Male)-&gt;После ухода из [colony] урожай погиб, и [PAWN_nameDef] продал себя за зимний паёк.</li>
+    <li>hunger(PAWN_gender==Female)-&gt;После ухода из [colony] урожай погиб, и [PAWN_nameDef] продала себя за зимний паёк.</li>
+    <li>hunger-&gt;Долги тянулись ещё со времён жизни в [colony], и в конце концов расплатиться стало нечем, кроме свободы.</li>
+    <li>hunger(PAWN_gender==Male)-&gt;Голод добрался до дороги раньше, чем [PAWN_nameDef] добрался до безопасного места, и миска зерна обошлась в свободу.</li>
+    <li>hunger(PAWN_gender==Female)-&gt;Голод добрался до дороги раньше, чем [PAWN_nameDef] добралась до безопасного места, и миска зерна обошлась в свободу.</li>
+    <li>hunger(PAWN_gender==Male)-&gt;После [colony] [PAWN_nameDef] целый сезон ел коренья, а потом подписал всё, что ему подсунули.</li>
+    <li>hunger(PAWN_gender==Female)-&gt;После [colony] [PAWN_nameDef] целый сезон ел коренья, а потом подписала всё, что ей подсунули.</li>
+    <li>hunger(PAWN_gender==Male)-&gt;Сперва никто не принуждал: [PAWN_pronoun] был голоден, кто-то покупал, а остальное сложилось само.</li>
+    <li>hunger(PAWN_gender==Female)-&gt;Сперва никто не принуждал: [PAWN_pronoun] была голодна, кто-то покупал, а остальное сложилось само.</li>
+    <li>hunger(PAWN_gender==Male)-&gt;Тощие годы после ухода из [colony] научили [PAWN_objective], сколько стоит человек на вес, и [PAWN_pronoun] стоил немного.</li>
+    <li>hunger(PAWN_gender==Female)-&gt;Тощие годы после ухода из [colony] научили [PAWN_objective], сколько стоит человек на вес, и [PAWN_pronoun] стоила немного.</li>
+    <li>now-&gt;[PAWN_pronoun] переносит это без жалоб и без надежды, как переносят погоду.</li>
+    <li>now-&gt;«Крыша есть крыша», — говорит [PAWN_nameDef] и снова смотрит в пол.</li>
+    <li>now(PAWN_gender==Male)-&gt;[PAWN_nameDef] работает, когда велят, ест, когда дадут, и перестал думать о том, что будет дальше.</li>
+    <li>now(PAWN_gender==Female)-&gt;[PAWN_nameDef] работает, когда велят, ест, когда дадут, и перестала думать о том, что будет дальше.</li>
+    <li>now(PAWN_gender==Male)-&gt;[PAWN_pronoun] стал худее и тише, чем прежде, и не спрашивает, кто будет следующим покупателем.</li>
+    <li>now(PAWN_gender==Female)-&gt;[PAWN_pronoun] стала худее и тише, чем прежде, и не спрашивает, кто будет следующим покупателем.</li>
+    <li>now-&gt;Если обида и есть, её не видно: [PAWN_pronoun] просто ждёт, будто ожидание — ремесло.</li>
+    <li>now(PAWN_gender==Male)-&gt;«Я был голоден, а теперь нет», — говорит [PAWN_pronoun], будто этим всё сказано.</li>
+    <li>now(PAWN_gender==Female)-&gt;«Я была голодна, а теперь нет», — говорит [PAWN_pronoun], будто этим всё сказано.</li>
+  </PastLives_Story_Famine.rulePack.rulesStrings>
 
   <PastLives_Story_Silence.rulePack.rulesStrings>
-    <li>r_story->[ask] [answer] [detail]</li>
-    <li>ask(PAWN_gender==Male)->На вопрос, где он был, [PAWN_nameDef] только смотрит на свои руки.</li>
-    <li>ask(PAWN_gender==Female)->На вопрос, где она была, [PAWN_nameDef] только смотрит на свои руки.</li>
-    <li>ask->[PAWN_nameDef] не говорит ни о [colony], ни о том, чем всё закончилось.</li>
-    <li>answer->«Было темно. Потом перестало», — вот и всё, что удаётся услышать.</li>
-    <li>answer->«Кто-то позвал меня по имени», — и больше ни слова о том, кто.</li>
-    <li>detail(scars==True)->Старые раны затянулись бледными шрамами, будто за одну ночь прошли годы.</li>
-    <li>detail(scars==False)->Спать без света [PAWN_pronoun] больше не может.</li>
+    <li>r_story-&gt;[ask] [answer] [detail]</li>
+    <li>ask(PAWN_gender==Male)-&gt;На вопрос, где [PAWN_pronoun] был, [PAWN_nameDef] лишь смотрит на свои руки, поворачивая их так, будто они чужие.</li>
+    <li>ask(PAWN_gender==Female)-&gt;На вопрос, где [PAWN_pronoun] была, [PAWN_nameDef] лишь смотрит на свои руки, поворачивая их так, будто они чужие.</li>
+    <li>ask-&gt;[PAWN_pronoun] не говорит, чем всё кончилось, и вопрос словно проходит насквозь, ни за что не задевая.</li>
+    <li>ask-&gt;На любой вопрос о том времени [PAWN_pronoun] отвечает долгим взглядом на горизонт.</li>
+    <li>ask-&gt;[PAWN_nameDef] открывает рот, чтобы ответить, закрывает его и заговаривает о погоде.</li>
+    <li>ask-&gt;Второй раз никто не спрашивает: тишина после первого вопроса не бывает пустой.</li>
+    <li>ask-&gt;Когда расспросы становятся настойчивее, [PAWN_pronoun] говорит лишь, что рассказывать нечего, и говорит это слишком старательно.</li>
+    <li>answer-&gt;«Было темно. Потом перестало», — вот и всё, что [PAWN_pronoun] говорит.</li>
+    <li>answer-&gt;«Меня всё звали по имени», — шепчет [PAWN_pronoun] однажды и больше не повторяет.</li>
+    <li>answer-&gt;«Не копайте там», — вдруг говорит [PAWN_pronoun], ни к кому не обращаясь.</li>
+    <li>answer(PAWN_gender==Male)-&gt;«Я считал звёзды. Их было меньше», — вот и всё объяснение, какое кто-либо получает.</li>
+    <li>answer(PAWN_gender==Female)-&gt;«Я считала звёзды. Их было меньше», — вот и всё объяснение, какое кто-либо получает.</li>
+    <li>answer-&gt;«Там было тихо, и мне это не мешало», — говорит [PAWN_pronoun], а потом, кажется, жалеет о сказанном.</li>
+    <li>answer-&gt;«Кому-то надо было вернуться», — шепчет [PAWN_pronoun] и не говорит, кому.</li>
+    <li>detail(scars==True)-&gt;Старые раны на [PAWN_possessive] теле зарубцевались бледными шрамами, словно за одну ночь прошли годы.</li>
+    <li>detail(scars==False,PAWN_gender==Male)-&gt;[PAWN_pronoun] завёл новую мелкую привычку: останавливаться у каждой двери, будто ждёт приглашения войти.</li>
+    <li>detail(scars==False,PAWN_gender==Female)-&gt;[PAWN_pronoun] завела новую мелкую привычку: останавливаться у каждой двери, будто ждёт приглашения войти.</li>
+    <li>detail(scars==True,PAWN_gender==Male)-&gt;Шрамы, которые были свежими, когда [PAWN_pronoun] ушёл, теперь белые и старые, и [PAWN_pronoun] этого, кажется, не замечает.</li>
+    <li>detail(scars==True,PAWN_gender==Female)-&gt;Шрамы, которые были свежими, когда [PAWN_pronoun] ушла, теперь белые и старые, и [PAWN_pronoun] этого, кажется, не замечает.</li>
+    <li>detail(scars==False)-&gt;[PAWN_nameDef] теперь спит сидя, лицом к двери, и просыпается без единого звука.</li>
+    <li>detail(scars==True)-&gt;Все былые раны затянулись тонкими бледными линиями, ровными, как стежки.</li>
+    <li>detail(scars==False)-&gt;[PAWN_pronoun] ест медленно, без аппетита, и всегда оставляет на тарелке последний кусок.</li>
+    <li>detail(scars==True)-&gt;Шрамы на [PAWN_possessive] теле выглядят так, будто им десятки лет, хотя никто не скажет, когда они появились.</li>
+    <li>detail(scars==False)-&gt;[PAWN_nameDef] напевает мотив, которого никто не знает, и умолкает, стоит кому-нибудь прислушаться.</li>
+    <li>detail(scars==True)-&gt;Кожа над старыми ранами стала бледной и гладкой, будто время втайне проявило щедрость.</li>
+    <li>detail(scars==False)-&gt;[PAWN_pronoun] никогда не смотрит на чужие тени и обходит всё, что лежит в тени.</li>
+    <li>detail(scars==True)-&gt;Старые шрамы покрывают [PAWN_objective], как карта того, что случилось давно или вовсе не случалось.</li>
+    <li>detail(scars==False)-&gt;[PAWN_nameDef] то и дело трогает собственное запястье, будто что-то проверяет.</li>
   </PastLives_Story_Silence.rulePack.rulesStrings>
 
+  <PastLives_Story_RoadBack.rulePack.rulesStrings>
+    <li>r_story-&gt;[waking] [road] [detail]</li>
+    <li>waking(PAWN_gender==Male)-&gt;[PAWN_nameDef] очнулся на голой земле в незнакомом месте и не помнил, как туда попал.</li>
+    <li>waking(PAWN_gender==Female)-&gt;[PAWN_nameDef] очнулась на голой земле в незнакомом месте и не помнила, как туда попала.</li>
+    <li>waking-&gt;Последнее, что [PAWN_pronoun] помнит, — знакомая комната, а следующее — открытое небо и холодная трава.</li>
+    <li>waking(PAWN_gender==Male)-&gt;[PAWN_pronoun] проснулся у давно остывшего костра, который развёл кто-то другой.</li>
+    <li>waking(PAWN_gender==Female)-&gt;[PAWN_pronoun] проснулась у давно остывшего костра, который развёл кто-то другой.</li>
+    <li>waking(PAWN_gender==Male)-&gt;«Я был где-то совсем в другом месте, а потом вдруг оказался здесь», — так [PAWN_pronoun] это объясняет.</li>
+    <li>waking(PAWN_gender==Female)-&gt;«Я была где-то совсем в другом месте, а потом вдруг оказалась здесь», — так [PAWN_pronoun] это объясняет.</li>
+    <li>waking(PAWN_gender==Male)-&gt;[PAWN_nameDef] пришёл в себя с землёй во рту и с чужим именем на губах, которое не мог узнать.</li>
+    <li>waking(PAWN_gender==Female)-&gt;[PAWN_nameDef] пришла в себя с землёй во рту и с чужим именем на губах, которое не могла узнать.</li>
+    <li>waking(PAWN_gender==Male)-&gt;Когда [PAWN_pronoun] открыл глаза, рядом никого не было, а день выглядел чуть неправильно, как собственная копия.</li>
+    <li>waking(PAWN_gender==Female)-&gt;Когда [PAWN_pronoun] открыла глаза, рядом никого не было, а день выглядел чуть неправильно, как собственная копия.</li>
+    <li>road(PAWN_gender==Male)-&gt;Потом [PAWN_pronoun] шёл, следуя за чем-то безымянным, и всегда к рассвету.</li>
+    <li>road(PAWN_gender==Female)-&gt;Потом [PAWN_pronoun] шла, следуя за чем-то безымянным, и всегда к рассвету.</li>
+    <li>road(PAWN_gender==Male)-&gt;[PAWN_nameDef] шёл много дней, не чувствуя голода, словно чья-то ладонь тихо подталкивала между лопаток.</li>
+    <li>road(PAWN_gender==Female)-&gt;[PAWN_nameDef] шла много дней, не чувствуя голода, словно чья-то ладонь тихо подталкивала между лопаток.</li>
+    <li>road-&gt;Это не было выбором, говорит [PAWN_pronoun]: дорога просто всё время оказывалась под ногами.</li>
+    <li>road(PAWN_gender==Male)-&gt;[PAWN_pronoun] шёл на едва слышную тягу через холмы и сухие русла и ни разу не подумал повернуть назад.</li>
+    <li>road(PAWN_gender==Female)-&gt;[PAWN_pronoun] шла на едва слышную тягу через холмы и сухие русла и ни разу не подумала повернуть назад.</li>
+    <li>road(PAWN_gender==Male)-&gt;Что-то звало, тихо и терпеливо, и [PAWN_nameDef] шёл туда, где звук казался самым тонким.</li>
+    <li>road(PAWN_gender==Female)-&gt;Что-то звало, тихо и терпеливо, и [PAWN_nameDef] шла туда, где звук казался самым тонким.</li>
+    <li>road(PAWN_gender==Male)-&gt;Ночи в том пути были короткими, и [PAWN_pronoun] не может сказать, спал ли хоть одну из них.</li>
+    <li>road(PAWN_gender==Female)-&gt;Ночи в том пути были короткими, и [PAWN_pronoun] не может сказать, спала ли хоть одну из них.</li>
+    <li>detail(scars==True)-&gt;Рана, которая должна была стать концом, теперь старый шрам, давно закрывшийся и совершенно спокойный.</li>
+    <li>detail(scars==False)-&gt;Что-то мелкое в этом человеке не так, но никто не может сказать, что именно.</li>
+    <li>detail(scars==True)-&gt;Бледный старый шрам лежит ровно там, где он значил бы больше всего.</li>
+    <li>detail(scars==False)-&gt;[PAWN_possessive] сапоги стоптаны на носках до дыр, но ступни совершенно чистые.</li>
+    <li>detail(scars==True,PAWN_gender==Male)-&gt;Шрам, на вид многолетний, пересекает то самое место, где [PAWN_pronoun] в последний раз упал.</li>
+    <li>detail(scars==True,PAWN_gender==Female)-&gt;Шрам, на вид многолетний, пересекает то самое место, где [PAWN_pronoun] в последний раз упала.</li>
+    <li>detail(scars==False)-&gt;[PAWN_possessive] тень самая обычная, но на неё все смотрят чуть чаще, чем нужно.</li>
+    <li>detail(scars==True)-&gt;Иногда [PAWN_pronoun] трогает старый шрам с чем-то вроде любопытства.</li>
+    <li>detail(scars==False)-&gt;[PAWN_pronoun] не мёрзнет, хотя никогда не протягивает рук к огню.</li>
+    <li>detail(scars==True)-&gt;Рана давно затянулась, аккуратно, словно кто-то не поленился.</li>
+    <li>detail(scars==False)-&gt;[PAWN_pronoun] откликается на своё имя на мгновение позже, чем его произнесли, и никогда не раньше.</li>
+    <li>detail(scars==True)-&gt;Что бы ни сразило [PAWN_objective], осталась лишь тонкая белая линия.</li>
+    <li>detail(scars==False)-&gt;Свет костра почти не отражается в [PAWN_possessive] глазах, и никто не хочет проверять это дважды.</li>
+  </PastLives_Story_RoadBack.rulePack.rulesStrings>
+
+  <PastLives_Story_Stranger.rulePack.rulesStrings>
+    <li>r_story-&gt;[same] [wrong] [detail]</li>
+    <li>same-&gt;Всё в этом человеке точно такое, как вы помните: походка, смех, привычка тереть шею.</li>
+    <li>same-&gt;[PAWN_pronoun] выглядит так же, как в последний раз, когда вы [PAWN_objective] видели, вплоть до шва на рукаве.</li>
+    <li>same-&gt;[PAWN_pronoun] помнит каждое имя, каждую старую шутку и где в [colony] хранили хорошие инструменты.</li>
+    <li>same(PAWN_gender==Male)-&gt;Даже голос прежний, и паузы на тех же местах, где [PAWN_pronoun] обычно обдумывал слова.</li>
+    <li>same(PAWN_gender==Female)-&gt;Даже голос прежний, и паузы на тех же местах, где [PAWN_pronoun] обычно обдумывала слова.</li>
+    <li>same(PAWN_gender==Male)-&gt;[PAWN_nameDef] ничуть не изменился, и именно на это тяжело смотреть.</li>
+    <li>same(PAWN_gender==Female)-&gt;[PAWN_nameDef] ничуть не изменилась, и именно на это тяжело смотреть.</li>
+    <li>same-&gt;[PAWN_pronoun] здоровается со всеми по имени и улыбается прежней кривой полуулыбкой.</li>
+    <li>wrong-&gt;Только собаки ведут себя иначе: они обходят [PAWN_objective] стороной и не лают.</li>
+    <li>wrong(PAWN_gender==Male)-&gt;«Хорошо-хорошо», — говорит [PAWN_pronoun], хотя раньше так не говорил.</li>
+    <li>wrong(PAWN_gender==Female)-&gt;«Хорошо-хорошо», — говорит [PAWN_pronoun], хотя раньше так не говорила.</li>
+    <li>wrong-&gt;Звери затихают, когда [PAWN_pronoun] проходит мимо, а кошки отсиживаются на крышах.</li>
+    <li>wrong-&gt;[PAWN_nameDef] смеётся на полсекунды позже остальных, словно слушает шутку откуда-то издалека.</li>
+    <li>wrong(PAWN_gender==Male)-&gt;Одна привычка перевернулась: [PAWN_pronoun] был левшой, а теперь ничего не берёт левой рукой.</li>
+    <li>wrong(PAWN_gender==Female)-&gt;Одна привычка перевернулась: [PAWN_pronoun] была левшой, а теперь ничего не берёт левой рукой.</li>
+    <li>wrong-&gt;[PAWN_pronoun] больше не подходит к зеркалам и не объясняет почему.</li>
+    <li>detail(scars==True)-&gt;Шрам на [PAWN_possessive] теле лежит не там, где ему место, а раньше его не было.</li>
+    <li>detail(scars==False)-&gt;[PAWN_pronoun] как будто никогда не спит, и лампа в [PAWN_possessive] комнате горит до рассвета.</li>
+    <li>detail(scars==True)-&gt;Длинный шрам на руке не совпадает ни с одной раной, которую кто-либо помнит.</li>
+    <li>detail(scars==False,PAWN_gender==Male)-&gt;Никто никогда не видел, чтобы [PAWN_pronoun] зевал, и никто не заставал [PAWN_objective] спящим.</li>
+    <li>detail(scars==False,PAWN_gender==Female)-&gt;Никто никогда не видел, чтобы [PAWN_pronoun] зевала, и никто не заставал [PAWN_objective] спящей.</li>
+    <li>detail(scars==True,PAWN_gender==Male)-&gt;Старый шрам теперь с другой стороны тела, не с той, с которой [PAWN_pronoun] носил его раньше.</li>
+    <li>detail(scars==True,PAWN_gender==Female)-&gt;Старый шрам теперь с другой стороны тела, не с той, с которой [PAWN_pronoun] носила его раньше.</li>
+    <li>detail(scars==False)-&gt;[PAWN_nameDef] всю ночь сидит у окна и смотрит в никуда.</li>
+    <li>detail(scars==True)-&gt;Бледный шрам пересекает ладонь, и по форме он почти похож на слово.</li>
+    <li>detail(scars==False,PAWN_gender==Male)-&gt;[PAWN_pronoun] всегда бодрствует, всегда вежлив и всегда чуть-чуть слишком неподвижен.</li>
+    <li>detail(scars==False,PAWN_gender==Female)-&gt;[PAWN_pronoun] всегда бодрствует, всегда вежлива и всегда чуть-чуть слишком неподвижна.</li>
+    <li>detail(scars==True)-&gt;Старый шрам то ли сдвинулся, то ли сдвинулась память о нём, и ни одно не кажется вероятнее.</li>
+    <li>detail(scars==False)-&gt;Стоит кому-нибудь проснуться ночью, [PAWN_nameDef] уже сидит рядом и смотрит на дверь.</li>
+    <li>detail(scars==True)-&gt;Кто видел шрам на [PAWN_possessive] щеке, тот потом долго не может вспомнить его форму.</li>
+    <li>detail(scars==False)-&gt;Еду [PAWN_pronoun] принимает вежливо, но никто никогда не видел, как [PAWN_pronoun] ест.</li>
+  </PastLives_Story_Stranger.rulePack.rulesStrings>
+
   <PastLives_Story_Shambler.rulePack.rulesStrings>
-    <li>r_story->[sign]</li>
-    <li>sign->На обрывках одежды ещё можно различить цвета [colony].</li>
-    <li>sign->На миг кажется, что взгляд мертвеца остановился на вас, будто пытаясь что-то вспомнить.</li>
+    <li>r_story-&gt;[sign]</li>
+    <li>sign-&gt;Среди толпы мёртвых мелькает рваный плащ в цветах [colony], и шаркающая походка под ним ужасающе знакома.</li>
+    <li>sign-&gt;Одно из тел в толпе носит на иссохшем пальце кольцо, знакомое до последней царапины.</li>
+    <li>sign-&gt;У одного из мёртвых на предплечье старая татуировка, наполовину истлевшая, но узор не спутать ни с чем.</li>
+    <li>sign-&gt;Труп, бредущий чуть в стороне от остальных, всё так же вскидывает голову — движением, которое слишком хорошо помнят.</li>
+    <li>sign-&gt;На плече одного из мёртвых висит выцветший лоскут в цветах [colony], завязанный тем самым узлом.</li>
+    <li>sign-&gt;Одна из фигур в толпе волочит левую ногу, и так же прихрамывал когда-то один человек из [colony].</li>
+    <li>sign-&gt;Мёртвый в третьем ряду всё ещё носит пряжку на ремне, ту самую, которой когда-то гордились в [colony].</li>
+    <li>sign-&gt;Один из ходячих поворачивает голову в сторону поселения и стоит на миг дольше, чем нужно, будто узнаёт место.</li>
   </PastLives_Story_Shambler.rulePack.rulesStrings>
 
 </LanguageData>
