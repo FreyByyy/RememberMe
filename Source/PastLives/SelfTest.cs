@@ -38,6 +38,8 @@ namespace PastLives
             s.cooldownDays = 0f;
             s.importPawnEditor = true;
             s.importCharacterEditor = true;
+            s.stories = true;
+            s.hardships = true;
         }
 
         private static void Run()
@@ -76,6 +78,7 @@ namespace PastLives
             }
 
             TestMyList(comp, map);
+            TestStoriesAndHardships(comp, map);
 
             comp.CheckSpawned();
 
@@ -137,6 +140,42 @@ namespace PastLives
             Out("onlyMyList visitor: new=" + added.Count + " fromList=" + added.All(e => PastLivesArchive.All.Any(p => p.Key == e.key))
                 + " sources=" + string.Join(",", added.Select(e => PastLivesArchive.All.FirstOrDefault(p => p.Key == e.key)?.Source)));
             s.onlyMyList = false;
+        }
+
+        // Every story kind resolves in the current language; scars never cost a part; the dev raid forces pawns.
+        private static void TestStoriesAndHardships(GameComponent_PastLives comp, Map map)
+        {
+            foreach (var arc in DefDatabase<StoryArcDef>.AllDefs)
+            {
+                var role = arc.roles[0];
+                var variant = arc.variants.Count > 0 ? arc.variants[0] : (role == PastRole.DeadReturn ? DeadVariant.Wanderer : DeadVariant.None);
+                var stories = DevActions.LogStories(role, variant, 3);
+                Out("stories " + role + "/" + variant + ": " + stories.Count + " ok=" + stories.All(t => t.Length > 20 && !t.Contains("ERR") && !t.Contains("[")));
+            }
+            Out("stories in entries=" + comp.Entries.Count(e => !string.IsNullOrEmpty(e.story)) + "/" + comp.Entries.Count(e => e.role != PastRole.Leader));
+
+            var test = PawnGenerator.GeneratePawn(new PawnGenerationRequest(PawnKindDefOf.Villager, null, PawnGenerationContext.NonPlayer, forceGenerateNewPawn: true));
+            var kinds = new[] { "Cut", "Burn", "Gunshot" }.Select(d => DefDatabase<HediffDef>.GetNamedSilentFail(d)).Where(d => d != null).ToList();
+            int partsBefore = test.health.hediffSet.GetNotMissingParts().Count();
+            int scars = Hardship.AddScars(test, kinds, 3);
+            int permanent = test.health.hediffSet.hediffs.Count(h => h is Hediff_Injury i && i.IsPermanent());
+            int traitsBefore = test.story.traits.allTraits.Count;
+            bool trait = Hardship.TryGainTrait(test, Hardship.TraitsFor(PastRole.Raider));
+            Out("hardship: scars=" + scars + " permanent=" + permanent + " partsKept=" + (test.health.hediffSet.GetNotMissingParts().Count() == partsBefore)
+                + " trait=" + trait + " traits=" + traitsBefore + "->" + test.story.traits.allTraits.Count + " dead=" + test.Dead);
+
+            var raid = DefDatabase<IncidentDef>.GetNamedSilentFail("RaidEnemy");
+            if (raid != null)
+            {
+                int before = comp.Entries.Count;
+                DevForce.Run(null, 3, () =>
+                {
+                    var parms = StorytellerUtility.DefaultParmsNow(raid.category, map);
+                    parms.forced = true;
+                    raid.Worker.TryExecute(parms);
+                });
+                Out("dev raid x3: newPastColonists=" + (comp.Entries.Count - before) + " forceCleared=" + !DevForce.Active);
+            }
         }
 
         private static void Out(string msg) => Log.Message("[PastLives][selftest] " + msg);

@@ -91,4 +91,20 @@
   <PastLives_Letter_Dead_CreepJoiner_Saved>This stranger looks exactly like {PAWN_nameFull}, one of your saved colonists. But something about {PAWN_objective} is wrong.</PastLives_Letter_Dead_CreepJoiner_Saved>
   <PastLives_Letter_Dead_Shambler_Saved>Among the shambling dead you recognise {PAWN_nameFull}, one of your saved colonists.</PastLives_Letter_Dead_Shambler_Saved>
 
+  <!-- 1.1: interface, stories, hardships -->
+  <PastLives_ShowRememberButton>Show the Remember button on colonists</PastLives_ShowRememberButton>
+  <PastLives_ShowRememberButtonDesc>Turn off to hide the Remember / Forget button. Your list keeps working; turn it back on when you want to remember someone.</PastLives_ShowRememberButtonDesc>
+  <PastLives_Stories>Stories in letters</PastLives_Stories>
+  <PastLives_StoriesDesc>The "familiar face" letter tells what the past colonist went through since their old colony.</PastLives_StoriesDesc>
+  <PastLives_Hardships>New scars and traits (experimental)</PastLives_Hardships>
+  <PastLives_HardshipsDesc>Returned colonists bear marks of the years between lives: old healed scars (never lost limbs) and sometimes a new trait that fits who they became. If their story left a mark, the story decides which.</PastLives_HardshipsDesc>
+  <PastLives_ScarChanceDead>Chance of scars for the returned dead: {0}</PastLives_ScarChanceDead>
+  <PastLives_ScarChanceOther>Chance of scars for everyone else: {0}</PastLives_ScarChanceOther>
+  <PastLives_ScarCount>Number of scars: {0}-{1}</PastLives_ScarCount>
+  <PastLives_TraitChance>Chance of a new trait: {0}</PastLives_TraitChance>
+  <PastLives_TraitChanceDesc>Added on top of the old traits, picked to fit the role (raiders, slaves, the dead and everyone else each have their own). Skipped if it conflicts or the pawn already has four traits.</PastLives_TraitChanceDesc>
+  <PastLives_YearsOne>{0} year</PastLives_YearsOne>
+  <PastLives_YearsFew>{0} years</PastLives_YearsFew>
+  <PastLives_YearsMany>{0} years</PastLives_YearsMany>
+
 </LanguageData>

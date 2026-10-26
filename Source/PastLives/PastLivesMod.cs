@@ -52,10 +52,26 @@ namespace PastLives
             Settings.listWeight = Mathf.Round(l.Slider(Settings.listWeight, 1f, 20f) * 2f) / 2f;
             l.CheckboxLabeled("PastLives_OnlyMyList".Translate(), ref Settings.onlyMyList, "PastLives_OnlyMyListDesc".Translate());
             l.CheckboxLabeled("PastLives_AllowRepeats".Translate(), ref Settings.allowRepeats, "PastLives_AllowRepeatsDesc".Translate());
+            l.CheckboxLabeled("PastLives_ShowRememberButton".Translate(), ref Settings.showRememberButton, "PastLives_ShowRememberButtonDesc".Translate());
             bool pe = Settings.importPawnEditor, ce = Settings.importCharacterEditor;
             l.CheckboxLabeled("PastLives_ImportPawnEditor".Translate(), ref Settings.importPawnEditor, "PastLives_ImportPawnEditorDesc".Translate());
             l.CheckboxLabeled("PastLives_ImportCharacterEditor".Translate(), ref Settings.importCharacterEditor, "PastLives_ImportCharacterEditorDesc".Translate());
             if ((Settings.importPawnEditor && !pe) || (Settings.importCharacterEditor && !ce)) PastLivesArchive.Rescan();
+
+            l.GapLine();
+            l.CheckboxLabeled("PastLives_Stories".Translate(), ref Settings.stories, "PastLives_StoriesDesc".Translate());
+            l.CheckboxLabeled("PastLives_Hardships".Translate(), ref Settings.hardships, "PastLives_HardshipsDesc".Translate());
+            if (Settings.hardships)
+            {
+                l.Label("PastLives_ScarChanceDead".Translate(Settings.scarChanceDead.ToStringPercent()));
+                Settings.scarChanceDead = l.Slider(Settings.scarChanceDead, 0f, 1f);
+                l.Label("PastLives_ScarChanceOther".Translate(Settings.scarChanceOther.ToStringPercent()));
+                Settings.scarChanceOther = l.Slider(Settings.scarChanceOther, 0f, 1f);
+                l.Label("PastLives_ScarCount".Translate(Settings.scarCount.min, Settings.scarCount.max));
+                l.IntRange(ref Settings.scarCount, 1, 6);
+                l.Label("PastLives_TraitChance".Translate(Settings.traitChance.ToStringPercent()), tooltip: "PastLives_TraitChanceDesc".Translate());
+                Settings.traitChance = l.Slider(Settings.traitChance, 0f, 1f);
+            }
 
             l.GapLine();
             l.Label("PastLives_Roles".Translate());
@@ -127,6 +143,7 @@ namespace PastLives
     {
         public static HediffDef PastLives_Returned;
         public static PawnRelationDef PastLives_OldComrade;
+        public static RulePackDef PastLives_StoryCommon;
 
         static PastLivesDefOf() => DefOfHelper.EnsureInitializedInCtor(typeof(PastLivesDefOf));
     }

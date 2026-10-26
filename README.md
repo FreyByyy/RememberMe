@@ -22,11 +22,16 @@ Colonists who died come back through their own rare event: as a wanderer, and wi
 
 Settings: chance per event, chance per new faction leader, cooldown, letters, which roles are used, which old colonies count.
 
+## Stories and scars
+
+- **Stories.** The "familiar face" letter tells what the person went through since their old colony: wanderers and refugees get a longer story, visitors, traders, raiders and slaves a few sentences, the returned dead something left half unsaid. Stories are built with the game's own grammar engine from parts in `Defs/PastLives_Stories.xml` (Russian in `Languages/Russian (Русский)/DefInjected/RulePackDef`), and may name a faction of your world, a colonist of yours from the same old colony, or how many years have passed. On by default.
+- **New scars and traits (experimental, off by default).** Old healed scars on random body parts (never lost limbs, eyes or ears) and sometimes a new trait that fits the role, on top of the old ones. Chances and the number of scars are configurable; the returned dead always get scars by default. When a story left a mark (a burning escape pod, a pirate cage), the story decides which scars and which trait.
+
 ## My list
 
 Besides old saves, the mod keeps your own list of pawns:
 
-- **Remember button** on every colonist adds them to the list (press again to forget). Each pawn is a file in `SaveData/PastLives/MyList`; a pawn file in the game's own format dropped there works too.
+- **Remember button** on every colonist adds them to the list (press again to forget). It can be hidden in the settings. Each pawn is a file in `SaveData/PastLives/MyList`; a pawn file in the game's own format dropped there works too.
 - **Pawn Editor**: pawns saved with Pawn Editor are picked up from its save folder.
 - **Character Editor (experimental)**: pawns from Character Editor's slots. Its slot format is undocumented, so this may break with a Character Editor update. Off by default.
 
@@ -62,6 +67,10 @@ dotnet build Source/PastLives/PastLives.csproj -c Release -f net472  # 1.6 only
 
 - **1.7** (`net10.0`, output `1.7/Assemblies`) expects RimWorld 1.7 at the default Steam path and Harmony from the Workshop. Override with `-p:RimWorldDir=...` and `-p:HarmonyDir=...` if yours are elsewhere.
 - **1.6** (`net472`, output `1.6/Assemblies`) takes the game and Harmony reference assemblies from NuGet (`Krafs.Rimworld.Ref`, `Lib.Harmony`), so no 1.6 install is needed.
+
+## Dev mode
+
+With dev mode on, the debug actions menu has a "Remember Me?" category: spawn a specific archived person (or a random one) as a wanderer, visitor, trader, raider, faction leader or returning dead; raids, visitors and caravans with several past colonists; story previews in the log; scars and thematic traits on a chosen pawn; reset who has already appeared; re-read saves and log archive stats. These ignore chances, cooldown and settings.
 
 ## Self-test
 

@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!--
+    Stories told in the "familiar face" letter.
+
+    StoryArcDef: one kind of story. roles: who may tell it (Joiner, Refugee, Visitor, Trader, Raider, Slave,
+    DeadReturn); variants: for DeadReturn only (Wanderer, CreepJoiner, Shambler). faction: which faction the
+    text may name as FACTION (None, Pirate, SpacePirate, Peaceful). scars / trait: marks the story leaves,
+    applied only with the experimental hardships setting.
+
+    RulePackDef: the text, in the game's grammar. Root symbol r_story.
+      [PAWN_nameDef] [PAWN_pronoun] [PAWN_possessive] [PAWN_objective]   the returned colonist
+      [colony]          "the colony "X"" (or a fallback when the pawn has no known colony)
+      [FACTION_name]    the faction from the arc's faction setting
+      [HOME_name]       the faction the pawn arrives with (visitors, traders, raiders)
+      [COMRADE_nameDef] a colonist of yours from the same old colony
+      [YEARS]           "7 years", for colonists who were children
+      [comrade]         a ready sentence about the comrade, empty when there is none
+    Conditions: (PAWN_gender==Male/Female), (hasFaction==True/False), (hasHome==True/False),
+    (scars==True/False), (grownUp==True/False), (hasComrade==True/False), (hasColony==True/False).
+  -->
+
+  <RulePackDef>
+    <defName>PastLives_StoryCommon</defName>
+    <rulePack>
+      <rulesStrings>
+        <li>colony(hasColony==True)->the colony "[COLONY]"</li>
+        <li>colony(hasColony==False)->a colony [PAWN_pronoun] no longer names</li>
+        <li>comrade(hasComrade==True)->Among your people [PAWN_pronoun] recognised [COMRADE_nameDef], who had once lived in [colony] too.</li>
+        <li>comrade(hasComrade==False)-></li>
+        <li>childhood(grownUp==True)->[PAWN_pronoun] was only a child back then; [YEARS] have passed since.</li>
+        <li>childhood(grownUp==False)-></li>
+      </rulesStrings>
+    </rulePack>
+  </RulePackDef>
+
+  <!-- ===== Wanderers and refugees: long stories ===== -->
+
+  <PastLives.StoryArcDef>
+    <defName>PastLives_Arc_Shipwreck</defName>
+    <roles><li>Joiner</li><li>Refugee</li></roles>
+    <faction>SpacePirate</faction>
+    <rules>PastLives_Story_Shipwreck</rules>
+    <scars><li>Burn</li><li>Crush</li></scars>
+  </PastLives.StoryArcDef>
+  <RulePackDef>
+    <defName>PastLives_Story_Shipwreck</defName>
+    <rulePack>
+      <rulesStrings>
+        <li>r_story->[leave] [childhood] [journey] [disaster] [aftermath] [arrival] [comrade]</li>
+        <li>leave->[PAWN_nameDef] told you that one day [PAWN_pronoun] decided to leave [colony] and see the stars.</li>
+        <li>leave->[PAWN_nameDef] said that life in [colony] had grown too small, so one spring [PAWN_pronoun] simply left.</li>
+        <li>journey->[PAWN_pronoun] found a crew of spacers and travelled with them, opening one new world after another.</li>
+        <li>journey->[PAWN_pronoun] signed on to a battered freighter and saw planets [PAWN_pronoun] had only heard of in stories.</li>
+        <li>disaster(hasFaction==True)->But the ship was boarded by [FACTION_name], and [PAWN_nameDef] had to abandon it in a transport pod.</li>
+        <li>disaster(hasFaction==True)->Then [FACTION_name] caught the ship near a dead moon; [PAWN_nameDef] was the only one to reach the pods.</li>
+        <li>disaster(hasFaction==False)->But pirates boarded the ship, and [PAWN_nameDef] had to abandon it in a transport pod.</li>
+        <li>aftermath(scars==True)->The pod came down burning, and the scars of that landing are still on [PAWN_possessive] body.</li>
+        <li>aftermath(scars==False)->The pod came down hard, far from anywhere.</li>
+        <li>arrival->After days of wandering, [PAWN_pronoun] came to you.</li>
+        <li>arrival->[PAWN_pronoun] walked for many days before seeing the smoke of your colony.</li>
+      </rulesStrings>
+    </rulePack>
+  </RulePackDef>
+
+  <PastLives.StoryArcDef>
+    <defName>PastLives_Arc_Caravans</defName>
+    <roles><li>Joiner</li><li>Refugee</li></roles>
+    <faction>Peaceful</faction>
+    <rules>PastLives_Story_Caravans</rules>
+  </PastLives.StoryArcDef>
+  <RulePackDef>
+    <defName>PastLives_Story_Caravans</defName>
+    <rulePack>
+      <rulesStrings>
+        <li>r_story->[leave] [childhood] [road] [end] [arrival] [comrade]</li>
+        <li>leave->[PAWN_nameDef] told you that after [colony] [PAWN_pronoun] could not sit in one place anymore.</li>
+        <li>leave->[PAWN_nameDef] said [PAWN_pronoun] left [colony] with nothing but a pack and a rifle.</li>
+        <li>road(hasFaction==True)->For years [PAWN_pronoun] walked with the caravans of [FACTION_name], guarding their goods and learning their songs.</li>
+        <li>road(hasFaction==True)->[PAWN_pronoun] found work among [FACTION_name] and travelled with their traders from town to town.</li>
+        <li>road(hasFaction==False)->For years [PAWN_pronoun] walked with passing caravans, guarding their goods and learning their songs.</li>
+        <li>end->One winter the caravan broke up, and everyone went their own way.</li>
+        <li>end->In the end [PAWN_pronoun] grew tired of roads that never led home.</li>
+        <li>arrival->Rumours of a young colony brought [PAWN_objective] to your door.</li>
+        <li>arrival->[PAWN_pronoun] hopes your colony will be the last stop.</li>
+      </rulesStrings>
+    </rulePack>
+  </RulePackDef>
+
+  <PastLives.StoryArcDef>
+    <defName>PastLives_Arc_Captivity</defName>
+    <roles><li>Joiner</li><li>Refugee</li></roles>
+    <faction>Pirate</faction>
+    <rules>PastLives_Story_Captivity</rules>
+    <scars><li>Cut</li><li>Scratch</li></scars>
+    <trait><def>Nerves</def><degree>-1</degree></trait>
+  </PastLives.StoryArcDef>
+  <RulePackDef>
+    <defName>PastLives_Story_Captivity</defName>
+    <rulePack>
+      <rulesStrings>
+        <li>r_story->[leave] [childhood] [capture] [escape] [arrival] [comrade]</li>
+        <li>leave->[PAWN_nameDef] told you that [PAWN_pronoun] left [colony] to look for a better place.</li>
+        <li>leave->[PAWN_nameDef] said [PAWN_pronoun] parted with [colony] on good terms and set off alone.</li>
+        <li>capture(hasFaction==True)->On the road [PAWN_pronoun] was taken by [FACTION_name] and spent a long time in their cages.</li>
+        <li>capture(hasFaction==False)->On the road [PAWN_pronoun] was taken by pirates and spent a long time in their cages.</li>
+        <li>escape(scars==True)->One night [PAWN_pronoun] broke free, leaving a lot of blood behind; the scars have stayed, and so has the fear.</li>
+        <li>escape(scars==False)->One night [PAWN_pronoun] slipped out while the guards were drunk.</li>
+        <li>arrival->[PAWN_pronoun] has been running ever since, and your colony is the first place where [PAWN_pronoun] dares to stop.</li>
+      </rulesStrings>
+    </rulePack>
+  </RulePackDef>
+
+  <PastLives.StoryArcDef>
+    <defName>PastLives_Arc_Wilds</defName>
+    <roles><li>Joiner</li><li>Refugee</li></roles>
+    <rules>PastLives_Story_Wilds</rules>
+    <scars><li>Bite</li><li>Scratch</li></scars>
+  </PastLives.StoryArcDef>
+  <RulePackDef>
+    <defName>PastLives_Story_Wilds</defName>
+    <rulePack>
+      <rulesStrings>
+        <li>r_story->[leave] [childhood] [wilds] [beast] [arrival] [comrade]</li>
+        <li>leave->[PAWN_nameDef] told you that [PAWN_pronoun] left [colony] to live off the land, far from people.</li>
+        <li>wilds->For a long time [PAWN_pronoun] hunted, foraged and talked only to the wind.</li>
+        <li>beast(scars==True)->Then a starving pack found [PAWN_possessive] camp; [PAWN_pronoun] survived, but the marks of their teeth remain.</li>
+        <li>beast(scars==False)->Then a hard winter came, and the land had nothing left to give.</li>
+        <li>arrival->Following the smell of cooking fires, [PAWN_pronoun] found your colony.</li>
+      </rulesStrings>
+    </rulePack>
+  </RulePackDef>
+
+  <!-- ===== Visitors and traders: short stories ===== -->
+
+  <PastLives.StoryArcDef>
+    <defName>PastLives_Arc_Road</defName>
+    <roles><li>Visitor</li><li>Trader</li></roles>
+    <faction>Peaceful</faction>
+    <rules>PastLives_Story_Road</rules>
+  </PastLives.StoryArcDef>
+  <RulePackDef>
+    <defName>PastLives_Story_Road</defName>
+    <rulePack>
+      <rulesStrings>
+        <li>r_story->[past] [now] [comrade]</li>
+        <li>past(hasFaction==True)->After [colony] [PAWN_nameDef] spent years on the road, trading with [FACTION_name].</li>
+        <li>past(hasFaction==False)->After [colony] [PAWN_nameDef] spent years on the road, trading wherever [PAWN_pronoun] could.</li>
+        <li>now(hasHome==True)->Now [PAWN_pronoun] travels with [HOME_name] and is glad to see a friendly settlement.</li>
+        <li>now(hasHome==False)->Now [PAWN_pronoun] travels alone and is glad to see a friendly settlement.</li>
+      </rulesStrings>
+    </rulePack>
+  </RulePackDef>
+
+  <PastLives.StoryArcDef>
+    <defName>PastLives_Arc_Settled</defName>
+    <roles><li>Visitor</li><li>Trader</li></roles>
+    <rules>PastLives_Story_Settled</rules>
+  </PastLives.StoryArcDef>
+  <RulePackDef>
+    <defName>PastLives_Story_Settled</defName>
+    <rulePack>
+      <rulesStrings>
+        <li>r_story->[past] [now] [comrade]</li>
+        <li>past->[PAWN_nameDef] says [PAWN_pronoun] still dreams of [colony] sometimes.</li>
+        <li>now(hasHome==True)->These days [PAWN_pronoun] lives among [HOME_name] and has found a quiet sort of peace there.</li>
+        <li>now(hasHome==False)->These days [PAWN_pronoun] has found a quiet sort of peace.</li>
+      </rulesStrings>
+    </rulePack>
+  </RulePackDef>
+
+  <!-- ===== Raiders ===== -->
+
+  <PastLives.StoryArcDef>
+    <defName>PastLives_Arc_Turned</defName>
+    <roles><li>Raider</li></roles>
+    <rules>PastLives_Story_Turned</rules>
+  </PastLives.StoryArcDef>
+  <RulePackDef>
+    <defName>PastLives_Story_Turned</defName>
+    <rulePack>
+      <rulesStrings>
+        <li>r_story->[fall] [now]</li>
+        <li>fall->Word is that [colony] fell, and [PAWN_nameDef] was one of the few who walked away.</li>
+        <li>now(hasHome==True)->Hunger brought [PAWN_objective] to [HOME_name], and [PAWN_pronoun] no longer asks whose home [PAWN_pronoun] burns.</li>
+        <li>now(hasHome==False)->Hunger taught [PAWN_objective] to take what others have.</li>
+      </rulesStrings>
+    </rulePack>
+  </RulePackDef>
+
+  <PastLives.StoryArcDef>
+    <defName>PastLives_Arc_Hardened</defName>
+    <roles><li>Raider</li></roles>
+    <faction>Pirate</faction>
+    <rules>PastLives_Story_Hardened</rules>
+    <scars><li>Gunshot</li><li>Stab</li></scars>
+    <trait><def>Bloodlust</def><degree>0</degree></trait>
+  </PastLives.StoryArcDef>
+  <RulePackDef>
+    <defName>PastLives_Story_Hardened</defName>
+    <rulePack>
+      <rulesStrings>
+        <li>r_story->[raid] [wounds] [now]</li>
+        <li>raid(hasFaction==True)->When [FACTION_name] burned [colony], [PAWN_nameDef] fought until the last wall fell.</li>
+        <li>raid(hasFaction==False)->When raiders burned [colony], [PAWN_nameDef] fought until the last wall fell.</li>
+        <li>wounds(scars==True)->[PAWN_pronoun] carries the bullet scars of that day, and something in [PAWN_objective] learned to love the fight.</li>
+        <li>wounds(scars==False)->Something in [PAWN_objective] learned to love the fight that day.</li>
+        <li>now->Now [PAWN_pronoun] raids others the way [PAWN_pronoun] was once raided.</li>
+      </rulesStrings>
+    </rulePack>
+  </RulePackDef>
+
+  <!-- ===== Slaves ===== -->
+
+  <PastLives.StoryArcDef>
+    <defName>PastLives_Arc_Sold</defName>
+    <roles><li>Slave</li></roles>
+    <faction>Pirate</faction>
+    <rules>PastLives_Story_Sold</rules>
+    <scars><li>Cut</li><li>Scratch</li></scars>
+  </PastLives.StoryArcDef>
+  <RulePackDef>
+    <defName>PastLives_Story_Sold</defName>
+    <rulePack>
+      <rulesStrings>
+        <li>r_story->[taken] [marks]</li>
+        <li>taken(hasFaction==True)->[PAWN_nameDef] was taken by [FACTION_name] not long after leaving [colony] and has been sold from hand to hand ever since.</li>
+        <li>taken(hasFaction==False)->[PAWN_nameDef] was taken by slavers not long after leaving [colony] and has been sold from hand to hand ever since.</li>
+        <li>marks(scars==True)->The whip has left its marks.</li>
+        <li>marks(scars==False)->[PAWN_pronoun] keeps [PAWN_possessive] eyes down and says little.</li>
+      </rulesStrings>
+    </rulePack>
+  </RulePackDef>
+
+  <!-- ===== The dead: much left unsaid ===== -->
+
+  <PastLives.StoryArcDef>
+    <defName>PastLives_Arc_Silence</defName>
+    <roles><li>DeadReturn</li></roles>
+    <variants><li>Wanderer</li><li>CreepJoiner</li></variants>
+    <rules>PastLives_Story_Silence</rules>
+  </PastLives.StoryArcDef>
+  <RulePackDef>
+    <defName>PastLives_Story_Silence</defName>
+    <rulePack>
+      <rulesStrings>
+        <li>r_story->[ask] [answer] [detail]</li>
+        <li>ask->When asked where [PAWN_pronoun] has been, [PAWN_nameDef] only looks at [PAWN_possessive] hands.</li>
+        <li>ask->[PAWN_nameDef] does not talk about [colony], or about how it ended.</li>
+        <li>answer->"It was dark. Then it was not," is all [PAWN_pronoun] says.</li>
+        <li>answer->"Someone called my name," [PAWN_pronoun] says, and will not say who.</li>
+        <li>detail(scars==True)->The old wounds have closed into pale scars, as if years had passed for [PAWN_objective] in a single night.</li>
+        <li>detail(scars==False)->[PAWN_pronoun] sleeps with the lights on.</li>
+      </rulesStrings>
+    </rulePack>
+  </RulePackDef>
+
+  <PastLives.StoryArcDef>
+    <defName>PastLives_Arc_Shambler</defName>
+    <roles><li>DeadReturn</li></roles>
+    <variants><li>Shambler</li></variants>
+    <rules>PastLives_Story_Shambler</rules>
+  </PastLives.StoryArcDef>
+  <RulePackDef>
+    <defName>PastLives_Story_Shambler</defName>
+    <rulePack>
+      <rulesStrings>
+        <li>r_story->[sign]</li>
+        <li>sign->[PAWN_pronoun] still wears what looks like the colours of [colony].</li>
+        <li>sign->For a moment [PAWN_pronoun] seems to look straight at you, as if trying to remember.</li>
+      </rulesStrings>
+    </rulePack>
+  </RulePackDef>
+
+</Defs>

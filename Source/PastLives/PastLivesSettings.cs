@@ -28,6 +28,17 @@ namespace PastLives
         public bool allowRepeats;
         public bool importPawnEditor = true;
         public bool importCharacterEditor;   // experimental
+        public bool showRememberButton = true;
+
+        // Stories in the "familiar face" letters.
+        public bool stories = true;
+
+        // Experimental: new scars and traits for returned colonists.
+        public bool hardships;
+        public float scarChanceDead = 1f;
+        public float scarChanceOther = 0.3f;
+        public IntRange scarCount = new IntRange(1, 3);
+        public float traitChance = 0.3f;
 
         public List<string> excludedColonies = new List<string>();
 
@@ -79,6 +90,13 @@ namespace PastLives
             Scribe_Values.Look(ref allowRepeats, "allowRepeats");
             Scribe_Values.Look(ref importPawnEditor, "importPawnEditor", true);
             Scribe_Values.Look(ref importCharacterEditor, "importCharacterEditor");
+            Scribe_Values.Look(ref showRememberButton, "showRememberButton", true);
+            Scribe_Values.Look(ref stories, "stories", true);
+            Scribe_Values.Look(ref hardships, "hardships");
+            Scribe_Values.Look(ref scarChanceDead, "scarChanceDead", 1f);
+            Scribe_Values.Look(ref scarChanceOther, "scarChanceOther", 0.3f);
+            Scribe_Values.Look(ref scarCount, "scarCount", new IntRange(1, 3));
+            Scribe_Values.Look(ref traitChance, "traitChance", 0.3f);
             Scribe_Collections.Look(ref excludedColonies, "excludedColonies", LookMode.Value);
             if (excludedColonies == null) excludedColonies = new List<string>();
         }

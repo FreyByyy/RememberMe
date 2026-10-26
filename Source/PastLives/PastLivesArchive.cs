@@ -81,6 +81,17 @@ namespace PastLives
         // Counts by source for the settings window, regardless of toggles.
         public static IEnumerable<ArchivePawn> SavedColonists => store.Pawns.Values.Where(p => !p.IsListPawn);
         public static int CountMyList => myList.Count;
+
+        // Dev tool; safe from any thread (goes through the pending log).
+        public static void LogStats()
+        {
+            var saved = store.Pawns.Values.Where(p => !p.IsListPawn).ToList();
+            var lines = saved.GroupBy(p => p.Colony).OrderBy(g => g.Key)
+                .Select(g => "  " + g.Key + ": " + g.Count(p => !p.Dead) + " living, " + g.Count(p => p.Dead) + " dead");
+            pendingLog.Enqueue("[PastLives] archive: " + saved.Count + " from old saves, " + myList.Count + " in my list, "
+                + CountSource(ArchivePawn.SourcePawnEditor) + " from Pawn Editor, " + CountSource(ArchivePawn.SourceCharacterEditor)
+                + " from Character Editor\n" + string.Join("\n", lines));
+        }
         public static int CountSource(string source) => store.Pawns.Values.Count(p => p.Source == source);
 
         public static void Initialize()

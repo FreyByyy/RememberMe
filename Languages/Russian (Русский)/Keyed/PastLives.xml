@@ -91,4 +91,20 @@
   <PastLives_Letter_Dead_CreepJoiner_Saved>Этот странник выглядит в точности как {PAWN_nameFull}, {PAWN_gender ? один : одна} из ваших сохранённых колонистов. Но что-то в {PAWN_gender ? нём : ней} не так.</PastLives_Letter_Dead_CreepJoiner_Saved>
   <PastLives_Letter_Dead_Shambler_Saved>Среди бредущих мертвецов вы узнаёте {PAWN_nameFull}, {PAWN_gender ? одного : одну} из ваших сохранённых колонистов.</PastLives_Letter_Dead_Shambler_Saved>
 
+  <!-- 1.1: интерфейс, истории, испытания -->
+  <PastLives_ShowRememberButton>Кнопка «Запомнить» у колонистов</PastLives_ShowRememberButton>
+  <PastLives_ShowRememberButtonDesc>Выключите, чтобы скрыть кнопку «Запомнить» / «Забыть». Список продолжает работать; включите снова, когда захотите кого-то запомнить.</PastLives_ShowRememberButtonDesc>
+  <PastLives_Stories>Истории в письмах</PastLives_Stories>
+  <PastLives_StoriesDesc>Письмо «знакомое лицо» рассказывает, через что прошёл колонист после своей старой колонии.</PastLives_StoriesDesc>
+  <PastLives_Hardships>Новые шрамы и черты (экспериментально)</PastLives_Hardships>
+  <PastLives_HardshipsDesc>Вернувшиеся колонисты несут следы лет между жизнями: старые зажившие шрамы (без потери конечностей) и иногда новую черту, подходящую тому, кем они стали. Если история оставила след, она и решает, какой.</PastLives_HardshipsDesc>
+  <PastLives_ScarChanceDead>Шанс шрамов у вернувшихся умерших: {0}</PastLives_ScarChanceDead>
+  <PastLives_ScarChanceOther>Шанс шрамов у остальных: {0}</PastLives_ScarChanceOther>
+  <PastLives_ScarCount>Число шрамов: {0}–{1}</PastLives_ScarCount>
+  <PastLives_TraitChance>Шанс новой черты: {0}</PastLives_TraitChance>
+  <PastLives_TraitChanceDesc>Добавляется поверх старых черт и подбирается по роли (у рейдеров, рабов, умерших и остальных свои наборы). Не добавляется при конфликте или если черт уже четыре.</PastLives_TraitChanceDesc>
+  <PastLives_YearsOne>{0} год</PastLives_YearsOne>
+  <PastLives_YearsFew>{0} года</PastLives_YearsFew>
+  <PastLives_YearsMany>{0} лет</PastLives_YearsMany>
+
 </LanguageData>

@@ -13,6 +13,24 @@ namespace PastLives
         public bool KeepBackstories;
     }
 
+    // Dev tools: while active, substitutions ignore chances, cooldown and settings, up to Remaining pawns,
+    // optionally always with one given person.
+    public static class DevForce
+    {
+        public static ArchivePawn Pawn;
+        public static int Remaining;
+
+        public static bool Active => Remaining > 0;
+
+        public static void Run(ArchivePawn pawn, int count, Action action)
+        {
+            Pawn = pawn;
+            Remaining = count;
+            try { action(); }
+            finally { Pawn = null; Remaining = 0; }
+        }
+    }
+
     // Decides, for one PawnGenerator.GeneratePawn call, whether a past colonist takes this pawn's place.
     public static class Substitution
     {
@@ -21,7 +39,8 @@ namespace PastLives
         public static PendingSubstitution TryBegin(ref PawnGenerationRequest request)
         {
             var settings = PastLivesMod.Settings;
-            if (!settings.enabled || Current.Game == null) return null;
+            bool forced = DevForce.Active;
+            if ((!settings.enabled && !forced) || Current.Game == null) return null;
             var comp = GameComponent_PastLives.Instance;
             if (comp == null) return null;
             var kind = request.KindDef;
@@ -34,30 +53,33 @@ namespace PastLives
             if (kind == PawnKindDefOf.Slave && !SpawnContext.DeadReturnPending)
             {
                 // Slaves are generated one by one inside trader stock, so they roll individually.
-                if (!Rand.Chance(settings.eventChance)) return null;
+                if (!forced && !Rand.Chance(settings.eventChance)) return null;
                 role = PastRole.Slave;
                 scope = null;
             }
             else
             {
-                if (scope == null || scope.Consumed || !scope.Rolled) return null;
+                if (scope == null || (!forced && (scope.Consumed || !scope.Rolled))) return null;
                 role = scope.Role != PastRole.None ? scope.Role : Classify(scope.Faction ?? request.Faction, kind);
                 if (role == PastRole.None) return null;
             }
 
-            if (!settings.RoleEnabled(role)) return null;
+            if (!forced && !settings.RoleEnabled(role)) return null;
             // While the world is generated only leaders matter; other pawns made then (stock slaves etc.)
             // are mostly never seen and would just use up the archive.
             if (WorldGenerating && role != PastRole.Leader) return null;
             bool exempt = role == PastRole.Leader || role == PastRole.DeadReturn;
-            if (!exempt && !comp.CooldownOver) return null;
+            if (!forced && !exempt && !comp.CooldownOver) return null;
             if (role == PastRole.Leader && WorldGenerating && comp.worldGenLeaders >= settings.maxWorldGenLeaders) return null;
 
-            var picked = ArchiveSelector.Pick(role, request, comp);
+            var picked = forced && DevForce.Pawn != null
+                ? (ArchiveSelector.RaceCompatible(DevForce.Pawn.RaceDef, kind.race) ? DevForce.Pawn : null)
+                : ArchiveSelector.Pick(role, request, comp);
             if (picked == null) return null;
 
+            if (forced) DevForce.Remaining--;
             if (scope != null) scope.Consumed = true;
-            comp.MarkUsed(picked.Key, countsForCooldown: !exempt);
+            comp.MarkUsed(picked.Key, countsForCooldown: !exempt && !forced);
             if (role == PastRole.Leader && WorldGenerating) comp.worldGenLeaders++;
 
             bool keepBackstories = request.IsCreepJoiner;
@@ -79,7 +101,18 @@ namespace PastLives
             if (s.Role == PastRole.DeadReturn && variant == DeadVariant.Wanderer && PastLivesDefOf.PastLives_Returned != null)
                 pawn.health.AddHediff(PastLivesDefOf.PastLives_Returned);
             if (s.Scope != null) s.Scope.Result = pawn;
-            GameComponent_PastLives.Instance?.Register(pawn, s.Archived, s.Role, variant);
+
+            // The story is picked first: one that left marks decides the scars and trait.
+            var arc = PastStories.PickArc(s.Role, variant);
+            bool marks = Hardship.Apply(pawn, s.Role, arc);
+            string story = null;
+            if (arc != null)
+            {
+                int yearsGrown = s.GrownUp ? Math.Max(1, pawn.ageTracker.AgeBiologicalYears - (int)(s.Archived.AgeBioTicks / 3600000L)) : 0;
+                try { story = PastStories.Tell(arc, pawn, s.Archived, PastStories.PickFaction(arc), marks, yearsGrown); }
+                catch (Exception ex) { Log.Warning("[PastLives] story " + arc.defName + " failed: " + ex.Message); }
+            }
+            GameComponent_PastLives.Instance?.Register(pawn, s.Archived, s.Role, variant, story);
             Log.Message("[PastLives] " + s.Archived.DisplayName + " (colony \"" + s.Archived.Colony + "\") returns as "
                 + s.Role + (variant != DeadVariant.None ? "/" + variant : "") + (pawn.Faction != null ? " of " + pawn.Faction.Name : ""));
         }

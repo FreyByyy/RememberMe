@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!--
+    Истории в письме «знакомое лицо». Символы и условия описаны в Defs/PastLives_Stories.xml.
+    [colony] здесь в форме «колонии «X»» (родительный/предложный падеж): «из [colony]», «в [colony]», «о [colony]».
+    Глаголы прошедшего времени разводятся по роду: правило(PAWN_gender==Male) и правило(PAWN_gender==Female).
+  -->
+
+  <PastLives_StoryCommon.rulePack.rulesStrings>
+    <li>colony(hasColony==True)->колонии «[COLONY]»</li>
+    <li>colony(hasColony==False)->давно забытой колонии</li>
+    <li>comrade(hasComrade==True,PAWN_gender==Male)->Среди ваших людей он узнал [COMRADE_nameDef] — они вместе жили в [colony].</li>
+    <li>comrade(hasComrade==True,PAWN_gender==Female)->Среди ваших людей она узнала [COMRADE_nameDef] — они вместе жили в [colony].</li>
+    <li>comrade(hasComrade==False)-></li>
+    <li>childhood(grownUp==True,PAWN_gender==Male)->Тогда он был ещё ребёнком; с тех пор прошло [YEARS].</li>
+    <li>childhood(grownUp==True,PAWN_gender==Female)->Тогда она была ещё ребёнком; с тех пор прошло [YEARS].</li>
+    <li>childhood(grownUp==False)-></li>
+  </PastLives_StoryCommon.rulePack.rulesStrings>
+
+  <!-- Бродяги и беженцы -->
+
+  <PastLives_Story_Shipwreck.rulePack.rulesStrings>
+    <li>r_story->[leave] [childhood] [journey] [disaster] [aftermath] [arrival] [comrade]</li>
+    <li>leave(PAWN_gender==Male)->[PAWN_nameDef] рассказал, что однажды решил уйти из [colony] и отправиться к звёздам.</li>
+    <li>leave(PAWN_gender==Female)->[PAWN_nameDef] рассказала, что однажды решила уйти из [colony] и отправиться к звёздам.</li>
+    <li>leave(PAWN_gender==Male)->[PAWN_nameDef] говорит, что жизнь в [colony] стала ему тесна, и одной весной он просто ушёл.</li>
+    <li>leave(PAWN_gender==Female)->[PAWN_nameDef] говорит, что жизнь в [colony] стала ей тесна, и одной весной она просто ушла.</li>
+    <li>journey(PAWN_gender==Male)->Он нашёл группу космических путешественников и вместе с ними стал открывать для себя новые планеты.</li>
+    <li>journey(PAWN_gender==Female)->Она нашла группу космических путешественников и вместе с ними стала открывать для себя новые планеты.</li>
+    <li>journey(PAWN_gender==Male)->Он нанялся на потрёпанный грузовой корабль и повидал миры, о которых раньше только слышал.</li>
+    <li>journey(PAWN_gender==Female)->Она нанялась на потрёпанный грузовой корабль и повидала миры, о которых раньше только слышала.</li>
+    <li>disaster(hasFaction==True,PAWN_gender==Male)->Но корабль взяли на абордаж бойцы фракции «[FACTION_name]», и [PAWN_nameDef] спасся на транспортной капсуле.</li>
+    <li>disaster(hasFaction==True,PAWN_gender==Female)->Но корабль взяли на абордаж бойцы фракции «[FACTION_name]», и [PAWN_nameDef] спаслась на транспортной капсуле.</li>
+    <li>disaster(hasFaction==True,PAWN_gender==Male)->У мёртвой луны корабль настигли бойцы фракции «[FACTION_name]»; до капсул добрался только [PAWN_nameDef].</li>
+    <li>disaster(hasFaction==True,PAWN_gender==Female)->У мёртвой луны корабль настигли бойцы фракции «[FACTION_name]»; до капсул добралась только [PAWN_nameDef].</li>
+    <li>disaster(hasFaction==False,PAWN_gender==Male)->Но корабль взяли на абордаж пираты, и [PAWN_nameDef] спасся на транспортной капсуле.</li>
+    <li>disaster(hasFaction==False,PAWN_gender==Female)->Но корабль взяли на абордаж пираты, и [PAWN_nameDef] спаслась на транспортной капсуле.</li>
+    <li>aftermath(scars==True)->Капсула падала, охваченная огнём, и шрамы от той посадки видны до сих пор.</li>
+    <li>aftermath(scars==False)->Капсула жёстко рухнула вдали от всякого жилья.</li>
+    <li>arrival(PAWN_gender==Male)->Спустя дни скитаний он пришёл к вам.</li>
+    <li>arrival(PAWN_gender==Female)->Спустя дни скитаний она пришла к вам.</li>
+    <li>arrival(PAWN_gender==Male)->Много дней он шёл, пока не увидел дым вашей колонии.</li>
+    <li>arrival(PAWN_gender==Female)->Много дней она шла, пока не увидела дым вашей колонии.</li>
+  </PastLives_Story_Shipwreck.rulePack.rulesStrings>
+
+  <PastLives_Story_Caravans.rulePack.rulesStrings>
+    <li>r_story->[leave] [childhood] [road] [end] [arrival] [comrade]</li>
+    <li>leave(PAWN_gender==Male)->[PAWN_nameDef] рассказал, что после [colony] уже не мог усидеть на одном месте.</li>
+    <li>leave(PAWN_gender==Female)->[PAWN_nameDef] рассказала, что после [colony] уже не могла усидеть на одном месте.</li>
+    <li>leave(PAWN_gender==Male)->[PAWN_nameDef] говорит, что ушёл из [colony] с одним рюкзаком и винтовкой.</li>
+    <li>leave(PAWN_gender==Female)->[PAWN_nameDef] говорит, что ушла из [colony] с одним рюкзаком и винтовкой.</li>
+    <li>road(hasFaction==True,PAWN_gender==Male)->Годами он ходил с караванами фракции «[FACTION_name]», охранял их товары и учил их песни.</li>
+    <li>road(hasFaction==True,PAWN_gender==Female)->Годами она ходила с караванами фракции «[FACTION_name]», охраняла их товары и учила их песни.</li>
+    <li>road(hasFaction==False,PAWN_gender==Male)->Годами он ходил с попутными караванами, охранял их товары и учил их песни.</li>
+    <li>road(hasFaction==False,PAWN_gender==Female)->Годами она ходила с попутными караванами, охраняла их товары и учила их песни.</li>
+    <li>end->Одной зимой караван распался, и все разошлись кто куда.</li>
+    <li>end(PAWN_gender==Male)->В конце концов он устал от дорог, которые никогда не вели домой.</li>
+    <li>end(PAWN_gender==Female)->В конце концов она устала от дорог, которые никогда не вели домой.</li>
+    <li>arrival->Слухи о молодой колонии привели [PAWN_objective] к вашим воротам.</li>
+    <li>arrival->[PAWN_nameDef] надеется, что ваша колония станет последней остановкой.</li>
+  </PastLives_Story_Caravans.rulePack.rulesStrings>
+
+  <PastLives_Story_Captivity.rulePack.rulesStrings>
+    <li>r_story->[leave] [childhood] [capture] [escape] [arrival] [comrade]</li>
+    <li>leave(PAWN_gender==Male)->[PAWN_nameDef] рассказал, что ушёл из [colony] искать лучшей доли.</li>
+    <li>leave(PAWN_gender==Female)->[PAWN_nameDef] рассказала, что ушла из [colony] искать лучшей доли.</li>
+    <li>capture(hasFaction==True,PAWN_gender==Male)->В пути его схватили бойцы фракции «[FACTION_name]», и он долго просидел в их клетках.</li>
+    <li>capture(hasFaction==True,PAWN_gender==Female)->В пути её схватили бойцы фракции «[FACTION_name]», и она долго просидела в их клетках.</li>
+    <li>capture(hasFaction==False,PAWN_gender==Male)->В пути его схватили пираты, и он долго просидел в их клетках.</li>
+    <li>capture(hasFaction==False,PAWN_gender==Female)->В пути её схватили пираты, и она долго просидела в их клетках.</li>
+    <li>escape(scars==True,PAWN_gender==Male)->Однажды ночью он вырвался, оставив за собой много крови; шрамы остались, как и страх.</li>
+    <li>escape(scars==True,PAWN_gender==Female)->Однажды ночью она вырвалась, оставив за собой много крови; шрамы остались, как и страх.</li>
+    <li>escape(scars==False,PAWN_gender==Male)->Однажды ночью он ускользнул, пока охрана была пьяна.</li>
+    <li>escape(scars==False,PAWN_gender==Female)->Однажды ночью она ускользнула, пока охрана была пьяна.</li>
+    <li>arrival(PAWN_gender==Male)->С тех пор он в бегах, и ваша колония — первое место, где он решился остановиться.</li>
+    <li>arrival(PAWN_gender==Female)->С тех пор она в бегах, и ваша колония — первое место, где она решилась остановиться.</li>
+  </PastLives_Story_Captivity.rulePack.rulesStrings>
+
+  <PastLives_Story_Wilds.rulePack.rulesStrings>
+    <li>r_story->[leave] [childhood] [wilds] [beast] [arrival] [comrade]</li>
+    <li>leave(PAWN_gender==Male)->[PAWN_nameDef] рассказал, что ушёл из [colony], чтобы жить охотой, подальше от людей.</li>
+    <li>leave(PAWN_gender==Female)->[PAWN_nameDef] рассказала, что ушла из [colony], чтобы жить охотой, подальше от людей.</li>
+    <li>wilds(PAWN_gender==Male)->Долгое время он охотился, собирал коренья и разговаривал только с ветром.</li>
+    <li>wilds(PAWN_gender==Female)->Долгое время она охотилась, собирала коренья и разговаривала только с ветром.</li>
+    <li>beast(scars==True,PAWN_gender==Male)->Потом на лагерь вышла голодная стая; он выжил, но следы зубов остались.</li>
+    <li>beast(scars==True,PAWN_gender==Female)->Потом на лагерь вышла голодная стая; она выжила, но следы зубов остались.</li>
+    <li>beast(scars==False)->Потом пришла суровая зима, и земле стало нечего дать.</li>
+    <li>arrival(PAWN_gender==Male)->На запах дыма от очагов он и вышел к вашей колонии.</li>
+    <li>arrival(PAWN_gender==Female)->На запах дыма от очагов она и вышла к вашей колонии.</li>
+  </PastLives_Story_Wilds.rulePack.rulesStrings>
+
+  <!-- Гости и торговцы -->
+
+  <PastLives_Story_Road.rulePack.rulesStrings>
+    <li>r_story->[past] [now] [comrade]</li>
+    <li>past(hasFaction==True,PAWN_gender==Male)->После [colony] [PAWN_nameDef] годами странствовал и торговал с фракцией «[FACTION_name]».</li>
+    <li>past(hasFaction==True,PAWN_gender==Female)->После [colony] [PAWN_nameDef] годами странствовала и торговала с фракцией «[FACTION_name]».</li>
+    <li>past(hasFaction==False,PAWN_gender==Male)->После [colony] [PAWN_nameDef] годами странствовал и торговал где придётся.</li>
+    <li>past(hasFaction==False,PAWN_gender==Female)->После [colony] [PAWN_nameDef] годами странствовала и торговала где придётся.</li>
+    <li>now(hasHome==True,PAWN_gender==Male)->Теперь он путешествует с фракцией «[HOME_name]» и рад видеть дружеское поселение.</li>
+    <li>now(hasHome==True,PAWN_gender==Female)->Теперь она путешествует с фракцией «[HOME_name]» и рада видеть дружеское поселение.</li>
+    <li>now(hasHome==False)->Теперь [PAWN_pronoun] путешествует в одиночку.</li>
+  </PastLives_Story_Road.rulePack.rulesStrings>
+
+  <PastLives_Story_Settled.rulePack.rulesStrings>
+    <li>r_story->[past] [now] [comrade]</li>
+    <li>past->[PAWN_nameDef] говорит, что до сих пор иногда видит во сне жизнь в [colony].</li>
+    <li>now(hasHome==True,PAWN_gender==Male)->Теперь он живёт среди фракции «[HOME_name]» и нашёл там тихий покой.</li>
+    <li>now(hasHome==True,PAWN_gender==Female)->Теперь она живёт среди фракции «[HOME_name]» и нашла там тихий покой.</li>
+    <li>now(hasHome==False,PAWN_gender==Male)->Теперь он нашёл тихий покой.</li>
+    <li>now(hasHome==False,PAWN_gender==Female)->Теперь она нашла тихий покой.</li>
+  </PastLives_Story_Settled.rulePack.rulesStrings>
+
+  <!-- Рейдеры -->
+
+  <PastLives_Story_Turned.rulePack.rulesStrings>
+    <li>r_story->[fall] [now]</li>
+    <li>fall(PAWN_gender==Male)->Говорят, жизнь в [colony] кончилась пожаром, и [PAWN_nameDef] — один из немногих, кто тогда уцелел.</li>
+    <li>fall(PAWN_gender==Female)->Говорят, жизнь в [colony] кончилась пожаром, и [PAWN_nameDef] — одна из немногих, кто тогда уцелел.</li>
+    <li>now(hasHome==True,PAWN_gender==Male)->Голод привёл его к фракции «[HOME_name]», и он больше не спрашивает, чей дом жжёт.</li>
+    <li>now(hasHome==True,PAWN_gender==Female)->Голод привёл её к фракции «[HOME_name]», и она больше не спрашивает, чей дом жжёт.</li>
+    <li>now(hasHome==False)->Голод научил [PAWN_objective] брать чужое.</li>
+  </PastLives_Story_Turned.rulePack.rulesStrings>
+
+  <PastLives_Story_Hardened.rulePack.rulesStrings>
+    <li>r_story->[raid] [wounds] [now]</li>
+    <li>raid(hasFaction==True,PAWN_gender==Male)->Когда бойцы фракции «[FACTION_name]» жгли [colony], [PAWN_nameDef] сражался, пока не пала последняя стена.</li>
+    <li>raid(hasFaction==True,PAWN_gender==Female)->Когда бойцы фракции «[FACTION_name]» жгли [colony], [PAWN_nameDef] сражалась, пока не пала последняя стена.</li>
+    <li>raid(hasFaction==False,PAWN_gender==Male)->Когда рейдеры жгли поселение, [PAWN_nameDef] сражался, пока не пала последняя стена.</li>
+    <li>raid(hasFaction==False,PAWN_gender==Female)->Когда рейдеры жгли поселение, [PAWN_nameDef] сражалась, пока не пала последняя стена.</li>
+    <li>wounds(scars==True)->С того дня остались шрамы от пуль, а что-то внутри полюбило драку.</li>
+    <li>wounds(scars==False)->В тот день что-то внутри полюбило драку.</li>
+    <li>now(PAWN_gender==Male)->Теперь он сам нападает на других, как когда-то напали на него.</li>
+    <li>now(PAWN_gender==Female)->Теперь она сама нападает на других, как когда-то напали на неё.</li>
+  </PastLives_Story_Hardened.rulePack.rulesStrings>
+
+  <!-- Рабы -->
+
+  <PastLives_Story_Sold.rulePack.rulesStrings>
+    <li>r_story->[taken] [marks]</li>
+    <li>taken(hasFaction==True,PAWN_gender==Male)->Вскоре после ухода из [colony] [PAWN_nameDef] попал в руки фракции «[FACTION_name]», и с тех пор его перепродают из рук в руки.</li>
+    <li>taken(hasFaction==True,PAWN_gender==Female)->Вскоре после ухода из [colony] [PAWN_nameDef] попала в руки фракции «[FACTION_name]», и с тех пор её перепродают из рук в руки.</li>
+    <li>taken(hasFaction==False,PAWN_gender==Male)->Вскоре после ухода из [colony] [PAWN_nameDef] попал к работорговцам, и с тех пор его перепродают из рук в руки.</li>
+    <li>taken(hasFaction==False,PAWN_gender==Female)->Вскоре после ухода из [colony] [PAWN_nameDef] попала к работорговцам, и с тех пор её перепродают из рук в руки.</li>
+    <li>marks(scars==True)->Кнут оставил свои следы.</li>
+    <li>marks(scars==False)->[PAWN_pronoun] не поднимает глаз и почти не говорит.</li>
+  </PastLives_Story_Sold.rulePack.rulesStrings>
+
+  <!-- Умершие: много недосказанного -->
+
+  <PastLives_Story_Silence.rulePack.rulesStrings>
+    <li>r_story->[ask] [answer] [detail]</li>
+    <li>ask(PAWN_gender==Male)->На вопрос, где он был, [PAWN_nameDef] только смотрит на свои руки.</li>
+    <li>ask(PAWN_gender==Female)->На вопрос, где она была, [PAWN_nameDef] только смотрит на свои руки.</li>
+    <li>ask->[PAWN_nameDef] не говорит ни о [colony], ни о том, чем всё закончилось.</li>
+    <li>answer->«Было темно. Потом перестало», — вот и всё, что удаётся услышать.</li>
+    <li>answer->«Кто-то позвал меня по имени», — и больше ни слова о том, кто.</li>
+    <li>detail(scars==True)->Старые раны затянулись бледными шрамами, будто за одну ночь прошли годы.</li>
+    <li>detail(scars==False)->Спать без света [PAWN_pronoun] больше не может.</li>
+  </PastLives_Story_Silence.rulePack.rulesStrings>
+
+  <PastLives_Story_Shambler.rulePack.rulesStrings>
+    <li>r_story->[sign]</li>
+    <li>sign->На обрывках одежды ещё можно различить цвета [colony].</li>
+    <li>sign->На миг кажется, что взгляд мертвеца остановился на вас, будто пытаясь что-то вспомнить.</li>
+  </PastLives_Story_Shambler.rulePack.rulesStrings>
+
+</LanguageData>

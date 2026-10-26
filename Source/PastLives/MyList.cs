@@ -129,7 +129,8 @@ namespace PastLives
         {
             foreach (var g in __result) yield return g;
             var p = __instance;
-            if (!PastLivesMod.Settings.enabled || !p.RaceProps.Humanlike || p.Dead || !(p.IsColonist || p.IsSlaveOfColony)) yield break;
+            var settings = PastLivesMod.Settings;
+            if (!settings.enabled || !settings.showRememberButton || !p.RaceProps.Humanlike || p.Dead || !(p.IsColonist || p.IsSlaveOfColony)) yield break;
 
             bool remembered = MyList.Contains(p);
             yield return new Command_Action

@@ -18,6 +18,7 @@ namespace PastLives
         public bool wasDead;
         public bool notified;
         public string factionName;
+        public string story;
 
         public void ExposeData()
         {
@@ -30,6 +31,7 @@ namespace PastLives
             Scribe_Values.Look(ref wasDead, "wasDead");
             Scribe_Values.Look(ref notified, "notified");
             Scribe_Values.Look(ref factionName, "factionName");
+            Scribe_Values.Look(ref story, "story");
         }
     }
 
@@ -112,7 +114,7 @@ namespace PastLives
             return byThingId.TryGetValue(pawn.ThingID, out var e) ? e : null;
         }
 
-        public void Register(Pawn pawn, ArchivePawn a, PastRole role, DeadVariant variant)
+        public void Register(Pawn pawn, ArchivePawn a, PastRole role, DeadVariant variant, string story = null)
         {
             var entry = new PastLifeEntry
             {
@@ -124,6 +126,7 @@ namespace PastLives
                 variant = variant,
                 wasDead = a.Dead,
                 factionName = pawn.Faction?.Name,
+                story = story,
             };
             entries.Add(entry);
             byThingId = null;
@@ -143,6 +146,15 @@ namespace PastLives
                 if (!pawn.relations.DirectRelationExists(def, other)) pawn.relations.AddDirectRelation(def, other);
             }
         }
+
+        // Dev tool: everyone may appear in this world again.
+        public void ResetUsed()
+        {
+            usedKeys.Clear();
+            lastAppearanceTick = -9999999;
+        }
+
+        public static string WithStory(string text, PastLifeEntry e) => string.IsNullOrEmpty(e.story) ? text : text + "\n\n" + e.story;
 
         public void Notify_WorldGenerationStarted()
         {
@@ -211,7 +223,7 @@ namespace PastLives
                 : e.role == PastRole.DeadReturn ? LetterDefOf.NeutralEvent
                 : e.role == PastRole.Joiner || e.role == PastRole.Refugee ? LetterDefOf.PositiveEvent
                 : LetterDefOf.NeutralEvent;
-            Find.LetterStack.ReceiveLetter(label, text, type, new LookTargets(pawn));
+            Find.LetterStack.ReceiveLetter(label, WithStory(text, e), type, new LookTargets(pawn));
         }
 
         public override void ExposeData()
