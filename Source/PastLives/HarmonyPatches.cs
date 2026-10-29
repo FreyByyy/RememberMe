@@ -7,19 +7,29 @@ using Verse;
 namespace PastLives
 {
     // The single place where a past colonist can replace a generated pawn.
+    // Other mods may skip the generation and hand back a pawn that already exists (Eternal Pawns returns its
+    // veterans this way). Harmony still runs our prefix and postfix then, so __runOriginal tells us: a pawn
+    // that was not generated just now is never rewritten into someone else.
     [HarmonyPatch(typeof(PawnGenerator), nameof(PawnGenerator.GeneratePawn), new[] { typeof(PawnGenerationRequest) })]
     public static class Patch_GeneratePawn
     {
-        public static void Prefix(ref PawnGenerationRequest request, out PendingSubstitution __state)
+        public static void Prefix(ref PawnGenerationRequest request, bool __runOriginal, out PendingSubstitution __state)
         {
             __state = null;
+            if (!__runOriginal) return;
             try { __state = Substitution.TryBegin(ref request); }
             catch (Exception ex) { Log.ErrorOnce("[PastLives] substitution failed: " + ex, 0x5A57_0001); }
         }
 
-        public static void Postfix(Pawn __result, PendingSubstitution __state)
+        public static void Postfix(Pawn __result, bool __runOriginal, PendingSubstitution __state)
         {
-            if (__state == null || __result == null) return;
+            if (__state == null) return;
+            // A prefix that ran after ours skipped the generation: give the person back to the archive.
+            if (!__runOriginal || __result == null)
+            {
+                Substitution.Cancel(__state);
+                return;
+            }
             try { Substitution.Finish(__result, __state); }
             catch (Exception ex) { Log.ErrorOnce("[PastLives] restoring a past colonist failed: " + ex, 0x5A57_0002); }
         }

@@ -101,6 +101,15 @@ namespace PastLives
 
         public IReadOnlyList<PastLifeEntry> Entries => entries;
 
+        public bool HasUsedKey(string key) => usedKeys.Contains(key);
+        public int LastAppearanceTick => lastAppearanceTick;
+
+        public void Unmark(string key, bool wasUsed, int prevAppearanceTick)
+        {
+            if (!wasUsed) usedKeys.Remove(key);
+            lastAppearanceTick = prevAppearanceTick;
+        }
+
         public void MarkUsed(string key, bool countsForCooldown)
         {
             usedKeys.Add(key);

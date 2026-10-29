@@ -11,6 +11,12 @@ namespace PastLives
         public SpawnScope Scope;
         public bool GrownUp;
         public bool KeepBackstories;
+
+        // What TryBegin changed, so Cancel can undo it.
+        public bool WasUsed;
+        public int PrevAppearanceTick;
+        public bool Forced;
+        public bool CountedWorldGenLeader;
     }
 
     // Dev tools: while active, substitutions ignore chances, cooldown and settings, up to Remaining pawns,
@@ -77,10 +83,13 @@ namespace PastLives
                 : ArchiveSelector.Pick(role, request, comp);
             if (picked == null) return null;
 
+            bool wasUsed = comp.HasUsedKey(picked.Key);
+            int prevTick = comp.LastAppearanceTick;
+            bool countedLeader = role == PastRole.Leader && WorldGenerating;
             if (forced) DevForce.Remaining--;
             if (scope != null) scope.Consumed = true;
             comp.MarkUsed(picked.Key, countsForCooldown: !exempt && !forced);
-            if (role == PastRole.Leader && WorldGenerating) comp.worldGenLeaders++;
+            if (countedLeader) comp.worldGenLeaders++;
 
             bool keepBackstories = request.IsCreepJoiner;
             PawnRecipe.AdjustRequest(ref request, picked, out bool grownUp);
@@ -91,7 +100,20 @@ namespace PastLives
                 Scope = scope,
                 GrownUp = grownUp,
                 KeepBackstories = keepBackstories,
+                WasUsed = wasUsed,
+                PrevAppearanceTick = prevTick,
+                Forced = forced,
+                CountedWorldGenLeader = countedLeader,
             };
+        }
+
+        public static void Cancel(PendingSubstitution s)
+        {
+            var comp = GameComponent_PastLives.Instance;
+            comp?.Unmark(s.Archived.Key, s.WasUsed, s.PrevAppearanceTick);
+            if (s.CountedWorldGenLeader && comp != null) comp.worldGenLeaders--;
+            if (s.Scope != null) s.Scope.Consumed = false;
+            if (s.Forced) DevForce.Remaining++;
         }
 
         public static void Finish(Pawn pawn, PendingSubstitution s)
