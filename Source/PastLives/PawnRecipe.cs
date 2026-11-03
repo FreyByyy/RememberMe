@@ -137,8 +137,8 @@ namespace PastLives
                 if (def == null) continue;
                 var rec = pawn.skills.GetSkill(def);
                 if (rec == null) continue;
-                var passion = Enum.TryParse<Passion>(s.Passion ?? "None", out var p) ? p : Passion.None;
-                int level = s.Level + (grownUp && passion != Passion.None ? Rand.RangeInclusive(2, 5) : 0);
+                var passion = PassionCompat.Parse(s.Passion);
+                int level = s.Level + (grownUp && PassionCompat.IsGood(passion) ? Rand.RangeInclusive(2, 5) : 0);
                 rec.Level = Mathf.Clamp(level, SkillRecord.MinLevel, SkillRecord.MaxLevel);
                 rec.passion = passion;
                 rec.xpSinceLastLevel = rec.XpRequiredForLevelUp * Rand.Range(0f, 0.5f);

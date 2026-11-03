@@ -50,6 +50,7 @@ List settings: how much more often list pawns are picked (weight slider), "only 
 - RimWorld 1.6 or 1.7
 - [Harmony](https://steamcommunity.com/sharedfiles/filedetails/?id=2009463077)
 - DLCs are optional; Royalty, Ideology, Biotech and Anomaly content is used when present.
+- Works with Vanilla Skills Expanded and its add-ons (e.g. Alpha Skills) when they are active: their passions carry over by name, so they come back right even with a different mod list. Neither is required.
 
 ## Installing
 

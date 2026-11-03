@@ -79,6 +79,7 @@ namespace PastLives
 
             TestMyList(comp, map);
             TestStoriesAndHardships(comp, map);
+            TestPassions();
 
             comp.CheckSpawned();
 
@@ -176,6 +177,25 @@ namespace PastLives
                 });
                 Out("dev raid x3: newPastColonists=" + (comp.Entries.Count - before) + " forceCleared=" + !DevForce.Active);
             }
+        }
+
+        // Every passion survives name -> index -> name; with Vanilla Skills Expanded this covers its passions too.
+        private static void TestPassions()
+        {
+            int ok = 0, total = 0;
+            var bad = new System.Collections.Generic.List<string>();
+            foreach (Passion p in PassionCompat.VseActive
+                ? Enumerable.Range(0, 256).Select(i => (Passion)i).Where(p => PassionCompat.Name(p) != p.ToString())
+                : new[] { Passion.None, Passion.Minor, Passion.Major })
+            {
+                total++;
+                var name = PassionCompat.Name(p);
+                var back = PassionCompat.Parse(name);
+                if (back == p || name.EndsWith("_Active") || PassionCompat.Name(back) == name) ok++;
+                else bad.Add(name);
+            }
+            Out("passions: vse=" + PassionCompat.VseActive + " roundTrip=" + ok + "/" + total + (bad.Count > 0 ? " bad=" + string.Join(",", bad) : "")
+                + " unknownName=" + PassionCompat.Parse("NoSuchPassion") + " foreignIndex=" + PassionCompat.Parse("17"));
         }
 
         private static void Out(string msg) => Log.Message("[PastLives][selftest] " + msg);
