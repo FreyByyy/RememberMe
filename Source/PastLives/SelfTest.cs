@@ -40,6 +40,7 @@ namespace PastLives
             s.importCharacterEditor = true;
             s.stories = true;
             s.hardships = true;
+            s.showRememberButton = true;
         }
 
         private static void Run()
@@ -117,7 +118,8 @@ namespace PastLives
             var colonist = map.mapPawns.FreeColonists.FirstOrDefault();
             if (colonist == null) { Out("mylist: no colonist"); return; }
             var gizmo = colonist.GetGizmos().OfType<Command_Action>().FirstOrDefault(g => g.icon == MyListTextures.Remember);
-            Out("mylist: gizmo=" + (gizmo != null) + " label=" + gizmo?.defaultLabel);
+            Out("mylist: gizmo=" + (gizmo != null) + " label=" + gizmo?.defaultLabel + " buttonSetting=" + PastLivesMod.Settings.showRememberButton
+                + " colonist=" + colonist.IsColonist + " gizmos=" + colonist.GetGizmos().Count());
             bool wasThere = MyList.Contains(colonist);
             MyList.Remember(colonist);
             var entry = PastLivesArchive.MyListEntry(MyList.KeyFor(colonist));
@@ -163,7 +165,8 @@ namespace PastLives
             int traitsBefore = test.story.traits.allTraits.Count;
             bool trait = Hardship.TryGainTrait(test, Hardship.TraitsFor(PastRole.Raider));
             Out("hardship: scars=" + scars + " permanent=" + permanent + " partsKept=" + (test.health.hediffSet.GetNotMissingParts().Count() == partsBefore)
-                + " trait=" + trait + " traits=" + traitsBefore + "->" + test.story.traits.allTraits.Count + " dead=" + test.Dead);
+                + " trait=" + trait + " traits=" + traitsBefore + "->" + test.story.traits.allTraits.Count + " dead=" + test.Dead
+                + " onUnhittableParts=" + test.health.hediffSet.hediffs.Count(h => h is Hediff_Injury && h.Part != null && h.Part.coverageAbs <= 0f));
 
             var raid = DefDatabase<IncidentDef>.GetNamedSilentFail("RaidEnemy");
             if (raid != null)

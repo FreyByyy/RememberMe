@@ -77,13 +77,14 @@ namespace PastLives
             var set = pawn.health?.hediffSet;
             if (set == null || kinds == null || kinds.Count == 0) return 0;
             var parts = set.GetNotMissingParts()
-                .Where(p => p.depth == BodyPartDepth.Outside && p.def.permanentInjuryChanceFactor > 0f && !Delicate(p)
+                // No coverage (the waist and the like): the game treats these parts as impossible to hit.
+                .Where(p => p.depth == BodyPartDepth.Outside && p.coverageAbs > 0f && p.def.permanentInjuryChanceFactor > 0f && !Delicate(p)
                     && !set.PartOrAnyAncestorHasDirectlyAddedParts(p))
                 .ToList();
             int added = 0;
             for (int i = 0; i < count && parts.Count > 0; i++)
             {
-                var part = parts.RandomElementByWeight(p => p.coverageAbs + 0.01f);
+                var part = parts.RandomElementByWeight(p => p.coverageAbs);
                 float maxHealth = part.def.GetMaxHealth(pawn);
                 if (maxHealth <= 3f) { parts.Remove(part); i--; continue; }
                 if (!(HediffMaker.MakeHediff(kinds.RandomElement(), pawn, part) is Hediff_Injury injury)) continue;
