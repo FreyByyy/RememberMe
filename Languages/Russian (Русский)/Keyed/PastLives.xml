@@ -6,7 +6,7 @@
   <!-- Настройки -->
   <PastLives_Enabled>Колонисты из прошлых игр могут появляться в мире</PastLives_Enabled>
   <PastLives_EventChance>Шанс на событие: {0}</PastLives_EventChance>
-  <PastLives_EventChanceDesc>Бросается один раз на рейд, караван, группу гостей, квест странника или беженцев, а также на каждого раба на продажу. При успехе одна пешка из события становится колонистом из прошлого.</PastLives_EventChanceDesc>
+  <PastLives_EventChanceDesc>Бросается один раз на событие: рейд, караван или группу гостей, квест, который кого-то приводит (странники, беженцы, упавшие капсулы, пленники, которых надо вызволить...), одичавшего, криптокапсулу, обитателей лагеря или поселения, куда вы вошли, а также на каждого раба на продажу. При успехе одна пешка из события становится колонистом из прошлого. Для каждой роли ниже этот шанс можно увеличить или уменьшить.</PastLives_EventChanceDesc>
   <PastLives_LeaderChance>Шанс при смене лидера фракции: {0}</PastLives_LeaderChance>
   <PastLives_LeaderChanceDesc>Бросается каждый раз, когда у фракции появляется новый лидер, в том числе при создании мира. Бывшие лидеры идеологий и дворяне выбираются намного чаще.</PastLives_LeaderChanceDesc>
   <PastLives_Cooldown>Минимум дней между появлениями: {0}</PastLives_Cooldown>
@@ -106,5 +106,35 @@
   <PastLives_YearsOne>{0} год</PastLives_YearsOne>
   <PastLives_YearsFew>{0} года</PastLives_YearsFew>
   <PastLives_YearsMany>{0} лет</PastLives_YearsMany>
+
+  <!-- 1.2: новые роли -->
+  <PastLives_Show>Показать</PastLives_Show>
+  <PastLives_Hide>Скрыть</PastLives_Hide>
+  <PastLives_RoleChanceFactor>шанс x{0} (сейчас {1})</PastLives_RoleChanceFactor>
+  <PastLives_Role_JoinerDesc>Странники, странник с параличом (Royalty) и те, кто просится к вам, а за ними идёт угроза, например беженец с погоней.</PastLives_Role_JoinerDesc>
+  <PastLives_Role_RefugeeDesc>Беженцы, просящие укрытия, и имперский дезертир (Royalty; у тех, кто носил титул, шанс выше).</PastLives_Role_RefugeeDesc>
+  <PastLives_Role_VisitorDesc>Группы гостей, постояльцы (Royalty; у титулованных шанс выше), нищие (Ideology) и сангвофаги (Biotech; только те, кто сам был сангвофагом).</PastLives_Role_VisitorDesc>
+  <PastLives_Role_Castaway>Потерпевший крушение</PastLives_Role_Castaway>
+  <PastLives_Role_CastawayDesc>Упавшие транспортные капсулы (в том числе с младенцем), крушение шаттла (Royalty) и раненые беженцы, которым нужна помощь.</PastLives_Role_CastawayDesc>
+  <PastLives_Role_Defender>Обитатель лагеря или поселения</PastLives_Role_Defender>
+  <PastLives_Role_DefenderDesc>Лагеря бандитов, поселения фракций, рабочие площадки, древние комплексы и другие места, куда входят ваши люди. Письмо приходит, когда вы туда прибываете.</PastLives_Role_DefenderDesc>
+  <PastLives_Role_Prisoner>Пленник</PastLives_Role_Prisoner>
+  <PastLives_Role_PrisonerDesc>Пленники, которых нужно вызволить из лагеря, и пленники, которых вас просят подержать у себя (Royalty).</PastLives_Role_PrisonerDesc>
+  <PastLives_Role_Wild>Одичавший</PastLives_Role_Wild>
+  <PastLives_Role_Sleeper>Спящий в криптокапсуле</PastLives_Role_Sleeper>
+  <PastLives_Role_SleeperDesc>Древние криптокапсулы, мирные и враждебные, в том числе на первой карте. Письмо приходит, когда капсула открывается.</PastLives_Role_SleeperDesc>
+
+  <PastLives_Letter_Castaway>{PAWN_nameFull}, {PAWN_gender ? бывший колонист : бывшая колонистка} «{COLONY}», {PAWN_gender ? свалился : свалилась} в вашу жизнь прямо с неба. {PAWN_gender ? Ранен : Ранена}, но {PAWN_gender ? жив : жива}.</PastLives_Letter_Castaway>
+  <PastLives_Letter_Defender>Одно лицо здесь вам знакомо: {PAWN_nameFull}, {PAWN_gender ? бывший колонист : бывшая колонистка} «{COLONY}», теперь во фракции «{FACTION}».</PastLives_Letter_Defender>
+  <PastLives_Letter_Prisoner>{PAWN_gender ? Пленник : Пленница} — {PAWN_nameFull}, {PAWN_gender ? бывший колонист : бывшая колонистка} «{COLONY}». Кто-то давно держит {PAWN_gender ? его : её} под замком.</PastLives_Letter_Prisoner>
+  <PastLives_Letter_Wild>Под грязью и спутанными волосами вы узнаёте {PAWN_nameFull}, {PAWN_gender ? бывшего колониста : бывшую колонистку} «{COLONY}». Похоже, {PAWN_gender ? сам он : сама она} больше никого не узнаёт.</PastLives_Letter_Wild>
+  <PastLives_Letter_Sleeper>В древней капсуле {PAWN_gender ? спал : спала} {PAWN_nameFull}, {PAWN_gender ? бывший колонист : бывшая колонистка} «{COLONY}». Как {PAWN_gender ? он : она} туда {PAWN_gender ? попал : попала}, остаётся только гадать.</PastLives_Letter_Sleeper>
+  <PastLives_Letter_Dead_Ghoul>То, что выползло из капсулы, когда-то было {PAWN_nameFull}, {PAWN_gender ? погибшим : погибшей} в колонии «{COLONY}». Кто-то не дал {PAWN_gender ? ему : ей} упокоиться.</PastLives_Letter_Dead_Ghoul>
+  <PastLives_Letter_Castaway_Saved>{PAWN_nameFull}, {PAWN_gender ? один : одна} из ваших сохранённых колонистов, {PAWN_gender ? свалился : свалилась} в вашу жизнь прямо с неба. {PAWN_gender ? Ранен : Ранена}, но {PAWN_gender ? жив : жива}.</PastLives_Letter_Castaway_Saved>
+  <PastLives_Letter_Defender_Saved>Одно лицо здесь вам знакомо: {PAWN_nameFull}, {PAWN_gender ? один : одна} из ваших сохранённых колонистов, теперь во фракции «{FACTION}».</PastLives_Letter_Defender_Saved>
+  <PastLives_Letter_Prisoner_Saved>{PAWN_gender ? Пленник : Пленница} — {PAWN_nameFull}, {PAWN_gender ? один : одна} из ваших сохранённых колонистов.</PastLives_Letter_Prisoner_Saved>
+  <PastLives_Letter_Wild_Saved>Под грязью и спутанными волосами вы узнаёте {PAWN_nameFull}, {PAWN_gender ? одного : одну} из ваших сохранённых колонистов.</PastLives_Letter_Wild_Saved>
+  <PastLives_Letter_Sleeper_Saved>В древней капсуле {PAWN_gender ? спал : спала} {PAWN_nameFull}, {PAWN_gender ? один : одна} из ваших сохранённых колонистов.</PastLives_Letter_Sleeper_Saved>
+  <PastLives_Letter_Dead_Ghoul_Saved>То, что выползло из капсулы, когда-то было {PAWN_nameFull}, {PAWN_gender ? одним : одной} из ваших сохранённых колонистов.</PastLives_Letter_Dead_Ghoul_Saved>
 
 </LanguageData>

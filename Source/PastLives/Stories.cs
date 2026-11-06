@@ -17,6 +17,17 @@ namespace PastLives
         Peaceful,       // any faction that is not a pirate one, hostile or not
     }
 
+    // What kind of people the teller lives among now, so a tribal raider is not told as a pirate.
+    public enum HomeKind
+    {
+        None,           // no faction, the player's, or the ancients of a cryptosleep casket
+        Pirate,
+        Tribal,
+        Outlander,
+        Empire,
+        Salvager,
+    }
+
     public class StoryTrait
     {
         public TraitDef def;
@@ -31,6 +42,9 @@ namespace PastLives
         public List<PastRole> roles = new List<PastRole>();
         public List<DeadVariant> variants = new List<DeadVariant>();   // DeadReturn only; empty = every form
         public StoryFaction faction;
+        public List<HomeKind> homes = new List<HomeKind>();             // empty = told among anyone
+        public bool grownUpOnly;                                         // only for people who were children back then
+        public List<string> quests = new List<string>();                 // told only in these quests (QuestScriptDef names); empty = any
         public float commonality = 1f;
         public RulePackDef rules;
         public List<HediffDef> scars = new List<HediffDef>();
@@ -38,6 +52,8 @@ namespace PastLives
 
         public bool Fits(PastRole role, DeadVariant variant) =>
             roles.Contains(role) && (role != PastRole.DeadReturn || variants.Count == 0 || variants.Contains(variant));
+
+        public bool FitsHome(HomeKind home) => homes.Count == 0 || homes.Contains(home);
 
         public override IEnumerable<string> ConfigErrors()
         {
@@ -49,14 +65,42 @@ namespace PastLives
 
     // Builds the story told in the "familiar face" letter with the game's own grammar engine. Root symbol
     // r_story; constants for rule conditions: PAWN_gender, hasColony, hasFaction, hasHome, scars, grownUp,
-    // hasComrade (all "True"/"False" except the gender).
+    // hasComrade, defender (all "True"/"False" except the gender).
     public static class PastStories
     {
-        public static StoryArcDef PickArc(PastRole role, DeadVariant variant)
+        // Stories that fit the role, the form of a dead return and the teller's people; among them, the ones not
+        // heard lately are likelier (see GameComponent_PastLives.ArcWeight). remember = false leaves the rotation as it is.
+        public static StoryArcDef PickArc(PastRole role, DeadVariant variant, Pawn pawn, bool grownUp = false, bool remember = true, string quest = null)
         {
             if (!PastLivesMod.Settings.stories) return null;
-            return DefDatabase<StoryArcDef>.AllDefs.Where(a => a.Fits(role, variant))
-                .TryRandomElementByWeight(a => a.commonality, out var arc) ? arc : null;
+            // A baby has no story to tell yet.
+            if (pawn != null && pawn.DevelopmentalStage.Baby()) return null;
+            var home = HomeOf(pawn?.Faction);
+            var fitting = DefDatabase<StoryArcDef>.AllDefs.Where(a => a.Fits(role, variant) && (grownUp || !a.grownUpOnly)).ToList();
+            var forHome = fitting.Where(a => a.FitsHome(home)).ToList();
+            if (forHome.Count > 0) fitting = forHome;
+            // Stories written for particular quests (a crashed pod, a downed refugee) stay with them; a quest no
+            // story names, e.g. one added by another mod, may hear any of them.
+            var forQuest = fitting.Where(a => a.quests.Count == 0 || (quest != null && a.quests.Contains(quest))).ToList();
+            if (forQuest.Count > 0) fitting = forQuest;
+            if (fitting.Count == 0) return null;
+
+            var comp = GameComponent_PastLives.Instance;
+            float Weight(StoryArcDef a) => a.commonality * (comp?.ArcWeight(a) ?? 1f);
+            // Everything that fits was told just now: the rotation starts over rather than going silent.
+            var arc = fitting.Any(a => Weight(a) > 0f) ? fitting.RandomElementByWeight(Weight) : fitting.RandomElementByWeight(a => a.commonality);
+            if (remember) comp?.Notify_ArcTold(arc);
+            return arc;
+        }
+
+        public static HomeKind HomeOf(Faction f)
+        {
+            if (f == null || f.IsPlayer || f.def == null || !f.def.humanlikeFaction || f.def.defName.StartsWith("Ancients")) return HomeKind.None;
+            if (f.def.defName == "Salvagers") return HomeKind.Salvager;
+            if (f.def.HasRoyalTitles) return HomeKind.Empire;
+            if (f.def.techLevel <= TechLevel.Neolithic) return HomeKind.Tribal;
+            if (f.def.permanentEnemy) return HomeKind.Pirate;
+            return HomeKind.Outlander;
         }
 
         public static Faction PickFaction(StoryArcDef arc)
@@ -76,7 +120,7 @@ namespace PastLives
             return pirates.TryRandomElement(out var any) ? any : null;
         }
 
-        public static string Tell(StoryArcDef arc, Pawn pawn, ArchivePawn a, Faction faction, bool marks, int yearsGrown)
+        public static string Tell(StoryArcDef arc, Pawn pawn, ArchivePawn a, Faction faction, bool marks, int yearsGrown, PastRole role = PastRole.None)
         {
             var request = new GrammarRequest();
             var c = request.Constants;
@@ -96,6 +140,8 @@ namespace PastLives
             Set(c, "hasHome", hasHome);
             if (hasHome) request.Rules.AddRange(GrammarUtility.RulesForFaction("HOME", home, c));
 
+            // Raider stories also serve the people met in their own camps; only the last sentence differs.
+            Set(c, "defender", role == PastRole.Defender);
             Set(c, "scars", marks);
             Set(c, "grownUp", yearsGrown > 0);
             request.Rules.Add(new Rule_String("YEARS", YearsText(yearsGrown)));

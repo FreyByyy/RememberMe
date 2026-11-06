@@ -6,7 +6,7 @@
   <!-- Settings -->
   <PastLives_Enabled>Past colonists can appear in the world</PastLives_Enabled>
   <PastLives_EventChance>Chance per event: {0}</PastLives_EventChance>
-  <PastLives_EventChanceDesc>Rolled once per raid, caravan, visitor group, wanderer or refugee quest, and per slave for sale. If it succeeds, one pawn of that event becomes a past colonist.</PastLives_EventChanceDesc>
+  <PastLives_EventChanceDesc>Rolled once per event: a raid, caravan or visitor group, a quest that brings someone (wanderers, refugees, crashed pods, prisoners to rescue...), a wild man, a cryptosleep casket, the people of a camp or settlement you enter, and per slave for sale. If it succeeds, one pawn of that event becomes a past colonist. Each role below can make this chance higher or lower.</PastLives_EventChanceDesc>
   <PastLives_LeaderChance>Chance per new faction leader: {0}</PastLives_LeaderChance>
   <PastLives_LeaderChanceDesc>Rolled whenever a faction gets a new leader, including at world generation. Former ideology leaders and nobles are far more likely to be picked.</PastLives_LeaderChanceDesc>
   <PastLives_Cooldown>Minimum days between appearances: {0}</PastLives_Cooldown>
@@ -106,5 +106,35 @@
   <PastLives_YearsOne>{0} year</PastLives_YearsOne>
   <PastLives_YearsFew>{0} years</PastLives_YearsFew>
   <PastLives_YearsMany>{0} years</PastLives_YearsMany>
+
+  <!-- 1.2: new roles -->
+  <PastLives_Show>Show</PastLives_Show>
+  <PastLives_Hide>Hide</PastLives_Hide>
+  <PastLives_RoleChanceFactor>chance x{0} (now {1})</PastLives_RoleChanceFactor>
+  <PastLives_Role_JoinerDesc>Wanderers, the wanderer with paralytic abasia (Royalty) and joiners who bring a threat with them, such as a refugee being chased.</PastLives_Role_JoinerDesc>
+  <PastLives_Role_RefugeeDesc>Refugees asking for shelter, and the imperial deserter (Royalty; people who held a title are likelier).</PastLives_Role_RefugeeDesc>
+  <PastLives_Role_VisitorDesc>Visitor groups, lodgers (Royalty; titled people are likelier), beggars (Ideology) and sanguophages (Biotech; only people who were sanguophages themselves).</PastLives_Role_VisitorDesc>
+  <PastLives_Role_Castaway>Castaway</PastLives_Role_Castaway>
+  <PastLives_Role_CastawayDesc>Crashed transport pods (also with a baby), the shuttle crash (Royalty) and downed refugees waiting for help.</PastLives_Role_CastawayDesc>
+  <PastLives_Role_Defender>Inhabitant of a camp or settlement</PastLives_Role_Defender>
+  <PastLives_Role_DefenderDesc>Bandit camps, faction settlements, work sites, ancient complexes and other places your people enter. The letter comes when you arrive.</PastLives_Role_DefenderDesc>
+  <PastLives_Role_Prisoner>Prisoner</PastLives_Role_Prisoner>
+  <PastLives_Role_PrisonerDesc>Prisoners waiting to be freed from a camp, and prisoners you are asked to hold (Royalty).</PastLives_Role_PrisonerDesc>
+  <PastLives_Role_Wild>Wild man or woman</PastLives_Role_Wild>
+  <PastLives_Role_Sleeper>Sleeper in a cryptosleep casket</PastLives_Role_Sleeper>
+  <PastLives_Role_SleeperDesc>Ancient cryptosleep caskets, friendly or hostile, including those on the first map. The letter comes when the casket opens.</PastLives_Role_SleeperDesc>
+
+  <PastLives_Letter_Castaway>{PAWN_nameFull}, once a colonist of "{COLONY}", has fallen out of the sky into your life. Hurt, but alive.</PastLives_Letter_Castaway>
+  <PastLives_Letter_Defender>One face here is familiar: {PAWN_nameFull}, once a colonist of "{COLONY}", now with {FACTION}.</PastLives_Letter_Defender>
+  <PastLives_Letter_Prisoner>The prisoner is {PAWN_nameFull}, once a colonist of "{COLONY}". Someone has kept {PAWN_objective} under lock for a long time.</PastLives_Letter_Prisoner>
+  <PastLives_Letter_Wild>Under the dirt and matted hair you recognise {PAWN_nameFull}, once a colonist of "{COLONY}". It seems {PAWN_pronoun} no longer recognises anyone.</PastLives_Letter_Wild>
+  <PastLives_Letter_Sleeper>The sleeper in the ancient casket is {PAWN_nameFull}, once a colonist of "{COLONY}". How {PAWN_pronoun} got there is anyone's guess.</PastLives_Letter_Sleeper>
+  <PastLives_Letter_Dead_Ghoul>The thing that crawled out of the pod was once {PAWN_nameFull}, who died in the colony "{COLONY}". Someone would not let {PAWN_objective} rest.</PastLives_Letter_Dead_Ghoul>
+  <PastLives_Letter_Castaway_Saved>{PAWN_nameFull}, one of your saved colonists, has fallen out of the sky into your life. Hurt, but alive.</PastLives_Letter_Castaway_Saved>
+  <PastLives_Letter_Defender_Saved>One face here is familiar: {PAWN_nameFull}, one of your saved colonists, now with {FACTION}.</PastLives_Letter_Defender_Saved>
+  <PastLives_Letter_Prisoner_Saved>The prisoner is {PAWN_nameFull}, one of your saved colonists.</PastLives_Letter_Prisoner_Saved>
+  <PastLives_Letter_Wild_Saved>Under the dirt and matted hair you recognise {PAWN_nameFull}, one of your saved colonists.</PastLives_Letter_Wild_Saved>
+  <PastLives_Letter_Sleeper_Saved>The sleeper in the ancient casket is {PAWN_nameFull}, one of your saved colonists.</PastLives_Letter_Sleeper_Saved>
+  <PastLives_Letter_Dead_Ghoul_Saved>The thing that crawled out of the pod was once {PAWN_nameFull}, one of your saved colonists.</PastLives_Letter_Dead_Ghoul_Saved>
 
 </LanguageData>

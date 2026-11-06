@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!--
+    Which quests may bring a past colonist, and as whom. Quests are listed by QuestScriptDef name; a quest
+    from a DLC or mod that is not loaded is simply never seen. The first pawn a listed quest generates may
+    be the past colonist (one chance roll per quest, see the role chance in the settings).
+      role         - PastRole: Joiner, Refugee, Visitor, Prisoner, Castaway, DeadReturn ...
+      variant      - for DeadReturn: the form the dead colonist takes
+      requiredGene - only people who carried this gene
+      titleFactor  - weight for people who held a royal title
+  -->
+
+  <PastLives.QuestRoleDef>
+    <defName>PastLives_Quest_Joiner</defName>
+    <role>Joiner</role>
+    <quests>
+      <li>WandererJoins</li>
+      <li>WandererJoinAbasia</li>
+      <!-- "Refugee chased" and the other joiners that bring a threat with them -->
+      <li>ThreatReward_Raid_Joiner</li>
+      <li>ThreatReward_RaidMultiFaction_Joiner</li>
+      <li>ThreatReward_Infestation_Joiner</li>
+      <li>ThreatReward_Manhunters_Joiner</li>
+      <li>ThreatReward_GameCondition_Joiner</li>
+      <li>ThreatReward_SiteThreat_Joiner</li>
+      <li>ThreatReward_MysteryThreat_Joiner</li>
+    </quests>
+  </PastLives.QuestRoleDef>
+
+  <PastLives.QuestRoleDef>
+    <defName>PastLives_Quest_Refugee</defName>
+    <role>Refugee</role>
+    <quests>
+      <li>Hospitality_Refugee</li>
+    </quests>
+  </PastLives.QuestRoleDef>
+
+  <!-- Royalty: an imperial deserter asks for shelter -->
+  <PastLives.QuestRoleDef>
+    <defName>PastLives_Quest_Deserter</defName>
+    <role>Refugee</role>
+    <titleFactor>4</titleFactor>
+    <quests>
+      <li>Intro_Deserter</li>
+    </quests>
+  </PastLives.QuestRoleDef>
+
+  <PastLives.QuestRoleDef>
+    <defName>PastLives_Quest_Castaway</defName>
+    <role>Castaway</role>
+    <quests>
+      <li>RefugeePodCrash</li>
+      <li>RefugeePodCrash_Baby</li>
+      <li>OpportunitySite_DownedRefugee</li>
+    </quests>
+  </PastLives.QuestRoleDef>
+
+  <!-- Royalty: a shuttle crashes with passengers and their guards -->
+  <PastLives.QuestRoleDef>
+    <defName>PastLives_Quest_ShuttleCrash</defName>
+    <role>Castaway</role>
+    <titleFactor>4</titleFactor>
+    <quests>
+      <li>ShuttleCrash_Rescue</li>
+    </quests>
+  </PastLives.QuestRoleDef>
+
+  <PastLives.QuestRoleDef>
+    <defName>PastLives_Quest_Prisoner</defName>
+    <role>Prisoner</role>
+    <quests>
+      <li>OpportunitySite_PrisonerWillingToJoin</li>
+      <li>Hospitality_Prisoners</li>
+    </quests>
+  </PastLives.QuestRoleDef>
+
+  <!-- Royalty: guests who stay for a while -->
+  <PastLives.QuestRoleDef>
+    <defName>PastLives_Quest_Lodgers</defName>
+    <role>Visitor</role>
+    <titleFactor>4</titleFactor>
+    <quests>
+      <li>Hospitality_Joiners</li>
+    </quests>
+  </PastLives.QuestRoleDef>
+
+  <!-- Ideology: beggars ask for help -->
+  <PastLives.QuestRoleDef>
+    <defName>PastLives_Quest_Beggars</defName>
+    <role>Visitor</role>
+    <quests>
+      <li>Beggars</li>
+    </quests>
+  </PastLives.QuestRoleDef>
+
+  <!-- Biotech: only people who were sanguophages themselves -->
+  <PastLives.QuestRoleDef>
+    <defName>PastLives_Quest_Sanguophages</defName>
+    <role>Visitor</role>
+    <requiredGene>Hemogenic</requiredGene>
+    <quests>
+      <li>SanguophageMeetingHost</li>
+      <li>SanguophageShip</li>
+    </quests>
+  </PastLives.QuestRoleDef>
+
+  <!-- Anomaly: a pod crashes with a ghoul inside; only the dead come back this way -->
+  <PastLives.QuestRoleDef>
+    <defName>PastLives_Quest_Ghoul</defName>
+    <role>DeadReturn</role>
+    <variant>Ghoul</variant>
+    <quests>
+      <li>RefugeePodCrash_Ghoul</li>
+    </quests>
+  </PastLives.QuestRoleDef>
+</Defs>

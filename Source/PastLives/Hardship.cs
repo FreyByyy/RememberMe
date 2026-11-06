@@ -42,13 +42,21 @@ namespace PastLives
             new TraitPick("NaturalMood", -1), new TraitPick("Nerves", -1), new TraitPick("Tough", 0),
         };
 
+        private static readonly TraitPick[] WildTraits =
+        {
+            new TraitPick("Tough", 0), new TraitPick("Nimble", 0), new TraitPick("Nudist", 0), new TraitPick("Ascetic", 0),
+        };
+
         public static TraitPick[] TraitsFor(PastRole role)
         {
             switch (role)
             {
                 case PastRole.DeadReturn: return DeadTraits;
-                case PastRole.Raider: return RaiderTraits;
-                case PastRole.Slave: return SlaveTraits;
+                case PastRole.Raider:
+                case PastRole.Defender: return RaiderTraits;
+                case PastRole.Slave:
+                case PastRole.Prisoner: return SlaveTraits;
+                case PastRole.Wild: return WildTraits;
                 default: return GuestTraits;
             }
         }

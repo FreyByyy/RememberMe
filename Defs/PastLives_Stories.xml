@@ -4,7 +4,7 @@
   <!--
     Stories told in the "familiar face" letter.
 
-    StoryArcDef: one kind of story. roles: who may tell it (Joiner, Refugee, Visitor, Trader, Raider, Slave,
+    StoryArcDef: one kind of story. roles: who may tell it (Joiner, Refugee, Visitor, Trader, Raider, Defender, Slave,
     DeadReturn); variants: for DeadReturn only (Wanderer, CreepJoiner, Shambler). faction: which faction the
     text may name as FACTION (None, Pirate, SpacePirate, Peaceful). scars / trait: marks the story leaves,
     applied only with the experimental hardships setting.
@@ -18,7 +18,9 @@
       [YEARS]           "7 years", for colonists who were children
       [comrade]         a ready sentence about the comrade, empty when there is none
     Conditions: (PAWN_gender==Male/Female), (hasFaction==True/False), (hasHome==True/False),
-    (scars==True/False), (grownUp==True/False), (hasComrade==True/False), (hasColony==True/False).
+    (scars==True/False), (grownUp==True/False), (hasComrade==True/False), (hasColony==True/False),
+    (defender==True/False): raider stories told about an attacker or about a person met in their camp.
+    Several conditions are comma-separated. homes: factions the HOME_name may come from.
   -->
 
   <RulePackDef>
@@ -494,10 +496,11 @@
     </rulePack>
   </RulePackDef>
 
-  <!-- Turned: a raider attacking the player -->
+  <!-- Turned: a raider attacking the player, or a defender in their camp -->
   <PastLives.StoryArcDef>
     <defName>PastLives_Arc_Turned</defName>
-    <roles><li>Raider</li></roles>
+    <roles><li>Raider</li><li>Defender</li></roles>
+    <homes><li>Pirate</li><li>Outlander</li></homes>
     <rules>PastLives_Story_Turned</rules>
   </PastLives.StoryArcDef>
   <RulePackDef>
@@ -511,26 +514,39 @@
         <li>fall-&gt;Few lived through the end of [colony], and [PAWN_nameDef] was one of them, left with smoke in [PAWN_possessive] lungs and nobody to go home to.</li>
         <li>fall-&gt;The fall of [colony] left [PAWN_nameDef] among the few survivors, wandering through the wreckage until there was nothing left to look for.</li>
         <li>fall-&gt;[PAWN_nameDef] survived when [colony] burned, though [PAWN_pronoun] lost everyone worth saving.</li>
-        <li>now(hasHome==True)-&gt;Hunger and grief eventually drove [PAWN_objective] to [HOME_name], and now [PAWN_pronoun] raids with them and no longer cares whose home burns.</li>
-        <li>now(hasHome==False)-&gt;Hunger and grief eventually drove [PAWN_objective] to a band of raiders, and now [PAWN_pronoun] raids with them and no longer cares whose home burns.</li>
-        <li>now(hasHome==True)-&gt;Now [PAWN_pronoun] rides with [HOME_name], too hollow to ask whose roof is burning tonight.</li>
-        <li>now(hasHome==False)-&gt;Now [PAWN_pronoun] rides with a band of raiders, too hollow to ask whose roof is burning tonight.</li>
-        <li>now(hasHome==True)-&gt;[PAWN_nameDef] took up with [HOME_name] when winter and hunger left no other choice, and grief has made the work easy.</li>
-        <li>now(hasHome==False)-&gt;[PAWN_nameDef] took up with a raiding party when winter and hunger left no other choice, and grief has made the work easy.</li>
-        <li>now(hasHome==True)-&gt;These days [PAWN_pronoun] fights beside [HOME_name] and no longer pauses at the sight of a burning home.</li>
-        <li>now(hasHome==False)-&gt;These days [PAWN_pronoun] fights beside other raiders and no longer pauses at the sight of a burning home.</li>
-        <li>now(hasHome==True)-&gt;Now [PAWN_nameDef] raids under the banner of [HOME_name], past caring whose walls come down.</li>
-        <li>now(hasHome==False)-&gt;Now [PAWN_nameDef] raids with a ragged band, past caring whose walls come down.</li>
-        <li>now(hasHome==True)-&gt;Grief and hunger led [PAWN_nameDef] to [HOME_name], and now [PAWN_pronoun] raids with them and feels very little.</li>
-        <li>now(hasHome==False)-&gt;Grief and hunger led [PAWN_nameDef] to a raiding band, and now [PAWN_pronoun] raids with them and feels very little.</li>
+        <li>now(hasHome==True,defender==False)-&gt;Hunger and grief eventually drove [PAWN_objective] to [HOME_name], and now [PAWN_pronoun] raids with them and no longer cares whose home burns.</li>
+        <li>now(hasHome==False,defender==False)-&gt;Hunger and grief eventually drove [PAWN_objective] to a band of raiders, and now [PAWN_pronoun] raids with them and no longer cares whose home burns.</li>
+        <li>now(hasHome==True,defender==False)-&gt;Now [PAWN_pronoun] rides with [HOME_name], too hollow to ask whose roof is burning tonight.</li>
+        <li>now(hasHome==False,defender==False)-&gt;Now [PAWN_pronoun] rides with a band of raiders, too hollow to ask whose roof is burning tonight.</li>
+        <li>now(hasHome==True,defender==False)-&gt;[PAWN_nameDef] took up with [HOME_name] when winter and hunger left no other choice, and grief has made the work easy.</li>
+        <li>now(hasHome==False,defender==False)-&gt;[PAWN_nameDef] took up with a raiding party when winter and hunger left no other choice, and grief has made the work easy.</li>
+        <li>now(hasHome==True,defender==False)-&gt;These days [PAWN_pronoun] fights beside [HOME_name] and no longer pauses at the sight of a burning home.</li>
+        <li>now(hasHome==False,defender==False)-&gt;These days [PAWN_pronoun] fights beside other raiders and no longer pauses at the sight of a burning home.</li>
+        <li>now(hasHome==True,defender==False)-&gt;Now [PAWN_nameDef] raids under the banner of [HOME_name], past caring whose walls come down.</li>
+        <li>now(hasHome==False,defender==False)-&gt;Now [PAWN_nameDef] raids with a ragged band, past caring whose walls come down.</li>
+        <li>now(hasHome==True,defender==False)-&gt;Grief and hunger led [PAWN_nameDef] to [HOME_name], and now [PAWN_pronoun] raids with them and feels very little.</li>
+        <li>now(hasHome==False,defender==False)-&gt;Grief and hunger led [PAWN_nameDef] to a raiding band, and now [PAWN_pronoun] raids with them and feels very little.</li>
+        <li>now(hasHome==True,defender==True)-&gt;Hunger and grief eventually drove [PAWN_objective] to [HOME_name], and now [PAWN_pronoun] lives and keeps watch among them and no longer cares who comes to the gate.</li>
+        <li>now(hasHome==True,defender==True)-&gt;Now [PAWN_pronoun] keeps watch for [HOME_name], too hollow to ask who the strangers at the gate might be.</li>
+        <li>now(hasHome==True,defender==True)-&gt;[PAWN_nameDef] settled among [HOME_name] when winter and hunger left no other choice, and grief has made the guard duty easy.</li>
+        <li>now(hasHome==True,defender==True)-&gt;These days [PAWN_pronoun] stands with [HOME_name] at the walls and looks at your people with little feeling at all.</li>
+        <li>now(hasHome==True,defender==True)-&gt;Now [PAWN_nameDef] lives under the banner of [HOME_name], past caring whose walls stand and whose fall.</li>
+        <li>now(hasHome==True,defender==True)-&gt;Grief and hunger led [PAWN_objective] to [HOME_name], and now [PAWN_pronoun] keeps their gate and feels very little.</li>
+        <li>now(hasHome==False,defender==True)-&gt;Hunger and grief eventually drove [PAWN_objective] to a ragged band, and now [PAWN_pronoun] lives among them, keeping watch, and no longer cares who comes to the gate.</li>
+        <li>now(hasHome==False,defender==True)-&gt;Now [PAWN_pronoun] keeps watch for a ragged band, too hollow to ask who the strangers at the gate might be.</li>
+        <li>now(hasHome==False,defender==True)-&gt;[PAWN_nameDef] settled in with a ragged band when winter and hunger left no other choice, and grief has made the guard duty easy.</li>
+        <li>now(hasHome==False,defender==True)-&gt;These days [PAWN_pronoun] stands with the band at the walls and looks at your people with little feeling at all.</li>
+        <li>now(hasHome==False,defender==True)-&gt;Now [PAWN_nameDef] lives among strangers, past caring whose walls stand and whose fall.</li>
+        <li>now(hasHome==False,defender==True)-&gt;Grief and hunger led [PAWN_objective] to this place, and now [PAWN_pronoun] keeps the gate and feels very little.</li>
       </rulesStrings>
     </rulePack>
   </RulePackDef>
 
-  <!-- Hardened: a raider attacking the player; the fight made them bloodthirsty -->
+  <!-- Hardened: a raider attacking the player, or a defender in their camp; the fight made them bloodthirsty -->
   <PastLives.StoryArcDef>
     <defName>PastLives_Arc_Hardened</defName>
-    <roles><li>Raider</li></roles>
+    <roles><li>Raider</li><li>Defender</li></roles>
+    <homes><li>Pirate</li><li>Outlander</li><li>Salvager</li></homes>
     <faction>Pirate</faction>
     <rules>PastLives_Story_Hardened</rules>
     <scars><li>Gunshot</li><li>Stab</li></scars>
@@ -565,20 +581,27 @@
         <li>wounds(scars==False)-&gt;The fight left [PAWN_objective] whole in body, but [PAWN_pronoun] has wanted blood ever since.</li>
         <li>wounds(scars==True)-&gt;Permanent scars were the price of that day, and the taste for blood came free with them.</li>
         <li>wounds(scars==False)-&gt;[PAWN_nameDef] paid nothing in lasting injury that day, but the taste for blood came all the same.</li>
-        <li>now-&gt;Now [PAWN_nameDef] raids other settlements the same way [PAWN_pronoun] was once raided, and finds little to regret.</li>
-        <li>now-&gt;These days [PAWN_pronoun] brings to other colonies the same fire that was once brought to [PAWN_possessive] own.</li>
-        <li>now-&gt;[PAWN_nameDef] has become what once destroyed [PAWN_possessive] home, and rides out against strangers without hesitation.</li>
-        <li>now-&gt;Now it is [PAWN_nameDef] who comes over the ridge at dawn, rifle ready, while others watch the smoke rise.</li>
-        <li>now-&gt;What was done to [PAWN_objective] [PAWN_pronoun] now does to others, and the work no longer troubles [PAWN_possessive] sleep.</li>
-        <li>now-&gt;[PAWN_nameDef] raids now as pirates once raided [PAWN_objective]: fast, hard and without mercy for the unprepared.</li>
+        <li>now(defender==False)-&gt;Now [PAWN_nameDef] raids other settlements the same way [PAWN_pronoun] was once raided, and finds little to regret.</li>
+        <li>now(defender==False)-&gt;These days [PAWN_pronoun] brings to other colonies the same fire that was once brought to [PAWN_possessive] own.</li>
+        <li>now(defender==False)-&gt;[PAWN_nameDef] has become what once destroyed [PAWN_possessive] home, and rides out against strangers without hesitation.</li>
+        <li>now(defender==False)-&gt;Now it is [PAWN_nameDef] who comes over the ridge at dawn, rifle ready, while others watch the smoke rise.</li>
+        <li>now(defender==False)-&gt;What was done to [PAWN_objective] [PAWN_pronoun] now does to others, and the work no longer troubles [PAWN_possessive] sleep.</li>
+        <li>now(defender==False)-&gt;[PAWN_nameDef] raids now as pirates once raided [PAWN_objective]: fast, hard and without mercy for the unprepared.</li>
+        <li>now(defender==True)-&gt;Now [PAWN_nameDef] guards a camp the way [PAWN_pronoun] once guarded a colony, but without any hope of thanks, and meets strangers rifle first.</li>
+        <li>now(defender==True)-&gt;These days [PAWN_pronoun] stands at the gate of a place that belongs to people like the ones who burned [PAWN_possessive] home, and does not mind it.</li>
+        <li>now(defender==True)-&gt;[PAWN_nameDef] has become part of the world that once destroyed [PAWN_possessive] home, and watches the gate with the old taste for a fight still sharp.</li>
+        <li>now(defender==True)-&gt;Now [PAWN_pronoun] waits at this camp with a rifle across [PAWN_possessive] knees, half hoping that the visitors give [PAWN_objective] a reason.</li>
+        <li>now(defender==True)-&gt;The fire that took [PAWN_possessive] home taught [PAWN_objective] to guard a place well, and [PAWN_nameDef] watches strangers at the gate with a quiet eagerness for trouble.</li>
+        <li>now(defender==True)-&gt;[PAWN_nameDef] stands at the edge of this camp these days, and the fighter in [PAWN_objective] is awake and waiting, as it has been since that night.</li>
       </rulesStrings>
     </rulePack>
   </RulePackDef>
 
-  <!-- Debt: a raider attacking the player -->
+  <!-- Debt: a raider attacking the player, or a defender in their camp -->
   <PastLives.StoryArcDef>
     <defName>PastLives_Arc_Debt</defName>
-    <roles><li>Raider</li></roles>
+    <roles><li>Raider</li><li>Defender</li></roles>
+    <homes><li>Pirate</li><li>Salvager</li></homes>
     <faction>Pirate</faction>
     <rules>PastLives_Story_Debt</rules>
   </PastLives.StoryArcDef>
@@ -599,18 +622,30 @@
         <li>debt(hasFaction==False)-&gt;A pirate crew once pulled [PAWN_nameDef] out of ruin, and now they are owed more than [PAWN_pronoun] can easily give.</li>
         <li>debt(hasFaction==True)-&gt;[PAWN_nameDef] borrowed against a future that never came, and the pirates of [FACTION_name] want their payment.</li>
         <li>debt(hasFaction==False)-&gt;[PAWN_nameDef] borrowed against a future that never came, and a pirate crew wants its payment.</li>
-        <li>now(hasHome==True)-&gt;Now [PAWN_pronoun] raids with [HOME_name] to pay what is owed, and finds no joy in the work.</li>
-        <li>now(hasHome==False)-&gt;Now [PAWN_pronoun] raids with a band of raiders to pay what is owed, and finds no joy in the work.</li>
-        <li>now(hasHome==True)-&gt;[PAWN_nameDef] rides with [HOME_name] now, working off what is owed and taking no pleasure in it.</li>
-        <li>now(hasHome==False)-&gt;[PAWN_nameDef] rides with a raiding band now, working off what is owed and taking no pleasure in it.</li>
-        <li>now(hasHome==True)-&gt;These days [PAWN_pronoun] raids beside [HOME_name], paying what is owed one attack at a time, without any joy.</li>
-        <li>now(hasHome==False)-&gt;These days [PAWN_pronoun] raids beside a gang of raiders, paying what is owed one attack at a time, without any joy.</li>
-        <li>now(hasHome==True)-&gt;Now [PAWN_nameDef] fights for [HOME_name] only because [PAWN_pronoun] must, and each raid feels like a weight carried.</li>
-        <li>now(hasHome==False)-&gt;Now [PAWN_nameDef] fights for a band of raiders only because [PAWN_pronoun] must, and each raid feels like a weight carried.</li>
-        <li>now(hasHome==True)-&gt;With [HOME_name] at [PAWN_possessive] back, [PAWN_nameDef] raids without eagerness, counting the attacks that remain.</li>
-        <li>now(hasHome==False)-&gt;With a band of raiders at [PAWN_possessive] back, [PAWN_nameDef] raids without eagerness, counting the attacks that remain.</li>
-        <li>now(hasHome==True)-&gt;[PAWN_nameDef] now raids with [HOME_name], silent and tired, doing what is demanded and nothing more.</li>
-        <li>now(hasHome==False)-&gt;[PAWN_nameDef] now raids with a ragged band, silent and tired, doing what is demanded and nothing more.</li>
+        <li>now(hasHome==True,defender==False)-&gt;Now [PAWN_pronoun] raids with [HOME_name] to pay what is owed, and finds no joy in the work.</li>
+        <li>now(hasHome==False,defender==False)-&gt;Now [PAWN_pronoun] raids with a band of raiders to pay what is owed, and finds no joy in the work.</li>
+        <li>now(hasHome==True,defender==False)-&gt;[PAWN_nameDef] rides with [HOME_name] now, working off what is owed and taking no pleasure in it.</li>
+        <li>now(hasHome==False,defender==False)-&gt;[PAWN_nameDef] rides with a raiding band now, working off what is owed and taking no pleasure in it.</li>
+        <li>now(hasHome==True,defender==False)-&gt;These days [PAWN_pronoun] raids beside [HOME_name], paying what is owed one attack at a time, without any joy.</li>
+        <li>now(hasHome==False,defender==False)-&gt;These days [PAWN_pronoun] raids beside a gang of raiders, paying what is owed one attack at a time, without any joy.</li>
+        <li>now(hasHome==True,defender==False)-&gt;Now [PAWN_nameDef] fights for [HOME_name] only because [PAWN_pronoun] must, and each raid feels like a weight carried.</li>
+        <li>now(hasHome==False,defender==False)-&gt;Now [PAWN_nameDef] fights for a band of raiders only because [PAWN_pronoun] must, and each raid feels like a weight carried.</li>
+        <li>now(hasHome==True,defender==False)-&gt;With [HOME_name] at [PAWN_possessive] back, [PAWN_nameDef] raids without eagerness, counting the attacks that remain.</li>
+        <li>now(hasHome==False,defender==False)-&gt;With a band of raiders at [PAWN_possessive] back, [PAWN_nameDef] raids without eagerness, counting the attacks that remain.</li>
+        <li>now(hasHome==True,defender==False)-&gt;[PAWN_nameDef] now raids with [HOME_name], silent and tired, doing what is demanded and nothing more.</li>
+        <li>now(hasHome==False,defender==False)-&gt;[PAWN_nameDef] now raids with a ragged band, silent and tired, doing what is demanded and nothing more.</li>
+        <li>now(hasHome==True,defender==True)-&gt;Now [PAWN_pronoun] stands guard for [HOME_name] to work off what is owed, and finds no joy in the post.</li>
+        <li>now(hasHome==True,defender==True)-&gt;[PAWN_nameDef] keeps the watch for [HOME_name] now, working off what is owed and taking no pleasure in it.</li>
+        <li>now(hasHome==True,defender==True)-&gt;These days [PAWN_pronoun] lives under [HOME_name], paying what is owed one shift at a time, without any joy.</li>
+        <li>now(hasHome==True,defender==True)-&gt;Now [PAWN_nameDef] holds a post for [HOME_name] only because [PAWN_pronoun] must, and each long watch feels like a weight carried.</li>
+        <li>now(hasHome==True,defender==True)-&gt;With [HOME_name] at [PAWN_possessive] back, [PAWN_nameDef] keeps the gate without eagerness, counting the days that remain.</li>
+        <li>now(hasHome==True,defender==True)-&gt;[PAWN_nameDef] now stands guard for [HOME_name], silent and tired, doing what is demanded and nothing more.</li>
+        <li>now(hasHome==False,defender==True)-&gt;Now [PAWN_pronoun] stands guard for a ragged band to work off what is owed, and finds no joy in the post.</li>
+        <li>now(hasHome==False,defender==True)-&gt;[PAWN_nameDef] keeps the watch for a gang of fighters now, working off what is owed and taking no pleasure in it.</li>
+        <li>now(hasHome==False,defender==True)-&gt;These days [PAWN_pronoun] lives in a camp that is not [PAWN_possessive] own, paying what is owed one shift at a time, without any joy.</li>
+        <li>now(hasHome==False,defender==True)-&gt;Now [PAWN_nameDef] holds a post here only because [PAWN_pronoun] must, and each long watch feels like a weight carried.</li>
+        <li>now(hasHome==False,defender==True)-&gt;With a ragged band at [PAWN_possessive] back, [PAWN_nameDef] keeps the gate without eagerness, counting the days that remain.</li>
+        <li>now(hasHome==False,defender==True)-&gt;[PAWN_nameDef] now stands guard in this camp, silent and tired, doing what is demanded and nothing more.</li>
       </rulesStrings>
     </rulePack>
   </RulePackDef>

@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!--
+    Stories for the newer roles: Prisoner, Castaway, Wild, Sleeper and the ghoul form of DeadReturn.
+    Same format and symbols as PastLives_Stories.xml (see the header there); [colony], [comrade] and
+    [childhood] come from PastLives_StoryCommon. [comrade] is used only where the returned colonist can
+    recognise someone (LeftForDead).
+  -->
+
+  <!-- TakenInRaid: a prisoner, captured in a raid on the old colony or the place they lived after -->
+  <PastLives.StoryArcDef>
+    <defName>PastLives_Arc_TakenInRaid</defName>
+    <roles><li>Prisoner</li></roles>
+    <faction>Pirate</faction>
+    <rules>PastLives_Story_TakenInRaid</rules>
+    <scars><li>Cut</li><li>Scratch</li></scars>
+  </PastLives.StoryArcDef>
+  <RulePackDef>
+    <defName>PastLives_Story_TakenInRaid</defName>
+    <rulePack>
+      <rulesStrings>
+        <li>r_story-&gt;[raid] [scarline] [captive] [holdon] [childhood]</li>
+        <li>raid(hasFaction==True)-&gt;Raiders of [FACTION_name] struck the settlement that had sheltered [PAWN_nameDef] after [colony], and when the walls fell they kept [PAWN_objective] alive.</li>
+        <li>raid(hasFaction==True)-&gt;[FACTION_name] came out of the dark with torches and rifles, and [PAWN_nameDef] was dragged from a cellar with the rest of the living.</li>
+        <li>raid(hasFaction==True)-&gt;When [FACTION_name] raided the farmstead where [PAWN_pronoun] worked, [PAWN_nameDef] stayed back to cover the others and was taken for it.</li>
+        <li>raid(hasFaction==True)-&gt;Years after [colony], a raid by [FACTION_name] found [PAWN_objective] in the quiet corner where [PAWN_pronoun] had hoped to be left alone.</li>
+        <li>raid(hasFaction==True)-&gt;The raid by [FACTION_name] lasted less than an hour, and [PAWN_nameDef] was among the few they bound instead of burying.</li>
+        <li>raid(hasFaction==True)-&gt;When [FACTION_name] raided what was left of [colony], where almost nobody remained, [PAWN_nameDef] was led away on a rope.</li>
+        <li>raid(hasFaction==False)-&gt;Raiders struck the settlement that had sheltered [PAWN_nameDef] after [colony], and when the walls fell they kept [PAWN_objective] alive.</li>
+        <li>raid(hasFaction==False)-&gt;Pirates came out of the dark with torches and rifles, and [PAWN_nameDef] was dragged from a cellar with the rest of the living.</li>
+        <li>raid(hasFaction==False)-&gt;When raiders hit the farmstead where [PAWN_pronoun] worked, [PAWN_nameDef] stayed back to cover the others and was taken for it.</li>
+        <li>raid(hasFaction==False)-&gt;Years after [colony], a raid found [PAWN_objective] in the quiet corner where [PAWN_pronoun] had hoped to be left alone.</li>
+        <li>raid(hasFaction==False)-&gt;The raid lasted less than an hour, and [PAWN_nameDef] was among the few the raiders bound instead of burying.</li>
+        <li>raid(hasFaction==False)-&gt;When raiders came for what was left of [colony], where almost nobody remained, [PAWN_nameDef] was led away on a rope.</li>
+        <li>scarline(scars==True)-&gt;The cords were pulled tight, and the cuts they left on [PAWN_possessive] wrists never healed clean.</li>
+        <li>scarline(scars==True)-&gt;[PAWN_pronoun] fought them in the doorway and carries the scratches from that fight to this day.</li>
+        <li>scarline(scars==True)-&gt;A blade opened [PAWN_possessive] forearm in the struggle, and the scar is still there.</li>
+        <li>scarline(scars==True)-&gt;They dragged [PAWN_objective] over broken ground, and the scrapes healed into pale scars.</li>
+        <li>scarline(scars==True)-&gt;A guard's knife slipped as he cut the bindings, and the cut it left became a scar.</li>
+        <li>scarline(scars==True)-&gt;The first night they beat [PAWN_objective] to teach manners, and the marks of it have not faded.</li>
+        <li>scarline(scars==False)-&gt;The cords were pulled tight, but they left only bruises that faded within a week.</li>
+        <li>scarline(scars==False)-&gt;[PAWN_pronoun] fought them in the doorway and came away with scrapes that were gone by the next month.</li>
+        <li>scarline(scars==False)-&gt;A blade only nicked [PAWN_objective] in the struggle, and by spring there was nothing to show for it.</li>
+        <li>scarline(scars==False)-&gt;They dragged [PAWN_objective] over broken ground, but the scrapes soon healed without a trace.</li>
+        <li>scarline(scars==False)-&gt;A guard cut the bindings with one stroke of his knife and touched nothing else.</li>
+        <li>scarline(scars==False)-&gt;The first night they only shoved [PAWN_objective] about and shouted, and no mark lasted.</li>
+        <li>captive-&gt;Since then [PAWN_pronoun] has slept on straw behind a locked door and counted the days by the changing of the guard.</li>
+        <li>captive-&gt;The days have been much alike: thin soup, a rope at the ankle, and a lantern that is never put out.</li>
+        <li>captive-&gt;[PAWN_pronoun] was put to carrying water and scrubbing pots, and was watched for every step of it.</li>
+        <li>captive-&gt;Nobody has said what they want with [PAWN_objective], and nobody has said when it will end.</li>
+        <li>captive-&gt;[PAWN_possessive] name was shortened to a shout across the yard, and the questions stopped after the first week.</li>
+        <li>captive-&gt;Other captives came and went, ransomed, sold or simply gone, while [PAWN_pronoun] stayed where [PAWN_pronoun] was.</li>
+        <li>holdon-&gt;[PAWN_nameDef] keeps [PAWN_possessive] back straight and answers little, and gives no one the satisfaction of a plea.</li>
+        <li>holdon-&gt;[PAWN_pronoun] still mends [PAWN_possessive] clothes and washes whenever the water allows, because that, at least, is [PAWN_possessive] own to decide.</li>
+        <li>holdon-&gt;At night [PAWN_pronoun] walks through [colony] in [PAWN_possessive] head, room by room, so as not to forget it.</li>
+        <li>holdon-&gt;[PAWN_pronoun] has stopped expecting rescue, but has not stopped watching the gate.</li>
+        <li>holdon-&gt;A crust hidden in a sleeve, a nail worked loose from a board: [PAWN_nameDef] is patient, and keeps a list of small things.</li>
+        <li>holdon-&gt;Fear has not left [PAWN_objective], but it has learned to sit quietly, and [PAWN_pronoun] sits beside it.</li>
+      </rulesStrings>
+    </rulePack>
+  </RulePackDef>
+
+  <!-- WrongPlace: a prisoner kept for ransom or as leverage after a misunderstanding or a witnessed crime -->
+  <PastLives.StoryArcDef>
+    <defName>PastLives_Arc_WrongPlace</defName>
+    <roles><li>Prisoner</li></roles>
+    <faction>Peaceful</faction>
+    <rules>PastLives_Story_WrongPlace</rules>
+  </PastLives.StoryArcDef>
+  <RulePackDef>
+    <defName>PastLives_Story_WrongPlace</defName>
+    <rulePack>
+      <rulesStrings>
+        <li>r_story-&gt;[drift] [trouble] [held] [outlook] [childhood]</li>
+        <li>drift-&gt;After [colony], [PAWN_nameDef] drifted from one job to the next, never staying long enough to be asked questions.</li>
+        <li>drift-&gt;The years after [colony] went by in borrowed rooms and short contracts, and [PAWN_nameDef] learned to keep out of other people's business.</li>
+        <li>drift-&gt;[PAWN_nameDef] left [colony] with no plan and took whatever road had a meal at the end of it.</li>
+        <li>drift-&gt;For a few seasons after [colony], [PAWN_pronoun] hauled, mended and guarded for anyone who paid on time.</li>
+        <li>drift-&gt;Nothing was waiting for [PAWN_objective] after [colony], so [PAWN_pronoun] went where the work was and the roads were open.</li>
+        <li>drift-&gt;[PAWN_nameDef] spent the years after [colony] on the edges of other people's towns, a hired hand with a good name and nobody to vouch for it.</li>
+        <li>trouble-&gt;Then, at a trading post, [PAWN_pronoun] saw something [PAWN_pronoun] was not meant to see, and made the mistake of looking twice.</li>
+        <li>trouble-&gt;A misunderstanding over a debt at a trading post turned into an accusation, and nobody there cared to hear the other side.</li>
+        <li>trouble-&gt;[PAWN_pronoun] witnessed a killing in a roadside tavern, and the man who gave the order noticed who was watching.</li>
+        <li>trouble-&gt;[PAWN_pronoun] had the bad luck to refuse a powerful man a small favour, and powerful men remember such things.</li>
+        <li>trouble-&gt;A caravan [PAWN_pronoun] had joined for a season turned out to be carrying somebody else's goods, and [PAWN_nameDef] was the one left to answer for the cart.</li>
+        <li>trouble-&gt;A letter [PAWN_pronoun] had agreed to carry for a stranger proved worth more than the stranger admitted, and several people wanted to know why it was in [PAWN_possessive] hands.</li>
+        <li>held(hasFaction==True)-&gt;[FACTION_name] decided the safest thing was to keep [PAWN_objective] under lock until the matter was settled, or paid for.</li>
+        <li>held(hasFaction==True)-&gt;Men acting for [FACTION_name] took [PAWN_objective] into custody, saying that a ransom would be named in due course.</li>
+        <li>held(hasFaction==True)-&gt;[FACTION_name] needed leverage over a rival, and [PAWN_nameDef] was the nearest person who could be spared.</li>
+        <li>held(hasFaction==True)-&gt;A magistrate of [FACTION_name] signed the order without reading it, and [PAWN_nameDef] was put in a cell to wait for someone to pay.</li>
+        <li>held(hasFaction==True)-&gt;Because [FACTION_name] could not afford a quarrel in the open, [PAWN_nameDef] was kept quietly, as something to be traded later.</li>
+        <li>held(hasFaction==True)-&gt;[FACTION_name] sent word to supposed kin, though nobody was left to answer.</li>
+        <li>held(hasFaction==False)-&gt;The people concerned decided the safest thing was to keep [PAWN_objective] under lock until the matter was settled, or paid for.</li>
+        <li>held(hasFaction==False)-&gt;Armed men took [PAWN_objective] into custody, saying that a ransom would be named in due course.</li>
+        <li>held(hasFaction==False)-&gt;Someone needed leverage over a rival, and [PAWN_nameDef] was the nearest person who could be spared.</li>
+        <li>held(hasFaction==False)-&gt;A local magistrate signed the order without reading it, and [PAWN_nameDef] was put in a cell to wait for someone to pay.</li>
+        <li>held(hasFaction==False)-&gt;Because nobody could afford a quarrel in the open, [PAWN_nameDef] was kept quietly, as something to be traded later.</li>
+        <li>held(hasFaction==False)-&gt;Word went out to supposed kin, though nobody was left to answer.</li>
+        <li>outlook-&gt;[PAWN_nameDef] insists there has been a mistake, and says so politely, every day, to whoever brings the bowl.</li>
+        <li>outlook-&gt;[PAWN_pronoun] has stopped arguing and started listening, because guards talk, and sooner or later one of them says something useful.</li>
+        <li>outlook-&gt;The ransom, if there is one, will not be paid by anyone [PAWN_pronoun] knows, and [PAWN_pronoun] is careful not to think about that after dark.</li>
+        <li>outlook-&gt;Held as leverage, [PAWN_pronoun] is fed and kept dry, which is both a mercy and an insult.</li>
+        <li>outlook-&gt;[PAWN_pronoun] keeps count of the days with notches on a rafter, and so far the notches outnumber the promises.</li>
+        <li>outlook-&gt;It is a strange sort of captivity, with no hatred in it, only paperwork and delay, and [PAWN_nameDef] is not sure which is worse.</li>
+      </rulesStrings>
+    </rulePack>
+  </RulePackDef>
+
+  <!-- FallingStar: a castaway whose starship broke up in orbit over this world -->
+  <PastLives.StoryArcDef>
+    <defName>PastLives_Arc_FallingStar</defName>
+    <roles><li>Castaway</li></roles>
+    <faction>SpacePirate</faction>
+    <rules>PastLives_Story_FallingStar</rules>
+    <quests><li>RefugeePodCrash</li></quests>
+    <scars><li>Burn</li><li>Crush</li></scars>
+  </PastLives.StoryArcDef>
+  <RulePackDef>
+    <defName>PastLives_Story_FallingStar</defName>
+    <rulePack>
+      <rulesStrings>
+        <li>r_story-&gt;[leave] [stars] [attack] [fall] [childhood]</li>
+        <li>leave-&gt;[PAWN_nameDef] left [colony] for the sky, signing on to a ship because the ground no longer held anything.</li>
+        <li>leave-&gt;After [colony] [PAWN_pronoun] took a berth on a freight ship, meaning to stay aboard for a year, perhaps two.</li>
+        <li>leave-&gt;One day [PAWN_pronoun] sold [PAWN_possessive] last tools to pay for passage off the planet, and never spoke of [colony] aloud again.</li>
+        <li>leave-&gt;[PAWN_nameDef] had always wanted to see another sky, and after [colony] there was nobody left to ask [PAWN_objective] to stay.</li>
+        <li>leave-&gt;Recruiters were hiring hands for a long haul beyond the rim, and [PAWN_nameDef] signed on the day [PAWN_pronoun] left [colony].</li>
+        <li>leave-&gt;[PAWN_nameDef] went up with a cargo of ore and a promise of wages, and all that was left of [colony] was weeds and memory.</li>
+        <li>stars-&gt;For years the stars were the only ceiling: orbital docks, rimworld ports, and long watches beside engines that never quite ran right.</li>
+        <li>stars-&gt;[PAWN_pronoun] worked the decks of three different ships, and learned that space is mostly waiting, with a little fear for flavour.</li>
+        <li>stars-&gt;Port by port [PAWN_pronoun] crossed the dark, trading hours of repair work for food and a bunk.</li>
+        <li>stars-&gt;The years aboard blurred into one long shift, lit by instruments and the odd cheerful stranger.</li>
+        <li>stars-&gt;[PAWN_nameDef] saw ice moons, bright orbital stations and an old red sun, and kept none of it, for there was nowhere to keep anything.</li>
+        <li>stars-&gt;Letters never followed [PAWN_objective] from port to port, and after a while [PAWN_pronoun] stopped writing them.</li>
+        <li>attack(hasFaction==True)-&gt;Over this world a warship of [FACTION_name] caught the ship in orbit and fired until the hull came apart, and [PAWN_nameDef] reached a pod.</li>
+        <li>attack(hasFaction==True)-&gt;[FACTION_name] came out of the glare of the sun without warning, and the ship broke up in orbit while [PAWN_nameDef] fought [PAWN_possessive] way to a pod.</li>
+        <li>attack(hasFaction==True)-&gt;Boarders from [FACTION_name] tore open the hull above this world; [PAWN_nameDef] remembers the air leaving, and then the lid of a pod.</li>
+        <li>attack(hasFaction==True)-&gt;In orbit, [FACTION_name] took what they wanted from the holds and left the ship to burn; [PAWN_nameDef] went down in the last pod launched.</li>
+        <li>attack(hasFaction==True)-&gt;A missile from a ship of [FACTION_name] split the vessel over this world, and the pod hit the atmosphere before [PAWN_nameDef] had finished strapping in.</li>
+        <li>attack(hasFaction==True)-&gt;The ship was already crippled when [FACTION_name] arrived over this world, and they finished it without ceremony; a crewmate shoved [PAWN_nameDef] into a pod and stayed behind.</li>
+        <li>attack(hasFaction==False)-&gt;Over this world a pirate warship caught the ship in orbit and fired until the hull came apart, and [PAWN_nameDef] reached a pod.</li>
+        <li>attack(hasFaction==False)-&gt;Pirates came out of the glare of the sun without warning, and the ship broke up in orbit while [PAWN_nameDef] fought [PAWN_possessive] way to a pod.</li>
+        <li>attack(hasFaction==False)-&gt;Pirate boarders tore open the hull above this world; [PAWN_nameDef] remembers the air leaving, and then the lid of a pod.</li>
+        <li>attack(hasFaction==False)-&gt;In orbit, pirates took what they wanted from the holds and left the ship to burn; [PAWN_nameDef] went down in the last pod launched.</li>
+        <li>attack(hasFaction==False)-&gt;A missile from a pirate ship split the vessel over this world, and the pod hit the atmosphere before [PAWN_nameDef] had finished strapping in.</li>
+        <li>attack(hasFaction==False)-&gt;The ship was already crippled when pirates arrived over this world, and they finished it without ceremony; a crewmate shoved [PAWN_nameDef] into a pod and stayed behind.</li>
+        <li>fall(scars==True)-&gt;The pod burned through the atmosphere, and the burns [PAWN_pronoun] took on the way down will leave scars.</li>
+        <li>fall(scars==True)-&gt;The landing crushed one side of the pod, and the injuries from it will heal into scars.</li>
+        <li>fall(scars==True)-&gt;Burning fuel splashed over the hatch as it opened, and the burns on [PAWN_possessive] arms will never quite fade.</li>
+        <li>fall(scars==True)-&gt;The pod struck the ground hard and folded around [PAWN_objective]; whatever mends, the scars will stay.</li>
+        <li>fall(scars==True)-&gt;Re-entry heat found a gap in the hull, and the burns will heal into pale, tight skin.</li>
+        <li>fall(scars==True)-&gt;[PAWN_pronoun] is still lying in the wreck, crushed and burned, and those wounds will leave their marks.</li>
+        <li>fall(scars==False)-&gt;The pod burned through the atmosphere, but the harness held, and the blisters on [PAWN_possessive] hands will be gone within a month.</li>
+        <li>fall(scars==False)-&gt;The landing crushed one side of the pod, but the other side held, and [PAWN_pronoun] is bruised from shoulder to knee and nothing more.</li>
+        <li>fall(scars==False)-&gt;Burning fuel splashed over the hatch as it opened, but [PAWN_pronoun] rolled clear and lost only a little hair.</li>
+        <li>fall(scars==False)-&gt;The pod struck the ground hard and folded, but nothing in [PAWN_objective] broke that will not mend.</li>
+        <li>fall(scars==False)-&gt;Re-entry heat found a gap in the hull, but the damage stopped at a scorched sleeve and a blistered ear.</li>
+        <li>fall(scars==False)-&gt;[PAWN_pronoun] is lying in the wreck half-conscious, shaken and sore, with nothing that will not heal.</li>
+      </rulesStrings>
+    </rulePack>
+  </RulePackDef>
+
+  <!-- LeftForDead: a castaway wounded and abandoned after an ambush or a betrayal on the road -->
+  <PastLives.StoryArcDef>
+    <defName>PastLives_Arc_LeftForDead</defName>
+    <roles><li>Castaway</li></roles>
+    <rules>PastLives_Story_LeftForDead</rules>
+    <quests><li>OpportunitySite_DownedRefugee</li><li>ShuttleCrash_Rescue</li></quests>
+    <scars><li>Gunshot</li><li>Stab</li></scars>
+  </PastLives.StoryArcDef>
+  <RulePackDef>
+    <defName>PastLives_Story_LeftForDead</defName>
+    <rulePack>
+      <rulesStrings>
+        <li>r_story-&gt;[leave] [ambush] [wounds] [waiting] [childhood] [comrade]</li>
+        <li>leave-&gt;After [colony], [PAWN_nameDef] joined a caravan bound for the far markets, hired to guard the third wagon.</li>
+        <li>leave-&gt;[PAWN_nameDef] left [colony] with a salvage crew who swore they knew where the good ruins were.</li>
+        <li>leave-&gt;For a year or more after [colony], [PAWN_pronoun] rode with a small band of traders, sharing watches and a pot.</li>
+        <li>leave-&gt;The crew of a river barge took [PAWN_objective] on after [colony], and for a while it felt like family.</li>
+        <li>leave-&gt;After [colony], [PAWN_nameDef] signed on as a scout for a survey party, paid in advance and glad of it.</li>
+        <li>leave-&gt;After [colony], [PAWN_pronoun] fell in with a company of mercenaries, mostly decent people who spoke of a payday waiting at the end of the road.</li>
+        <li>ambush-&gt;Then one dawn the trail narrowed between two rocks, and the shooting began before anyone had time to shout.</li>
+        <li>ambush-&gt;The leader had sold the route to men who waited in the hills, and [PAWN_nameDef] learned of the bargain from the first shot.</li>
+        <li>ambush-&gt;The hired shuttle went down in the hills with a failed engine, and what the crash did not do, the panic that followed did.</li>
+        <li>ambush-&gt;A raiding party hit the camp at night, and those who were supposed to hold the line were the first to run.</li>
+        <li>ambush-&gt;A quarrel over the pay ended in gunfire at the fire, and [PAWN_nameDef] was standing in the wrong place.</li>
+        <li>ambush-&gt;The crew turned on one another over something small, a debt or a stolen ration, and when it was over the survivors left in a hurry.</li>
+        <li>wounds(scars==True)-&gt;A bullet went through [PAWN_possessive] side, and the wound will heal into a scar.</li>
+        <li>wounds(scars==True)-&gt;A knife found [PAWN_objective] in the confusion, low and deep, and it will scar.</li>
+        <li>wounds(scars==True)-&gt;[PAWN_pronoun] took two bullets running for cover, and neither will heal clean.</li>
+        <li>wounds(scars==True)-&gt;A stab wound under the ribs has gone untreated for days, and it will leave a wide, puckered scar.</li>
+        <li>wounds(scars==True)-&gt;A rifle shot shattered something in the shoulder, and the scars will feel the weather for years.</li>
+        <li>wounds(scars==True)-&gt;Somebody put a blade between [PAWN_possessive] ribs and left; if the wound closes, the scar will not fade.</li>
+        <li>wounds(scars==False)-&gt;A bullet only grazed [PAWN_objective], and the wound is clean enough to heal without a mark.</li>
+        <li>wounds(scars==False)-&gt;A knife found only a sleeve and a little skin in the confusion.</li>
+        <li>wounds(scars==False)-&gt;[PAWN_pronoun] took a bullet in the meat of the arm, and it will heal within the month.</li>
+        <li>wounds(scars==False)-&gt;A stab wound under the ribs missed everything that matters and should close cleanly in time.</li>
+        <li>wounds(scars==False)-&gt;A rifle shot spun [PAWN_objective] round and into the dirt, but passed through without breaking anything.</li>
+        <li>wounds(scars==False)-&gt;Somebody put a blade into [PAWN_possessive] thigh and left; it bled a great deal, but it will heal without a trace.</li>
+        <li>waiting-&gt;They left [PAWN_objective] under a rock ledge with a canteen and a blanket, taking [PAWN_objective] for dead, and [PAWN_pronoun] waited.</li>
+        <li>waiting-&gt;Nobody came back, and nobody was expected to; [PAWN_pronoun] lay there counting the shadows of the rocks.</li>
+        <li>waiting-&gt;For three days [PAWN_pronoun] waited by the cold fire, listening for an engine that never came.</li>
+        <li>waiting-&gt;Help was a thing that happened to other people, and [PAWN_nameDef] knew it, but waited anyway, because waiting was all that was left.</li>
+        <li>waiting-&gt;The abandoned wagon gave shade by day and a wall at night, and [PAWN_pronoun] lived on what the thieves had not bothered to take.</li>
+        <li>waiting-&gt;[PAWN_pronoun] bound the worst of it, said nothing to the empty hills, and waited with the patience of someone who has run out of better ideas.</li>
+      </rulesStrings>
+    </rulePack>
+  </RulePackDef>
+
+  <!-- Feral: a wild man or woman, years alone in the wilderness, language and names gone -->
+  <PastLives.StoryArcDef>
+    <defName>PastLives_Arc_Feral</defName>
+    <roles><li>Wild</li></roles>
+    <rules>PastLives_Story_Feral</rules>
+    <trait><def>Tough</def><degree>0</degree></trait>
+  </PastLives.StoryArcDef>
+  <RulePackDef>
+    <defName>PastLives_Story_Feral</defName>
+    <rulePack>
+      <rulesStrings>
+        <li>r_story-&gt;[flight] [years] [slip] [now] [childhood]</li>
+        <li>flight-&gt;When nothing was left of [colony], [PAWN_nameDef] ran, and kept running until there was nothing behind [PAWN_objective] but trees.</li>
+        <li>flight-&gt;[PAWN_nameDef] walked out of the ruins of [colony] alone and did not stop at any door that was still standing.</li>
+        <li>flight-&gt;After [colony] there were too many faces and too many questions, so [PAWN_pronoun] went where there were neither.</li>
+        <li>flight-&gt;In the first winter after [colony] [PAWN_pronoun] took to the hills, meaning to come back in spring.</li>
+        <li>flight-&gt;Alone and without a plan, [PAWN_pronoun] fled the wreckage of the old life and found that the forest asked nothing.</li>
+        <li>flight-&gt;The morning after the last night in [colony], [PAWN_nameDef] was already a day's walk into the brush.</li>
+        <li>years-&gt;For years [PAWN_pronoun] lived like the animals around [PAWN_objective], sleeping in burrows and drinking from the same pools.</li>
+        <li>years-&gt;[PAWN_pronoun] ate what could be caught with bare hands and learned to sleep in the crook of a tree.</li>
+        <li>years-&gt;The seasons turned over [PAWN_objective] like water over a stone; [PAWN_pronoun] kept no calendar and wanted none.</li>
+        <li>years-&gt;Hunger taught [PAWN_objective] what books had not, and fear taught the rest.</li>
+        <li>years-&gt;[PAWN_pronoun] moved on all fours more often than not, and the hands that once held tools learned to grip bark.</li>
+        <li>years-&gt;Winters were spent in hollows lined with leaves, summers following game along the rivers, and for years nobody saw [PAWN_objective].</li>
+        <li>slip-&gt;Words went first, one by one, like coins from a torn pocket, and in the end [PAWN_pronoun] kept only a few.</li>
+        <li>slip-&gt;[PAWN_pronoun] forgot the names of things, then the names of people, and last of all [PAWN_possessive] own.</li>
+        <li>slip-&gt;A voice that was once used for songs and arguments now makes a few low sounds, and those mostly to the dark.</li>
+        <li>slip-&gt;What remains of speech is a handful of broken syllables, and [PAWN_nameDef] does not seem to know when [PAWN_pronoun] says them.</li>
+        <li>slip-&gt;Even the memory of [colony] faded, until it was only a feeling of warm light behind a door.</li>
+        <li>slip-&gt;[PAWN_pronoun] no longer remembers that names exist, and answers to a whistle or a thrown stone as readily as to anything.</li>
+        <li>now-&gt;Hunger, or perhaps loneliness, has finally drawn [PAWN_objective] out of the trees, watchful and thin as a fence post.</li>
+        <li>now-&gt;[PAWN_pronoun] edges toward the sound of voices, stops, edges forward again, and does not say a word.</li>
+        <li>now-&gt;Now [PAWN_pronoun] wanders into the open, flinching from firelight and staring at doors as though they were a puzzle.</li>
+        <li>now-&gt;[PAWN_pronoun] watches people from the edge of a clearing with a fixed, unblinking look, and shows no sign of knowing anyone.</li>
+        <li>now-&gt;When anyone speaks, the answer is a low sound and a step back, though sometimes the eyes seem to be searching for something.</li>
+        <li>now-&gt;[PAWN_pronoun] came out of the brush alone, unarmed and barely dressed, and stood there as if waiting to be told what comes next.</li>
+      </rulesStrings>
+    </rulePack>
+  </RulePackDef>
+
+  <!-- Hermit: a wild man or woman who left people by choice, until the wild took the rest -->
+  <PastLives.StoryArcDef>
+    <defName>PastLives_Arc_Hermit</defName>
+    <roles><li>Wild</li></roles>
+    <rules>PastLives_Story_Hermit</rules>
+  </PastLives.StoryArcDef>
+  <RulePackDef>
+    <defName>PastLives_Story_Hermit</defName>
+    <rulePack>
+      <rulesStrings>
+        <li>r_story-&gt;[leave] [solitude] [wild] [now] [childhood]</li>
+        <li>leave-&gt;After [colony], [PAWN_nameDef] could not bear the sound of other people's grief, and left to find a place without any.</li>
+        <li>leave-&gt;[PAWN_pronoun] carried the guilt for what happened in [colony] for one season, and then set it down at the edge of the forest, for no one else to carry.</li>
+        <li>leave-&gt;Nothing dramatic happened; [PAWN_nameDef] was simply tired, in the way that sleep does not mend, and the forest looked restful.</li>
+        <li>leave-&gt;When the last friend from [colony] was buried, [PAWN_pronoun] took an axe, a blanket and a sack of salt, and walked into the hills.</li>
+        <li>leave-&gt;The people around [PAWN_objective] meant well, and that was the trouble; [PAWN_nameDef] wanted to be nobody's burden, so [PAWN_pronoun] left.</li>
+        <li>leave-&gt;Years after [colony], [PAWN_nameDef] decided that the quiet of an empty valley was better company than any crowd, and went to find one.</li>
+        <li>solitude-&gt;[PAWN_pronoun] built a hut of turf and pine, and for a while lived well: a garden, a smokehouse, a shelf of carved spoons.</li>
+        <li>solitude-&gt;The first years were good ones, with a stove that drew properly and a stream that never froze.</li>
+        <li>solitude-&gt;Solitude proved bearable; the loneliness came only at dusk, and could be borne.</li>
+        <li>solitude-&gt;[PAWN_pronoun] kept to a routine, wood and water in the morning, snares at noon, a fire at night, and spoke to the dog until the dog died.</li>
+        <li>solitude-&gt;Visitors were rare, and [PAWN_pronoun] learned to be glad of that without saying so.</li>
+        <li>solitude-&gt;A trader came through twice a year for a while, then stopped coming, and [PAWN_nameDef] did not go looking for the reason.</li>
+        <li>wild-&gt;But the forest is patient: the hut sagged, the garden went back to weeds, and [PAWN_pronoun] let it all go, one winter at a time.</li>
+        <li>wild-&gt;Slowly the wild took the rest: first the clothes, then the tools, then the habit of fire.</li>
+        <li>wild-&gt;Day and night ran together, and [PAWN_pronoun] began to sleep where [PAWN_pronoun] fell, as the animals did.</li>
+        <li>wild-&gt;Mice moved into the roof, and then a fox into the doorway, and [PAWN_nameDef] moved out under the open sky, not unwillingly.</li>
+        <li>wild-&gt;The words went one by one, and [PAWN_pronoun] did not regret them; there was nobody left to say them to.</li>
+        <li>wild-&gt;In time the bark and the rain and the long cold made of a person something the woods recognised, and tolerated.</li>
+        <li>now-&gt;Now [PAWN_pronoun] has come down out of the hills, thin and brown and silent, not looking for anything in particular.</li>
+        <li>now-&gt;What brought [PAWN_objective] out is unclear: a fire, a smell of bread, or only that the stream had run dry.</li>
+        <li>now-&gt;[PAWN_pronoun] answers questions in single words, when at all, and studies faces for a long time, as if sorting old drawings.</li>
+        <li>now-&gt;A remnant of manners remains: [PAWN_pronoun] nods when thanked and steps aside in doorways.</li>
+        <li>now-&gt;[PAWN_nameDef] stands at the edge of things now, close enough to hear, far enough to leave.</li>
+        <li>now-&gt;Whatever [PAWN_pronoun] was looking for in the wild does not seem to have been found, and [PAWN_possessive] feet have turned back toward people of their own accord.</li>
+      </rulesStrings>
+    </rulePack>
+  </RulePackDef>
+
+  <!-- LongSleep: a sleeper who entered a casket for a season and woke in an ancient one -->
+  <PastLives.StoryArcDef>
+    <defName>PastLives_Arc_LongSleep</defName>
+    <roles><li>Sleeper</li></roles>
+    <rules>PastLives_Story_LongSleep</rules>
+  </PastLives.StoryArcDef>
+  <RulePackDef>
+    <defName>PastLives_Story_LongSleep</defName>
+    <rulePack>
+      <rulesStrings>
+        <li>r_story-&gt;[casket] [wake] [time] [childhood]</li>
+        <li>casket-&gt;Sickness was loose in the settlement, and [PAWN_nameDef] lay down in a cryptosleep casket meaning to sleep out a single season.</li>
+        <li>casket-&gt;The famine that followed [colony] was long, and [PAWN_nameDef] chose the casket over the queue for bread, meaning to wake with the spring.</li>
+        <li>casket-&gt;With a siege tightening around the walls, [PAWN_nameDef] was put into a casket, along with a few others, to wait it out.</li>
+        <li>casket-&gt;[PAWN_nameDef] remembers the lid, the cold, and a promise to be woken in a season, and nothing at all after it.</li>
+        <li>casket-&gt;It was meant to be a short sleep, a few months while the worst passed, and [PAWN_pronoun] set the timer with [PAWN_possessive] own hands.</li>
+        <li>casket-&gt;The plague years after [colony] left few choices, and [PAWN_pronoun] took the one that let [PAWN_objective] sleep through them.</li>
+        <li>wake-&gt;[PAWN_pronoun] woke in a stone hall [PAWN_pronoun] had never seen, in a casket that was not the one [PAWN_pronoun] lay down in.</li>
+        <li>wake-&gt;The casket was old, older than anything [PAWN_pronoun] knew how to make, and the mark on its lid meant nothing.</li>
+        <li>wake-&gt;Dust lay on everything, and the corridor beyond the glass was a place of rusted doors, not the settlement where [PAWN_pronoun] had gone to sleep.</li>
+        <li>wake-&gt;[PAWN_nameDef] woke to the hiss of a seal [PAWN_pronoun] did not remember, in a chamber lit by a light that came from nowhere.</li>
+        <li>wake-&gt;Everything about the place was wrong: the walls, the hum, the metal under the glass. It was not where [PAWN_pronoun] went to sleep.</li>
+        <li>wake-&gt;[PAWN_pronoun] climbed out of the casket into a vault of dead machines, with a dry throat and the feeling of having missed a great deal.</li>
+        <li>time-&gt;A season, a year, a century: [PAWN_nameDef] cannot say, and the question sits in the throat.</li>
+        <li>time-&gt;[PAWN_pronoun] remembers everything about [colony] clearly, which is somehow the most frightening part, because it feels like yesterday.</li>
+        <li>time-&gt;Nothing about [PAWN_possessive] body shows the passage of time, and nothing about the room admits to it.</li>
+        <li>time-&gt;The names [PAWN_pronoun] knows come back in pieces, as do dates, and none of the pieces fit together.</li>
+        <li>time-&gt;How long [PAWN_pronoun] slept, and how [PAWN_pronoun] came to be in this place, are two questions [PAWN_nameDef] has stopped asking aloud.</li>
+        <li>time-&gt;[PAWN_pronoun] would like to believe it was only a season, and is careful not to look at the dust.</li>
+      </rulesStrings>
+    </rulePack>
+  </RulePackDef>
+
+  <!-- Vault: a sleeper who guarded or explored ruins and remembers only a vault door and a cold mist -->
+  <PastLives.StoryArcDef>
+    <defName>PastLives_Arc_Vault</defName>
+    <roles><li>Sleeper</li></roles>
+    <rules>PastLives_Story_Vault</rules>
+  </PastLives.StoryArcDef>
+  <RulePackDef>
+    <defName>PastLives_Story_Vault</defName>
+    <rulePack>
+      <rulesStrings>
+        <li>r_story-&gt;[job] [door] [blank] [childhood]</li>
+        <li>job-&gt;After [colony], [PAWN_nameDef] took a job guarding a team of surveyors, who paid well to be walked through old ruins and not asked what they were looking for.</li>
+        <li>job-&gt;[PAWN_nameDef] hired on after [colony] as a guard for a salvage outfit working a dead complex in the hills.</li>
+        <li>job-&gt;Work after [colony] was scarce, so [PAWN_pronoun] signed up to explore sealed ruins for a man who paid in silver and never gave a name.</li>
+        <li>job-&gt;[PAWN_pronoun] spent a season after [colony] as a lookout at a dig site, watching the ridge while others went underground.</li>
+        <li>job-&gt;A scholar hired [PAWN_nameDef] after [colony] to carry the lamps into an ancient installation that no map had a name for.</li>
+        <li>job-&gt;[PAWN_nameDef] took the work because it paid and because nobody there asked about [colony]; a door to the old world seemed a fair place to be forgotten.</li>
+        <li>door-&gt;The last thing [PAWN_pronoun] remembers is a vault door, thicker than a man is tall, swinging open on a breath of cold mist.</li>
+        <li>door-&gt;There was a door, then a hiss, and a mist so cold that it felt like a hand on the chest.</li>
+        <li>door-&gt;[PAWN_pronoun] remembers writing on the wall in a language [PAWN_pronoun] could almost read, and a white mist rolling out of the dark.</li>
+        <li>door-&gt;A seal gave way with a sigh, and the mist that came through it smelled of nothing at all, which was worse.</li>
+        <li>door-&gt;[PAWN_pronoun] stood at the threshold of a vault; someone behind said to wait, and a cold fog rose to the knees.</li>
+        <li>door-&gt;The vault door was the last clear picture: green light on the frame, a draught of cold mist, and then the dark closing like a hand.</li>
+        <li>blank-&gt;Everything after that is blank, not forgotten but absent, like a page cut out of a book.</li>
+        <li>blank-&gt;[PAWN_nameDef] cannot say what happened next, who came out, or how long the blank lasted.</li>
+        <li>blank-&gt;What lies between the mist and the waking is an empty place, and [PAWN_pronoun] has learned not to press on it.</li>
+        <li>blank-&gt;Nobody who was there that day has been heard of since, and [PAWN_pronoun] cannot say whether that is a comfort.</li>
+        <li>blank-&gt;The time after is simply missing, and when [PAWN_pronoun] reaches for it [PAWN_pronoun] finds only the cold.</li>
+        <li>blank-&gt;It may have been an hour, or it may have been longer, and [PAWN_nameDef] has stopped guessing.</li>
+      </rulesStrings>
+    </rulePack>
+  </RulePackDef>
+
+  <!-- Ghoul: a dead colonist made into a ghoul, told only by what you see -->
+  <PastLives.StoryArcDef>
+    <defName>PastLives_Arc_Ghoul</defName>
+    <roles><li>DeadReturn</li></roles>
+    <variants><li>Ghoul</li></variants>
+    <rules>PastLives_Story_Ghoul</rules>
+  </PastLives.StoryArcDef>
+  <RulePackDef>
+    <defName>PastLives_Story_Ghoul</defName>
+    <rulePack>
+      <rulesStrings>
+        <li>r_story-&gt;[marks] [habit] [scrap] [guess]</li>
+        <li>marks-&gt;The thing that climbed out of the pod has coarse black stitches along its neck, the work of someone in a hurry.</li>
+        <li>marks-&gt;There are old marks on the body that you would know anywhere: the burn on the left hand, the finger that healed crooked.</li>
+        <li>marks-&gt;Beneath the grey skin, the tattoo on the forearm is still legible, though the ink has run.</li>
+        <li>marks-&gt;Its eyes are clouded and fixed, but the old scar through the brow lies exactly where you remember it.</li>
+        <li>marks-&gt;Dark veins run from the wrists to the elbows, and between them the freckles lie in the pattern you remember.</li>
+        <li>marks-&gt;The hands are hard and discoloured, yet the broken nail on the right thumb is the one [PAWN_nameDef] never let anyone trim.</li>
+        <li>habit-&gt;It tilts its head to one side when it listens, as [PAWN_nameDef] always did.</li>
+        <li>habit-&gt;When fed, it turns away from the others to eat, hunched, the way [PAWN_nameDef] did when food was short in [colony].</li>
+        <li>habit-&gt;It hums nothing, but its fingers tap the rhythm of a song you used to hear from the roof of the old kitchen.</li>
+        <li>habit-&gt;It stops at every threshold and waits, as though someone might still say come in.</li>
+        <li>habit-&gt;It rubs its neck with the back of one hand, slowly, exactly as [PAWN_nameDef] used to after a long day.</li>
+        <li>habit-&gt;Given a tool, it holds it correctly, and for a moment the hands remember something the rest has lost.</li>
+        <li>scrap-&gt;Around its shoulders hangs the remnant of a coat in the colours worn in [colony], the cuffs mended in a stitch you recognise.</li>
+        <li>scrap-&gt;It wears a belt with a buckle that [PAWN_nameDef] bought and was proud of, and the rest is rags.</li>
+        <li>scrap-&gt;A strip of faded cloth in the colours of [colony] is tied around its wrist, in a knot you have seen before.</li>
+        <li>scrap-&gt;Under the grime there is a boot with a patched heel, mended in [colony] and never replaced.</li>
+        <li>scrap-&gt;A pocket still holds a pressed flower, brown with age, from a garden in [colony].</li>
+        <li>scrap-&gt;A leather cord around its neck holds a ring, too big now for the finger it came from.</li>
+        <li>guess-&gt;Who took the body, and why, you cannot say; the stitches are too neat for raiders and too cruel for friends.</li>
+        <li>guess-&gt;Someone dug [PAWN_objective] up, and someone paid for the serum, and neither of them has left a name.</li>
+        <li>guess-&gt;Whoever did this chose a familiar face on purpose, or perhaps only the nearest grave.</li>
+        <li>guess-&gt;It was sent here deliberately, or the pod had to land somewhere; nothing in its stare tells which.</li>
+        <li>guess-&gt;Some cult, some experimenter, some collector of the dead: you can guess, and none of the guesses is kind.</li>
+        <li>guess-&gt;It does not growl and it does not flinch, and you cannot tell whether that is obedience or only what is left of the person you knew.</li>
+      </rulesStrings>
+    </rulePack>
+  </RulePackDef>
+
+</Defs>

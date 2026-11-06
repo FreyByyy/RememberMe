@@ -81,6 +81,10 @@ namespace PastLives
             TestMyList(comp, map);
             TestStoriesAndHardships(comp, map);
             TestPassions();
+            TestNewRoles(comp, map);
+            TestRotation(comp, map);
+            TestDevMenu();
+            TestExpertise(map);
 
             comp.CheckSpawned();
 
@@ -149,12 +153,13 @@ namespace PastLives
         private static void TestStoriesAndHardships(GameComponent_PastLives comp, Map map)
         {
             foreach (var arc in DefDatabase<StoryArcDef>.AllDefs)
-            {
-                var role = arc.roles[0];
-                var variant = arc.variants.Count > 0 ? arc.variants[0] : (role == PastRole.DeadReturn ? DeadVariant.Wanderer : DeadVariant.None);
-                var stories = DevActions.LogStories(role, variant, 3);
-                Out("stories " + role + "/" + variant + ": " + stories.Count + " ok=" + stories.All(t => t.Length > 20 && !t.Contains("ERR") && !t.Contains("[")));
-            }
+                foreach (var role in arc.roles)
+                {
+                    var variant = arc.variants.Count > 0 ? arc.variants[0] : (role == PastRole.DeadReturn ? DeadVariant.Wanderer : DeadVariant.None);
+                    var stories = DevActions.LogStories(role, variant, 4, arc);
+                    Out("stories " + arc.defName + " as " + role + "/" + variant + ": " + stories.Count
+                        + " ok=" + stories.All(t => t.Length > 20 && !t.Contains("ERR") && !t.Contains("[") && !t.Contains("]")));
+                }
             Out("stories in entries=" + comp.Entries.Count(e => !string.IsNullOrEmpty(e.story)) + "/" + comp.Entries.Count(e => e.role != PastRole.Leader));
 
             var test = PawnGenerator.GeneratePawn(new PawnGenerationRequest(PawnKindDefOf.Villager, null, PawnGenerationContext.NonPlayer, forceGenerateNewPawn: true));
@@ -200,6 +205,125 @@ namespace PastLives
             Out("passions: vse=" + PassionCompat.VseActive + " roundTrip=" + ok + "/" + total + (bad.Count > 0 ? " bad=" + string.Join(",", bad) : "")
                 + " unknownName=" + PassionCompat.Parse("NoSuchPassion") + " foreignIndex=" + PassionCompat.Parse("17"));
         }
+
+        // 1.2: every quest of the role table, the wild man, a cryptosleep casket and an enemy settlement's people.
+        private static void TestNewRoles(GameComponent_PastLives comp, Map map)
+        {
+            // The ghoul pod quest first turns a starting pawn the player left behind into its ghoul; with those
+            // gone it generates one, which is where a dead colonist can take the place.
+            var leftBehind = Find.WorldPawns.GetPawnsBySituation(RimWorld.Planet.WorldPawnSituation.StartingPawnLeftBehind).ToList();
+            foreach (var p in leftBehind) Find.WorldPawns.RemovePawn(p);
+            Out("left-behind starting pawns removed: " + leftBehind.Count);
+            foreach (var def in DefDatabase<QuestRoleDef>.AllDefs)
+                foreach (var q in def.quests)
+                {
+                    var qd = DefDatabase<QuestScriptDef>.GetNamedSilentFail(q);
+                    if (qd == null) { Out("quest " + q + ": not loaded"); continue; }
+                    int before = comp.Entries.Count;
+                    Quest quest;
+                    try { quest = DevActions.GenerateQuest(qd, map); }
+                    catch (Exception ex) { Out("quest " + q + ": EXCEPTION " + ex); continue; }
+                    var added = comp.Entries.Skip(before).ToList();
+                    Out("quest " + q + ": generated=" + (quest != null) + " new=" + added.Count + " expected=" + def.role
+                        + (def.variant != DeadVariant.None ? "/" + def.variant : "") + " got=" + string.Join(",", added.Select(e => e.role + (e.variant != DeadVariant.None ? "/" + e.variant : "")))
+                        + " story=" + added.All(e => !string.IsNullOrEmpty(e.story) || PawnOf(e)?.DevelopmentalStage.Baby() == true)
+                        + " ghoul=" + added.Count(e => PawnOf(e)?.IsMutant == true));
+                }
+
+            int wildBefore = comp.Entries.Count;
+            var wild = DefDatabase<IncidentDef>.GetNamedSilentFail("WildManWandersIn");
+            bool wildOk = false;
+            if (wild != null)
+            {
+                var parms = StorytellerUtility.DefaultParmsNow(wild.category, map);
+                parms.forced = true;
+                wildOk = wild.Worker.TryExecute(parms);
+            }
+            Out("wild man: executed=" + wildOk + " got=" + string.Join(",", comp.Entries.Skip(wildBefore).Select(e => e.role + " faction=" + (PawnOf(e)?.Faction?.Name ?? "none"))));
+
+            int casketBefore = comp.Entries.Count;
+            var casket = DevActions.SpawnCasket(map) as Building_Casket;
+            var sleepers = comp.Entries.Skip(casketBefore).ToList();
+            bool notifiedClosed = sleepers.Any(e => e.notified);
+            string inside = casket == null ? "-" : string.Join(",", casket.GetDirectlyHeldThings().Select(t => t.LabelShort));
+            casket?.Open();
+            comp.CheckSpawned();
+            Out("casket: spawned=" + (casket != null) + " inside=" + inside + " got=" + string.Join(",", sleepers.Select(e => e.role.ToString()))
+                + " pawnSpawned=" + string.Join(",", sleepers.Select(e => PawnOf(e)?.Spawned.ToString() ?? "?"))
+                + " letterWhileClosed=" + notifiedClosed + " letterAfterOpen=" + sleepers.All(e => e.notified));
+
+            var settlement = Find.WorldObjects.Settlements.FirstOrDefault(x => x.Faction != null && !x.Faction.IsPlayer && x.Faction.def.humanlikeFaction
+                && x.Faction.HostileTo(Faction.OfPlayer) && !x.HasMap);
+            if (settlement == null) { Out("settlement: none hostile"); return; }
+            int sBefore = comp.Entries.Count;
+            Map sMap = null;
+            try { sMap = GetOrGenerateMapUtility.GetOrGenerateMap(settlement.Tile, null); }
+            catch (Exception ex) { Out("settlement: EXCEPTION " + ex); }
+            var defenders = comp.Entries.Skip(sBefore).ToList();
+            comp.CheckSpawned();
+            Out("settlement " + settlement.Label + " (" + settlement.Faction.def.defName + "): map=" + (sMap != null) + " got=" + string.Join(",", defenders.Select(e => e.role.ToString()))
+                + " home=" + PastStories.HomeOf(settlement.Faction) + " letterWithoutColonists=" + defenders.Any(e => e.notified)
+                + " stories=" + string.Join(" || ", defenders.Select(e => e.story)));
+            if (sMap != null) Current.Game.DeinitAndRemoveMap(sMap, false);
+        }
+
+        public static void TestDevMenu()
+        {
+            var m = typeof(DevActions).GetMethod("CallUpAppearance", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
+            var nodes = m?.Invoke(null, null) as System.Collections.Generic.List<LudeonTK.DebugActionNode>;
+            Out("dev menu: appearances=" + (nodes?.Count ?? -1) + " labels=" + (nodes == null ? "" : string.Join(" | ", nodes.Select(n => n.label))));
+        }
+
+        // A story just told is not told again right away and comes back after a few others.
+        private static void TestRotation(GameComponent_PastLives comp, Map map)
+        {
+            var pawn = map.mapPawns.FreeColonists.FirstOrDefault();
+            var picks = new System.Collections.Generic.List<string>();
+            for (int i = 0; i < 30; i++) picks.Add(PastStories.PickArc(PastRole.Raider, DeadVariant.None, pawn)?.defName);
+            int repeats = 0;
+            for (int i = 1; i < picks.Count; i++) if (picks[i] == picks[i - 1]) repeats++;
+            var told = picks.Where(x => x != null).Distinct().Count();
+            var last = DefDatabase<StoryArcDef>.GetNamedSilentFail(picks.LastOrDefault() ?? "");
+            Out("rotation: picks=" + picks.Count + " distinct=" + told + " immediateRepeats=" + repeats
+                + " lastWeight=" + (last != null ? comp.ArcWeight(last) : -1f));
+        }
+
+        // Vanilla Skills Expanded: expertise and passions, with or without VSE loaded.
+        private static void TestExpertise(Map map)
+        {
+            var colonist = map.mapPawns.FreeColonists.FirstOrDefault();
+            if (colonist == null) return;
+            var a = MyList.Snapshot(colonist);
+            a.Key = "selftest#expertise";
+            a.Skills.Clear();
+            a.Skills.Add(new ArchivePawn.SkillEntry { Def = "Shooting", Level = 15, Passion = "VSE_Critical" });
+            a.Skills.Add(new ArchivePawn.SkillEntry { Def = "Melee", Level = 8, Passion = "VSE_Apathy" });
+            a.Skills.Add(new ArchivePawn.SkillEntry { Def = "Cooking", Level = 6, Passion = "AS_DrunkenPassion_Active" });
+            a.Skills.Add(new ArchivePawn.SkillEntry { Def = "Plants", Level = 6, Passion = "SomeModsBadPassion", Bad = true });
+            a.Skills.Add(new ArchivePawn.SkillEntry { Def = "Mining", Level = 20, Passion = "VSE_Natural" });
+            a.Expertise.Clear();
+            a.Expertise.Add(new ArchivePawn.ExpertiseEntry { Def = "CloseQuarters", Level = 10 });
+            a.Expertise.Add(new ArchivePawn.ExpertiseEntry { Def = "Precision", Level = 3 });
+            a.Expertise.Add(new ArchivePawn.ExpertiseEntry { Def = "Driller", Level = 12 });
+
+            var back = ArchivePawn.FromXml(a.ToXml());
+            Out("expertise xml: expertise=" + back.Expertise.Count + "/" + a.Expertise.Count + " badFlag=" + back.Skills.Any(x => x.Bad));
+
+            var pawn = PawnGenerator.GeneratePawn(new PawnGenerationRequest(PawnKindDefOf.Villager, null, PawnGenerationContext.NonPlayer, forceGenerateNewPawn: true));
+            PawnRecipe.Apply(pawn, back, keepBackstories: false, grownUp: false);
+            string Sk(string d)
+            {
+                var r = pawn.skills.skills.FirstOrDefault(x => x.def.defName == d);
+                return r == null ? "-" : r.levelInt + "/" + PassionCompat.Name(r.passion);
+            }
+            var read = ExpertiseCompat.Read(pawn);
+            Out("expertise: vse=" + ExpertiseCompat.Active + " shooting=" + Sk("Shooting") + " melee=" + Sk("Melee") + " cooking=" + Sk("Cooking")
+                + " plants=" + Sk("Plants") + " mining=" + Sk("Mining")
+                + " restored=" + string.Join(",", read.Select(x => x.Def + ":" + x.Level))
+                + " skillOf(CloseQuarters)=" + ExpertiseCompat.SkillOf("CloseQuarters"));
+        }
+
+        private static Pawn PawnOf(PastLifeEntry e) => PawnsFinder.AllMapsWorldAndTemporary_AliveOrDead.FirstOrDefault(p => p.ThingID == e.thingId);
 
         private static void Out(string msg) => Log.Message("[PastLives][selftest] " + msg);
     }

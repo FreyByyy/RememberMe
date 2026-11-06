@@ -50,6 +50,24 @@ namespace PastLives
 
         private Dictionary<string, PastLifeEntry> byThingId;
 
+        // Story rotation: a story just told drops to weight 0 and earns back ArcRecovery with every story told
+        // after it, so long games do not hear the same one twice in a row yet never run out.
+        public const float ArcRecovery = 0.2f;
+        private Dictionary<string, float> arcWeights = new Dictionary<string, float>();
+
+        public float ArcWeight(StoryArcDef arc) => arcWeights.TryGetValue(arc.defName, out var w) ? w : 1f;
+
+        public void Notify_ArcTold(StoryArcDef arc)
+        {
+            foreach (var key in arcWeights.Keys.ToList())
+            {
+                float w = arcWeights[key] + ArcRecovery;
+                if (w >= 1f) arcWeights.Remove(key);
+                else arcWeights[key] = w;
+            }
+            arcWeights[arc.defName] = 0f;
+        }
+
         public GameComponent_PastLives(Game game) { }
 
         private HashSet<string> aliveCache, aliveNamesCache;
@@ -169,6 +187,7 @@ namespace PastLives
         {
             usedKeys.Clear();
             entries.Clear();
+            arcWeights.Clear();
             byThingId = null;
             worldGenLeaders = 0;
         }
@@ -178,7 +197,7 @@ namespace PastLives
             var entry = EntryFor(pawn);
             if (entry == null) return;
             entry.factionName = faction.Name;
-            if (!Substitution.WorldGenerating) SendLetter(entry, pawn);
+            if (Substitution.InPlay) SendLetter(entry, pawn);
         }
 
         public override void StartedNewGame()
@@ -209,7 +228,8 @@ namespace PastLives
             if (!entries.Any(e => !e.notified && e.role != PastRole.Leader)) return;
             foreach (var map in Find.Maps)
             {
-                if (!map.IsPlayerHome) continue;
+                // Any map the player's people are on: home, or a camp, site or settlement they just entered.
+                if (!map.IsPlayerHome && map.mapPawns.FreeColonistsSpawnedCount == 0) continue;
                 foreach (var pawn in map.mapPawns.AllPawnsSpawned)
                 {
                     var e = EntryFor(pawn);
@@ -228,9 +248,9 @@ namespace PastLives
             string key = (e.role == PastRole.DeadReturn ? "PastLives_Letter_Dead_" + e.variant : "PastLives_Letter_" + e.role) + SavedSuffix(e);
             var text = key.Translate(pawn.Named("PAWN"), e.colony.Named("COLONY"), (pawn.Faction?.Name ?? e.factionName ?? "").Named("FACTION"));
             var label = (e.role == PastRole.DeadReturn ? "PastLives_LetterLabel_Dead" : "PastLives_LetterLabel").Translate(pawn.Named("PAWN"));
-            LetterDef type = e.role == PastRole.Raider ? LetterDefOf.ThreatSmall
-                : e.role == PastRole.DeadReturn ? LetterDefOf.NeutralEvent
-                : e.role == PastRole.Joiner || e.role == PastRole.Refugee ? LetterDefOf.PositiveEvent
+            LetterDef type = e.role == PastRole.Raider || e.role == PastRole.Defender ? LetterDefOf.ThreatSmall
+                : e.role == PastRole.DeadReturn ? (e.variant == DeadVariant.Ghoul ? LetterDefOf.ThreatSmall : LetterDefOf.NeutralEvent)
+                : e.role == PastRole.Joiner || e.role == PastRole.Refugee || e.role == PastRole.Castaway ? LetterDefOf.PositiveEvent
                 : LetterDefOf.NeutralEvent;
             Find.LetterStack.ReceiveLetter(label, WithStory(text, e), type, new LookTargets(pawn));
         }
@@ -241,10 +261,12 @@ namespace PastLives
             Scribe_Collections.Look(ref entries, "entries", LookMode.Deep);
             Scribe_Values.Look(ref lastAppearanceTick, "lastAppearanceTick", -9999999);
             Scribe_Values.Look(ref worldGenLeaders, "worldGenLeaders");
+            Scribe_Collections.Look(ref arcWeights, "arcWeights", LookMode.Value, LookMode.Value);
             if (Scribe.mode == LoadSaveMode.PostLoadInit)
             {
                 if (usedKeys == null) usedKeys = new HashSet<string>();
                 if (entries == null) entries = new List<PastLifeEntry>();
+                if (arcWeights == null) arcWeights = new Dictionary<string, float>();
                 byThingId = null;
             }
         }

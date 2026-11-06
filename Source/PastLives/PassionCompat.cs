@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Reflection;
 using System.Runtime.CompilerServices;
@@ -45,9 +46,18 @@ namespace PastLives
             return def != null ? BaseName(def.defName) : passion.ToString();
         }
 
+        // Passions of VSE and its add-ons that hold a skill back; known by name so they stay "no passion" even
+        // when the archive was read without VSE loaded.
+        private static readonly HashSet<string> KnownBad = new HashSet<string>
+        {
+            "VSE_Apathy", "AS_FrozenPassion", "AS_DuncePassion", "AS_TraumaticPassion", "AS_PsychicPassion_Nullified",
+            "AS_MoodyPassion_Apathy", "AS_MoodyPassion_NoPassion",
+        };
+
         // Names from saves, editors and our own files; plain numbers only for the three vanilla values, since any
-        // other number was an index in somebody else's mod list.
-        public static Passion Parse(string name)
+        // other number was an index in somebody else's mod list. A passion whose mod is not loaded becomes the
+        // nearest vanilla one: critical -> major, natural -> minor, bad ones (apathy...) -> none, any other -> minor.
+        public static Passion Parse(string name, bool bad = false)
         {
             if (string.IsNullOrEmpty(name)) return Passion.None;
             if (int.TryParse(name, NumberStyles.Integer, CultureInfo.InvariantCulture, out int n))
@@ -58,7 +68,16 @@ namespace PastLives
                     ?? (name.EndsWith(ActiveSuffix, StringComparison.Ordinal) ? GenDefDatabase.GetDefSilentFail(DefType, name.Substring(0, name.Length - ActiveSuffix.Length), false) : null);
                 if (def != null) return (Passion)def.index;
             }
-            return Enum.TryParse(name, out Passion p) && Enum.IsDefined(typeof(Passion), p) ? p : Passion.None;
+            if (Enum.TryParse(name, out Passion p) && Enum.IsDefined(typeof(Passion), p)) return p;
+            return Fallback(name, bad);
+        }
+
+        public static Passion Fallback(string name, bool bad)
+        {
+            var baseName = name.EndsWith(ActiveSuffix, StringComparison.Ordinal) ? name.Substring(0, name.Length - ActiveSuffix.Length) : name;
+            if (bad || KnownBad.Contains(baseName)) return Passion.None;
+            if (baseName == "VSE_Critical") return Passion.Major;
+            return Passion.Minor;
         }
 
         // A passion worth a head start when a child comes back grown up: not none, and not one of VSE's bad ones (apathy).

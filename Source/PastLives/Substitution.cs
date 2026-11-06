@@ -40,7 +40,13 @@ namespace PastLives
     // Decides, for one PawnGenerator.GeneratePawn call, whether a past colonist takes this pawn's place.
     public static class Substitution
     {
+        // True while the world is made and the first map is set up, when nobody is looking yet.
         public static bool WorldGenerating => Current.ProgramState != ProgramState.Playing;
+
+        // The game is under way. Maps generated later (a camp the caravan enters, a site) switch the program
+        // state to MapInitializing for a moment; that still counts as play, the start of a new game does not.
+        public static bool InPlay => Current.ProgramState == ProgramState.Playing
+            || (Current.ProgramState == ProgramState.MapInitializing && Find.TickManager != null && Find.TickManager.TicksGame > 0);
 
         public static PendingSubstitution TryBegin(ref PawnGenerationRequest request)
         {
@@ -52,43 +58,52 @@ namespace PastLives
             var kind = request.KindDef;
             if (kind?.race?.race == null || !kind.RaceProps.Humanlike) return null;
             if (request.Context == PawnGenerationContext.PlayerStarter || request.ForceDead) return null;
-            if (!request.AllowedDevelopmentalStages.Adult()) return null;
 
             var scope = SpawnContext.Top;
             PastRole role;
-            if (kind == PawnKindDefOf.Slave && !SpawnContext.DeadReturnPending)
+            bool scopeHasRole = scope != null && scope.Role != PastRole.None && !scope.Consumed;
+            if (kind == PawnKindDefOf.Slave && !scopeHasRole && !SpawnContext.DeadReturnPending)
             {
-                // Slaves are generated one by one inside trader stock, so they roll individually.
-                if (!forced && !Rand.Chance(settings.eventChance)) return null;
-                role = PastRole.Slave;
+                // Slaves are generated one by one inside trader stock, so they roll individually. Slaves made with
+                // a camp or settlement the player enters are its captives, not goods for sale.
+                var mapGen = MapGenerator.mapBeingGenerated;
+                role = mapGen != null && !mapGen.IsPlayerHome ? PastRole.Prisoner : PastRole.Slave;
+                if (!forced && !Rand.Chance(settings.ChanceFor(role))) return null;
                 scope = null;
             }
             else
             {
-                if (scope == null || (!forced && (scope.Consumed || !scope.Rolled))) return null;
-                role = scope.Role != PastRole.None ? scope.Role : Classify(scope.Faction ?? request.Faction, kind);
+                if (scope == null || scope.Blocked || (!forced && scope.Consumed)) return null;
+                role = scope.Role != PastRole.None ? scope.Role : Classify(scope, scope.Faction ?? request.Faction, kind);
                 if (role == PastRole.None) return null;
+                if (!forced && !scope.Roll(role)) return null;
             }
 
             if (!forced && !settings.RoleEnabled(role)) return null;
             // While the world is generated only leaders matter; other pawns made then (stock slaves etc.)
-            // are mostly never seen and would just use up the archive.
-            if (WorldGenerating && role != PastRole.Leader) return null;
+            // are mostly never seen and would just use up the archive. Sleepers in the first map's caskets are
+            // the exception: they wait there until the colony opens them.
+            if (!InPlay && role != PastRole.Leader
+                && !(role == PastRole.Sleeper && Current.ProgramState == ProgramState.MapInitializing)) return null;
             bool exempt = role == PastRole.Leader || role == PastRole.DeadReturn;
             if (!forced && !exempt && !comp.CooldownOver) return null;
-            if (role == PastRole.Leader && WorldGenerating && comp.worldGenLeaders >= settings.maxWorldGenLeaders) return null;
+            if (role == PastRole.Leader && !InPlay && comp.worldGenLeaders >= settings.maxWorldGenLeaders) return null;
 
+            // Requests that allow no adults (a baby in a crashed pod) take someone who still is that young.
+            bool youngOnly = !request.AllowedDevelopmentalStages.Adult();
             var picked = forced && DevForce.Pawn != null
                 ? (ArchiveSelector.RaceCompatible(DevForce.Pawn.RaceDef, kind.race) ? DevForce.Pawn : null)
-                : ArchiveSelector.Pick(role, request, comp);
+                : ArchiveSelector.Pick(role, request, comp, scope?.Quest);
             if (picked == null) return null;
+            if (youngOnly && !ArchiveSelector.StageAllowed(picked, kind.race, request.AllowedDevelopmentalStages)) return null;
 
             bool wasUsed = comp.HasUsedKey(picked.Key);
             int prevTick = comp.LastAppearanceTick;
-            bool countedLeader = role == PastRole.Leader && WorldGenerating;
+            bool countedLeader = role == PastRole.Leader && !InPlay;
             if (forced) DevForce.Remaining--;
             if (scope != null) scope.Consumed = true;
-            comp.MarkUsed(picked.Key, countsForCooldown: !exempt && !forced);
+            // Sleepers placed on the first map wait unseen; they must not hold back the first appearances.
+            comp.MarkUsed(picked.Key, countsForCooldown: !exempt && !forced && InPlay);
             if (countedLeader) comp.worldGenLeaders++;
 
             bool keepBackstories = request.IsCreepJoiner;
@@ -125,13 +140,13 @@ namespace PastLives
             if (s.Scope != null) s.Scope.Result = pawn;
 
             // The story is picked first: one that left marks decides the scars and trait.
-            var arc = PastStories.PickArc(s.Role, variant);
+            var arc = PastStories.PickArc(s.Role, variant, pawn, s.GrownUp, quest: s.Scope?.QuestName);
             bool marks = Hardship.Apply(pawn, s.Role, arc);
             string story = null;
             if (arc != null)
             {
                 int yearsGrown = s.GrownUp ? Math.Max(1, pawn.ageTracker.AgeBiologicalYears - (int)(s.Archived.AgeBioTicks / 3600000L)) : 0;
-                try { story = PastStories.Tell(arc, pawn, s.Archived, PastStories.PickFaction(arc), marks, yearsGrown); }
+                try { story = PastStories.Tell(arc, pawn, s.Archived, PastStories.PickFaction(arc), marks, yearsGrown, s.Role); }
                 catch (Exception ex) { Log.Warning("[PastLives] story " + arc.defName + " failed: " + ex.Message); }
             }
             GameComponent_PastLives.Instance?.Register(pawn, s.Archived, s.Role, variant, story);
@@ -139,10 +154,11 @@ namespace PastLives
                 + s.Role + (variant != DeadVariant.None ? "/" + variant : "") + (pawn.Faction != null ? " of " + pawn.Faction.Name : ""));
         }
 
-        private static PastRole Classify(Faction faction, PawnKindDef kind)
+        private static PastRole Classify(SpawnScope scope, Faction faction, PawnKindDef kind)
         {
             // Entities (shambler swarms etc.) are not a place for the living.
             if (faction == null || faction.IsPlayer || !faction.def.humanlikeFaction || kind.mutant != null) return PastRole.None;
+            if (scope.MapGen) return PastRole.Defender;
             var player = Faction.OfPlayerSilentFail;
             if (player != null && faction.HostileTo(player)) return PastRole.Raider;
             if (kind.trader) return PastRole.Trader;

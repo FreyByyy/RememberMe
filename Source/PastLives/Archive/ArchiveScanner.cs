@@ -219,6 +219,12 @@ namespace PastLives
 
             foreach (var s in Lis(el.Element("skills")?.Element("skills")))
                 p.Skills.Add(new ArchivePawn.SkillEntry { Def = V(s, "def"), Level = I(V(s, "level")), Passion = V(s, "passion") });
+            // Vanilla Skills Expanded saves its expertise inside the skill tracker: skills/expertise/expertise/li.
+            foreach (var x in Lis(el.Element("skills")?.Element("expertise")?.Element("expertise")))
+            {
+                var def = V(x, "def");
+                if (def != null) p.Expertise.Add(new ArchivePawn.ExpertiseEntry { Def = def, Level = I(V(x, "level")) });
+            }
 
             var genes = el.Element("genes");
             if (genes != null && genes.Attribute("IsNull") == null)

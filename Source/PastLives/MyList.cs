@@ -77,7 +77,9 @@ namespace PastLives
             }
             if (p.skills != null)
                 foreach (var s in p.skills.skills)
-                    a.Skills.Add(new ArchivePawn.SkillEntry { Def = s.def.defName, Level = s.levelInt, Passion = PassionCompat.Name(s.passion) });
+                    a.Skills.Add(new ArchivePawn.SkillEntry { Def = s.def.defName, Level = s.levelInt, Passion = PassionCompat.Name(s.passion),
+                        Bad = s.passion != Passion.None && !PassionCompat.IsGood(s.passion) });
+            a.Expertise.AddRange(ExpertiseCompat.Read(p));
 
             if (p.genes != null)
             {

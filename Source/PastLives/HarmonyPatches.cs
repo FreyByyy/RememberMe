@@ -1,6 +1,10 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
 using HarmonyLib;
 using RimWorld;
+using RimWorld.Planet;
 using RimWorld.QuestGen;
 using Verse;
 
@@ -36,6 +40,7 @@ namespace PastLives
     }
 
     // Raids, caravans, visitors and settlement inhabitants all come through pawn group generation.
+    // Groups made while a map other than the player's home is generated are the people who live there.
     [HarmonyPatch(typeof(PawnGroupKindWorker), nameof(PawnGroupKindWorker.GeneratePawns),
         new[] { typeof(PawnGroupMakerParms), typeof(PawnGroupMaker), typeof(bool) })]
     public static class Patch_GroupGeneratePawns
@@ -44,37 +49,100 @@ namespace PastLives
         {
             __state = null;
             if (SpawnContext.DeadReturnPending) return;
-            __state = new SpawnScope { Faction = parms.faction, Rolled = Rand.Chance(PastLivesMod.Settings.eventChance) };
+            // A quest that makes its people as a group (sanguophage meetings, beggars) keeps its own scope and filters.
+            var top = SpawnContext.Top;
+            if (top?.Quest != null && !top.Consumed) return;
+            __state = new SpawnScope { Faction = parms.faction };
+            var map = MapGenerator.mapBeingGenerated;
+            if (map != null && !map.IsPlayerHome)
+            {
+                __state.MapGen = true;
+                // A distress call's villagers are made to be found dead.
+                if (map.Parent is Site site && site.parts.Any(p => p.def.defName.StartsWith("DistressCall"))) __state.Blocked = true;
+            }
             SpawnContext.Push(__state);
         }
 
-        public static Exception Finalizer(Exception __exception, SpawnScope __state)
+        public static Exception Finalizer(Exception __exception, SpawnScope __state) => Scopes.End(__exception, __state);
+    }
+
+    // Every quest goes through here; QuestRoleDefs say which of them may bring someone back, and as whom.
+    [HarmonyPatch(typeof(QuestGen), nameof(QuestGen.Generate))]
+    public static class Patch_QuestGenerate
+    {
+        public static void Prefix(QuestScriptDef root, out SpawnScope __state)
         {
-            if (__state != null) SpawnContext.Pop(__state);
-            return __exception;
+            __state = null;
+            var def = QuestRoleDef.For(root);
+            if (def == null || SpawnContext.DeadReturnPending) return;
+            __state = Scopes.Begin(def.role);
+            __state.Quest = def;
+            __state.QuestName = root.defName;
+            __state.Variant = def.variant;
+        }
+
+        public static Exception Finalizer(Exception __exception, SpawnScope __state) => Scopes.End(__exception, __state);
+    }
+
+    // A wild man or woman wanders in.
+    [HarmonyPatch(typeof(IncidentWorker_WildManWandersIn), "TryExecuteWorker")]
+    public static class Patch_WildManWandersIn
+    {
+        public static void Prefix(out SpawnScope __state) => __state = SpawnContext.DeadReturnPending ? null : Scopes.Begin(PastRole.Wild);
+        public static Exception Finalizer(Exception __exception, SpawnScope __state) => Scopes.End(__exception, __state);
+    }
+
+    // The sleepers of ancient cryptosleep caskets, friendly or not. The half-eaten one is left out: that pawn
+    // dies right after it is made.
+    [HarmonyPatch]
+    public static class Patch_AncientPodContents
+    {
+        private static readonly string[] Methods =
+        {
+            "GenerateFriendlyAncient", "GenerateIncappedAncient", "GenerateAngryAncient", "GenerateSlave",
+            "GenerateFriendlyAncient_NewTemp", "GenerateIncappedAncient_NewTemp", "GenerateAngryAncient_NewTemp", "GenerateSlave_NewTemp",
+        };
+
+        public static IEnumerable<MethodBase> TargetMethods()
+        {
+            foreach (var name in Methods)
+            {
+                var m = AccessTools.DeclaredMethod(typeof(ThingSetMaker_MapGen_AncientPodContents), name);
+                if (m != null) yield return m;
+            }
+        }
+
+        public static void Prefix(out SpawnScope __state) => __state = SpawnContext.DeadReturnPending ? null : Scopes.Begin(PastRole.Sleeper);
+        public static Exception Finalizer(Exception __exception, SpawnScope __state) => Scopes.End(__exception, __state);
+    }
+
+    // A dead colonist who comes back as a ghoul gets our letter instead of the vanilla one.
+    [HarmonyPatch]
+    public static class Patch_GhoulPodLetter
+    {
+        public static IEnumerable<MethodBase> TargetMethods()
+        {
+            foreach (var name in new[] { "SendLetter", "SendLetter_NewTemp" })
+            {
+                var m = AccessTools.DeclaredMethod(typeof(QuestNode_Root_RefugeePodCrash_Ghoul), name);
+                if (m != null) yield return m;
+            }
+        }
+
+        public static bool Prefix(Pawn pawn)
+        {
+            var entry = GameComponent_PastLives.Instance?.EntryFor(pawn);
+            if (entry == null) return true;
+            GameComponent_PastLives.Instance.SendLetter(entry, pawn);
+            return false;
         }
     }
 
-    [HarmonyPatch(typeof(QuestNode_Root_WandererJoin), "RunInt")]
-    public static class Patch_WandererJoin
-    {
-        public static void Prefix(out SpawnScope __state) => __state = QuestScopes.Begin(PastRole.Joiner);
-        public static Exception Finalizer(Exception __exception, SpawnScope __state) => QuestScopes.End(__exception, __state);
-    }
-
-    [HarmonyPatch(typeof(QuestNode_Root_Hospitality_Refugee), "RunInt")]
-    public static class Patch_HospitalityRefugee
-    {
-        public static void Prefix(out SpawnScope __state) => __state = QuestScopes.Begin(PastRole.Refugee);
-        public static Exception Finalizer(Exception __exception, SpawnScope __state) => QuestScopes.End(__exception, __state);
-    }
-
-    public static class QuestScopes
+    public static class Scopes
     {
         public static SpawnScope Begin(PastRole role)
         {
-            if (SpawnContext.DeadReturnPending) return null;
-            var scope = new SpawnScope { Role = role, Rolled = Rand.Chance(PastLivesMod.Settings.eventChance) };
+            var scope = new SpawnScope { Role = role };
             SpawnContext.Push(scope);
             return scope;
         }
@@ -92,13 +160,8 @@ namespace PastLives
     {
         public static void Prefix(Faction __instance, out SpawnScope __state)
         {
-            __state = new SpawnScope
-            {
-                Role = PastRole.Leader,
-                Faction = __instance,
-                Rolled = Rand.Chance(PastLivesMod.Settings.leaderChance),
-            };
-            SpawnContext.Push(__state);
+            __state = Scopes.Begin(PastRole.Leader);
+            __state.Faction = __instance;
         }
 
         public static void Postfix(Faction __instance, SpawnScope __state)
@@ -107,11 +170,7 @@ namespace PastLives
                 GameComponent_PastLives.Instance?.Notify_BecameLeader(__state.Result, __instance);
         }
 
-        public static Exception Finalizer(Exception __exception, SpawnScope __state)
-        {
-            if (__state != null) SpawnContext.Pop(__state);
-            return __exception;
-        }
+        public static Exception Finalizer(Exception __exception, SpawnScope __state) => Scopes.End(__exception, __state);
     }
 
     [HarmonyPatch(typeof(Pawn), nameof(Pawn.GetInspectString))]

@@ -31,7 +31,9 @@ namespace PastLives
 
             var leftView = new Rect(0f, 0f, left.width - 16f, Mathf.Max(leftHeight, left.height));
             Widgets.BeginScrollView(left, ref leftScroll, leftView);
-            var l = new Listing_Standard();
+            // One column only: a listing taller than its rect would otherwise wrap into a second, hidden column
+            // and never report the height the scroll view needs.
+            var l = new Listing_Standard { maxOneColumn = true };
             l.Begin(leftView);
             l.CheckboxLabeled("PastLives_Enabled".Translate(), ref Settings.enabled);
             l.Gap(6f);
@@ -74,15 +76,23 @@ namespace PastLives
             }
 
             l.GapLine();
-            l.Label("PastLives_Roles".Translate());
-            l.CheckboxLabeled("PastLives_Role_Joiner".Translate(), ref Settings.roleJoiner);
-            l.CheckboxLabeled("PastLives_Role_Refugee".Translate(), ref Settings.roleRefugee);
-            l.CheckboxLabeled("PastLives_Role_Visitor".Translate(), ref Settings.roleVisitor);
-            l.CheckboxLabeled("PastLives_Role_Trader".Translate(), ref Settings.roleTrader);
-            l.CheckboxLabeled("PastLives_Role_Raider".Translate(), ref Settings.roleRaider);
-            l.CheckboxLabeled("PastLives_Role_Slave".Translate(), ref Settings.roleSlave);
-            l.CheckboxLabeled("PastLives_Role_Leader".Translate(), ref Settings.roleLeader);
-            l.CheckboxLabeled("PastLives_Role_DeadReturn".Translate(), ref Settings.roleDead, "PastLives_Role_DeadReturnDesc".Translate());
+            // The section folds away: with every role and its chance it is the longest part of the window.
+            if (l.ButtonTextLabeled("PastLives_Roles".Translate(), (Settings.rolesExpanded ? "PastLives_Hide" : "PastLives_Show").Translate()))
+                Settings.rolesExpanded = !Settings.rolesExpanded;
+            if (Settings.rolesExpanded)
+            {
+                foreach (var role in PastLivesSettings.ConfigurableRoles)
+                {
+                    bool on = Settings.RoleEnabled(role);
+                    string desc = ("PastLives_Role_" + role + "Desc").TryTranslate(out var d) ? d.Resolve() : null;
+                    l.CheckboxLabeled(("PastLives_Role_" + role).Translate(), ref on, desc);
+                    Settings.SetRoleEnabled(role, on);
+                    if (!on || role == PastRole.DeadReturn) continue;   // dead returns come by their own incidents
+                    float f = Settings.ChanceFactor(role);
+                    l.Label("    " + "PastLives_RoleChanceFactor".Translate(f.ToString("0.0"), Settings.ChanceFor(role).ToStringPercent("0.#")));
+                    Settings.SetChanceFactor(role, Mathf.Round(l.Slider(f, 0f, 3f) * 10f) / 10f);
+                }
+            }
             leftHeight = l.CurHeight + 12f;
             l.End();
             Widgets.EndScrollView();

@@ -22,7 +22,9 @@ namespace PastLives
             float bio = a.AgeBioTicks / 3600000f;
             float chrono = Math.Max(bio, a.AgeChronoTicks / 3600000f);
             float adultAge = ArchiveSelector.AdultAge(race);
-            grownUp = bio < adultAge;
+            // A request for a child or a baby keeps them as young as the archive knew them.
+            bool youngOnly = !request.AllowedDevelopmentalStages.Adult();
+            grownUp = bio < adultAge && !youngOnly;
             if (grownUp)
             {
                 // Children from old colonies come back grown: years have passed since then.
@@ -34,7 +36,7 @@ namespace PastLives
             request.FixedChronologicalAge = chrono;
             request.BiologicalAgeRange = null;
             request.ExcludeBiologicalAgeRange = null;
-            request.AllowedDevelopmentalStages = DevelopmentalStage.Adult;
+            if (!youngOnly) request.AllowedDevelopmentalStages = DevelopmentalStage.Adult;
             request.ForceGenerateNewPawn = true;
             request.CanGeneratePawnRelations = false;
 
@@ -57,6 +59,7 @@ namespace PastLives
             Step(pawn, "traits", () => ApplyTraits(pawn, a));
             if (!keepBackstories) Step(pawn, "backstory", () => ApplyBackstories(pawn, a, grownUp));
             Step(pawn, "skills", () => ApplySkills(pawn, a, grownUp));
+            Step(pawn, "expertise", () => ExpertiseCompat.Apply(pawn, a));
             Step(pawn, "appearance", () => ApplyAppearance(pawn, a, grownUp));
             Step(pawn, "prosthetics", () => ApplyAddedParts(pawn, a));
             Step(pawn, "title", () => ApplyTitle(pawn, a));
@@ -137,8 +140,8 @@ namespace PastLives
                 if (def == null) continue;
                 var rec = pawn.skills.GetSkill(def);
                 if (rec == null) continue;
-                var passion = PassionCompat.Parse(s.Passion);
-                int level = s.Level + (grownUp && PassionCompat.IsGood(passion) ? Rand.RangeInclusive(2, 5) : 0);
+                var passion = PassionCompat.Parse(s.Passion, s.Bad);
+                int level = s.Level + ExpertiseCompat.SkillBonus(a, s.Def) + (grownUp && PassionCompat.IsGood(passion) ? Rand.RangeInclusive(2, 5) : 0);
                 rec.Level = Mathf.Clamp(level, SkillRecord.MinLevel, SkillRecord.MaxLevel);
                 rec.passion = passion;
                 rec.xpSinceLastLevel = rec.XpRequiredForLevelUp * Rand.Range(0f, 0.5f);

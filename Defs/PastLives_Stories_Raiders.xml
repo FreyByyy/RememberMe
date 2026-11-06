@@ -1,0 +1,500 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!--
+    Raider stories, part two. Each arc is told about raiders attacking the player and, with the Defender role,
+    about people met in enemy camps and settlements. Only the "now" symbol changes with (defender==True/False).
+    Symbols and conditions are listed in PastLives_Stories.xml.
+  -->
+
+  <!-- Grudge: bitterness toward the old colony that grew into a quarrel with all colonies -->
+  <PastLives.StoryArcDef>
+    <defName>PastLives_Arc_Grudge</defName>
+    <roles><li>Raider</li><li>Defender</li></roles>
+    <homes><li>Pirate</li><li>Outlander</li><li>Tribal</li><li>Empire</li></homes>
+    <rules>PastLives_Story_Grudge</rules>
+    <trait><def>Abrasive</def><degree>0</degree></trait>
+  </PastLives.StoryArcDef>
+  <RulePackDef>
+    <defName>PastLives_Story_Grudge</defName>
+    <rulePack>
+      <rulesStrings>
+        <li>r_story-&gt;[left] [grudge] [now] [childhood]</li>
+        <li>left-&gt;When the people of [colony] moved out, [PAWN_nameDef] was left behind, and nobody came back to see whether [PAWN_pronoun] was alive.</li>
+        <li>left-&gt;After a quarrel nobody remembers clearly, [PAWN_nameDef] was sent out of [colony] into the cold with a pack and a verdict.</li>
+        <li>left-&gt;When the storehouse in [colony] burned, [PAWN_nameDef] took the blame, and the door was shut for good.</li>
+        <li>left-&gt;[PAWN_nameDef] was taken alive by raiders, and nobody in [colony] sent word, offered a ransom or asked whether [PAWN_pronoun] still lived.</li>
+        <li>left-&gt;In a hard winter [PAWN_nameDef] became one mouth too many at a table already thin in [colony], and [PAWN_pronoun] was asked to leave.</li>
+        <li>left-&gt;When the harvest failed in [colony], it was [PAWN_objective] they blamed, and by spring [PAWN_pronoun] was walking away down an empty road.</li>
+        <li>grudge-&gt;[PAWN_pronoun] kept a list of names in memory, and recited it on the long nights until it became a kind of prayer.</li>
+        <li>grudge-&gt;The anger did not fade with the years; it hardened, and slowly it stopped caring which colony it was aimed at.</li>
+        <li>grudge-&gt;[PAWN_pronoun] swore never to need a colony again, and in time that oath turned into a dislike of every wall and every well-kept field.</li>
+        <li>grudge-&gt;Bitterness is a patient thing, and [PAWN_nameDef] fed it for years until it had room for every settler who still had a roof.</li>
+        <li>grudge-&gt;Each winter the memory came back sharper, and [PAWN_pronoun] began to see the same closed door in every colony gate.</li>
+        <li>grudge-&gt;What began as one name on a list became, season after season, a quiet resentment of anyone who sleeps behind a wall.</li>
+        <li>now(hasHome==True,defender==False)-&gt;Now [PAWN_pronoun] rides with [HOME_name] and strikes at colonies without much thought for who lives in them.</li>
+        <li>now(hasHome==True,defender==False)-&gt;Among [HOME_name] [PAWN_nameDef] found a place and a target, and holds to the second as tightly as to the first.</li>
+        <li>now(hasHome==True,defender==False)-&gt;These days [PAWN_nameDef] fights for [HOME_name] against anyone who still has a hearth to lose, and feels no guilt.</li>
+        <li>now(hasHome==True,defender==False)-&gt;Under the banner of [HOME_name], [PAWN_pronoun] comes against colonies like the one that once shut the door on [PAWN_objective], and no longer sees the difference.</li>
+        <li>now(hasHome==True,defender==False)-&gt;Now [PAWN_nameDef] raids alongside [HOME_name], and every settlement looks to [PAWN_objective] like the one that never looked back.</li>
+        <li>now(hasHome==True,defender==False)-&gt;[PAWN_nameDef] found in [HOME_name] people who will follow a grudge anywhere, and now [PAWN_pronoun] leads them toward the next colony.</li>
+        <li>now(hasHome==False,defender==False)-&gt;Now [PAWN_pronoun] rides with a fighting band and strikes at colonies without much thought for who lives in them.</li>
+        <li>now(hasHome==False,defender==False)-&gt;In a fighting band [PAWN_nameDef] found a place and a target, and holds to the second as tightly as to the first.</li>
+        <li>now(hasHome==False,defender==False)-&gt;Now [PAWN_nameDef] fights with a rough company against anyone who still has a hearth to lose, and feels no guilt.</li>
+        <li>now(hasHome==False,defender==False)-&gt;With a hard crew at [PAWN_possessive] back, [PAWN_pronoun] comes against colonies like the one that once shut the door on [PAWN_objective], and no longer sees the difference.</li>
+        <li>now(hasHome==False,defender==False)-&gt;Now [PAWN_nameDef] raids with strangers, and every settlement looks to [PAWN_objective] like the one that never looked back.</li>
+        <li>now(hasHome==False,defender==False)-&gt;[PAWN_nameDef] found a band that will follow a grudge anywhere, and now [PAWN_pronoun] leads it toward the next colony.</li>
+        <li>now(hasHome==True,defender==True)-&gt;Now [PAWN_pronoun] lives among the people of [HOME_name] and keeps watch for them, with an old suspicion of anyone who walks in from a colony.</li>
+        <li>now(hasHome==True,defender==True)-&gt;The people of [HOME_name] took [PAWN_objective] in, and [PAWN_pronoun] stands at their gate now, eyeing every newcomer coldly.</li>
+        <li>now(hasHome==True,defender==True)-&gt;These days [PAWN_nameDef] guards the place for [HOME_name], and strangers from colonies get no friendliness from [PAWN_objective].</li>
+        <li>now(hasHome==True,defender==True)-&gt;Among [HOME_name] [PAWN_nameDef] found others who share the old bitterness, and [PAWN_pronoun] meets your people at the walls with a cold, level stare.</li>
+        <li>now(hasHome==True,defender==True)-&gt;Now [PAWN_nameDef] holds a post for [HOME_name], and the sight of colonists at the gate stirs an anger that has never quite cooled.</li>
+        <li>now(hasHome==True,defender==True)-&gt;[PAWN_nameDef] has made a place among [HOME_name] and defends it fiercely, having once been shut out of another.</li>
+        <li>now(hasHome==False,defender==True)-&gt;Now [PAWN_pronoun] lives among hard people and keeps watch for them, with an old suspicion of anyone who walks in from a colony.</li>
+        <li>now(hasHome==False,defender==True)-&gt;Hard people took [PAWN_objective] in, and [PAWN_pronoun] stands at their gate now, eyeing every newcomer coldly.</li>
+        <li>now(hasHome==False,defender==True)-&gt;These days [PAWN_nameDef] guards this place, and strangers from colonies get no friendliness from [PAWN_objective].</li>
+        <li>now(hasHome==False,defender==True)-&gt;Among these people [PAWN_nameDef] found others who share the old bitterness, and [PAWN_pronoun] meets your people at the walls with a cold, level stare.</li>
+        <li>now(hasHome==False,defender==True)-&gt;Now [PAWN_nameDef] holds a post here, and the sight of colonists at the gate stirs an anger that has never quite cooled.</li>
+        <li>now(hasHome==False,defender==True)-&gt;[PAWN_nameDef] has made a place among these people and defends it fiercely, having once been shut out of another.</li>
+      </rulesStrings>
+    </rulePack>
+  </RulePackDef>
+
+  <!-- Sellsword: a professional gun for hire, no hatred -->
+  <PastLives.StoryArcDef>
+    <defName>PastLives_Arc_Sellsword</defName>
+    <roles><li>Raider</li><li>Defender</li></roles>
+    <homes><li>Outlander</li><li>Empire</li><li>Pirate</li></homes>
+    <rules>PastLives_Story_Sellsword</rules>
+  </PastLives.StoryArcDef>
+  <RulePackDef>
+    <defName>PastLives_Story_Sellsword</defName>
+    <rulePack>
+      <rulesStrings>
+        <li>r_story-&gt;[sold] [trade] [now] [childhood]</li>
+        <li>sold-&gt;After [colony] [PAWN_nameDef] sold [PAWN_possessive] gun to the first captain who needed one, and has been selling it ever since.</li>
+        <li>sold-&gt;[PAWN_nameDef] left [colony] with a rifle and a good eye, and found that both were worth something on the open market.</li>
+        <li>sold-&gt;When nothing was left to hold [PAWN_objective] in [colony], [PAWN_nameDef] went over what [PAWN_pronoun] did well, and shooting straight was the only trade on offer.</li>
+        <li>sold-&gt;Years ago, after [colony], [PAWN_nameDef] took a soldier's contract and found that it suited [PAWN_objective] better than a plough ever had.</li>
+        <li>sold-&gt;[PAWN_nameDef] drifted out of [colony] into hired work, first on guard duty, then in the line, and never went back to anything else.</li>
+        <li>sold-&gt;Soon after [colony] [PAWN_nameDef] had an offer from a recruiter, and took it without much thought and without regret.</li>
+        <li>trade-&gt;[PAWN_pronoun] keeps no grudges and no flags: a contract is a contract, and the work ends when the contract does.</li>
+        <li>trade-&gt;[PAWN_pronoun] has fought for farmers, merchants and warlords, and learned to treat all three as weather.</li>
+        <li>trade-&gt;The work taught [PAWN_objective] to keep a clean weapon, short opinions and no attachments.</li>
+        <li>trade-&gt;Over the years [PAWN_pronoun] has served many masters, and remembers their faces less well than the terrain.</li>
+        <li>trade-&gt;[PAWN_nameDef] does not ask why a fight is being fought, only where the walls are thin and when the signal comes.</li>
+        <li>trade-&gt;Battle is a craft to [PAWN_objective] now, learned slowly and practised without anger.</li>
+        <li>now(hasHome==True,defender==False)-&gt;Now [PAWN_pronoun] fights for [HOME_name], calmly and competently, with nothing against whoever stands in the way.</li>
+        <li>now(hasHome==True,defender==False)-&gt;At present [PAWN_nameDef] carries a rifle for [HOME_name] and will turn it on any colony [PAWN_pronoun] is pointed at, without heat.</li>
+        <li>now(hasHome==True,defender==False)-&gt;These days [PAWN_pronoun] is in the service of [HOME_name], and the raid is simply today's task.</li>
+        <li>now(hasHome==True,defender==False)-&gt;For now [PAWN_nameDef] works under contract to [HOME_name], and attacks with the quiet precision of someone who has done this many times.</li>
+        <li>now(hasHome==True,defender==False)-&gt;Now [PAWN_nameDef] serves with [HOME_name], and bears the people in the colony no ill will at all, which somehow makes it worse.</li>
+        <li>now(hasHome==True,defender==False)-&gt;For this season [PAWN_pronoun] fights under [HOME_name], steady and unhurried, a professional doing a day's work.</li>
+        <li>now(hasHome==False,defender==False)-&gt;Now [PAWN_pronoun] fights for a company that needs guns, calmly and competently, with nothing against whoever stands in the way.</li>
+        <li>now(hasHome==False,defender==False)-&gt;At present [PAWN_nameDef] carries a rifle for a fighting band and will turn it on any colony [PAWN_pronoun] is pointed at, without heat.</li>
+        <li>now(hasHome==False,defender==False)-&gt;These days [PAWN_pronoun] is in the service of a rough company, and the raid is simply today's task.</li>
+        <li>now(hasHome==False,defender==False)-&gt;For now [PAWN_nameDef] works under contract to a band of fighters, and attacks with the quiet precision of someone who has done this many times.</li>
+        <li>now(hasHome==False,defender==False)-&gt;Now [PAWN_nameDef] serves with strangers, and bears the people in the colony no ill will at all, which somehow makes it worse.</li>
+        <li>now(hasHome==False,defender==False)-&gt;For this season [PAWN_pronoun] fights with a hired band, steady and unhurried, a professional doing a day's work.</li>
+        <li>now(hasHome==True,defender==True)-&gt;Now [PAWN_pronoun] is posted here by [HOME_name], standing guard calmly and competently, with nothing against whoever walks in.</li>
+        <li>now(hasHome==True,defender==True)-&gt;At present [PAWN_nameDef] keeps a watch for [HOME_name], rifle across [PAWN_possessive] knees, and treats your people like any other visitors.</li>
+        <li>now(hasHome==True,defender==True)-&gt;These days [PAWN_pronoun] is in the service of [HOME_name], and guarding this place is simply today's task.</li>
+        <li>now(hasHome==True,defender==True)-&gt;For now [PAWN_nameDef] works under contract to [HOME_name], and watches the gate with the patience of someone who has done this many times.</li>
+        <li>now(hasHome==True,defender==True)-&gt;Now [PAWN_nameDef] guards the walls for [HOME_name], with no ill will toward the newcomers at the gate, only attention.</li>
+        <li>now(hasHome==True,defender==True)-&gt;For this season [PAWN_pronoun] serves [HOME_name] as a sentry, steady and unhurried, a professional doing a day's work.</li>
+        <li>now(hasHome==False,defender==True)-&gt;Now [PAWN_pronoun] stands guard here with a hired company, calmly and competently, with nothing against whoever walks in.</li>
+        <li>now(hasHome==False,defender==True)-&gt;At present [PAWN_nameDef] keeps a watch here, rifle across [PAWN_possessive] knees, and treats your people like any other visitors.</li>
+        <li>now(hasHome==False,defender==True)-&gt;These days [PAWN_pronoun] is in the service of the people here, and guarding this place is simply today's task.</li>
+        <li>now(hasHome==False,defender==True)-&gt;For now [PAWN_nameDef] works here under contract, and watches the gate with the patience of someone who has done this many times.</li>
+        <li>now(hasHome==False,defender==True)-&gt;Now [PAWN_nameDef] guards the walls for hire, with no ill will toward the newcomers at the gate, only attention.</li>
+        <li>now(hasHome==False,defender==True)-&gt;For this season [PAWN_pronoun] works here as a sentry, steady and unhurried, a professional doing a day's work.</li>
+      </rulesStrings>
+    </rulePack>
+  </RulePackDef>
+
+  <!-- Captive: held for years by the people they are with now, slowly became one of them -->
+  <PastLives.StoryArcDef>
+    <defName>PastLives_Arc_Captive</defName>
+    <roles><li>Raider</li><li>Defender</li></roles>
+    <homes><li>Pirate</li><li>Tribal</li><li>Outlander</li></homes>
+    <rules>PastLives_Story_Captive</rules>
+  </PastLives.StoryArcDef>
+  <RulePackDef>
+    <defName>PastLives_Story_Captive</defName>
+    <rulePack>
+      <rulesStrings>
+        <li>r_story-&gt;[taken] [years] [now] [childhood]</li>
+        <li>taken(hasHome==True)-&gt;[PAWN_nameDef] was captured by [HOME_name] on the road after [colony], and spent the first winter in chains.</li>
+        <li>taken(hasHome==True)-&gt;Soon after leaving [colony], [PAWN_nameDef] was taken prisoner by [HOME_name] and led away with a rope around [PAWN_possessive] wrists.</li>
+        <li>taken(hasHome==True)-&gt;After [colony] [PAWN_nameDef] was caught by the fighters of [HOME_name], too tired and too hungry to run.</li>
+        <li>taken(hasHome==True)-&gt;After [colony], [PAWN_nameDef] fell into the hands of [HOME_name], who kept [PAWN_objective] alive and did not say why.</li>
+        <li>taken(hasHome==True)-&gt;In the year after [colony] [PAWN_nameDef] was taken prisoner by [HOME_name], and for a long while expected to be sold or killed.</li>
+        <li>taken(hasHome==True)-&gt;[PAWN_nameDef] had barely left [colony] behind when [HOME_name] seized [PAWN_objective] and set [PAWN_objective] to work under guard.</li>
+        <li>taken(hasHome==False)-&gt;[PAWN_nameDef] was captured by a fighting band on the road after [colony], and spent the first winter in chains.</li>
+        <li>taken(hasHome==False)-&gt;Soon after leaving [colony], [PAWN_nameDef] was taken prisoner by a band of fighters and led away with a rope around [PAWN_possessive] wrists.</li>
+        <li>taken(hasHome==False)-&gt;After [colony] [PAWN_nameDef] was caught by a band of fighters, too tired and too hungry to run.</li>
+        <li>taken(hasHome==False)-&gt;After [colony], [PAWN_nameDef] fell into the hands of a band of fighters, who kept [PAWN_objective] alive and did not say why.</li>
+        <li>taken(hasHome==False)-&gt;In the year after [colony] [PAWN_nameDef] was taken prisoner by a fighting band, and for a long while expected to be sold or killed.</li>
+        <li>taken(hasHome==False)-&gt;[PAWN_nameDef] had barely left [colony] behind when a fighting band seized [PAWN_objective] and set [PAWN_objective] to work under guard.</li>
+        <li>years-&gt;The years passed slowly, and the guards became familiar, then tolerable, then something closer to neighbours.</li>
+        <li>years-&gt;[PAWN_pronoun] learned their songs to pass the time, then their jokes, then the names of their dead.</li>
+        <li>years-&gt;The chain was loosened one season and removed the next, and [PAWN_pronoun] found that [PAWN_pronoun] no longer thought of leaving.</li>
+        <li>years-&gt;Someone shared bread, someone showed [PAWN_objective] a trick with the rifle, and the cage door stopped being locked.</li>
+        <li>years-&gt;Captivity lasted so long that it stopped feeling like captivity, and the road back to [colony] grew vague as an old dream.</li>
+        <li>years-&gt;By the third winter [PAWN_pronoun] was eating at their fire, and by the fifth [PAWN_pronoun] was sleeping without watching the dark.</li>
+        <li>now(hasHome==True,defender==False)-&gt;Now [PAWN_pronoun] fights for [HOME_name], the same people who once held [PAWN_objective] captive, and no longer finds that strange.</li>
+        <li>now(hasHome==True,defender==False)-&gt;These days [PAWN_nameDef] rides out with [HOME_name] against colonies of the kind [PAWN_pronoun] used to belong to, and calls the former captors family.</li>
+        <li>now(hasHome==True,defender==False)-&gt;[PAWN_nameDef] now raids beside [HOME_name], shoulder to shoulder with the people who once kept [PAWN_objective] under lock.</li>
+        <li>now(hasHome==True,defender==False)-&gt;Once a prisoner, [PAWN_nameDef] now fights for [HOME_name], and attacks without doubt for the people who took [PAWN_possessive] freedom.</li>
+        <li>now(hasHome==True,defender==False)-&gt;Now [PAWN_nameDef] raids under the banner of [HOME_name], having long since stopped seeing captors in them.</li>
+        <li>now(hasHome==True,defender==False)-&gt;To [PAWN_objective], [HOME_name] is family now, and [PAWN_pronoun] fights for them with the loyalty of someone who chose it, in the end.</li>
+        <li>now(hasHome==False,defender==False)-&gt;Now [PAWN_pronoun] fights for the band that once held [PAWN_objective] captive, and no longer finds that strange.</li>
+        <li>now(hasHome==False,defender==False)-&gt;These days [PAWN_nameDef] rides out with them against colonies of the kind [PAWN_pronoun] used to belong to, and calls the former captors family.</li>
+        <li>now(hasHome==False,defender==False)-&gt;[PAWN_nameDef] now raids shoulder to shoulder with the people who once kept [PAWN_objective] under lock.</li>
+        <li>now(hasHome==False,defender==False)-&gt;Once a prisoner, [PAWN_nameDef] now fights for the band, and attacks without doubt for the people who took [PAWN_possessive] freedom.</li>
+        <li>now(hasHome==False,defender==False)-&gt;Now [PAWN_nameDef] raids with the band, having long since stopped seeing captors in them.</li>
+        <li>now(hasHome==False,defender==False)-&gt;To [PAWN_objective], the band is family now, and [PAWN_pronoun] fights for them with the loyalty of someone who chose it, in the end.</li>
+        <li>now(hasHome==True,defender==True)-&gt;Now [PAWN_pronoun] lives among [HOME_name], the same people who once held [PAWN_objective] captive, and keeps their gate without finding that strange.</li>
+        <li>now(hasHome==True,defender==True)-&gt;These days [PAWN_nameDef] stands guard for [HOME_name] and calls the people who once held [PAWN_objective] captive family.</li>
+        <li>now(hasHome==True,defender==True)-&gt;[PAWN_nameDef] now keeps watch beside [HOME_name], shoulder to shoulder with the people who once kept [PAWN_objective] under lock.</li>
+        <li>now(hasHome==True,defender==True)-&gt;Once a prisoner, [PAWN_nameDef] is now one of the people of [HOME_name], and defends this place without doubt for those who took [PAWN_possessive] freedom.</li>
+        <li>now(hasHome==True,defender==True)-&gt;Now [PAWN_nameDef] lives under the banner of [HOME_name], having long since stopped seeing captors in them.</li>
+        <li>now(hasHome==True,defender==True)-&gt;To [PAWN_objective], [HOME_name] is family now, and [PAWN_pronoun] defends their walls with the loyalty of someone who chose it, in the end.</li>
+        <li>now(hasHome==False,defender==True)-&gt;Now [PAWN_pronoun] lives among the people who once held [PAWN_objective] captive, and keeps their gate without finding that strange.</li>
+        <li>now(hasHome==False,defender==True)-&gt;These days [PAWN_nameDef] stands guard here and calls the people who once held [PAWN_objective] captive family.</li>
+        <li>now(hasHome==False,defender==True)-&gt;[PAWN_nameDef] now keeps watch shoulder to shoulder with the people who once kept [PAWN_objective] under lock.</li>
+        <li>now(hasHome==False,defender==True)-&gt;Once a prisoner, [PAWN_nameDef] now belongs here, and defends this place without doubt for those who took [PAWN_possessive] freedom.</li>
+        <li>now(hasHome==False,defender==True)-&gt;Now [PAWN_nameDef] lives among them, having long since stopped seeing captors in them.</li>
+        <li>now(hasHome==False,defender==True)-&gt;To [PAWN_objective], these people are family now, and [PAWN_pronoun] defends their walls with the loyalty of someone who chose it, in the end.</li>
+      </rulesStrings>
+    </rulePack>
+  </RulePackDef>
+
+  <!-- RaisedByRaiders: a child of the old colony, carried off in an attack and raised by those they are with now (no [childhood]: the story tells it) -->
+  <PastLives.StoryArcDef>
+    <defName>PastLives_Arc_RaisedByRaiders</defName>
+    <roles><li>Raider</li><li>Defender</li></roles>
+    <homes><li>Pirate</li><li>Tribal</li><li>Outlander</li></homes>
+    <grownUpOnly>true</grownUpOnly>
+    <rules>PastLives_Story_RaisedByRaiders</rules>
+  </PastLives.StoryArcDef>
+  <RulePackDef>
+    <defName>PastLives_Story_RaisedByRaiders</defName>
+    <rulePack>
+      <rulesStrings>
+        <li>r_story-&gt;[taken] [raised] [memory] [now]</li>
+        <li>taken-&gt;[PAWN_nameDef] was only a child in [colony] when a war party struck, and [YEARS] ago the attackers carried [PAWN_objective] off with the loot.</li>
+        <li>taken-&gt;[PAWN_nameDef] was still very small when a raid struck [colony] and carried [PAWN_objective] off across the hills; [YEARS] have gone by since.</li>
+        <li>taken-&gt;When [colony] was raided [YEARS] ago, the attackers took one child alive, [PAWN_nameDef], reasoning that the young can still be taught.</li>
+        <li>taken-&gt;[YEARS] ago [PAWN_nameDef] was a child in [colony], small enough to be lifted onto a saddle and carried off during an attack.</li>
+        <li>taken-&gt;The attackers who came for [colony] [YEARS] ago left with stores, weapons and one frightened child, and the child was [PAWN_nameDef].</li>
+        <li>taken-&gt;[YEARS] ago a raid broke [colony], and the youngest survivor, [PAWN_nameDef], was taken away with the spoils.</li>
+        <li>raised-&gt;They raised [PAWN_objective] as one of their own, with hard food, hard rules and a place by the fire that was never taken away.</li>
+        <li>raised-&gt;[PAWN_pronoun] grew up among the fighters, learning to ride, to shoot and to sleep lightly, and nobody was cruel to [PAWN_objective] without reason.</li>
+        <li>raised-&gt;For a while they called [PAWN_objective] by a new name, then gave the old one back, and the upbringing was rough but not unloving.</li>
+        <li>raised-&gt;Between raids and long marches [PAWN_pronoun] grew tall, taught by scarred hands and sharp tongues.</li>
+        <li>raised-&gt;The camp became the only home [PAWN_pronoun] could remember, and its people the only family.</li>
+        <li>raised-&gt;Someone taught [PAWN_objective] to read tracks, someone to mend a bowstring, and by the time [PAWN_pronoun] was grown nothing about the life felt foreign.</li>
+        <li>memory-&gt;Of [colony] [PAWN_pronoun] remembers only pieces: a yellow door, the smell of bread, a voice calling [PAWN_objective] in for supper.</li>
+        <li>memory-&gt;Of [colony], only a few bright scraps survive in [PAWN_possessive] mind: a hearth, a dog, a song [PAWN_pronoun] cannot finish.</li>
+        <li>memory-&gt;[PAWN_nameDef] remembers [colony] the way one remembers a fever dream, vivid in places and gone in others.</li>
+        <li>memory-&gt;All that is left of [colony] is a handful of images, and [PAWN_pronoun] is no longer sure which of them are real.</li>
+        <li>memory-&gt;Sometimes a smell of woodsmoke or a certain tune brings back a room in [colony], and then it is gone again.</li>
+        <li>memory-&gt;[PAWN_pronoun] cannot name a single face from [colony], only a warm hand and the feeling of being carried.</li>
+        <li>now(hasHome==True,defender==False)-&gt;Now [PAWN_pronoun], grown, rides with [HOME_name] and attacks colonies like the one [PAWN_pronoun] was taken from without knowing it.</li>
+        <li>now(hasHome==True,defender==False)-&gt;These days [PAWN_nameDef] raids with [HOME_name], the only people [PAWN_pronoun] has ever really called [PAWN_possessive] own.</li>
+        <li>now(hasHome==True,defender==False)-&gt;[PAWN_nameDef] is a full fighter of [HOME_name] now, and the raid is as natural to [PAWN_objective] as breathing.</li>
+        <li>now(hasHome==True,defender==False)-&gt;Now [PAWN_pronoun] marches with [HOME_name] against settlements that look, from a distance, a little like a half-remembered home.</li>
+        <li>now(hasHome==True,defender==False)-&gt;Under the banner of [HOME_name], [PAWN_nameDef] strikes at colonies without any sense that [PAWN_pronoun] once lived in one.</li>
+        <li>now(hasHome==True,defender==False)-&gt;Grown now, [PAWN_pronoun] fights with [HOME_name] and has never thought to ask what [PAWN_pronoun] might have been.</li>
+        <li>now(hasHome==False,defender==False)-&gt;Now [PAWN_pronoun], grown, rides with a fighting band and attacks colonies like the one [PAWN_pronoun] was taken from without knowing it.</li>
+        <li>now(hasHome==False,defender==False)-&gt;These days [PAWN_nameDef] raids with a band whose people are the only ones [PAWN_pronoun] has ever really called [PAWN_possessive] own.</li>
+        <li>now(hasHome==False,defender==False)-&gt;[PAWN_nameDef] is a full fighter of the band now, and the raid is as natural to [PAWN_objective] as breathing.</li>
+        <li>now(hasHome==False,defender==False)-&gt;Now [PAWN_pronoun] marches with the band against settlements that look, from a distance, a little like a half-remembered home.</li>
+        <li>now(hasHome==False,defender==False)-&gt;In the ranks of the band, [PAWN_nameDef] strikes at colonies without any sense that [PAWN_pronoun] once lived in one.</li>
+        <li>now(hasHome==False,defender==False)-&gt;Grown now, [PAWN_pronoun] fights with the band and has never thought to ask what [PAWN_pronoun] might have been.</li>
+        <li>now(hasHome==True,defender==True)-&gt;Now [PAWN_pronoun], grown, guards the walls of [HOME_name], which have been a home for as long as [PAWN_pronoun] can remember.</li>
+        <li>now(hasHome==True,defender==True)-&gt;These days [PAWN_nameDef] stands guard among [HOME_name], the only people [PAWN_pronoun] has ever really called [PAWN_possessive] own.</li>
+        <li>now(hasHome==True,defender==True)-&gt;[PAWN_nameDef] is a full warrior of [HOME_name] now, and the watch on these walls is as natural to [PAWN_objective] as breathing.</li>
+        <li>now(hasHome==True,defender==True)-&gt;Now [PAWN_pronoun] looks down at your people from walls held by [HOME_name], and their faces stir something [PAWN_pronoun] cannot name.</li>
+        <li>now(hasHome==True,defender==True)-&gt;Among [HOME_name], [PAWN_nameDef] defends the only home [PAWN_pronoun] knows, without any sense that [PAWN_pronoun] once had another.</li>
+        <li>now(hasHome==True,defender==True)-&gt;Grown now, [PAWN_pronoun] lives and keeps watch with [HOME_name] and has never thought to ask what [PAWN_pronoun] might have been.</li>
+        <li>now(hasHome==False,defender==True)-&gt;Now [PAWN_pronoun], grown, keeps the walls that have been a home for as long as [PAWN_pronoun] can remember.</li>
+        <li>now(hasHome==False,defender==True)-&gt;These days [PAWN_nameDef] stands guard among the only people [PAWN_pronoun] has ever really called [PAWN_possessive] own.</li>
+        <li>now(hasHome==False,defender==True)-&gt;[PAWN_nameDef] is a full warrior here now, and the watch on these walls is as natural to [PAWN_objective] as breathing.</li>
+        <li>now(hasHome==False,defender==True)-&gt;Now [PAWN_pronoun] looks down at your people from these walls, and their faces stir something [PAWN_pronoun] cannot name.</li>
+        <li>now(hasHome==False,defender==True)-&gt;Here, [PAWN_nameDef] defends the only home [PAWN_pronoun] knows, without any sense that [PAWN_pronoun] once had another.</li>
+        <li>now(hasHome==False,defender==True)-&gt;Grown now, [PAWN_pronoun] lives and keeps watch here and has never thought to ask what [PAWN_pronoun] might have been.</li>
+      </rulesStrings>
+    </rulePack>
+  </RulePackDef>
+
+  <!-- Faith: found a fierce creed after the old colony, fights to spread or defend it -->
+  <PastLives.StoryArcDef>
+    <defName>PastLives_Arc_Faith</defName>
+    <roles><li>Raider</li><li>Defender</li></roles>
+    <homes><li>Outlander</li><li>Tribal</li><li>Empire</li><li>Pirate</li></homes>
+    <rules>PastLives_Story_Faith</rules>
+  </PastLives.StoryArcDef>
+  <RulePackDef>
+    <defName>PastLives_Story_Faith</defName>
+    <rulePack>
+      <rulesStrings>
+        <li>r_story-&gt;[lost] [creed] [now] [childhood]</li>
+        <li>lost-&gt;After [colony] [PAWN_nameDef] wandered for a long time, hollow and listening for any voice that could explain what had happened.</li>
+        <li>lost-&gt;[PAWN_nameDef] left [colony] with questions that nobody there could answer, and went looking for someone who could.</li>
+        <li>lost-&gt;Nothing in [colony] had prepared [PAWN_objective] for the silence that came after it, and [PAWN_pronoun] spent a winter searching for words large enough to fill it.</li>
+        <li>lost-&gt;When it was over in [colony], [PAWN_nameDef] stopped believing in luck and began to look for something sterner.</li>
+        <li>lost-&gt;The loss of [colony] left a space in [PAWN_objective] that ordinary comfort could not fill.</li>
+        <li>lost-&gt;[PAWN_nameDef] walked away from [colony] sure that the world must mean something, and not at all sure what.</li>
+        <li>creed-&gt;Then [PAWN_pronoun] met a preacher by a roadside fire, and heard a creed so simple and so hard that [PAWN_pronoun] knew at once it was the one.</li>
+        <li>creed-&gt;A circle of the faithful took [PAWN_objective] in, taught [PAWN_objective] their litany, and told [PAWN_objective] that all suffering had a purpose.</li>
+        <li>creed-&gt;[PAWN_pronoun] found a faith that demanded everything, and for the first time in years that felt like a relief.</li>
+        <li>creed-&gt;One night, under a sky full of stars, [PAWN_pronoun] understood the creed, and it never let [PAWN_objective] go again.</li>
+        <li>creed-&gt;The believers spoke of purity, of the day of judgement and of the duty to keep the flame, and [PAWN_nameDef] listened until the words became [PAWN_possessive] own.</li>
+        <li>creed-&gt;In a small shrine of stacked stones [PAWN_pronoun] swore a vow, and the vow gave shape to every day that followed.</li>
+        <li>now(hasHome==True,defender==False)-&gt;Now [PAWN_pronoun] fights beside [HOME_name], certain that every blow lands for something greater than [PAWN_objective].</li>
+        <li>now(hasHome==True,defender==False)-&gt;These days [PAWN_nameDef] raids with [HOME_name] as a duty and not as a pleasure, and speaks of colonies as places that have not yet heard the word.</li>
+        <li>now(hasHome==True,defender==False)-&gt;[HOME_name] shares the creed, and [PAWN_nameDef] follows it into every raid with a steady, quiet conviction.</li>
+        <li>now(hasHome==True,defender==False)-&gt;Now [PAWN_pronoun] carries the faith to unbelievers at the point of a rifle, in the company of [HOME_name].</li>
+        <li>now(hasHome==True,defender==False)-&gt;In the ranks of [HOME_name], [PAWN_nameDef] attacks without anger, believing that [PAWN_pronoun] is only carrying out a sentence.</li>
+        <li>now(hasHome==True,defender==False)-&gt;[PAWN_nameDef] rides with [HOME_name] now, and prays before every attack and after it.</li>
+        <li>now(hasHome==False,defender==False)-&gt;Now [PAWN_pronoun] fights beside a company of believers, certain that every blow lands for something greater than [PAWN_objective].</li>
+        <li>now(hasHome==False,defender==False)-&gt;These days [PAWN_nameDef] raids with believers as a duty and not as a pleasure, and speaks of colonies as places that have not yet heard the word.</li>
+        <li>now(hasHome==False,defender==False)-&gt;The band shares the creed, and [PAWN_nameDef] follows it into every raid with a steady, quiet conviction.</li>
+        <li>now(hasHome==False,defender==False)-&gt;Now [PAWN_pronoun] carries the faith to unbelievers at the point of a rifle, in the company of fellow believers.</li>
+        <li>now(hasHome==False,defender==False)-&gt;In the ranks of the faithful, [PAWN_nameDef] attacks without anger, believing that [PAWN_pronoun] is only carrying out a sentence.</li>
+        <li>now(hasHome==False,defender==False)-&gt;[PAWN_nameDef] rides with the faithful now, and prays before every attack and after it.</li>
+        <li>now(hasHome==True,defender==True)-&gt;Now [PAWN_pronoun] keeps this place for [HOME_name], certain that its walls guard something greater than [PAWN_objective].</li>
+        <li>now(hasHome==True,defender==True)-&gt;These days [PAWN_nameDef] stands watch for [HOME_name] as a duty and not as a pleasure, and treats every stranger as a test of the creed.</li>
+        <li>now(hasHome==True,defender==True)-&gt;[HOME_name] shares the creed, and [PAWN_nameDef] defends the common cause with a steady, quiet conviction.</li>
+        <li>now(hasHome==True,defender==True)-&gt;Now [PAWN_pronoun] guards the faith here, among [HOME_name], and speaks to your people gently but with no softness in the eyes.</li>
+        <li>now(hasHome==True,defender==True)-&gt;Among [HOME_name], [PAWN_nameDef] stands guard without anger, believing that [PAWN_pronoun] is only keeping a promise.</li>
+        <li>now(hasHome==True,defender==True)-&gt;[PAWN_nameDef] lives with [HOME_name] now, and prays at the gate before dawn and after dusk.</li>
+        <li>now(hasHome==False,defender==True)-&gt;Now [PAWN_pronoun] keeps this place, certain that its walls guard something greater than [PAWN_objective].</li>
+        <li>now(hasHome==False,defender==True)-&gt;These days [PAWN_nameDef] stands watch here as a duty and not as a pleasure, and treats every stranger as a test of the creed.</li>
+        <li>now(hasHome==False,defender==True)-&gt;The people here share the creed, and [PAWN_nameDef] defends the common cause with a steady, quiet conviction.</li>
+        <li>now(hasHome==False,defender==True)-&gt;Now [PAWN_pronoun] guards the faith here, among believers, and speaks to your people gently but with no softness in the eyes.</li>
+        <li>now(hasHome==False,defender==True)-&gt;Among the faithful here, [PAWN_nameDef] stands guard without anger, believing that [PAWN_pronoun] is only keeping a promise.</li>
+        <li>now(hasHome==False,defender==True)-&gt;[PAWN_nameDef] lives among believers now, and prays at the gate before dawn and after dusk.</li>
+      </rulesStrings>
+    </rulePack>
+  </RulePackDef>
+
+  <!-- Addiction: drugs got hold of them; they fight for whoever keeps them supplied -->
+  <PastLives.StoryArcDef>
+    <defName>PastLives_Arc_Addiction</defName>
+    <roles><li>Raider</li><li>Defender</li></roles>
+    <homes><li>Pirate</li><li>Outlander</li><li>Salvager</li></homes>
+    <rules>PastLives_Story_Addiction</rules>
+    <trait><def>DrugDesire</def><degree>1</degree></trait>
+  </PastLives.StoryArcDef>
+  <RulePackDef>
+    <defName>PastLives_Story_Addiction</defName>
+    <rulePack>
+      <rulesStrings>
+        <li>r_story-&gt;[hook] [craving] [now] [childhood]</li>
+        <li>hook-&gt;After [colony] [PAWN_nameDef] took a little go-juice to get through a bad night, and then another to get through the next.</li>
+        <li>hook-&gt;A friend pressed a packet of flake into [PAWN_possessive] hand after [colony], saying it would take the edge off, which it did, for a while.</li>
+        <li>hook-&gt;[PAWN_nameDef] started on yayo to forget [colony], and it worked well enough that forgetting became the whole day's work.</li>
+        <li>hook-&gt;Wake-up kept [PAWN_objective] on [PAWN_possessive] feet through the long marches after [colony], until it was the only thing that did.</li>
+        <li>hook-&gt;It began with a single dose offered kindly in the cold after [colony], and ended with [PAWN_nameDef] counting the hours between doses.</li>
+        <li>hook-&gt;[PAWN_nameDef] had never cared for drugs in [colony], but out on the road a vial of flake was the only thing that was ever warm.</li>
+        <li>craving-&gt;By now the body asks for it before the mind does, and [PAWN_pronoun] shakes badly on mornings when there is none.</li>
+        <li>craving-&gt;The craving has narrowed [PAWN_possessive] life to a short circle: find a dose, take it, wait, and find the next.</li>
+        <li>craving-&gt;[PAWN_pronoun] lost weight, teeth and most of [PAWN_possessive] old friends, but never the need.</li>
+        <li>craving-&gt;Nothing else holds [PAWN_objective] steady now, not hunger, not fear, and certainly not the memory of [colony].</li>
+        <li>craving-&gt;[PAWN_pronoun] can go a day without sleep and a week without food, but only a few hours without a dose.</li>
+        <li>craving-&gt;Some nights [PAWN_nameDef] remembers [colony] clearly and wants to weep, and the vial is always the cure for that too.</li>
+        <li>now(hasHome==True,defender==False)-&gt;Now [PAWN_pronoun] fights for [HOME_name] because they keep [PAWN_objective] supplied, and a raid is just the way to a quiet week.</li>
+        <li>now(hasHome==True,defender==False)-&gt;These days [PAWN_nameDef] raids with [HOME_name], one eye on the enemy and the other on the pack at [PAWN_possessive] belt.</li>
+        <li>now(hasHome==True,defender==False)-&gt;[HOME_name] keeps [PAWN_objective] supplied, and [PAWN_pronoun] goes wherever they send [PAWN_objective], hands trembling, aim still good.</li>
+        <li>now(hasHome==True,defender==False)-&gt;Now [PAWN_pronoun] attacks with [HOME_name] in a haze of chemical calm, and thinks mostly about the next dose.</li>
+        <li>now(hasHome==True,defender==False)-&gt;[PAWN_nameDef] fights for [HOME_name] as long as the packets keep coming, and does not ask who is on the other side of the wall.</li>
+        <li>now(hasHome==True,defender==False)-&gt;In the ranks of [HOME_name] [PAWN_pronoun] is not loved but is looked after, and for [PAWN_objective] that is nearly the same.</li>
+        <li>now(hasHome==False,defender==False)-&gt;Now [PAWN_pronoun] fights for a company that keeps [PAWN_objective] supplied, and a raid is just the way to a quiet week.</li>
+        <li>now(hasHome==False,defender==False)-&gt;These days [PAWN_nameDef] raids with a fighting band, one eye on the enemy and the other on the pack at [PAWN_possessive] belt.</li>
+        <li>now(hasHome==False,defender==False)-&gt;A band of fighters keeps [PAWN_objective] supplied, and [PAWN_pronoun] goes wherever they send [PAWN_objective], hands trembling, aim still good.</li>
+        <li>now(hasHome==False,defender==False)-&gt;Now [PAWN_pronoun] attacks with the band in a haze of chemical calm, and thinks mostly about the next dose.</li>
+        <li>now(hasHome==False,defender==False)-&gt;[PAWN_nameDef] fights as long as the packets keep coming, and does not ask who is on the other side of the wall.</li>
+        <li>now(hasHome==False,defender==False)-&gt;Among these fighters [PAWN_pronoun] is not loved but is looked after, and for [PAWN_objective] that is nearly the same.</li>
+        <li>now(hasHome==True,defender==True)-&gt;Now [PAWN_pronoun] lives among [HOME_name] because they keep [PAWN_objective] supplied, and standing guard is the way to a quiet week.</li>
+        <li>now(hasHome==True,defender==True)-&gt;These days [PAWN_nameDef] keeps watch for [HOME_name], one eye on the gate and the other on the pack at [PAWN_possessive] belt.</li>
+        <li>now(hasHome==True,defender==True)-&gt;[HOME_name] keeps [PAWN_objective] supplied, and [PAWN_nameDef] stays wherever the supply stays, hands trembling, aim still good.</li>
+        <li>now(hasHome==True,defender==True)-&gt;Now [PAWN_pronoun] stands at the gate of [HOME_name] in a haze of chemical calm, and thinks mostly about the next dose.</li>
+        <li>now(hasHome==True,defender==True)-&gt;[PAWN_nameDef] guards this place for [HOME_name] as long as the packets keep coming, and does not ask who the visitors are.</li>
+        <li>now(hasHome==True,defender==True)-&gt;Among [HOME_name] [PAWN_pronoun] is not loved but is looked after, and for [PAWN_objective] that is nearly the same.</li>
+        <li>now(hasHome==False,defender==True)-&gt;Now [PAWN_pronoun] lives here because the people here keep [PAWN_objective] supplied, and standing guard is the way to a quiet week.</li>
+        <li>now(hasHome==False,defender==True)-&gt;These days [PAWN_nameDef] keeps watch here, one eye on the gate and the other on the pack at [PAWN_possessive] belt.</li>
+        <li>now(hasHome==False,defender==True)-&gt;The people here keep [PAWN_objective] supplied, and [PAWN_nameDef] stays wherever the supply stays, hands trembling, aim still good.</li>
+        <li>now(hasHome==False,defender==True)-&gt;Now [PAWN_pronoun] stands at the gate in a haze of chemical calm, and thinks mostly about the next dose.</li>
+        <li>now(hasHome==False,defender==True)-&gt;[PAWN_nameDef] guards this place as long as the packets keep coming, and does not ask who the visitors are.</li>
+        <li>now(hasHome==False,defender==True)-&gt;Among these people [PAWN_pronoun] is not loved but is looked after, and for [PAWN_objective] that is nearly the same.</li>
+      </rulesStrings>
+    </rulePack>
+  </RulePackDef>
+
+  <!-- Ambition: hungry for power, climbing the ranks -->
+  <PastLives.StoryArcDef>
+    <defName>PastLives_Arc_Ambition</defName>
+    <roles><li>Raider</li><li>Defender</li></roles>
+    <homes><li>Pirate</li><li>Outlander</li><li>Empire</li><li>Tribal</li></homes>
+    <rules>PastLives_Story_Ambition</rules>
+  </PastLives.StoryArcDef>
+  <RulePackDef>
+    <defName>PastLives_Story_Ambition</defName>
+    <rulePack>
+      <rulesStrings>
+        <li>r_story-&gt;[start] [rise] [now] [childhood]</li>
+        <li>start-&gt;In [colony] [PAWN_nameDef] always stood where told, and left it resolved to be the one who tells others where to stand.</li>
+        <li>start-&gt;After [colony] [PAWN_nameDef] decided that the strong write the rules and the weak obey them, and that [PAWN_pronoun] would be among the first.</li>
+        <li>start-&gt;[PAWN_nameDef] watched things fall apart in [colony] for lack of a firm hand, and concluded that firm hands were what the world needed.</li>
+        <li>start-&gt;Leaving [colony], [PAWN_pronoun] resolved never again to follow anyone less capable than [PAWN_pronoun] was.</li>
+        <li>start-&gt;Nobody on the council of [colony] ever listened to [PAWN_objective], and the memory of it left [PAWN_objective] hungry for a seat where people would.</li>
+        <li>start-&gt;[PAWN_nameDef] had talent and no use for it in [colony], and after leaving set out to find a place where talent counts for more than seniority.</li>
+        <li>rise-&gt;[PAWN_pronoun] began at the bottom of a hard company, carrying water, and within a year had a say in who carried what.</li>
+        <li>rise-&gt;[PAWN_pronoun] won attention by making plans after which everyone came back whole, and soon the older fighters began to listen.</li>
+        <li>rise-&gt;Every fight was a rung for [PAWN_objective], and [PAWN_pronoun] took each one with care, neither too eager nor too timid.</li>
+        <li>rise-&gt;[PAWN_pronoun] learned the names, the weaknesses and the quarrels of everyone above [PAWN_objective], and waited.</li>
+        <li>rise-&gt;One rival disgraced, one patron flattered, one captain outlived: [PAWN_nameDef] climbed by small, patient steps.</li>
+        <li>rise-&gt;[PAWN_nameDef] earned a squad, then a post, then a reputation for coming back from bad fights with the best story.</li>
+        <li>now(hasHome==True,defender==False)-&gt;Now [PAWN_pronoun] leads a squad for [HOME_name], means to lead all of it one day, and treats every attack as another step up.</li>
+        <li>now(hasHome==True,defender==False)-&gt;These days [PAWN_nameDef] rides near the front of [HOME_name], watching the chief and measuring the distance.</li>
+        <li>now(hasHome==True,defender==False)-&gt;[PAWN_nameDef] has made [PAWN_possessive] name inside [HOME_name], and each successful attack carries it a little higher.</li>
+        <li>now(hasHome==True,defender==False)-&gt;Now [PAWN_pronoun] fights among [HOME_name] with the patient air of someone who expects to be in charge before long.</li>
+        <li>now(hasHome==True,defender==False)-&gt;Under [HOME_name], [PAWN_nameDef] leads from the front and takes the credit gracefully, and the leaders have started to watch [PAWN_objective] closely.</li>
+        <li>now(hasHome==True,defender==False)-&gt;The ranks of [HOME_name] are a ladder to [PAWN_nameDef], and the raid is simply the next rung.</li>
+        <li>now(hasHome==False,defender==False)-&gt;Now [PAWN_pronoun] leads a squad in a fighting band, means to lead all of it one day, and treats every attack as another step up.</li>
+        <li>now(hasHome==False,defender==False)-&gt;These days [PAWN_nameDef] rides near the front of the band, watching the chief and measuring the distance.</li>
+        <li>now(hasHome==False,defender==False)-&gt;[PAWN_nameDef] has made [PAWN_possessive] name inside the band, and each successful attack carries it a little higher.</li>
+        <li>now(hasHome==False,defender==False)-&gt;Now [PAWN_pronoun] fights with the patient air of someone who expects to be in charge before long.</li>
+        <li>now(hasHome==False,defender==False)-&gt;In the band, [PAWN_nameDef] leads from the front and takes the credit gracefully, and the leaders have started to watch [PAWN_objective] closely.</li>
+        <li>now(hasHome==False,defender==False)-&gt;The ranks of the band are a ladder to [PAWN_nameDef], and the raid is simply the next rung.</li>
+        <li>now(hasHome==True,defender==True)-&gt;Now [PAWN_pronoun] commands a post for [HOME_name], means to command the whole place one day, and treats everyone who comes to the gate as a chance to be noticed.</li>
+        <li>now(hasHome==True,defender==True)-&gt;These days [PAWN_nameDef] stands close to the leaders of [HOME_name], watching the chief and measuring the distance.</li>
+        <li>now(hasHome==True,defender==True)-&gt;[PAWN_nameDef] has made [PAWN_possessive] name inside [HOME_name], and each task well done at the gate carries it a little higher.</li>
+        <li>now(hasHome==True,defender==True)-&gt;Now [PAWN_pronoun] keeps order among [HOME_name] with the patient air of someone who expects to be in charge before long.</li>
+        <li>now(hasHome==True,defender==True)-&gt;Under [HOME_name], [PAWN_nameDef] organises the guard and takes the credit gracefully, and the leaders have started to watch [PAWN_objective] closely.</li>
+        <li>now(hasHome==True,defender==True)-&gt;The ranks of [HOME_name] are a ladder to [PAWN_nameDef], and this watch is simply the next rung.</li>
+        <li>now(hasHome==False,defender==True)-&gt;Now [PAWN_pronoun] commands a post here, means to command the whole place one day, and treats everyone who comes to the gate as a chance to be noticed.</li>
+        <li>now(hasHome==False,defender==True)-&gt;These days [PAWN_nameDef] stands close to the leaders here, watching the chief and measuring the distance.</li>
+        <li>now(hasHome==False,defender==True)-&gt;[PAWN_nameDef] has made [PAWN_possessive] name here, and each task well done at the gate carries it a little higher.</li>
+        <li>now(hasHome==False,defender==True)-&gt;Now [PAWN_pronoun] keeps order here with the patient air of someone who expects to be in charge before long.</li>
+        <li>now(hasHome==False,defender==True)-&gt;Here, [PAWN_nameDef] organises the guard and takes the credit gracefully, and the leaders have started to watch [PAWN_objective] closely.</li>
+        <li>now(hasHome==False,defender==True)-&gt;The ranks here are a ladder to [PAWN_nameDef], and this watch is simply the next rung.</li>
+      </rulesStrings>
+    </rulePack>
+  </RulePackDef>
+
+  <!-- Warband: lived among a tribe and earned a warrior's place through trials -->
+  <PastLives.StoryArcDef>
+    <defName>PastLives_Arc_Warband</defName>
+    <roles><li>Raider</li><li>Defender</li></roles>
+    <homes><li>Tribal</li></homes>
+    <rules>PastLives_Story_Warband</rules>
+    <scars><li>Cut</li><li>Bite</li></scars>
+  </PastLives.StoryArcDef>
+  <RulePackDef>
+    <defName>PastLives_Story_Warband</defName>
+    <rulePack>
+      <rulesStrings>
+        <li>r_story-&gt;[tribe] [trial] [now] [childhood]</li>
+        <li>tribe-&gt;After [colony] [PAWN_nameDef] came to a tribe in the hills, who gave [PAWN_objective] a blanket, a bowl and no questions.</li>
+        <li>tribe-&gt;[PAWN_nameDef] lived among the hill tribe for years, learning their tongue, their taboos and the names of the winds.</li>
+        <li>tribe-&gt;After [colony], half starved, [PAWN_nameDef] was found by a hunting party of the tribe, who let [PAWN_objective] sit at their fires all winter.</li>
+        <li>tribe-&gt;Nobody in the tribe cared where [PAWN_nameDef] came from, only whether [PAWN_pronoun] could carry a load and keep a still tongue.</li>
+        <li>tribe-&gt;After [colony] [PAWN_pronoun] was a guest of the tribe at first, then a hand in its camp, and finally someone who no longer felt like a stranger.</li>
+        <li>tribe-&gt;The tribe was poor and proud, and [PAWN_nameDef] found in its hard customs a support that [PAWN_pronoun] had never known in [colony].</li>
+        <li>trial(scars==True)-&gt;To be called a warrior [PAWN_pronoun] had to face the tribe's trials: a night alone in the wild and a hunt for dangerous game, and the cuts and bites left scars.</li>
+        <li>trial(scars==True)-&gt;[PAWN_pronoun] earned a warrior's place on a long hunt, where a wounded beast left its marks on [PAWN_objective], and the scars are still there.</li>
+        <li>trial(scars==True)-&gt;The elders set [PAWN_objective] the trial of the great hunt, and [PAWN_pronoun] passed it, bloodied, with scars to show for it.</li>
+        <li>trial(scars==True)-&gt;After a spear-trial, a bear-hunt and a night in the thorn pits [PAWN_nameDef] became a warrior, and the marks are plain on [PAWN_possessive] skin.</li>
+        <li>trial(scars==True)-&gt;[PAWN_pronoun] was tested by blade and by tooth, and passed, and the scars tell the story to anyone who looks.</li>
+        <li>trial(scars==True)-&gt;The warriors tried [PAWN_objective] with a hunt that went badly wrong, and [PAWN_pronoun] came out of it a warrior, and scarred.</li>
+        <li>trial(scars==False)-&gt;To be called a warrior [PAWN_pronoun] had to face the tribe's trials: a night alone in the wild and a hunt for dangerous game, and [PAWN_pronoun] passed them without a mark.</li>
+        <li>trial(scars==False)-&gt;[PAWN_pronoun] earned a warrior's place on a long hunt, where a wounded beast charged and [PAWN_pronoun] met it so cleanly that not a scratch was left.</li>
+        <li>trial(scars==False)-&gt;The elders set [PAWN_objective] the trial of the great hunt, and [PAWN_pronoun] passed it with a steady hand and not a scratch.</li>
+        <li>trial(scars==False)-&gt;After a spear-trial, a bear-hunt and a night in the thorn pits [PAWN_nameDef] became a warrior, and somehow no mark was left on [PAWN_objective].</li>
+        <li>trial(scars==False)-&gt;[PAWN_pronoun] was tested by blade and by tooth, and passed, and the elders still talk about how clean it was.</li>
+        <li>trial(scars==False)-&gt;The warriors tried [PAWN_objective] with a hunt that went badly wrong, and [PAWN_pronoun] came out of it a warrior and unmarked.</li>
+        <li>now(hasHome==True,defender==False)-&gt;Now [PAWN_pronoun] goes to war with [HOME_name] as a warrior should, painted and silent, and the tribe's quarrels have become [PAWN_possessive] own.</li>
+        <li>now(hasHome==True,defender==False)-&gt;These days [PAWN_nameDef] fights in the war parties of [HOME_name], and speaks of [colony], if at all, as a distant country.</li>
+        <li>now(hasHome==True,defender==False)-&gt;[PAWN_nameDef] raids beside the warriors of [HOME_name] now, with a bone charm at [PAWN_possessive] neck and a loyalty that is not in question.</li>
+        <li>now(hasHome==True,defender==False)-&gt;Now [PAWN_pronoun] runs to battle with [HOME_name] at dawn, silent and sure, one warrior among many.</li>
+        <li>now(hasHome==True,defender==False)-&gt;Whenever the elders call, [PAWN_pronoun] takes up spear and bow for [HOME_name], and attacks as the tribe attacks: together, and without speeches.</li>
+        <li>now(hasHome==True,defender==False)-&gt;These days [PAWN_nameDef] stands in the line with the fighters of [HOME_name], as if [PAWN_pronoun] had been born to it.</li>
+        <li>now(hasHome==False,defender==False)-&gt;Now [PAWN_pronoun] goes to war with the tribe as a warrior should, painted and silent, and the tribe's quarrels have become [PAWN_possessive] own.</li>
+        <li>now(hasHome==False,defender==False)-&gt;These days [PAWN_nameDef] fights in the war parties of the tribe, and speaks of [colony], if at all, as a distant country.</li>
+        <li>now(hasHome==False,defender==False)-&gt;[PAWN_nameDef] raids beside the tribe's warriors now, with a bone charm at [PAWN_possessive] neck and a loyalty that is not in question.</li>
+        <li>now(hasHome==False,defender==False)-&gt;Now [PAWN_pronoun] runs to battle with the tribe at dawn, silent and sure, one warrior among many.</li>
+        <li>now(hasHome==False,defender==False)-&gt;Whenever the elders call, [PAWN_pronoun] takes up spear and bow and attacks as the tribe attacks: together, and without speeches.</li>
+        <li>now(hasHome==False,defender==False)-&gt;These days [PAWN_nameDef] stands in the line among the tribe's fighters, as if [PAWN_pronoun] had been born to it.</li>
+        <li>now(hasHome==True,defender==True)-&gt;Now [PAWN_pronoun] keeps the village of [HOME_name] as a warrior should, painted and silent, and the tribe's quarrels have become [PAWN_possessive] own.</li>
+        <li>now(hasHome==True,defender==True)-&gt;These days [PAWN_nameDef] stands among the guards of [HOME_name], and speaks of [colony], if at all, as a distant country.</li>
+        <li>now(hasHome==True,defender==True)-&gt;[PAWN_nameDef] watches beside the warriors of [HOME_name] now, with a bone charm at [PAWN_possessive] neck and a loyalty that is not in question.</li>
+        <li>now(hasHome==True,defender==True)-&gt;Now [PAWN_pronoun] stands at the edge of the camp of [HOME_name] at dawn, silent and sure, one warrior among many.</li>
+        <li>now(hasHome==True,defender==True)-&gt;Whenever strangers approach, [PAWN_pronoun] keeps spear and bow within reach for [HOME_name], and meets them as the tribe does: together, and without speeches.</li>
+        <li>now(hasHome==True,defender==True)-&gt;These days [PAWN_nameDef] stands with the fighters of [HOME_name] at the village gate, as if [PAWN_pronoun] had been born to it.</li>
+        <li>now(hasHome==False,defender==True)-&gt;Now [PAWN_pronoun] keeps the village as a warrior should, painted and silent, and the tribe's quarrels have become [PAWN_possessive] own.</li>
+        <li>now(hasHome==False,defender==True)-&gt;These days [PAWN_nameDef] stands among the guards of the tribe, and speaks of [colony], if at all, as a distant country.</li>
+        <li>now(hasHome==False,defender==True)-&gt;[PAWN_nameDef] watches beside the tribe's warriors now, with a bone charm at [PAWN_possessive] neck and a loyalty that is not in question.</li>
+        <li>now(hasHome==False,defender==True)-&gt;Now [PAWN_pronoun] stands at the edge of the camp at dawn, silent and sure, one warrior among many.</li>
+        <li>now(hasHome==False,defender==True)-&gt;Whenever strangers approach, [PAWN_pronoun] keeps spear and bow within reach, and meets them as the tribe does: together, and without speeches.</li>
+        <li>now(hasHome==False,defender==True)-&gt;These days [PAWN_nameDef] stands among the tribe's fighters at the village gate, as if [PAWN_pronoun] had been born to it.</li>
+      </rulesStrings>
+    </rulePack>
+  </RulePackDef>
+
+  <!-- Salvager: went to orbit, stripped wrecks and stations, now comes down to the ground with the crew -->
+  <PastLives.StoryArcDef>
+    <defName>PastLives_Arc_Salvager</defName>
+    <roles><li>Raider</li><li>Defender</li></roles>
+    <homes><li>Salvager</li></homes>
+    <rules>PastLives_Story_Salvager</rules>
+  </PastLives.StoryArcDef>
+  <RulePackDef>
+    <defName>PastLives_Story_Salvager</defName>
+    <rulePack>
+      <rulesStrings>
+        <li>r_story-&gt;[orbit] [work] [now] [childhood]</li>
+        <li>orbit-&gt;After [colony] [PAWN_nameDef] took a berth on a freight shuttle and watched the world shrink to a bright coin below.</li>
+        <li>orbit-&gt;[PAWN_nameDef] left [colony] for orbit, where there were wrecks waiting and nobody asked what a person had been before.</li>
+        <li>orbit-&gt;A recruiter on a landing field talked [PAWN_objective] into the orbital yards after [colony], promising work among the dead ships.</li>
+        <li>orbit-&gt;Following a rumour of work, [PAWN_nameDef] left [colony] for a junk station in high orbit.</li>
+        <li>orbit-&gt;After [colony] there was nothing to hold [PAWN_objective] to the ground, so [PAWN_pronoun] went up, and the ground forgot [PAWN_objective].</li>
+        <li>orbit-&gt;[PAWN_pronoun] shipped out from [colony] on the first lift that would take [PAWN_objective], and did not look back at the planet until it was a point of light.</li>
+        <li>work-&gt;For years [PAWN_pronoun] cut open dead hulls and stripped stations of copper, plasteel and anything that still hummed.</li>
+        <li>work-&gt;In the cold between worlds [PAWN_pronoun] learned to move in a vacuum suit, to read a wreck like a map and to leave the dead where they lay.</li>
+        <li>work-&gt;The crew lived in a patched-together hull, ate from vacuum tins and slept in shifts, and [PAWN_nameDef] came to like the quiet.</li>
+        <li>work-&gt;[PAWN_pronoun] worked the broken carcasses of old freighters, floating through dark corridors with a torch and a cutting arm.</li>
+        <li>work-&gt;Wreck after wreck went under the torch, and [PAWN_nameDef] grew lean and watchful, with a spacer's pallor and a spacer's economy of speech.</li>
+        <li>work-&gt;[PAWN_nameDef] hauled scrap to the crew's tug for seasons on end, counting breaths and hours in place of days.</li>
+        <li>now(hasHome==True,defender==False)-&gt;Now [PAWN_pronoun] comes down to the ground with [HOME_name], as salvagers do when the wrecks run dry, and takes what the ground has to offer, by force.</li>
+        <li>now(hasHome==True,defender==False)-&gt;These days [PAWN_nameDef] drops from orbit with [HOME_name], a stranger to open skies, and attacks colonies the way [PAWN_pronoun] used to cut wrecks.</li>
+        <li>now(hasHome==True,defender==False)-&gt;[HOME_name] needed hands on the planet, and [PAWN_nameDef] came down with them, bringing a spacer's patience to a ground raid.</li>
+        <li>now(hasHome==True,defender==False)-&gt;Now [PAWN_pronoun] lands in a drop-pod with [HOME_name] and attacks without ceremony, still half-expecting the horizon to curve.</li>
+        <li>now(hasHome==True,defender==False)-&gt;The salvage in orbit is thin, so [PAWN_nameDef] descends with [HOME_name] and treats a colony as one more wreck to be stripped.</li>
+        <li>now(hasHome==True,defender==False)-&gt;Now [PAWN_nameDef] fights on the ground for [HOME_name], blinking in the open sun, efficient and unsentimental.</li>
+        <li>now(hasHome==False,defender==False)-&gt;Now [PAWN_pronoun] comes down to the ground with a salvage crew, as salvagers do when the wrecks run dry, and takes what the ground has to offer, by force.</li>
+        <li>now(hasHome==False,defender==False)-&gt;These days [PAWN_nameDef] drops from orbit with a salvage crew, a stranger to open skies, and attacks colonies the way [PAWN_pronoun] used to cut wrecks.</li>
+        <li>now(hasHome==False,defender==False)-&gt;A salvage crew needed hands on the planet, and [PAWN_nameDef] came down with them, bringing a spacer's patience to a ground raid.</li>
+        <li>now(hasHome==False,defender==False)-&gt;Now [PAWN_pronoun] lands in a drop-pod with the crew and attacks without ceremony, still half-expecting the horizon to curve.</li>
+        <li>now(hasHome==False,defender==False)-&gt;The salvage in orbit is thin, so [PAWN_nameDef] descends with the crew and treats a colony as one more wreck to be stripped.</li>
+        <li>now(hasHome==False,defender==False)-&gt;Now [PAWN_nameDef] fights on the ground for the crew, blinking in the open sun, efficient and unsentimental.</li>
+        <li>now(hasHome==True,defender==True)-&gt;Now [PAWN_pronoun] lives at the ground camp of [HOME_name], as salvagers do when the wrecks run dry, and keeps watch over whatever has been hauled down.</li>
+        <li>now(hasHome==True,defender==True)-&gt;These days [PAWN_nameDef] guards the ground camp of [HOME_name], a stranger to open skies, and watches every approach the way [PAWN_pronoun] used to watch the dark between hulls.</li>
+        <li>now(hasHome==True,defender==True)-&gt;[HOME_name] needed hands on the planet, and [PAWN_nameDef] came down with them, bringing a spacer's patience to the watch.</li>
+        <li>now(hasHome==True,defender==True)-&gt;Now [PAWN_pronoun] stands at the edge of the salvage yard of [HOME_name], still half-expecting the horizon to curve.</li>
+        <li>now(hasHome==True,defender==True)-&gt;The salvage in orbit is thin, so [PAWN_nameDef] works the ground with [HOME_name], and treats every visitor as a possible thief.</li>
+        <li>now(hasHome==True,defender==True)-&gt;Now [PAWN_nameDef] keeps the yard for [HOME_name], blinking in the open sun, efficient and unsentimental.</li>
+        <li>now(hasHome==False,defender==True)-&gt;Now [PAWN_pronoun] lives at a ground camp, as salvagers do when the wrecks run dry, and keeps watch over whatever has been hauled down.</li>
+        <li>now(hasHome==False,defender==True)-&gt;These days [PAWN_nameDef] guards this camp, a stranger to open skies, and watches every approach the way [PAWN_pronoun] used to watch the dark between hulls.</li>
+        <li>now(hasHome==False,defender==True)-&gt;The crew needed hands on the planet, and [PAWN_nameDef] came down with them, bringing a spacer's patience to the watch.</li>
+        <li>now(hasHome==False,defender==True)-&gt;Now [PAWN_pronoun] stands at the edge of the salvage yard, still half-expecting the horizon to curve.</li>
+        <li>now(hasHome==False,defender==True)-&gt;The salvage in orbit is thin, so [PAWN_nameDef] works the ground here, and treats every visitor as a possible thief.</li>
+        <li>now(hasHome==False,defender==True)-&gt;Now [PAWN_nameDef] keeps the yard, blinking in the open sun, efficient and unsentimental.</li>
+      </rulesStrings>
+    </rulePack>
+  </RulePackDef>
+
+</Defs>

@@ -13,12 +13,13 @@ namespace PastLives
     {
         private static readonly string[] BloodthirstyTraits = { "Bloodlust", "Psychopath", "Brawler", "TriggerHappy", "Abrasive" };
 
-        public static ArchivePawn Pick(PastRole role, PawnGenerationRequest request, GameComponent_PastLives comp)
+        public static ArchivePawn Pick(PastRole role, PawnGenerationRequest request, GameComponent_PastLives comp, QuestRoleDef quest = null)
         {
             var race = request.KindDef?.race;
             if (race == null) return null;
             var settings = PastLivesMod.Settings;
             bool wantDead = role == PastRole.DeadReturn;
+            bool youngOnly = !request.AllowedDevelopmentalStages.Adult();
 
             var weighted = new List<(ArchivePawn pawn, float weight)>();
             foreach (var p in PastLivesArchive.All)
@@ -26,7 +27,10 @@ namespace PastLives
                 if (!Eligible(p, wantDead, race, comp)) continue;
                 if (request.FixedGender.HasValue && race.race.hasGenders && p.Gender != request.FixedGender.Value.ToString()) continue;
                 if (request.MustBeCapableOfViolence && IncapableOfViolence(p)) continue;
+                if (youngOnly && !StageAllowed(p, race, request.AllowedDevelopmentalStages)) continue;
+                if (quest?.requiredGene != null && !p.Endogenes.Contains(quest.requiredGene) && !p.Xenogenes.Contains(quest.requiredGene)) continue;
                 float w = RoleWeight(p, role) * FactionFit(p, request.Faction);
+                if (quest != null && p.Titles.Count > 0) w *= quest.titleFactor;
                 if (p.IsListPawn) w *= settings.listWeight;
                 if (w > 0f) weighted.Add((p, w));
             }
@@ -68,6 +72,16 @@ namespace PastLives
 
         public static bool IsChild(ArchivePawn p, ThingDef race) => p.AgeBioTicks / 3600000f < AdultAge(race);
 
+        // The life stage the person was in when the archive saw them last, e.g. still a baby.
+        public static bool StageAllowed(ArchivePawn p, ThingDef race, DevelopmentalStage allowed)
+        {
+            var stages = race?.race?.lifeStageAges;
+            if (stages == null || stages.Count == 0) return allowed.Adult();
+            float age = p.AgeBioTicks / 3600000f;
+            var stage = stages.LastOrDefault(s => s.minAge <= age) ?? stages[0];
+            return (stage.def.developmentalStage & allowed) != 0;
+        }
+
         // --- role weights ---
 
         public static float RoleWeight(ArchivePawn p, PastRole role)
@@ -82,6 +96,7 @@ namespace PastLives
                         + Math.Min(seniority / 150f, 4f) + social / 8f;
 
                 case PastRole.Raider:
+                case PastRole.Defender:
                 {
                     if (IncapableOfViolence(p)) return 0f;
                     float w = 0.4f + (shooting + melee) / 16f + Math.Min(Kills(p) / 25f, 3f);
@@ -108,7 +123,20 @@ namespace PastLives
 
                 case PastRole.Joiner:
                 case PastRole.Refugee:
+                case PastRole.Castaway:
+                case PastRole.Sleeper:
                     return leader ? 0.7f : 1f;
+
+                case PastRole.Prisoner:
+                    return (p.Slave ? 1.5f : 1f) * (leader ? 0.7f : 1f);
+
+                case PastRole.Wild:
+                {
+                    // People who lived off the land are the likeliest to have gone feral.
+                    float w = 0.5f + (Skill(p, "Plants") + Skill(p, "Animals")) / 20f;
+                    if (BackstoryCategories(p).Any(c => c.IndexOf("Tribal", StringComparison.OrdinalIgnoreCase) >= 0)) w += 1f;
+                    return w * (leader ? 0.5f : 1f);
+                }
 
                 case PastRole.DeadReturn:
                     return 1f + p.Skills.Sum(s => s.Level) / 100f;

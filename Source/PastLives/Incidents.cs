@@ -33,7 +33,8 @@ namespace PastLives
 
         protected override bool TryExecuteWorker(IncidentParms parms)
         {
-            var scope = new SpawnScope { Role = PastRole.DeadReturn, Rolled = true, Variant = DeadReturn.VariantOf(def) };
+            var scope = new SpawnScope { Role = PastRole.DeadReturn, Variant = DeadReturn.VariantOf(def) };
+            scope.ForceRoll();
             SpawnContext.Push(scope);
             try { return base.TryExecuteWorker(parms); }
             finally { SpawnContext.Pop(scope); }
@@ -55,7 +56,8 @@ namespace PastLives
             returned = null;
             var list = base.GenerateEntities(parms, points * 0.5f) ?? new List<Pawn>();
 
-            var scope = new SpawnScope { Role = PastRole.DeadReturn, Rolled = true, Variant = DeadVariant.Shambler };
+            var scope = new SpawnScope { Role = PastRole.DeadReturn, Variant = DeadVariant.Shambler };
+            scope.ForceRoll();
             SpawnContext.Push(scope);
             Pawn pawn;
             try

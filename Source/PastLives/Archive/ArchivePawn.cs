@@ -38,6 +38,7 @@ namespace PastLives
         public string Beard, FaceTattoo, BodyTattoo;
         public List<TraitEntry> Traits = new List<TraitEntry>();
         public List<SkillEntry> Skills = new List<SkillEntry>();
+        public List<ExpertiseEntry> Expertise = new List<ExpertiseEntry>();   // Vanilla Skills Expanded
 
         public long AgeBioTicks;
         public long AgeChronoTicks;
@@ -82,7 +83,9 @@ namespace PastLives
         public bool HasOtherIdeoRole => IdeoRoles.Any(r => r.IndexOf("Leader", StringComparison.OrdinalIgnoreCase) < 0);
 
         public struct TraitEntry { public string Def; public int Degree; }
-        public struct SkillEntry { public string Def; public int Level; public string Passion; }
+        // Bad: a passion known to hold the skill back (VSE apathy and the like), saved for when VSE is gone.
+        public struct SkillEntry { public string Def; public int Level; public string Passion; public bool Bad; }
+        public struct ExpertiseEntry { public string Def; public int Level; }
         public struct TitleEntry { public string Def; public string Faction; }
         public struct HediffEntry { public string Def; public string Body; public int PartIndex; public int Level; public float Severity; }
 
@@ -102,7 +105,8 @@ namespace PastLives
                 A("dead", Dead ? "1" : null), A("slave", Slave ? "1" : null), A("creep", CreepJoiner ? "1" : null),
                 A("kills", Kills >= 0f ? Kills.ToString(CultureInfo.InvariantCulture) : null));
             foreach (var t in Traits) e.Add(new XElement("trait", A("def", t.Def), A("deg", t.Degree.ToString(CultureInfo.InvariantCulture))));
-            foreach (var s in Skills) e.Add(new XElement("skill", A("def", s.Def), A("lvl", s.Level.ToString(CultureInfo.InvariantCulture)), A("passion", s.Passion)));
+            foreach (var s in Skills) e.Add(new XElement("skill", A("def", s.Def), A("lvl", s.Level.ToString(CultureInfo.InvariantCulture)), A("passion", s.Passion), A("bad", s.Bad ? "1" : null)));
+            foreach (var x in Expertise) e.Add(new XElement("expertise", A("def", x.Def), A("lvl", x.Level.ToString(CultureInfo.InvariantCulture))));
             foreach (var g in Endogenes) e.Add(new XElement("endo", A("def", g)));
             foreach (var g in Xenogenes) e.Add(new XElement("xeno", A("def", g)));
             foreach (var h in Hediffs)
@@ -129,7 +133,8 @@ namespace PastLives
                 Dead = S(e, "dead") == "1", Slave = S(e, "slave") == "1", CreepJoiner = S(e, "creep") == "1",
             };
             foreach (var t in e.Elements("trait")) p.Traits.Add(new TraitEntry { Def = S(t, "def"), Degree = (int)L(t, "deg") });
-            foreach (var s in e.Elements("skill")) p.Skills.Add(new SkillEntry { Def = S(s, "def"), Level = (int)L(s, "lvl"), Passion = S(s, "passion") });
+            foreach (var s in e.Elements("skill")) p.Skills.Add(new SkillEntry { Def = S(s, "def"), Level = (int)L(s, "lvl"), Passion = S(s, "passion"), Bad = S(s, "bad") == "1" });
+            foreach (var x in e.Elements("expertise")) p.Expertise.Add(new ExpertiseEntry { Def = S(x, "def"), Level = (int)L(x, "lvl") });
             foreach (var g in e.Elements("endo")) p.Endogenes.Add(S(g, "def"));
             foreach (var g in e.Elements("xeno")) p.Xenogenes.Add(S(g, "def"));
             foreach (var h in e.Elements("hediff"))

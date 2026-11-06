@@ -1,0 +1,593 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!--
+    Истории налётчиков, часть вторая. Символы и условия описаны в Defs/PastLives_Stories.xml.
+    [colony] здесь в форме «колонии «X»» (родительный/предложный падеж).
+    Строки с родом дублируются: правило(PAWN_gender==Male) и правило(PAWN_gender==Female).
+  -->
+
+  <PastLives_Story_Grudge.rulePack.rulesStrings>
+    <li>r_story-&gt;[left] [grudge] [now] [childhood]</li>
+    <li>left(PAWN_gender==Male)-&gt;Когда люди уходили из [colony], [PAWN_nameDef] остался позади, и никто не вернулся узнать, жив ли [PAWN_pronoun].</li>
+    <li>left(PAWN_gender==Female)-&gt;Когда люди уходили из [colony], [PAWN_nameDef] осталась позади, и никто не вернулся узнать, жива ли [PAWN_pronoun].</li>
+    <li>left(PAWN_gender==Male)-&gt;После ссоры, которую уже никто не помнит ясно, [PAWN_nameDef] был изгнан из [colony] на холод с одним мешком и приговором.</li>
+    <li>left(PAWN_gender==Female)-&gt;После ссоры, которую уже никто не помнит ясно, [PAWN_nameDef] была изгнана из [colony] на холод с одним мешком и приговором.</li>
+    <li>left(PAWN_gender==Male)-&gt;Когда в [colony] сгорел склад, [PAWN_nameDef] оказался виноватым, и дверь закрыли навсегда.</li>
+    <li>left(PAWN_gender==Female)-&gt;Когда в [colony] сгорел склад, [PAWN_nameDef] оказалась виноватой, и дверь закрыли навсегда.</li>
+    <li>left(PAWN_gender==Male)-&gt;[PAWN_nameDef] попал к налётчикам в плен, и никто из [colony] не прислал вестей, не предложил выкупа и не спросил, жив ли [PAWN_pronoun].</li>
+    <li>left(PAWN_gender==Female)-&gt;[PAWN_nameDef] попала к налётчикам в плен, и никто из [colony] не прислал вестей, не предложил выкупа и не спросил, жива ли [PAWN_pronoun].</li>
+    <li>left(PAWN_gender==Male)-&gt;В тяжёлую зиму [PAWN_nameDef] оказался в [colony] лишним ртом за и без того тощим столом, и [PAWN_objective] попросили уйти.</li>
+    <li>left(PAWN_gender==Female)-&gt;В тяжёлую зиму [PAWN_nameDef] оказалась в [colony] лишним ртом за и без того тощим столом, и [PAWN_objective] попросили уйти.</li>
+    <li>left(PAWN_gender==Male)-&gt;Когда в [colony] случился неурожай, обвинили [PAWN_objective], и к весне [PAWN_pronoun] шагал прочь по пустой дороге.</li>
+    <li>left(PAWN_gender==Female)-&gt;Когда в [colony] случился неурожай, обвинили [PAWN_objective], и к весне [PAWN_pronoun] шагала прочь по пустой дороге.</li>
+    <li>grudge(PAWN_gender==Male)-&gt;[PAWN_pronoun] хранил в памяти список имён и повторял его долгими ночами, пока тот не стал чем-то вроде молитвы.</li>
+    <li>grudge(PAWN_gender==Female)-&gt;[PAWN_pronoun] хранила в памяти список имён и повторяла его долгими ночами, пока тот не стал чем-то вроде молитвы.</li>
+    <li>grudge-&gt;Гнев не угас с годами, а затвердел и понемногу перестал разбирать, на какую именно колонию он направлен.</li>
+    <li>grudge(PAWN_gender==Male)-&gt;[PAWN_pronoun] поклялся больше никогда не нуждаться ни в какой колонии, и со временем клятва обернулась неприязнью к любым стенам и ухоженным полям.</li>
+    <li>grudge(PAWN_gender==Female)-&gt;[PAWN_pronoun] поклялась больше никогда не нуждаться ни в какой колонии, и со временем клятва обернулась неприязнью к любым стенам и ухоженным полям.</li>
+    <li>grudge(PAWN_gender==Male)-&gt;Горечь терпелива, и [PAWN_nameDef] кормил её годами, пока в ней не нашлось места для каждого поселенца, у кого ещё была крыша над головой.</li>
+    <li>grudge(PAWN_gender==Female)-&gt;Горечь терпелива, и [PAWN_nameDef] кормила её годами, пока в ней не нашлось места для каждого поселенца, у кого ещё была крыша над головой.</li>
+    <li>grudge(PAWN_gender==Male)-&gt;Каждую зиму воспоминание возвращалось острее, и [PAWN_pronoun] начал видеть одну и ту же закрытую дверь в воротах любой колонии.</li>
+    <li>grudge(PAWN_gender==Female)-&gt;Каждую зиму воспоминание возвращалось острее, и [PAWN_pronoun] начала видеть одну и ту же закрытую дверь в воротах любой колонии.</li>
+    <li>grudge-&gt;То, что начиналось как одно имя в списке, сезон за сезоном стало тихой обидой на каждого, кто спит за стеной.</li>
+    <li>now(hasHome==True,defender==False)-&gt;Теперь [PAWN_pronoun] ходит в набеги с бойцами фракции «[HOME_name]» и бьёт по колониям, не задумываясь, кто в них живёт.</li>
+    <li>now(hasHome==True,defender==False,PAWN_gender==Male)-&gt;Среди бойцов фракции «[HOME_name]» [PAWN_nameDef] нашёл и место, и цель, и за цель держится так же крепко, как за место.</li>
+    <li>now(hasHome==True,defender==False,PAWN_gender==Female)-&gt;Среди бойцов фракции «[HOME_name]» [PAWN_nameDef] нашла и место, и цель, и за цель держится так же крепко, как за место.</li>
+    <li>now(hasHome==True,defender==False)-&gt;Теперь [PAWN_nameDef] воюет за фракцию «[HOME_name]» против всякого, кому ещё есть что терять у своего очага, и не чувствует вины.</li>
+    <li>now(hasHome==True,defender==False,PAWN_gender==Male)-&gt;Под знамёнами фракции «[HOME_name]» [PAWN_pronoun] идёт на колонии вроде той, что когда-то захлопнула дверь перед ним, и уже не видит разницы.</li>
+    <li>now(hasHome==True,defender==False,PAWN_gender==Female)-&gt;Под знамёнами фракции «[HOME_name]» [PAWN_pronoun] идёт на колонии вроде той, что когда-то захлопнула дверь перед ней, и уже не видит разницы.</li>
+    <li>now(hasHome==True,defender==False,PAWN_gender==Male)-&gt;Теперь [PAWN_nameDef] ходит в набеги вместе с бойцами фракции «[HOME_name]», и каждое поселение кажется ему тем самым, что ни разу не оглянулось.</li>
+    <li>now(hasHome==True,defender==False,PAWN_gender==Female)-&gt;Теперь [PAWN_nameDef] ходит в набеги вместе с бойцами фракции «[HOME_name]», и каждое поселение кажется ей тем самым, что ни разу не оглянулось.</li>
+    <li>now(hasHome==True,defender==False,PAWN_gender==Male)-&gt;Во фракции «[HOME_name]» [PAWN_nameDef] нашёл людей, которые пойдут за обидой куда угодно, и теперь ведёт их к следующей колонии.</li>
+    <li>now(hasHome==True,defender==False,PAWN_gender==Female)-&gt;Во фракции «[HOME_name]» [PAWN_nameDef] нашла людей, которые пойдут за обидой куда угодно, и теперь ведёт их к следующей колонии.</li>
+    <li>now(hasHome==False,defender==False)-&gt;Теперь [PAWN_pronoun] ходит в набеги с боевым отрядом и бьёт по колониям, не задумываясь, кто в них живёт.</li>
+    <li>now(hasHome==False,defender==False,PAWN_gender==Male)-&gt;В боевом отряде [PAWN_nameDef] нашёл и место, и цель, и за цель держится так же крепко, как за место.</li>
+    <li>now(hasHome==False,defender==False,PAWN_gender==Female)-&gt;В боевом отряде [PAWN_nameDef] нашла и место, и цель, и за цель держится так же крепко, как за место.</li>
+    <li>now(hasHome==False,defender==False)-&gt;Теперь [PAWN_nameDef] воюет в грубой компании против всякого, кому ещё есть что терять у своего очага, и не чувствует вины.</li>
+    <li>now(hasHome==False,defender==False,PAWN_gender==Male)-&gt;С жёстким отрядом за спиной [PAWN_pronoun] идёт на колонии вроде той, что когда-то захлопнула дверь перед ним, и уже не видит разницы.</li>
+    <li>now(hasHome==False,defender==False,PAWN_gender==Female)-&gt;С жёстким отрядом за спиной [PAWN_pronoun] идёт на колонии вроде той, что когда-то захлопнула дверь перед ней, и уже не видит разницы.</li>
+    <li>now(hasHome==False,defender==False,PAWN_gender==Male)-&gt;Теперь [PAWN_nameDef] ходит в набеги с чужаками, и каждое поселение кажется ему тем самым, что ни разу не оглянулось.</li>
+    <li>now(hasHome==False,defender==False,PAWN_gender==Female)-&gt;Теперь [PAWN_nameDef] ходит в набеги с чужаками, и каждое поселение кажется ей тем самым, что ни разу не оглянулось.</li>
+    <li>now(hasHome==False,defender==False,PAWN_gender==Male)-&gt;[PAWN_nameDef] нашёл отряд, который пойдёт за обидой куда угодно, и теперь ведёт его к следующей колонии.</li>
+    <li>now(hasHome==False,defender==False,PAWN_gender==Female)-&gt;[PAWN_nameDef] нашла отряд, который пойдёт за обидой куда угодно, и теперь ведёт его к следующей колонии.</li>
+    <li>now(hasHome==True,defender==True)-&gt;Теперь [PAWN_pronoun] живёт среди людей фракции «[HOME_name]» и несёт для них караул, с давним недоверием к каждому, кто приходит из колонии.</li>
+    <li>now(hasHome==True,defender==True)-&gt;Люди фракции «[HOME_name]» приняли [PAWN_objective], и теперь [PAWN_pronoun] стоит у их ворот и холодно разглядывает каждого пришельца.</li>
+    <li>now(hasHome==True,defender==True,PAWN_gender==Male)-&gt;Теперь [PAWN_nameDef] охраняет это место для фракции «[HOME_name]», и чужаки из колоний не видят от него дружелюбия.</li>
+    <li>now(hasHome==True,defender==True,PAWN_gender==Female)-&gt;Теперь [PAWN_nameDef] охраняет это место для фракции «[HOME_name]», и чужаки из колоний не видят от неё дружелюбия.</li>
+    <li>now(hasHome==True,defender==True,PAWN_gender==Male)-&gt;Среди бойцов фракции «[HOME_name]» [PAWN_nameDef] нашёл тех, кто разделяет старую горечь, и ваших людей у стен встречает холодным, ровным взглядом.</li>
+    <li>now(hasHome==True,defender==True,PAWN_gender==Female)-&gt;Среди бойцов фракции «[HOME_name]» [PAWN_nameDef] нашла тех, кто разделяет старую горечь, и ваших людей у стен встречает холодным, ровным взглядом.</li>
+    <li>now(hasHome==True,defender==True)-&gt;Теперь [PAWN_nameDef] несёт пост для фракции «[HOME_name]», и вид колонистов у ворот будит гнев, который так и не остыл.</li>
+    <li>now(hasHome==True,defender==True,PAWN_gender==Male)-&gt;[PAWN_nameDef] обрёл место среди бойцов фракции «[HOME_name]» и яростно защищает его, ведь когда-то перед ним уже закрыли дверь.</li>
+    <li>now(hasHome==True,defender==True,PAWN_gender==Female)-&gt;[PAWN_nameDef] обрела место среди бойцов фракции «[HOME_name]» и яростно защищает его, ведь когда-то перед ней уже закрыли дверь.</li>
+    <li>now(hasHome==False,defender==True)-&gt;Теперь [PAWN_pronoun] живёт среди суровых людей и несёт для них караул, с давним недоверием к каждому, кто приходит из колонии.</li>
+    <li>now(hasHome==False,defender==True)-&gt;Суровые люди приняли [PAWN_objective], и теперь [PAWN_pronoun] стоит у их ворот и холодно разглядывает каждого пришельца.</li>
+    <li>now(hasHome==False,defender==True,PAWN_gender==Male)-&gt;Теперь [PAWN_nameDef] охраняет это место, и чужаки из колоний не видят от него дружелюбия.</li>
+    <li>now(hasHome==False,defender==True,PAWN_gender==Female)-&gt;Теперь [PAWN_nameDef] охраняет это место, и чужаки из колоний не видят от неё дружелюбия.</li>
+    <li>now(hasHome==False,defender==True,PAWN_gender==Male)-&gt;Среди этих людей [PAWN_nameDef] нашёл тех, кто разделяет старую горечь, и ваших людей у стен встречает холодным, ровным взглядом.</li>
+    <li>now(hasHome==False,defender==True,PAWN_gender==Female)-&gt;Среди этих людей [PAWN_nameDef] нашла тех, кто разделяет старую горечь, и ваших людей у стен встречает холодным, ровным взглядом.</li>
+    <li>now(hasHome==False,defender==True)-&gt;Теперь [PAWN_nameDef] несёт здесь пост, и вид колонистов у ворот будит гнев, который так и не остыл.</li>
+    <li>now(hasHome==False,defender==True,PAWN_gender==Male)-&gt;[PAWN_nameDef] обрёл место среди этих людей и яростно защищает его, ведь когда-то перед ним уже закрыли дверь.</li>
+    <li>now(hasHome==False,defender==True,PAWN_gender==Female)-&gt;[PAWN_nameDef] обрела место среди этих людей и яростно защищает его, ведь когда-то перед ней уже закрыли дверь.</li>
+  </PastLives_Story_Grudge.rulePack.rulesStrings>
+
+  <PastLives_Story_Sellsword.rulePack.rulesStrings>
+    <li>r_story-&gt;[sold] [trade] [now] [childhood]</li>
+    <li>sold(PAWN_gender==Male)-&gt;После [colony] [PAWN_nameDef] продал свой ствол первому же капитану, которому тот понадобился, и с тех пор продаёт его снова и снова.</li>
+    <li>sold(PAWN_gender==Female)-&gt;После [colony] [PAWN_nameDef] продала свой ствол первому же капитану, которому тот понадобился, и с тех пор продаёт его снова и снова.</li>
+    <li>sold(PAWN_gender==Male)-&gt;Из [colony] [PAWN_nameDef] ушёл с винтовкой и верным глазом и обнаружил, что на вольном рынке ценится и то и другое.</li>
+    <li>sold(PAWN_gender==Female)-&gt;Из [colony] [PAWN_nameDef] ушла с винтовкой и верным глазом и обнаружила, что на вольном рынке ценится и то и другое.</li>
+    <li>sold(PAWN_gender==Male)-&gt;Когда в [colony] его больше ничто не держало, [PAWN_nameDef] перебрал в уме всё, что умел делать хорошо, и единственным ремеслом на выбор оказалась меткая стрельба.</li>
+    <li>sold(PAWN_gender==Female)-&gt;Когда в [colony] её больше ничто не держало, [PAWN_nameDef] перебрала в уме всё, что умела делать хорошо, и единственным ремеслом на выбор оказалась меткая стрельба.</li>
+    <li>sold(PAWN_gender==Male)-&gt;Много лет назад, после [colony], [PAWN_nameDef] подписал солдатский контракт и понял, что это ремесло ему подходит куда больше, чем когда-то плуг.</li>
+    <li>sold(PAWN_gender==Female)-&gt;Много лет назад, после [colony], [PAWN_nameDef] подписала солдатский контракт и поняла, что это ремесло ей подходит куда больше, чем когда-то плуг.</li>
+    <li>sold(PAWN_gender==Male)-&gt;Из [colony] [PAWN_nameDef] перебрался на наёмную работу, сперва в караулы, потом в строй, и больше ни к чему другому не возвращался.</li>
+    <li>sold(PAWN_gender==Female)-&gt;Из [colony] [PAWN_nameDef] перебралась на наёмную работу, сперва в караулы, потом в строй, и больше ни к чему другому не возвращалась.</li>
+    <li>sold(PAWN_gender==Male)-&gt;Вскоре после [colony] [PAWN_nameDef] получил предложение от вербовщика и принял его без долгих раздумий и без сожалений.</li>
+    <li>sold(PAWN_gender==Female)-&gt;Вскоре после [colony] [PAWN_nameDef] получила предложение от вербовщика и приняла его без долгих раздумий и без сожалений.</li>
+    <li>trade-&gt;[PAWN_pronoun] не держит ни обид, ни знамён: контракт есть контракт, и работа кончается вместе с ним.</li>
+    <li>trade(PAWN_gender==Male)-&gt;[PAWN_pronoun] воевал за земледельцев, купцов и военачальников и научился относиться ко всем троим как к погоде.</li>
+    <li>trade(PAWN_gender==Female)-&gt;[PAWN_pronoun] воевала за земледельцев, купцов и военачальников и научилась относиться ко всем троим как к погоде.</li>
+    <li>trade-&gt;Ремесло приучило [PAWN_objective] держать оружие чистым, мнения короткими и ни к кому не привязываться.</li>
+    <li>trade(PAWN_gender==Male)-&gt;За эти годы [PAWN_pronoun] послужил многим хозяевам и помнит их лица хуже, чем местность.</li>
+    <li>trade(PAWN_gender==Female)-&gt;За эти годы [PAWN_pronoun] послужила многим хозяевам и помнит их лица хуже, чем местность.</li>
+    <li>trade-&gt;[PAWN_nameDef] не спрашивает, зачем идёт бой, только где стены тоньше и когда подадут сигнал.</li>
+    <li>trade(PAWN_gender==Male)-&gt;Бой для него теперь ремесло, усвоенное не спеша и исполняемое без злости.</li>
+    <li>trade(PAWN_gender==Female)-&gt;Бой для неё теперь ремесло, усвоенное не спеша и исполняемое без злости.</li>
+    <li>now(hasHome==True,defender==False)-&gt;Теперь [PAWN_pronoun] воюет за фракцию «[HOME_name]» спокойно и умело, не имея ничего против тех, кто стоит на пути.</li>
+    <li>now(hasHome==True,defender==False)-&gt;Сейчас [PAWN_nameDef] носит винтовку для фракции «[HOME_name]» и без всякой злости обратит её на любую колонию, на которую укажут.</li>
+    <li>now(hasHome==True,defender==False,PAWN_gender==Male)-&gt;Теперь [PAWN_pronoun] на службе у фракции «[HOME_name]», и набег для него просто задача на сегодня.</li>
+    <li>now(hasHome==True,defender==False,PAWN_gender==Female)-&gt;Теперь [PAWN_pronoun] на службе у фракции «[HOME_name]», и набег для неё просто задача на сегодня.</li>
+    <li>now(hasHome==True,defender==False)-&gt;Сейчас [PAWN_nameDef] работает по контракту на фракцию «[HOME_name]» и нападает с тихой точностью человека, делавшего это не раз.</li>
+    <li>now(hasHome==True,defender==False)-&gt;Теперь [PAWN_nameDef] служит фракции «[HOME_name]» и не питает к людям в колонии ни малейшей злобы, и от этого почему-то ещё тяжелее.</li>
+    <li>now(hasHome==True,defender==False,PAWN_gender==Male)-&gt;Этот сезон [PAWN_pronoun] воюет под началом фракции «[HOME_name]», ровный и неторопливый, профессионал за дневной работой.</li>
+    <li>now(hasHome==True,defender==False,PAWN_gender==Female)-&gt;Этот сезон [PAWN_pronoun] воюет под началом фракции «[HOME_name]», ровная и неторопливая, профессионал за дневной работой.</li>
+    <li>now(hasHome==False,defender==False)-&gt;Теперь [PAWN_pronoun] воюет на стороне отряда, которому нужны стволы, спокойно и умело, не имея ничего против тех, кто стоит на пути.</li>
+    <li>now(hasHome==False,defender==False)-&gt;Сейчас [PAWN_nameDef] носит винтовку для боевого отряда и без всякой злости обратит её на любую колонию, на которую укажут.</li>
+    <li>now(hasHome==False,defender==False,PAWN_gender==Male)-&gt;Теперь [PAWN_pronoun] на службе у суровой компании, и набег для него просто задача на сегодня.</li>
+    <li>now(hasHome==False,defender==False,PAWN_gender==Female)-&gt;Теперь [PAWN_pronoun] на службе у суровой компании, и набег для неё просто задача на сегодня.</li>
+    <li>now(hasHome==False,defender==False)-&gt;Сейчас [PAWN_nameDef] работает по контракту на отряд бойцов и нападает с тихой точностью человека, делавшего это не раз.</li>
+    <li>now(hasHome==False,defender==False)-&gt;Теперь [PAWN_nameDef] служит среди чужаков и не питает к людям в колонии ни малейшей злобы, и от этого почему-то ещё тяжелее.</li>
+    <li>now(hasHome==False,defender==False,PAWN_gender==Male)-&gt;Этот сезон [PAWN_pronoun] воюет в наёмном отряде, ровный и неторопливый, профессионал за дневной работой.</li>
+    <li>now(hasHome==False,defender==False,PAWN_gender==Female)-&gt;Этот сезон [PAWN_pronoun] воюет в наёмном отряде, ровная и неторопливая, профессионал за дневной работой.</li>
+    <li>now(hasHome==True,defender==True,PAWN_gender==Male)-&gt;Теперь [PAWN_pronoun] поставлен здесь фракцией «[HOME_name]» и несёт караул спокойно и умело, не имея ничего против тех, кто входит.</li>
+    <li>now(hasHome==True,defender==True,PAWN_gender==Female)-&gt;Теперь [PAWN_pronoun] поставлена здесь фракцией «[HOME_name]» и несёт караул спокойно и умело, не имея ничего против тех, кто входит.</li>
+    <li>now(hasHome==True,defender==True)-&gt;Сейчас [PAWN_nameDef] стоит в карауле для фракции «[HOME_name]», с винтовкой на коленях, и относится к вашим людям как ко всем прочим гостям.</li>
+    <li>now(hasHome==True,defender==True,PAWN_gender==Male)-&gt;Теперь [PAWN_pronoun] на службе у фракции «[HOME_name]», и охрана этого места для него просто задача на сегодня.</li>
+    <li>now(hasHome==True,defender==True,PAWN_gender==Female)-&gt;Теперь [PAWN_pronoun] на службе у фракции «[HOME_name]», и охрана этого места для неё просто задача на сегодня.</li>
+    <li>now(hasHome==True,defender==True)-&gt;Сейчас [PAWN_nameDef] работает по контракту на фракцию «[HOME_name]» и следит за воротами с терпением человека, делавшего это не раз.</li>
+    <li>now(hasHome==True,defender==True)-&gt;Теперь [PAWN_nameDef] охраняет стены фракции «[HOME_name]» и не питает к пришедшим к воротам ни малейшей злобы, одно лишь внимание.</li>
+    <li>now(hasHome==True,defender==True,PAWN_gender==Male)-&gt;Этот сезон [PAWN_pronoun] служит часовым у фракции «[HOME_name]», ровный и неторопливый, профессионал за дневной работой.</li>
+    <li>now(hasHome==True,defender==True,PAWN_gender==Female)-&gt;Этот сезон [PAWN_pronoun] служит часовым у фракции «[HOME_name]», ровная и неторопливая, профессионал за дневной работой.</li>
+    <li>now(hasHome==False,defender==True)-&gt;Теперь [PAWN_pronoun] стоит здесь в карауле вместе с наёмным отрядом, спокойно и умело, не имея ничего против тех, кто входит.</li>
+    <li>now(hasHome==False,defender==True)-&gt;Сейчас [PAWN_nameDef] стоит здесь в карауле, с винтовкой на коленях, и относится к вашим людям как ко всем прочим гостям.</li>
+    <li>now(hasHome==False,defender==True,PAWN_gender==Male)-&gt;Теперь [PAWN_pronoun] на службе у здешних людей, и охрана этого места для него просто задача на сегодня.</li>
+    <li>now(hasHome==False,defender==True,PAWN_gender==Female)-&gt;Теперь [PAWN_pronoun] на службе у здешних людей, и охрана этого места для неё просто задача на сегодня.</li>
+    <li>now(hasHome==False,defender==True)-&gt;Сейчас [PAWN_nameDef] работает здесь по контракту и следит за воротами с терпением человека, делавшего это не раз.</li>
+    <li>now(hasHome==False,defender==True)-&gt;Теперь [PAWN_nameDef] охраняет стены по найму и не питает к пришедшим к воротам ни малейшей злобы, одно лишь внимание.</li>
+    <li>now(hasHome==False,defender==True,PAWN_gender==Male)-&gt;Этот сезон [PAWN_pronoun] служит здесь часовым, ровный и неторопливый, профессионал за дневной работой.</li>
+    <li>now(hasHome==False,defender==True,PAWN_gender==Female)-&gt;Этот сезон [PAWN_pronoun] служит здесь часовым, ровная и неторопливая, профессионал за дневной работой.</li>
+  </PastLives_Story_Sellsword.rulePack.rulesStrings>
+
+  <PastLives_Story_Captive.rulePack.rulesStrings>
+    <li>r_story-&gt;[taken] [years] [now] [childhood]</li>
+    <li>taken(hasHome==True,PAWN_gender==Male)-&gt;На дороге после [colony] [PAWN_nameDef] попал в плен к фракции «[HOME_name]» и первую зиму провёл в цепях.</li>
+    <li>taken(hasHome==True,PAWN_gender==Female)-&gt;На дороге после [colony] [PAWN_nameDef] попала в плен к фракции «[HOME_name]» и первую зиму провела в цепях.</li>
+    <li>taken(hasHome==True,PAWN_gender==Male)-&gt;Вскоре после ухода из [colony] [PAWN_nameDef] был взят в плен бойцами фракции «[HOME_name]» и уведён с верёвкой на запястьях.</li>
+    <li>taken(hasHome==True,PAWN_gender==Female)-&gt;Вскоре после ухода из [colony] [PAWN_nameDef] была взята в плен бойцами фракции «[HOME_name]» и уведена с верёвкой на запястьях.</li>
+    <li>taken(hasHome==True,PAWN_gender==Male)-&gt;После [colony] [PAWN_nameDef] попался бойцам фракции «[HOME_name]», слишком усталый и голодный, чтобы бежать.</li>
+    <li>taken(hasHome==True,PAWN_gender==Female)-&gt;После [colony] [PAWN_nameDef] попалась бойцам фракции «[HOME_name]», слишком усталая и голодная, чтобы бежать.</li>
+    <li>taken(hasHome==True,PAWN_gender==Male)-&gt;После [colony] [PAWN_nameDef] попал в руки бойцов фракции «[HOME_name]», которые сохранили ему жизнь и не сказали зачем.</li>
+    <li>taken(hasHome==True,PAWN_gender==Female)-&gt;После [colony] [PAWN_nameDef] попала в руки бойцов фракции «[HOME_name]», которые сохранили ей жизнь и не сказали зачем.</li>
+    <li>taken(hasHome==True,PAWN_gender==Male)-&gt;В год после [colony] [PAWN_nameDef] угодил в плен к фракции «[HOME_name]» и долго ждал, что его продадут или убьют.</li>
+    <li>taken(hasHome==True,PAWN_gender==Female)-&gt;В год после [colony] [PAWN_nameDef] угодила в плен к фракции «[HOME_name]» и долго ждала, что её продадут или убьют.</li>
+    <li>taken(hasHome==True,PAWN_gender==Male)-&gt;Едва успев уйти от [colony], [PAWN_nameDef] угодил в плен к фракции «[HOME_name]», и его поставили на работу под стражей.</li>
+    <li>taken(hasHome==True,PAWN_gender==Female)-&gt;Едва успев уйти от [colony], [PAWN_nameDef] угодила в плен к фракции «[HOME_name]», и её поставили на работу под стражей.</li>
+    <li>taken(hasHome==False,PAWN_gender==Male)-&gt;На дороге после [colony] [PAWN_nameDef] попал в плен к боевому отряду и первую зиму провёл в цепях.</li>
+    <li>taken(hasHome==False,PAWN_gender==Female)-&gt;На дороге после [colony] [PAWN_nameDef] попала в плен к боевому отряду и первую зиму провела в цепях.</li>
+    <li>taken(hasHome==False,PAWN_gender==Male)-&gt;Вскоре после ухода из [colony] [PAWN_nameDef] был взят в плен отрядом бойцов и уведён с верёвкой на запястьях.</li>
+    <li>taken(hasHome==False,PAWN_gender==Female)-&gt;Вскоре после ухода из [colony] [PAWN_nameDef] была взята в плен отрядом бойцов и уведена с верёвкой на запястьях.</li>
+    <li>taken(hasHome==False,PAWN_gender==Male)-&gt;После [colony] [PAWN_nameDef] попался отряду бойцов, слишком усталый и голодный, чтобы бежать.</li>
+    <li>taken(hasHome==False,PAWN_gender==Female)-&gt;После [colony] [PAWN_nameDef] попалась отряду бойцов, слишком усталая и голодная, чтобы бежать.</li>
+    <li>taken(hasHome==False,PAWN_gender==Male)-&gt;После [colony] [PAWN_nameDef] попал в руки отряда бойцов, которые сохранили ему жизнь и не сказали зачем.</li>
+    <li>taken(hasHome==False,PAWN_gender==Female)-&gt;После [colony] [PAWN_nameDef] попала в руки отряда бойцов, которые сохранили ей жизнь и не сказали зачем.</li>
+    <li>taken(hasHome==False,PAWN_gender==Male)-&gt;В год после [colony] [PAWN_nameDef] угодил в плен к боевому отряду и долго ждал, что его продадут или убьют.</li>
+    <li>taken(hasHome==False,PAWN_gender==Female)-&gt;В год после [colony] [PAWN_nameDef] угодила в плен к боевому отряду и долго ждала, что её продадут или убьют.</li>
+    <li>taken(hasHome==False,PAWN_gender==Male)-&gt;Едва успев уйти от [colony], [PAWN_nameDef] угодил в плен к боевому отряду, и его поставили на работу под стражей.</li>
+    <li>taken(hasHome==False,PAWN_gender==Female)-&gt;Едва успев уйти от [colony], [PAWN_nameDef] угодила в плен к боевому отряду, и её поставили на работу под стражей.</li>
+    <li>years-&gt;Годы тянулись медленно, и стражники стали привычными, потом терпимыми, потом чем-то вроде соседей.</li>
+    <li>years(PAWN_gender==Male)-&gt;[PAWN_pronoun] выучил их песни, чтобы скоротать время, потом их шутки, потом имена их мёртвых.</li>
+    <li>years(PAWN_gender==Female)-&gt;[PAWN_pronoun] выучила их песни, чтобы скоротать время, потом их шутки, потом имена их мёртвых.</li>
+    <li>years(PAWN_gender==Male)-&gt;Цепь ослабили в один сезон и сняли в следующий, и [PAWN_pronoun] заметил, что больше не думает об уходе.</li>
+    <li>years(PAWN_gender==Female)-&gt;Цепь ослабили в один сезон и сняли в следующий, и [PAWN_pronoun] заметила, что больше не думает об уходе.</li>
+    <li>years(PAWN_gender==Male)-&gt;Кто-то делился хлебом, кто-то показал ему приём с винтовкой, и дверь клетки перестали запирать.</li>
+    <li>years(PAWN_gender==Female)-&gt;Кто-то делился хлебом, кто-то показал ей приём с винтовкой, и дверь клетки перестали запирать.</li>
+    <li>years-&gt;Плен тянулся так долго, что перестал быть пленом, а дорога обратно к [colony] стала смутной, как давний сон.</li>
+    <li>years(PAWN_gender==Male)-&gt;К третьей зиме [PAWN_pronoun] уже ел у их костра, а к пятой спал, не вглядываясь в темноту.</li>
+    <li>years(PAWN_gender==Female)-&gt;К третьей зиме [PAWN_pronoun] уже ела у их костра, а к пятой спала, не вглядываясь в темноту.</li>
+    <li>now(hasHome==True,defender==False)-&gt;Теперь [PAWN_pronoun] воюет за фракцию «[HOME_name]», за тех самых людей, что когда-то держали [PAWN_objective] в плену, и уже не находит в этом ничего странного.</li>
+    <li>now(hasHome==True,defender==False,PAWN_gender==Male)-&gt;Теперь [PAWN_nameDef] выходит в набеги с бойцами фракции «[HOME_name]» на колонии, подобные той, где жил когда-то, и зовёт бывших тюремщиков семьёй.</li>
+    <li>now(hasHome==True,defender==False,PAWN_gender==Female)-&gt;Теперь [PAWN_nameDef] выходит в набеги с бойцами фракции «[HOME_name]» на колонии, подобные той, где жила когда-то, и зовёт бывших тюремщиков семьёй.</li>
+    <li>now(hasHome==True,defender==False)-&gt;Теперь [PAWN_nameDef] ходит в набеги бок о бок с бойцами фракции «[HOME_name]», с теми, кто когда-то держал [PAWN_objective] под замком.</li>
+    <li>now(hasHome==True,defender==False,PAWN_gender==Male)-&gt;Когда-то пленник, [PAWN_nameDef] теперь сражается за фракцию «[HOME_name]» и нападает без тени сомнения ради тех, кто отнял у него свободу.</li>
+    <li>now(hasHome==True,defender==False,PAWN_gender==Female)-&gt;Когда-то пленница, [PAWN_nameDef] теперь сражается за фракцию «[HOME_name]» и нападает без тени сомнения ради тех, кто отнял у неё свободу.</li>
+    <li>now(hasHome==True,defender==False)-&gt;Теперь [PAWN_nameDef] нападает под знамёнами фракции «[HOME_name]», давно перестав видеть в них тюремщиков.</li>
+    <li>now(hasHome==True,defender==False,PAWN_gender==Male)-&gt;Теперь фракция «[HOME_name]» для него семья, и [PAWN_pronoun] сражается за них с верностью человека, который в конце концов сам это выбрал.</li>
+    <li>now(hasHome==True,defender==False,PAWN_gender==Female)-&gt;Теперь фракция «[HOME_name]» для неё семья, и [PAWN_pronoun] сражается за них с верностью человека, который в конце концов сам это выбрал.</li>
+    <li>now(hasHome==False,defender==False)-&gt;Теперь [PAWN_pronoun] воюет за отряд, который когда-то держал [PAWN_objective] в плену, и уже не находит в этом ничего странного.</li>
+    <li>now(hasHome==False,defender==False,PAWN_gender==Male)-&gt;Теперь [PAWN_nameDef] выходит в набеги с ними на колонии, подобные той, где жил когда-то, и зовёт бывших тюремщиков семьёй.</li>
+    <li>now(hasHome==False,defender==False,PAWN_gender==Female)-&gt;Теперь [PAWN_nameDef] выходит в набеги с ними на колонии, подобные той, где жила когда-то, и зовёт бывших тюремщиков семьёй.</li>
+    <li>now(hasHome==False,defender==False)-&gt;Теперь [PAWN_nameDef] ходит в набеги бок о бок с теми, кто когда-то держал [PAWN_objective] под замком.</li>
+    <li>now(hasHome==False,defender==False,PAWN_gender==Male)-&gt;Когда-то пленник, [PAWN_nameDef] теперь сражается за отряд и нападает без тени сомнения ради тех, кто отнял у него свободу.</li>
+    <li>now(hasHome==False,defender==False,PAWN_gender==Female)-&gt;Когда-то пленница, [PAWN_nameDef] теперь сражается за отряд и нападает без тени сомнения ради тех, кто отнял у неё свободу.</li>
+    <li>now(hasHome==False,defender==False)-&gt;Теперь [PAWN_nameDef] ходит в набеги с отрядом, давно перестав видеть в них тюремщиков.</li>
+    <li>now(hasHome==False,defender==False,PAWN_gender==Male)-&gt;Теперь отряд для него семья, и [PAWN_pronoun] сражается за них с верностью человека, который в конце концов сам это выбрал.</li>
+    <li>now(hasHome==False,defender==False,PAWN_gender==Female)-&gt;Теперь отряд для неё семья, и [PAWN_pronoun] сражается за них с верностью человека, который в конце концов сам это выбрал.</li>
+    <li>now(hasHome==True,defender==True)-&gt;Теперь [PAWN_pronoun] живёт среди бойцов фракции «[HOME_name]», тех самых людей, что когда-то держали [PAWN_objective] в плену, и охраняет их ворота, не находя в этом ничего странного.</li>
+    <li>now(hasHome==True,defender==True)-&gt;Теперь [PAWN_nameDef] стоит на страже для фракции «[HOME_name]» и зовёт семьёй тех, кто когда-то держал [PAWN_objective] в плену.</li>
+    <li>now(hasHome==True,defender==True)-&gt;Теперь [PAWN_nameDef] несёт караул бок о бок с бойцами фракции «[HOME_name]», с теми, кто когда-то держал [PAWN_objective] под замком.</li>
+    <li>now(hasHome==True,defender==True,PAWN_gender==Male)-&gt;Когда-то пленник, [PAWN_nameDef] теперь один из людей фракции «[HOME_name]» и без тени сомнения защищает это место ради тех, кто отнял у него свободу.</li>
+    <li>now(hasHome==True,defender==True,PAWN_gender==Female)-&gt;Когда-то пленница, [PAWN_nameDef] теперь одна из людей фракции «[HOME_name]» и без тени сомнения защищает это место ради тех, кто отнял у неё свободу.</li>
+    <li>now(hasHome==True,defender==True)-&gt;Теперь [PAWN_nameDef] живёт под знамёнами фракции «[HOME_name]», давно перестав видеть в них тюремщиков.</li>
+    <li>now(hasHome==True,defender==True,PAWN_gender==Male)-&gt;Теперь фракция «[HOME_name]» для него семья, и [PAWN_pronoun] защищает её стены с верностью человека, который в конце концов сам это выбрал.</li>
+    <li>now(hasHome==True,defender==True,PAWN_gender==Female)-&gt;Теперь фракция «[HOME_name]» для неё семья, и [PAWN_pronoun] защищает её стены с верностью человека, который в конце концов сам это выбрал.</li>
+    <li>now(hasHome==False,defender==True)-&gt;Теперь [PAWN_pronoun] живёт среди тех, кто когда-то держал [PAWN_objective] в плену, и охраняет их ворота, не находя в этом ничего странного.</li>
+    <li>now(hasHome==False,defender==True)-&gt;Теперь [PAWN_nameDef] стоит здесь на страже и зовёт семьёй тех, кто когда-то держал [PAWN_objective] в плену.</li>
+    <li>now(hasHome==False,defender==True)-&gt;Теперь [PAWN_nameDef] несёт караул бок о бок с теми, кто когда-то держал [PAWN_objective] под замком.</li>
+    <li>now(hasHome==False,defender==True,PAWN_gender==Male)-&gt;Когда-то пленник, [PAWN_nameDef] теперь свой здесь и без тени сомнения защищает это место ради тех, кто отнял у него свободу.</li>
+    <li>now(hasHome==False,defender==True,PAWN_gender==Female)-&gt;Когда-то пленница, [PAWN_nameDef] теперь своя здесь и без тени сомнения защищает это место ради тех, кто отнял у неё свободу.</li>
+    <li>now(hasHome==False,defender==True)-&gt;Теперь [PAWN_nameDef] живёт среди них, давно перестав видеть в них тюремщиков.</li>
+    <li>now(hasHome==False,defender==True,PAWN_gender==Male)-&gt;Теперь эти люди для него семья, и [PAWN_pronoun] защищает их стены с верностью человека, который в конце концов сам это выбрал.</li>
+    <li>now(hasHome==False,defender==True,PAWN_gender==Female)-&gt;Теперь эти люди для неё семья, и [PAWN_pronoun] защищает их стены с верностью человека, который в конце концов сам это выбрал.</li>
+  </PastLives_Story_Captive.rulePack.rulesStrings>
+
+  <PastLives_Story_RaisedByRaiders.rulePack.rulesStrings>
+    <li>r_story-&gt;[taken] [raised] [memory] [now]</li>
+    <li>taken(PAWN_gender==Male)-&gt;В [colony] [PAWN_nameDef] был ещё ребёнком, когда случился налёт, и [YEARS] назад налётчики унесли [PAWN_objective] вместе с добычей.</li>
+    <li>taken(PAWN_gender==Female)-&gt;В [colony] [PAWN_nameDef] была ещё ребёнком, когда случился налёт, и [YEARS] назад налётчики унесли [PAWN_objective] вместе с добычей.</li>
+    <li>taken(PAWN_gender==Male)-&gt;[PAWN_nameDef] был совсем маленьким, когда в [colony] случился налёт, и налётчики унесли [PAWN_objective] за холмы; с тех пор прошло [YEARS].</li>
+    <li>taken(PAWN_gender==Female)-&gt;[PAWN_nameDef] была совсем маленькой, когда в [colony] случился налёт, и налётчики унесли [PAWN_objective] за холмы; с тех пор прошло [YEARS].</li>
+    <li>taken-&gt;Когда [YEARS] назад в [colony] случился налёт, налётчики взяли живым ребёнка по имени [PAWN_nameDef], рассудив, что молодого ещё можно научить.</li>
+    <li>taken(PAWN_gender==Male)-&gt;[YEARS] назад [PAWN_nameDef] был ребёнком в [colony], достаточно маленьким, чтобы во время налёта его подняли в седло и увезли.</li>
+    <li>taken(PAWN_gender==Female)-&gt;[YEARS] назад [PAWN_nameDef] была ребёнком в [colony], достаточно маленькой, чтобы во время налёта её подняли в седло и увезли.</li>
+    <li>taken(PAWN_gender==Male)-&gt;Налётчики, явившиеся [YEARS] назад к [colony], ушли с припасами, оружием и одним испуганным ребёнком, и этим ребёнком был [PAWN_nameDef].</li>
+    <li>taken(PAWN_gender==Female)-&gt;Налётчики, явившиеся [YEARS] назад к [colony], ушли с припасами, оружием и одним испуганным ребёнком, и этим ребёнком была [PAWN_nameDef].</li>
+    <li>taken(PAWN_gender==Male)-&gt;[YEARS] назад в [colony] случился налёт, и самый младший из уцелевших, [PAWN_nameDef], был уведён вместе с добычей.</li>
+    <li>taken(PAWN_gender==Female)-&gt;[YEARS] назад в [colony] случился налёт, и самый младший из уцелевших, [PAWN_nameDef], была уведена вместе с добычей.</li>
+    <li>raised(PAWN_gender==Male)-&gt;[PAWN_objective] вырастили как одного из своих: жёсткая еда, жёсткие правила и место у костра, которое никто не отнимал.</li>
+    <li>raised(PAWN_gender==Female)-&gt;[PAWN_objective] вырастили как одну из своих: жёсткая еда, жёсткие правила и место у костра, которое никто не отнимал.</li>
+    <li>raised(PAWN_gender==Male)-&gt;[PAWN_pronoun] вырос среди бойцов, учился ездить верхом, стрелять и спать вполглаза, и никто не был жесток с ним без причины.</li>
+    <li>raised(PAWN_gender==Female)-&gt;[PAWN_pronoun] выросла среди бойцов, училась ездить верхом, стрелять и спать вполглаза, и никто не был жесток с ней без причины.</li>
+    <li>raised-&gt;Сначала [PAWN_objective] называли новым именем, потом вернули старое, и воспитание было грубым, но не нелюбящим.</li>
+    <li>raised(PAWN_gender==Male)-&gt;Между набегами и долгими переходами [PAWN_pronoun] подрастал под присмотром израненных рук и острых языков.</li>
+    <li>raised(PAWN_gender==Female)-&gt;Между набегами и долгими переходами [PAWN_pronoun] подрастала под присмотром израненных рук и острых языков.</li>
+    <li>raised(PAWN_gender==Male)-&gt;Лагерь стал единственным домом, который [PAWN_pronoun] помнил, а его люди единственной семьёй.</li>
+    <li>raised(PAWN_gender==Female)-&gt;Лагерь стал единственным домом, который [PAWN_pronoun] помнила, а его люди единственной семьёй.</li>
+    <li>raised(PAWN_gender==Male)-&gt;Кто-то учил [PAWN_objective] читать следы, кто-то чинить тетиву, и к тому времени, как [PAWN_pronoun] вырос, в этой жизни не осталось ничего чужого.</li>
+    <li>raised(PAWN_gender==Female)-&gt;Кто-то учил [PAWN_objective] читать следы, кто-то чинить тетиву, и к тому времени, как [PAWN_pronoun] выросла, в этой жизни не осталось ничего чужого.</li>
+    <li>memory-&gt;О [colony] [PAWN_pronoun] помнит лишь осколки: жёлтую дверь, запах хлеба, голос, зовущий [PAWN_objective] ужинать.</li>
+    <li>memory-&gt;От [colony] в памяти уцелело лишь несколько ярких обрывков: очаг, собака, песня, которую [PAWN_pronoun] никак не может допеть.</li>
+    <li>memory-&gt;[PAWN_nameDef] помнит о [colony] так, как помнят горячечный сон: где-то ярко, а где-то совсем пусто.</li>
+    <li>memory(PAWN_gender==Male)-&gt;От [colony] остались лишь несколько образов, и [PAWN_pronoun] уже не уверен, какие из них настоящие.</li>
+    <li>memory(PAWN_gender==Female)-&gt;От [colony] остались лишь несколько образов, и [PAWN_pronoun] уже не уверена, какие из них настоящие.</li>
+    <li>memory-&gt;Иногда запах дыма или какой-нибудь напев возвращает комнату из [colony], и она снова исчезает.</li>
+    <li>memory-&gt;[PAWN_pronoun] не может назвать ни одного лица из [colony], помнит только тёплую руку и ощущение, что [PAWN_objective] несут.</li>
+    <li>now(hasHome==True,defender==False,PAWN_gender==Male)-&gt;Теперь [PAWN_pronoun], уже взрослый, ходит в набеги с бойцами фракции «[HOME_name]» и нападает на колонии вроде той, откуда его унесли, сам того не зная.</li>
+    <li>now(hasHome==True,defender==False,PAWN_gender==Female)-&gt;Теперь [PAWN_pronoun], уже взрослая, ходит в набеги с бойцами фракции «[HOME_name]» и нападает на колонии вроде той, откуда её унесли, сама того не зная.</li>
+    <li>now(hasHome==True,defender==False)-&gt;Теперь [PAWN_nameDef] ходит в набеги с бойцами фракции «[HOME_name]», единственными людьми, которых [PAWN_pronoun] по-настоящему считает своими.</li>
+    <li>now(hasHome==True,defender==False,PAWN_gender==Male)-&gt;Теперь [PAWN_nameDef] полноправный боец фракции «[HOME_name]», и набег для него так же естественен, как дыхание.</li>
+    <li>now(hasHome==True,defender==False,PAWN_gender==Female)-&gt;Теперь [PAWN_nameDef] полноправный боец фракции «[HOME_name]», и набег для неё так же естественен, как дыхание.</li>
+    <li>now(hasHome==True,defender==False)-&gt;Теперь [PAWN_pronoun] идёт с бойцами фракции «[HOME_name]» на поселения, которые издали немного похожи на полузабытый дом.</li>
+    <li>now(hasHome==True,defender==False,PAWN_gender==Male)-&gt;Под знамёнами фракции «[HOME_name]» [PAWN_nameDef] бьёт по колониям, не чувствуя, что когда-то жил в одной из них.</li>
+    <li>now(hasHome==True,defender==False,PAWN_gender==Female)-&gt;Под знамёнами фракции «[HOME_name]» [PAWN_nameDef] бьёт по колониям, не чувствуя, что когда-то жила в одной из них.</li>
+    <li>now(hasHome==True,defender==False,PAWN_gender==Male)-&gt;Повзрослев, [PAWN_pronoun] воюет вместе с бойцами фракции «[HOME_name]» и ни разу не задумался, кем мог бы стать.</li>
+    <li>now(hasHome==True,defender==False,PAWN_gender==Female)-&gt;Повзрослев, [PAWN_pronoun] воюет вместе с бойцами фракции «[HOME_name]» и ни разу не задумалась, кем могла бы стать.</li>
+    <li>now(hasHome==False,defender==False,PAWN_gender==Male)-&gt;Теперь [PAWN_pronoun], уже взрослый, ходит в набеги с боевым отрядом и нападает на колонии вроде той, откуда его унесли, сам того не зная.</li>
+    <li>now(hasHome==False,defender==False,PAWN_gender==Female)-&gt;Теперь [PAWN_pronoun], уже взрослая, ходит в набеги с боевым отрядом и нападает на колонии вроде той, откуда её унесли, сама того не зная.</li>
+    <li>now(hasHome==False,defender==False)-&gt;Теперь [PAWN_nameDef] ходит в набеги в отряде, где живут единственные люди, которых [PAWN_pronoun] по-настоящему считает своими.</li>
+    <li>now(hasHome==False,defender==False,PAWN_gender==Male)-&gt;Теперь [PAWN_nameDef] полноправный боец отряда, и набег для него так же естественен, как дыхание.</li>
+    <li>now(hasHome==False,defender==False,PAWN_gender==Female)-&gt;Теперь [PAWN_nameDef] полноправный боец отряда, и набег для неё так же естественен, как дыхание.</li>
+    <li>now(hasHome==False,defender==False)-&gt;Теперь [PAWN_pronoun] идёт с отрядом на поселения, которые издали немного похожи на полузабытый дом.</li>
+    <li>now(hasHome==False,defender==False,PAWN_gender==Male)-&gt;В рядах отряда [PAWN_nameDef] бьёт по колониям, не чувствуя, что когда-то жил в одной из них.</li>
+    <li>now(hasHome==False,defender==False,PAWN_gender==Female)-&gt;В рядах отряда [PAWN_nameDef] бьёт по колониям, не чувствуя, что когда-то жила в одной из них.</li>
+    <li>now(hasHome==False,defender==False,PAWN_gender==Male)-&gt;Повзрослев, [PAWN_pronoun] воюет в отряде и ни разу не задумался, кем мог бы стать.</li>
+    <li>now(hasHome==False,defender==False,PAWN_gender==Female)-&gt;Повзрослев, [PAWN_pronoun] воюет в отряде и ни разу не задумалась, кем могла бы стать.</li>
+    <li>now(hasHome==True,defender==True,PAWN_gender==Male)-&gt;Теперь [PAWN_pronoun], уже взрослый, стережёт стены фракции «[HOME_name]», которые, сколько [PAWN_pronoun] себя помнит, были домом.</li>
+    <li>now(hasHome==True,defender==True,PAWN_gender==Female)-&gt;Теперь [PAWN_pronoun], уже взрослая, стережёт стены фракции «[HOME_name]», которые, сколько [PAWN_pronoun] себя помнит, были домом.</li>
+    <li>now(hasHome==True,defender==True)-&gt;Теперь [PAWN_nameDef] несёт караул среди бойцов фракции «[HOME_name]», единственных людей, которых [PAWN_pronoun] по-настоящему считает своими.</li>
+    <li>now(hasHome==True,defender==True,PAWN_gender==Male)-&gt;Теперь [PAWN_nameDef] полноправный боец фракции «[HOME_name]», и караул на этих стенах для него так же естественен, как дыхание.</li>
+    <li>now(hasHome==True,defender==True,PAWN_gender==Female)-&gt;Теперь [PAWN_nameDef] полноправный боец фракции «[HOME_name]», и караул на этих стенах для неё так же естественен, как дыхание.</li>
+    <li>now(hasHome==True,defender==True,PAWN_gender==Male)-&gt;Теперь [PAWN_pronoun] смотрит на ваших людей с высоты стен, которые держит фракция «[HOME_name]», и их лица будят в нём то, чему [PAWN_pronoun] не знает названия.</li>
+    <li>now(hasHome==True,defender==True,PAWN_gender==Female)-&gt;Теперь [PAWN_pronoun] смотрит на ваших людей с высоты стен, которые держит фракция «[HOME_name]», и их лица будят в ней то, чему [PAWN_pronoun] не знает названия.</li>
+    <li>now(hasHome==True,defender==True,PAWN_gender==Male)-&gt;Среди бойцов фракции «[HOME_name]» [PAWN_nameDef] защищает единственный известный ему дом и не чувствует, что когда-то у него был другой.</li>
+    <li>now(hasHome==True,defender==True,PAWN_gender==Female)-&gt;Среди бойцов фракции «[HOME_name]» [PAWN_nameDef] защищает единственный известный ей дом и не чувствует, что когда-то у неё был другой.</li>
+    <li>now(hasHome==True,defender==True,PAWN_gender==Male)-&gt;Повзрослев, [PAWN_pronoun] живёт и несёт караул вместе с бойцами фракции «[HOME_name]» и ни разу не задумался, кем мог бы стать.</li>
+    <li>now(hasHome==True,defender==True,PAWN_gender==Female)-&gt;Повзрослев, [PAWN_pronoun] живёт и несёт караул вместе с бойцами фракции «[HOME_name]» и ни разу не задумалась, кем могла бы стать.</li>
+    <li>now(hasHome==False,defender==True,PAWN_gender==Male)-&gt;Теперь [PAWN_pronoun], уже взрослый, стережёт стены, которые, сколько [PAWN_pronoun] себя помнит, были домом.</li>
+    <li>now(hasHome==False,defender==True,PAWN_gender==Female)-&gt;Теперь [PAWN_pronoun], уже взрослая, стережёт стены, которые, сколько [PAWN_pronoun] себя помнит, были домом.</li>
+    <li>now(hasHome==False,defender==True)-&gt;Теперь [PAWN_nameDef] несёт караул среди единственных людей, которых [PAWN_pronoun] по-настоящему считает своими.</li>
+    <li>now(hasHome==False,defender==True,PAWN_gender==Male)-&gt;Теперь [PAWN_nameDef] полноправный воин здесь, и караул на этих стенах для него так же естественен, как дыхание.</li>
+    <li>now(hasHome==False,defender==True,PAWN_gender==Female)-&gt;Теперь [PAWN_nameDef] полноправный воин здесь, и караул на этих стенах для неё так же естественен, как дыхание.</li>
+    <li>now(hasHome==False,defender==True,PAWN_gender==Male)-&gt;Теперь [PAWN_pronoun] смотрит на ваших людей со стен, и их лица будят в нём то, чему [PAWN_pronoun] не знает названия.</li>
+    <li>now(hasHome==False,defender==True,PAWN_gender==Female)-&gt;Теперь [PAWN_pronoun] смотрит на ваших людей со стен, и их лица будят в ней то, чему [PAWN_pronoun] не знает названия.</li>
+    <li>now(hasHome==False,defender==True,PAWN_gender==Male)-&gt;Здесь [PAWN_nameDef] защищает единственный известный ему дом и не чувствует, что когда-то у него был другой.</li>
+    <li>now(hasHome==False,defender==True,PAWN_gender==Female)-&gt;Здесь [PAWN_nameDef] защищает единственный известный ей дом и не чувствует, что когда-то у неё был другой.</li>
+    <li>now(hasHome==False,defender==True,PAWN_gender==Male)-&gt;Повзрослев, [PAWN_pronoun] живёт и несёт караул здесь и ни разу не задумался, кем мог бы стать.</li>
+    <li>now(hasHome==False,defender==True,PAWN_gender==Female)-&gt;Повзрослев, [PAWN_pronoun] живёт и несёт караул здесь и ни разу не задумалась, кем могла бы стать.</li>
+  </PastLives_Story_RaisedByRaiders.rulePack.rulesStrings>
+
+  <PastLives_Story_Faith.rulePack.rulesStrings>
+    <li>r_story-&gt;[lost] [creed] [now] [childhood]</li>
+    <li>lost(PAWN_gender==Male)-&gt;После [colony] [PAWN_nameDef] долго бродил, опустошённый, прислушиваясь к любому голосу, который объяснил бы случившееся.</li>
+    <li>lost(PAWN_gender==Female)-&gt;После [colony] [PAWN_nameDef] долго бродила, опустошённая, прислушиваясь к любому голосу, который объяснил бы случившееся.</li>
+    <li>lost(PAWN_gender==Male)-&gt;[PAWN_nameDef] ушёл из [colony] с вопросами, на которые там никто не мог ответить, и отправился искать того, кто сможет.</li>
+    <li>lost(PAWN_gender==Female)-&gt;[PAWN_nameDef] ушла из [colony] с вопросами, на которые там никто не мог ответить, и отправилась искать того, кто сможет.</li>
+    <li>lost(PAWN_gender==Male)-&gt;Ничто в [colony] не подготовило [PAWN_objective] к тишине, что наступила после, и [PAWN_pronoun] целую зиму искал слова, достаточно большие, чтобы заполнить её.</li>
+    <li>lost(PAWN_gender==Female)-&gt;Ничто в [colony] не подготовило [PAWN_objective] к тишине, что наступила после, и [PAWN_pronoun] целую зиму искала слова, достаточно большие, чтобы заполнить её.</li>
+    <li>lost(PAWN_gender==Male)-&gt;Когда в [colony] всё кончилось, [PAWN_nameDef] перестал верить в удачу и начал искать что-то более строгое.</li>
+    <li>lost(PAWN_gender==Female)-&gt;Когда в [colony] всё кончилось, [PAWN_nameDef] перестала верить в удачу и начала искать что-то более строгое.</li>
+    <li>lost(PAWN_gender==Male)-&gt;Утрата [colony] оставила в нём пустоту, которую не заполнить обычным утешением.</li>
+    <li>lost(PAWN_gender==Female)-&gt;Утрата [colony] оставила в ней пустоту, которую не заполнить обычным утешением.</li>
+    <li>lost(PAWN_gender==Male)-&gt;[PAWN_nameDef] ушёл из [colony], уверенный, что у мира должен быть смысл, и совсем не уверенный, какой.</li>
+    <li>lost(PAWN_gender==Female)-&gt;[PAWN_nameDef] ушла из [colony], уверенная, что у мира должен быть смысл, и совсем не уверенная, какой.</li>
+    <li>creed(PAWN_gender==Male)-&gt;Потом у придорожного костра [PAWN_pronoun] встретил проповедника и услышал учение, такое простое и такое суровое, что сразу понял: вот оно.</li>
+    <li>creed(PAWN_gender==Female)-&gt;Потом у придорожного костра [PAWN_pronoun] встретила проповедника и услышала учение, такое простое и такое суровое, что сразу поняла: вот оно.</li>
+    <li>creed(PAWN_gender==Male)-&gt;Круг верных принял [PAWN_objective], научил его своим песнопениям и сказал, что у любого страдания есть цель.</li>
+    <li>creed(PAWN_gender==Female)-&gt;Круг верных принял [PAWN_objective], научил её своим песнопениям и сказал, что у любого страдания есть цель.</li>
+    <li>creed(PAWN_gender==Male)-&gt;[PAWN_pronoun] нашёл веру, которая требовала всего, и впервые за долгие годы это принесло облегчение.</li>
+    <li>creed(PAWN_gender==Female)-&gt;[PAWN_pronoun] нашла веру, которая требовала всего, и впервые за долгие годы это принесло облегчение.</li>
+    <li>creed(PAWN_gender==Male)-&gt;Однажды ночью, под небом, полным звёзд, [PAWN_pronoun] понял учение, и оно больше не отпускало [PAWN_objective].</li>
+    <li>creed(PAWN_gender==Female)-&gt;Однажды ночью, под небом, полным звёзд, [PAWN_pronoun] поняла учение, и оно больше не отпускало [PAWN_objective].</li>
+    <li>creed(PAWN_gender==Male)-&gt;Верующие говорили о чистоте, о дне суда и о долге хранить огонь, и [PAWN_nameDef] слушал, пока эти слова не стали своими.</li>
+    <li>creed(PAWN_gender==Female)-&gt;Верующие говорили о чистоте, о дне суда и о долге хранить огонь, и [PAWN_nameDef] слушала, пока эти слова не стали своими.</li>
+    <li>creed(PAWN_gender==Male)-&gt;В маленьком святилище из сложенных камней [PAWN_pronoun] принёс обет, и этот обет придал форму каждому следующему дню.</li>
+    <li>creed(PAWN_gender==Female)-&gt;В маленьком святилище из сложенных камней [PAWN_pronoun] принесла обет, и этот обет придал форму каждому следующему дню.</li>
+    <li>now(hasHome==True,defender==False,PAWN_gender==Male)-&gt;Теперь [PAWN_pronoun] сражается рядом с бойцами фракции «[HOME_name]» в твёрдой уверенности, что каждый удар наносится ради чего-то большего, чем он сам.</li>
+    <li>now(hasHome==True,defender==False,PAWN_gender==Female)-&gt;Теперь [PAWN_pronoun] сражается рядом с бойцами фракции «[HOME_name]» в твёрдой уверенности, что каждый удар наносится ради чего-то большего, чем она сама.</li>
+    <li>now(hasHome==True,defender==False)-&gt;Теперь [PAWN_nameDef] ходит в набеги с бойцами фракции «[HOME_name]» из долга, а не ради удовольствия, и говорит о колониях как о местах, ещё не услышавших слова.</li>
+    <li>now(hasHome==True,defender==False)-&gt;Фракция «[HOME_name]» разделяет это учение, и [PAWN_nameDef] идёт с ним в каждый набег со спокойной, твёрдой убеждённостью.</li>
+    <li>now(hasHome==True,defender==False)-&gt;Теперь [PAWN_pronoun] несёт веру неверным под дулом винтовки, в обществе бойцов фракции «[HOME_name]».</li>
+    <li>now(hasHome==True,defender==False)-&gt;В рядах фракции «[HOME_name]» [PAWN_nameDef] нападает без злобы, считая, что лишь исполняет приговор.</li>
+    <li>now(hasHome==True,defender==False)-&gt;Теперь [PAWN_nameDef] ходит в набеги с бойцами фракции «[HOME_name]» и молится перед каждым нападением и после него.</li>
+    <li>now(hasHome==False,defender==False,PAWN_gender==Male)-&gt;Теперь [PAWN_pronoun] сражается рядом с отрядом верных в твёрдой уверенности, что каждый удар наносится ради чего-то большего, чем он сам.</li>
+    <li>now(hasHome==False,defender==False,PAWN_gender==Female)-&gt;Теперь [PAWN_pronoun] сражается рядом с отрядом верных в твёрдой уверенности, что каждый удар наносится ради чего-то большего, чем она сама.</li>
+    <li>now(hasHome==False,defender==False)-&gt;Теперь [PAWN_nameDef] ходит в набеги с отрядом верных из долга, а не ради удовольствия, и говорит о колониях как о местах, ещё не услышавших слова.</li>
+    <li>now(hasHome==False,defender==False)-&gt;Отряд разделяет это учение, и [PAWN_nameDef] идёт с ним в каждый набег со спокойной, твёрдой убеждённостью.</li>
+    <li>now(hasHome==False,defender==False)-&gt;Теперь [PAWN_pronoun] несёт веру неверным под дулом винтовки, в обществе единоверцев.</li>
+    <li>now(hasHome==False,defender==False)-&gt;В рядах верных [PAWN_nameDef] нападает без злобы, считая, что лишь исполняет приговор.</li>
+    <li>now(hasHome==False,defender==False)-&gt;Теперь [PAWN_nameDef] ходит в набеги с верными и молится перед каждым нападением и после него.</li>
+    <li>now(hasHome==True,defender==True,PAWN_gender==Male)-&gt;Теперь [PAWN_pronoun] оберегает это место для фракции «[HOME_name]» в твёрдой уверенности, что за его стенами хранится нечто большее, чем он сам.</li>
+    <li>now(hasHome==True,defender==True,PAWN_gender==Female)-&gt;Теперь [PAWN_pronoun] оберегает это место для фракции «[HOME_name]» в твёрдой уверенности, что за его стенами хранится нечто большее, чем она сама.</li>
+    <li>now(hasHome==True,defender==True)-&gt;Теперь [PAWN_nameDef] несёт караул для фракции «[HOME_name]» из долга, а не ради удовольствия, и видит в каждом чужаке испытание для своей веры.</li>
+    <li>now(hasHome==True,defender==True)-&gt;Фракция «[HOME_name]» разделяет это учение, и [PAWN_nameDef] защищает общее дело со спокойной, твёрдой убеждённостью.</li>
+    <li>now(hasHome==True,defender==True)-&gt;Теперь [PAWN_pronoun] хранит веру здесь, среди бойцов фракции «[HOME_name]», и говорит с вашими людьми мягко, но без тени мягкости во взгляде.</li>
+    <li>now(hasHome==True,defender==True)-&gt;Среди бойцов фракции «[HOME_name]» [PAWN_nameDef] стоит на страже без злобы, считая, что лишь держит обещание.</li>
+    <li>now(hasHome==True,defender==True)-&gt;Теперь [PAWN_nameDef] живёт среди бойцов фракции «[HOME_name]» и молится у ворот перед рассветом и после заката.</li>
+    <li>now(hasHome==False,defender==True,PAWN_gender==Male)-&gt;Теперь [PAWN_pronoun] оберегает это место в твёрдой уверенности, что за его стенами хранится нечто большее, чем он сам.</li>
+    <li>now(hasHome==False,defender==True,PAWN_gender==Female)-&gt;Теперь [PAWN_pronoun] оберегает это место в твёрдой уверенности, что за его стенами хранится нечто большее, чем она сама.</li>
+    <li>now(hasHome==False,defender==True)-&gt;Теперь [PAWN_nameDef] несёт здесь караул из долга, а не ради удовольствия, и видит в каждом чужаке испытание для своей веры.</li>
+    <li>now(hasHome==False,defender==True)-&gt;Здешние люди разделяют это учение, и [PAWN_nameDef] защищает общее дело со спокойной, твёрдой убеждённостью.</li>
+    <li>now(hasHome==False,defender==True)-&gt;Теперь [PAWN_pronoun] хранит веру здесь, среди единоверцев, и говорит с вашими людьми мягко, но без тени мягкости во взгляде.</li>
+    <li>now(hasHome==False,defender==True)-&gt;Среди здешних верных [PAWN_nameDef] стоит на страже без злобы, считая, что лишь держит обещание.</li>
+    <li>now(hasHome==False,defender==True)-&gt;Теперь [PAWN_nameDef] живёт среди единоверцев и молится у ворот перед рассветом и после заката.</li>
+  </PastLives_Story_Faith.rulePack.rulesStrings>
+
+  <PastLives_Story_Addiction.rulePack.rulesStrings>
+    <li>r_story-&gt;[hook] [craving] [now] [childhood]</li>
+    <li>hook(PAWN_gender==Male)-&gt;После [colony] [PAWN_nameDef] принял немного go-сока, чтобы пережить плохую ночь, а потом ещё, чтобы пережить следующую.</li>
+    <li>hook(PAWN_gender==Female)-&gt;После [colony] [PAWN_nameDef] приняла немного go-сока, чтобы пережить плохую ночь, а потом ещё, чтобы пережить следующую.</li>
+    <li>hook(PAWN_gender==Male)-&gt;После [colony] приятель сунул ему в руку пакетик хлопьев психина, сказав, что это снимет остроту, и какое-то время так и было.</li>
+    <li>hook(PAWN_gender==Female)-&gt;После [colony] приятель сунул ей в руку пакетик хлопьев психина, сказав, что это снимет остроту, и какое-то время так и было.</li>
+    <li>hook(PAWN_gender==Male)-&gt;[PAWN_nameDef] начал принимать порошок психина, чтобы забыть о [colony], и получалось так хорошо, что забывание стало работой на весь день.</li>
+    <li>hook(PAWN_gender==Female)-&gt;[PAWN_nameDef] начала принимать порошок психина, чтобы забыть о [colony], и получалось так хорошо, что забывание стало работой на весь день.</li>
+    <li>hook-&gt;Бодрин держал [PAWN_objective] на ногах в долгих переходах после [colony], пока не остался единственным, что ещё держало.</li>
+    <li>hook-&gt;Всё началось с одной дозы, любезно предложенной на холоде после [colony], а закончилось тем, что [PAWN_nameDef] считает часы между дозами.</li>
+    <li>hook(PAWN_gender==Male)-&gt;В [colony] [PAWN_nameDef] никогда не питал пристрастия к наркотикам, но на дороге горсть хлопьев психина оказалась единственным, что хоть как-то грело.</li>
+    <li>hook(PAWN_gender==Female)-&gt;В [colony] [PAWN_nameDef] никогда не питала пристрастия к наркотикам, но на дороге горсть хлопьев психина оказалась единственным, что хоть как-то грело.</li>
+    <li>craving-&gt;Теперь тело просит своё раньше рассудка, и по утрам, когда дозы нет, [PAWN_objective] сильно трясёт.</li>
+    <li>craving-&gt;Тяга сузила жизнь до короткого круга: найти дозу, принять, переждать и искать следующую.</li>
+    <li>craving(PAWN_gender==Male)-&gt;[PAWN_pronoun] потерял вес, зубы и почти всех старых друзей, но только не потребность.</li>
+    <li>craving(PAWN_gender==Female)-&gt;[PAWN_pronoun] потеряла вес, зубы и почти всех старых друзей, но только не потребность.</li>
+    <li>craving-&gt;Теперь ничто больше не держит [PAWN_objective] на ногах, ни голод, ни страх, и уж тем более не память о [colony].</li>
+    <li>craving-&gt;[PAWN_pronoun] может сутки обойтись без сна и неделю без еды, но без дозы выдерживает лишь несколько часов.</li>
+    <li>craving-&gt;Иногда ночью [PAWN_nameDef] ясно вспоминает о [colony] и хочет плакать, и склянка всегда лечит и это.</li>
+    <li>now(hasHome==True,defender==False)-&gt;Теперь [PAWN_pronoun] воюет за фракцию «[HOME_name]», потому что люди оттуда снабжают [PAWN_objective] дозами, и набег лишь путь к тихой неделе.</li>
+    <li>now(hasHome==True,defender==False)-&gt;Теперь [PAWN_nameDef] ходит в набеги с бойцами фракции «[HOME_name]», одним глазом следя за врагом, другим за пакетом на поясе.</li>
+    <li>now(hasHome==True,defender==False,PAWN_gender==Male)-&gt;Фракция «[HOME_name]» снабжает [PAWN_objective] дозами, и [PAWN_pronoun] идёт, куда его посылают, с дрожащими руками, но с прежним прицелом.</li>
+    <li>now(hasHome==True,defender==False,PAWN_gender==Female)-&gt;Фракция «[HOME_name]» снабжает [PAWN_objective] дозами, и [PAWN_pronoun] идёт, куда её посылают, с дрожащими руками, но с прежним прицелом.</li>
+    <li>now(hasHome==True,defender==False)-&gt;Теперь [PAWN_pronoun] нападает вместе с бойцами фракции «[HOME_name]» в дымке химического спокойствия и думает в основном о следующей дозе.</li>
+    <li>now(hasHome==True,defender==False)-&gt;[PAWN_nameDef] воюет за фракцию «[HOME_name]», пока приходят пакеты, и не спрашивает, кто по ту сторону стены.</li>
+    <li>now(hasHome==True,defender==False,PAWN_gender==Male)-&gt;В рядах фракции «[HOME_name]» [PAWN_objective] не любят, но о нём заботятся, а для него это почти одно и то же.</li>
+    <li>now(hasHome==True,defender==False,PAWN_gender==Female)-&gt;В рядах фракции «[HOME_name]» [PAWN_objective] не любят, но о ней заботятся, а для неё это почти одно и то же.</li>
+    <li>now(hasHome==False,defender==False)-&gt;Теперь [PAWN_pronoun] воюет за тех, кто снабжает [PAWN_objective] дозами, и набег лишь путь к тихой неделе.</li>
+    <li>now(hasHome==False,defender==False)-&gt;Теперь [PAWN_nameDef] ходит в набеги с боевым отрядом, одним глазом следя за врагом, другим за пакетом на поясе.</li>
+    <li>now(hasHome==False,defender==False,PAWN_gender==Male)-&gt;Боевой отряд снабжает [PAWN_objective] дозами, и [PAWN_pronoun] идёт, куда его посылают, с дрожащими руками, но с прежним прицелом.</li>
+    <li>now(hasHome==False,defender==False,PAWN_gender==Female)-&gt;Боевой отряд снабжает [PAWN_objective] дозами, и [PAWN_pronoun] идёт, куда её посылают, с дрожащими руками, но с прежним прицелом.</li>
+    <li>now(hasHome==False,defender==False)-&gt;Теперь [PAWN_pronoun] нападает вместе с отрядом в дымке химического спокойствия и думает в основном о следующей дозе.</li>
+    <li>now(hasHome==False,defender==False)-&gt;[PAWN_nameDef] воюет, пока приходят пакеты, и не спрашивает, кто по ту сторону стены.</li>
+    <li>now(hasHome==False,defender==False,PAWN_gender==Male)-&gt;Среди этих бойцов [PAWN_objective] не любят, но о нём заботятся, а для него это почти одно и то же.</li>
+    <li>now(hasHome==False,defender==False,PAWN_gender==Female)-&gt;Среди этих бойцов [PAWN_objective] не любят, но о ней заботятся, а для неё это почти одно и то же.</li>
+    <li>now(hasHome==True,defender==True)-&gt;Теперь [PAWN_pronoun] живёт среди бойцов фракции «[HOME_name]», потому что те снабжают [PAWN_objective] дозами, и караул лишь путь к тихой неделе.</li>
+    <li>now(hasHome==True,defender==True)-&gt;Теперь [PAWN_nameDef] несёт караул для фракции «[HOME_name]», одним глазом следя за воротами, другим за пакетом на поясе.</li>
+    <li>now(hasHome==True,defender==True)-&gt;Фракция «[HOME_name]» снабжает [PAWN_objective] дозами, и [PAWN_nameDef] остаётся там, где остаётся запас, с дрожащими руками, но с прежним прицелом.</li>
+    <li>now(hasHome==True,defender==True)-&gt;Теперь [PAWN_pronoun] стоит у ворот фракции «[HOME_name]» в дымке химического спокойствия и думает в основном о следующей дозе.</li>
+    <li>now(hasHome==True,defender==True)-&gt;[PAWN_nameDef] охраняет это место для фракции «[HOME_name]», пока приходят пакеты, и не спрашивает, кто пришёл.</li>
+    <li>now(hasHome==True,defender==True,PAWN_gender==Male)-&gt;Среди бойцов фракции «[HOME_name]» [PAWN_objective] не любят, но о нём заботятся, а для него это почти одно и то же.</li>
+    <li>now(hasHome==True,defender==True,PAWN_gender==Female)-&gt;Среди бойцов фракции «[HOME_name]» [PAWN_objective] не любят, но о ней заботятся, а для неё это почти одно и то же.</li>
+    <li>now(hasHome==False,defender==True)-&gt;Теперь [PAWN_pronoun] живёт здесь, потому что здешние люди снабжают [PAWN_objective] дозами, и караул лишь путь к тихой неделе.</li>
+    <li>now(hasHome==False,defender==True)-&gt;Теперь [PAWN_nameDef] несёт здесь караул, одним глазом следя за воротами, другим за пакетом на поясе.</li>
+    <li>now(hasHome==False,defender==True)-&gt;Здешние люди снабжают [PAWN_objective] дозами, и [PAWN_nameDef] остаётся там, где остаётся запас, с дрожащими руками, но с прежним прицелом.</li>
+    <li>now(hasHome==False,defender==True)-&gt;Теперь [PAWN_pronoun] стоит у ворот в дымке химического спокойствия и думает в основном о следующей дозе.</li>
+    <li>now(hasHome==False,defender==True)-&gt;[PAWN_nameDef] охраняет это место, пока приходят пакеты, и не спрашивает, кто пришёл.</li>
+    <li>now(hasHome==False,defender==True,PAWN_gender==Male)-&gt;Среди этих людей [PAWN_objective] не любят, но о нём заботятся, а для него это почти одно и то же.</li>
+    <li>now(hasHome==False,defender==True,PAWN_gender==Female)-&gt;Среди этих людей [PAWN_objective] не любят, но о ней заботятся, а для неё это почти одно и то же.</li>
+  </PastLives_Story_Addiction.rulePack.rulesStrings>
+
+  <PastLives_Story_Ambition.rulePack.rulesStrings>
+    <li>r_story-&gt;[start] [rise] [now] [childhood]</li>
+    <li>start(PAWN_gender==Male)-&gt;В [colony] [PAWN_nameDef] всегда стоял там, где велели, и ушёл оттуда, решив, что сам будет говорить другим, где стоять.</li>
+    <li>start(PAWN_gender==Female)-&gt;В [colony] [PAWN_nameDef] всегда стояла там, где велели, и ушла оттуда, решив, что сама будет говорить другим, где стоять.</li>
+    <li>start(PAWN_gender==Male)-&gt;После [colony] [PAWN_nameDef] решил, что правила пишут сильные, а слабые им подчиняются, и что [PAWN_pronoun] окажется среди первых.</li>
+    <li>start(PAWN_gender==Female)-&gt;После [colony] [PAWN_nameDef] решила, что правила пишут сильные, а слабые им подчиняются, и что [PAWN_pronoun] окажется среди первых.</li>
+    <li>start(PAWN_gender==Male)-&gt;[PAWN_nameDef] видел, как всё рушилось в [colony] без твёрдой руки, и заключил, что миру нужны именно твёрдые руки.</li>
+    <li>start(PAWN_gender==Female)-&gt;[PAWN_nameDef] видела, как всё рушилось в [colony] без твёрдой руки, и заключила, что миру нужны именно твёрдые руки.</li>
+    <li>start(PAWN_gender==Male)-&gt;Уходя из [colony], [PAWN_pronoun] дал себе слово больше не подчиняться никому, кто менее способен, чем он сам.</li>
+    <li>start(PAWN_gender==Female)-&gt;Уходя из [colony], [PAWN_pronoun] дала себе слово больше не подчиняться никому, кто менее способен, чем она сама.</li>
+    <li>start(PAWN_gender==Male)-&gt;В совете [colony] [PAWN_objective] никто не слушал, и память об этом разожгла в нём жажду места, где слушать будут.</li>
+    <li>start(PAWN_gender==Female)-&gt;В совете [colony] [PAWN_objective] никто не слушал, и память об этом разожгла в ней жажду места, где слушать будут.</li>
+    <li>start(PAWN_gender==Male)-&gt;В [colony] [PAWN_nameDef] обладал талантами, но не находил им применения, и, уйдя оттуда, отправился искать место, где талант ценят выше стажа.</li>
+    <li>start(PAWN_gender==Female)-&gt;В [colony] [PAWN_nameDef] обладала талантами, но не находил им применения, и, уйдя оттуда, отправилась искать место, где талант ценят выше стажа.</li>
+    <li>rise(PAWN_gender==Male)-&gt;[PAWN_pronoun] начал с самого низа, таская воду в суровом отряде, и через год уже имел право решать, кто что тащит.</li>
+    <li>rise(PAWN_gender==Female)-&gt;[PAWN_pronoun] начала с самого низа, таская воду в суровом отряде, и через год уже имела право решать, кто что тащит.</li>
+    <li>rise(PAWN_gender==Male)-&gt;[PAWN_pronoun] привлёк внимание тем, что составлял планы, после которых все возвращались целыми, и вскоре старшие бойцы начали слушать.</li>
+    <li>rise(PAWN_gender==Female)-&gt;[PAWN_pronoun] привлекла внимание тем, что составляла планы, после которых все возвращались целыми, и вскоре старшие бойцы начали слушать.</li>
+    <li>rise(PAWN_gender==Male)-&gt;Каждый бой был для него ступенькой, и [PAWN_pronoun] брал их осторожно, не слишком жадно и не слишком робко.</li>
+    <li>rise(PAWN_gender==Female)-&gt;Каждый бой был для неё ступенькой, и [PAWN_pronoun] брала их осторожно, не слишком жадно и не слишком робко.</li>
+    <li>rise(PAWN_gender==Male)-&gt;[PAWN_pronoun] выучил имена, слабости и ссоры всех, кто стоял выше, и ждал.</li>
+    <li>rise(PAWN_gender==Female)-&gt;[PAWN_pronoun] выучила имена, слабости и ссоры всех, кто стоял выше, и ждала.</li>
+    <li>rise(PAWN_gender==Male)-&gt;Один соперник посрамлён, один покровитель польщён, один капитан пережит: [PAWN_nameDef] поднимался вверх маленькими терпеливыми шагами.</li>
+    <li>rise(PAWN_gender==Female)-&gt;Один соперник посрамлён, один покровитель польщён, один капитан пережит: [PAWN_nameDef] поднималась вверх маленькими терпеливыми шагами.</li>
+    <li>rise(PAWN_gender==Male)-&gt;[PAWN_nameDef] заработал сперва отряд, потом пост, потом славу того, кто возвращается из скверных боёв с лучшей историей.</li>
+    <li>rise(PAWN_gender==Female)-&gt;[PAWN_nameDef] заработала сперва отряд, потом пост, потом славу того, кто возвращается из скверных боёв с лучшей историей.</li>
+    <li>now(hasHome==True,defender==False,PAWN_gender==Male)-&gt;Теперь [PAWN_pronoun] командует отрядом фракции «[HOME_name]», намерен однажды возглавить её целиком и каждый набег считает ещё одним шагом вверх.</li>
+    <li>now(hasHome==True,defender==False,PAWN_gender==Female)-&gt;Теперь [PAWN_pronoun] командует отрядом фракции «[HOME_name]», намерена однажды возглавить её целиком и каждый набег считает ещё одним шагом вверх.</li>
+    <li>now(hasHome==True,defender==False)-&gt;Теперь [PAWN_nameDef] едет в первых рядах фракции «[HOME_name]», присматривается к вождю и мерит расстояние.</li>
+    <li>now(hasHome==True,defender==False,PAWN_gender==Male)-&gt;[PAWN_nameDef] уже составил себе имя во фракции «[HOME_name]», и каждый удачный набег поднимает его чуть выше.</li>
+    <li>now(hasHome==True,defender==False,PAWN_gender==Female)-&gt;[PAWN_nameDef] уже составила себе имя во фракции «[HOME_name]», и каждый удачный набег поднимает его чуть выше.</li>
+    <li>now(hasHome==True,defender==False)-&gt;Теперь [PAWN_pronoun] воюет среди бойцов фракции «[HOME_name]» с терпеливым видом человека, который скоро рассчитывает стать главным.</li>
+    <li>now(hasHome==True,defender==False,PAWN_gender==Male)-&gt;Во фракции «[HOME_name]» [PAWN_nameDef] ведёт за собой, идя первым, и изящно принимает похвалу, а вожди уже начали присматриваться к нему.</li>
+    <li>now(hasHome==True,defender==False,PAWN_gender==Female)-&gt;Во фракции «[HOME_name]» [PAWN_nameDef] ведёт за собой, идя первой, и изящно принимает похвалу, а вожди уже начали присматриваться к ней.</li>
+    <li>now(hasHome==True,defender==False,PAWN_gender==Male)-&gt;Ряды фракции «[HOME_name]» для него лестница, а набег лишь следующая ступень.</li>
+    <li>now(hasHome==True,defender==False,PAWN_gender==Female)-&gt;Ряды фракции «[HOME_name]» для неё лестница, а набег лишь следующая ступень.</li>
+    <li>now(hasHome==False,defender==False,PAWN_gender==Male)-&gt;Теперь [PAWN_pronoun] командует отделением в боевом отряде, намерен однажды возглавить его целиком и каждый набег считает ещё одним шагом вверх.</li>
+    <li>now(hasHome==False,defender==False,PAWN_gender==Female)-&gt;Теперь [PAWN_pronoun] командует отделением в боевом отряде, намерена однажды возглавить его целиком и каждый набег считает ещё одним шагом вверх.</li>
+    <li>now(hasHome==False,defender==False)-&gt;Теперь [PAWN_nameDef] едет в первых рядах отряда, присматривается к вожаку и мерит расстояние.</li>
+    <li>now(hasHome==False,defender==False,PAWN_gender==Male)-&gt;[PAWN_nameDef] уже составил себе имя в отряде, и каждый удачный набег поднимает его чуть выше.</li>
+    <li>now(hasHome==False,defender==False,PAWN_gender==Female)-&gt;[PAWN_nameDef] уже составила себе имя в отряде, и каждый удачный набег поднимает его чуть выше.</li>
+    <li>now(hasHome==False,defender==False)-&gt;Теперь [PAWN_pronoun] воюет с терпеливым видом человека, который скоро рассчитывает стать главным.</li>
+    <li>now(hasHome==False,defender==False,PAWN_gender==Male)-&gt;В отряде [PAWN_nameDef] ведёт за собой, идя первым, и изящно принимает похвалу, а вожаки уже начали присматриваться к нему.</li>
+    <li>now(hasHome==False,defender==False,PAWN_gender==Female)-&gt;В отряде [PAWN_nameDef] ведёт за собой, идя первой, и изящно принимает похвалу, а вожаки уже начали присматриваться к ней.</li>
+    <li>now(hasHome==False,defender==False,PAWN_gender==Male)-&gt;Ряды отряда для него лестница, а набег лишь следующая ступень.</li>
+    <li>now(hasHome==False,defender==False,PAWN_gender==Female)-&gt;Ряды отряда для неё лестница, а набег лишь следующая ступень.</li>
+    <li>now(hasHome==True,defender==True,PAWN_gender==Male)-&gt;Теперь [PAWN_pronoun] командует постом фракции «[HOME_name]», намерен однажды возглавить здесь всё и в каждом, кто приходит к воротам, видит случай отличиться.</li>
+    <li>now(hasHome==True,defender==True,PAWN_gender==Female)-&gt;Теперь [PAWN_pronoun] командует постом фракции «[HOME_name]», намерена однажды возглавить здесь всё и в каждом, кто приходит к воротам, видит случай отличиться.</li>
+    <li>now(hasHome==True,defender==True)-&gt;Теперь [PAWN_nameDef] держится рядом с вождями фракции «[HOME_name]», присматривается к главному и мерит расстояние.</li>
+    <li>now(hasHome==True,defender==True,PAWN_gender==Male)-&gt;[PAWN_nameDef] уже составил себе имя во фракции «[HOME_name]», и каждое хорошо сделанное дело у ворот поднимает его чуть выше.</li>
+    <li>now(hasHome==True,defender==True,PAWN_gender==Female)-&gt;[PAWN_nameDef] уже составила себе имя во фракции «[HOME_name]», и каждое хорошо сделанное дело у ворот поднимает его чуть выше.</li>
+    <li>now(hasHome==True,defender==True)-&gt;Теперь [PAWN_pronoun] следит за порядком среди бойцов фракции «[HOME_name]» с терпеливым видом человека, который скоро рассчитывает стать главным.</li>
+    <li>now(hasHome==True,defender==True,PAWN_gender==Male)-&gt;Во фракции «[HOME_name]» [PAWN_nameDef] ведёт караулы и изящно принимает похвалу, а вожди уже начали присматриваться к нему.</li>
+    <li>now(hasHome==True,defender==True,PAWN_gender==Female)-&gt;Во фракции «[HOME_name]» [PAWN_nameDef] ведёт караулы и изящно принимает похвалу, а вожди уже начали присматриваться к ней.</li>
+    <li>now(hasHome==True,defender==True,PAWN_gender==Male)-&gt;Ряды фракции «[HOME_name]» для него лестница, а этот караул лишь следующая ступень.</li>
+    <li>now(hasHome==True,defender==True,PAWN_gender==Female)-&gt;Ряды фракции «[HOME_name]» для неё лестница, а этот караул лишь следующая ступень.</li>
+    <li>now(hasHome==False,defender==True,PAWN_gender==Male)-&gt;Теперь [PAWN_pronoun] командует здешним постом, намерен однажды возглавить здесь всё и в каждом, кто приходит к воротам, видит случай отличиться.</li>
+    <li>now(hasHome==False,defender==True,PAWN_gender==Female)-&gt;Теперь [PAWN_pronoun] командует здешним постом, намерена однажды возглавить здесь всё и в каждом, кто приходит к воротам, видит случай отличиться.</li>
+    <li>now(hasHome==False,defender==True)-&gt;Теперь [PAWN_nameDef] держится рядом со здешними вождями, присматривается к главному и мерит расстояние.</li>
+    <li>now(hasHome==False,defender==True,PAWN_gender==Male)-&gt;[PAWN_nameDef] уже составил себе здесь имя, и каждое хорошо сделанное дело у ворот поднимает его чуть выше.</li>
+    <li>now(hasHome==False,defender==True,PAWN_gender==Female)-&gt;[PAWN_nameDef] уже составила себе здесь имя, и каждое хорошо сделанное дело у ворот поднимает его чуть выше.</li>
+    <li>now(hasHome==False,defender==True)-&gt;Теперь [PAWN_pronoun] следит здесь за порядком с терпеливым видом человека, который скоро рассчитывает стать главным.</li>
+    <li>now(hasHome==False,defender==True,PAWN_gender==Male)-&gt;Здесь [PAWN_nameDef] ведёт караулы и изящно принимает похвалу, а вожди уже начали присматриваться к нему.</li>
+    <li>now(hasHome==False,defender==True,PAWN_gender==Female)-&gt;Здесь [PAWN_nameDef] ведёт караулы и изящно принимает похвалу, а вожди уже начали присматриваться к ней.</li>
+    <li>now(hasHome==False,defender==True,PAWN_gender==Male)-&gt;Здешние ряды для него лестница, а этот караул лишь следующая ступень.</li>
+    <li>now(hasHome==False,defender==True,PAWN_gender==Female)-&gt;Здешние ряды для неё лестница, а этот караул лишь следующая ступень.</li>
+  </PastLives_Story_Ambition.rulePack.rulesStrings>
+
+  <PastLives_Story_Warband.rulePack.rulesStrings>
+    <li>r_story-&gt;[tribe] [trial] [now] [childhood]</li>
+    <li>tribe(PAWN_gender==Male)-&gt;После [colony] [PAWN_nameDef] пришёл к племени в холмах, и там дали одеяло, миску и не задали ни одного вопроса.</li>
+    <li>tribe(PAWN_gender==Female)-&gt;После [colony] [PAWN_nameDef] пришла к племени в холмах, и там дали одеяло, миску и не задали ни одного вопроса.</li>
+    <li>tribe(PAWN_gender==Male)-&gt;Годами [PAWN_nameDef] жил среди племени холмов, изучая его язык, его запреты и имена ветров.</li>
+    <li>tribe(PAWN_gender==Female)-&gt;Годами [PAWN_nameDef] жила среди племени холмов, изучая его язык, его запреты и имена ветров.</li>
+    <li>tribe(PAWN_gender==Male)-&gt;После [colony] [PAWN_nameDef], полуголодный, попался на глаза охотникам племени, и те позволили ему всю зиму сидеть у своих костров.</li>
+    <li>tribe(PAWN_gender==Female)-&gt;После [colony] [PAWN_nameDef], полуголодная, попалась на глаза охотникам племени, и те позволили ей всю зиму сидеть у своих костров.</li>
+    <li>tribe(PAWN_gender==Male)-&gt;Никого в племени не интересовало, откуда [PAWN_nameDef] пришёл, только то, способен ли [PAWN_pronoun] носить груз и держать язык за зубами.</li>
+    <li>tribe(PAWN_gender==Female)-&gt;Никого в племени не интересовало, откуда [PAWN_nameDef] пришла, только то, способна ли [PAWN_pronoun] носить груз и держать язык за зубами.</li>
+    <li>tribe(PAWN_gender==Male)-&gt;После [colony] [PAWN_pronoun] сперва был гостем племени, потом помощником в его стойбище, а потом перестал чувствовать себя чужим.</li>
+    <li>tribe(PAWN_gender==Female)-&gt;После [colony] [PAWN_pronoun] сперва была гостьей племени, потом помощницей в его стойбище, а потом перестала чувствовать себя чужим.</li>
+    <li>tribe(PAWN_gender==Male)-&gt;Племя было бедным и гордым, и [PAWN_nameDef] нашёл в его суровых обычаях опору, какой не знал в [colony].</li>
+    <li>tribe(PAWN_gender==Female)-&gt;Племя было бедным и гордым, и [PAWN_nameDef] нашла в его суровых обычаях опору, какой не знала в [colony].</li>
+    <li>trial(scars==True,PAWN_gender==Male)-&gt;Чтобы стать воином, [PAWN_pronoun] прошёл испытания племени, ночь в глуши в одиночестве и охоту на опасную дичь, и порезы с укусами оставили шрамы.</li>
+    <li>trial(scars==True,PAWN_gender==Female)-&gt;Чтобы стать воином, [PAWN_pronoun] прошла испытания племени, ночь в глуши в одиночестве и охоту на опасную дичь, и порезы с укусами оставили шрамы.</li>
+    <li>trial(scars==True,PAWN_gender==Male)-&gt;Место воина [PAWN_pronoun] заслужил на долгой охоте, где раненый зверь оставил на нём свои метки, и шрамы остались.</li>
+    <li>trial(scars==True,PAWN_gender==Female)-&gt;Место воина [PAWN_pronoun] заслужила на долгой охоте, где раненый зверь оставил на ней свои метки, и шрамы остались.</li>
+    <li>trial(scars==True,PAWN_gender==Male)-&gt;Старейшины назначили ему испытание большой охотой, и [PAWN_pronoun] выдержал его в крови, со шрамами на память.</li>
+    <li>trial(scars==True,PAWN_gender==Female)-&gt;Старейшины назначили ей испытание большой охотой, и [PAWN_pronoun] выдержала его в крови, со шрамами на память.</li>
+    <li>trial(scars==True,PAWN_gender==Male)-&gt;После испытания копьём, охоты на медведя и ночи в терновых ямах [PAWN_nameDef] стал воином, и следы ясно видны на коже.</li>
+    <li>trial(scars==True,PAWN_gender==Female)-&gt;После испытания копьём, охоты на медведя и ночи в терновых ямах [PAWN_nameDef] стала воином, и следы ясно видны на коже.</li>
+    <li>trial(scars==True,PAWN_gender==Male)-&gt;[PAWN_pronoun] прошёл испытание клинком и зубом, и шрамы расскажут об этом любому, кто посмотрит.</li>
+    <li>trial(scars==True,PAWN_gender==Female)-&gt;[PAWN_pronoun] прошла испытание клинком и зубом, и шрамы расскажут об этом любому, кто посмотрит.</li>
+    <li>trial(scars==True,PAWN_gender==Male)-&gt;Воины испытали [PAWN_objective] охотой, которая пошла совсем не так, и [PAWN_pronoun] вышел из неё воином со шрамами.</li>
+    <li>trial(scars==True,PAWN_gender==Female)-&gt;Воины испытали [PAWN_objective] охотой, которая пошла совсем не так, и [PAWN_pronoun] вышла из неё воином со шрамами.</li>
+    <li>trial(scars==False,PAWN_gender==Male)-&gt;Чтобы стать воином, [PAWN_pronoun] прошёл испытания племени, ночь в глуши в одиночестве и охоту на опасную дичь, и не получил ни царапины.</li>
+    <li>trial(scars==False,PAWN_gender==Female)-&gt;Чтобы стать воином, [PAWN_pronoun] прошла испытания племени, ночь в глуши в одиночестве и охоту на опасную дичь, и не получила ни царапины.</li>
+    <li>trial(scars==False,PAWN_gender==Male)-&gt;Место воина [PAWN_pronoun] заслужил на долгой охоте, где раненый зверь бросился вперёд, и [PAWN_pronoun] встретил его так чисто, что не осталось ни царапины.</li>
+    <li>trial(scars==False,PAWN_gender==Female)-&gt;Место воина [PAWN_pronoun] заслужила на долгой охоте, где раненый зверь бросился вперёд, и [PAWN_pronoun] встретила его так чисто, что не осталось ни царапины.</li>
+    <li>trial(scars==False,PAWN_gender==Male)-&gt;Старейшины назначили ему испытание большой охотой, и [PAWN_pronoun] выдержал его твёрдой рукой, без единой царапины.</li>
+    <li>trial(scars==False,PAWN_gender==Female)-&gt;Старейшины назначили ей испытание большой охотой, и [PAWN_pronoun] выдержала его твёрдой рукой, без единой царапины.</li>
+    <li>trial(scars==False,PAWN_gender==Male)-&gt;После испытания копьём, охоты на медведя и ночи в терновых ямах [PAWN_nameDef] стал воином, и на коже не осталось ни следа.</li>
+    <li>trial(scars==False,PAWN_gender==Female)-&gt;После испытания копьём, охоты на медведя и ночи в терновых ямах [PAWN_nameDef] стала воином, и на коже не осталось ни следа.</li>
+    <li>trial(scars==False,PAWN_gender==Male)-&gt;[PAWN_pronoun] прошёл испытание клинком и зубом, и старейшины до сих пор говорят о том, как чисто это вышло.</li>
+    <li>trial(scars==False,PAWN_gender==Female)-&gt;[PAWN_pronoun] прошла испытание клинком и зубом, и старейшины до сих пор говорят о том, как чисто это вышло.</li>
+    <li>trial(scars==False,PAWN_gender==Male)-&gt;Воины испытали [PAWN_objective] охотой, которая пошла совсем не так, и [PAWN_pronoun] вышел из неё воином без единой отметины.</li>
+    <li>trial(scars==False,PAWN_gender==Female)-&gt;Воины испытали [PAWN_objective] охотой, которая пошла совсем не так, и [PAWN_pronoun] вышла из неё воином без единой отметины.</li>
+    <li>now(hasHome==True,defender==False,PAWN_gender==Male)-&gt;Теперь [PAWN_pronoun] идёт на войну с бойцами фракции «[HOME_name]», как подобает воину, раскрашенный и молчаливый, и распри племени стали своими.</li>
+    <li>now(hasHome==True,defender==False,PAWN_gender==Female)-&gt;Теперь [PAWN_pronoun] идёт на войну с бойцами фракции «[HOME_name]», как подобает воину, раскрашенная и молчаливая, и распри племени стали своими.</li>
+    <li>now(hasHome==True,defender==False)-&gt;Теперь [PAWN_nameDef] воюет в военных отрядах фракции «[HOME_name]» и о [colony] говорит, если вообще говорит, как о далёкой стране.</li>
+    <li>now(hasHome==True,defender==False)-&gt;Теперь [PAWN_nameDef] ходит в набеги бок о бок с воинами фракции «[HOME_name]», с костяным оберегом на шее и верностью, которая не вызывает сомнений.</li>
+    <li>now(hasHome==True,defender==False,PAWN_gender==Male)-&gt;Теперь [PAWN_pronoun] на рассвете бежит в бой вместе с бойцами фракции «[HOME_name]», молчаливый и уверенный, один воин из многих.</li>
+    <li>now(hasHome==True,defender==False,PAWN_gender==Female)-&gt;Теперь [PAWN_pronoun] на рассвете бежит в бой вместе с бойцами фракции «[HOME_name]», молчаливая и уверенная, одна воительница из многих.</li>
+    <li>now(hasHome==True,defender==False)-&gt;Когда старейшины зовут, [PAWN_pronoun] берёт копьё и лук за фракцию «[HOME_name]» и нападает так, как нападает племя: вместе и без речей.</li>
+    <li>now(hasHome==True,defender==False,PAWN_gender==Male)-&gt;Теперь [PAWN_nameDef] стоит в строю среди бойцов фракции «[HOME_name]», словно родился для этого.</li>
+    <li>now(hasHome==True,defender==False,PAWN_gender==Female)-&gt;Теперь [PAWN_nameDef] стоит в строю среди бойцов фракции «[HOME_name]», словно родилась для этого.</li>
+    <li>now(hasHome==False,defender==False,PAWN_gender==Male)-&gt;Теперь [PAWN_pronoun] идёт на войну вместе с племенем, как подобает воину, раскрашенный и молчаливый, и распри племени стали своими.</li>
+    <li>now(hasHome==False,defender==False,PAWN_gender==Female)-&gt;Теперь [PAWN_pronoun] идёт на войну вместе с племенем, как подобает воину, раскрашенная и молчаливая, и распри племени стали своими.</li>
+    <li>now(hasHome==False,defender==False)-&gt;Теперь [PAWN_nameDef] воюет в отрядах племени и о [colony] говорит, если вообще говорит, как о далёкой стране.</li>
+    <li>now(hasHome==False,defender==False)-&gt;Теперь [PAWN_nameDef] ходит в набеги бок о бок с воинами племени, с костяным оберегом на шее и верностью, которая не вызывает сомнений.</li>
+    <li>now(hasHome==False,defender==False,PAWN_gender==Male)-&gt;Теперь [PAWN_pronoun] на рассвете бежит в бой вместе с племенем, молчаливый и уверенный, один воин из многих.</li>
+    <li>now(hasHome==False,defender==False,PAWN_gender==Female)-&gt;Теперь [PAWN_pronoun] на рассвете бежит в бой вместе с племенем, молчаливая и уверенная, одна воительница из многих.</li>
+    <li>now(hasHome==False,defender==False)-&gt;Когда старейшины зовут, [PAWN_pronoun] берёт копьё и лук и нападает так, как нападает племя: вместе и без речей.</li>
+    <li>now(hasHome==False,defender==False,PAWN_gender==Male)-&gt;Теперь [PAWN_nameDef] стоит в строю среди бойцов племени, словно родился для этого.</li>
+    <li>now(hasHome==False,defender==False,PAWN_gender==Female)-&gt;Теперь [PAWN_nameDef] стоит в строю среди бойцов племени, словно родилась для этого.</li>
+    <li>now(hasHome==True,defender==True,PAWN_gender==Male)-&gt;Теперь [PAWN_pronoun] охраняет селение фракции «[HOME_name]», как подобает воину, раскрашенный и молчаливый, и распри племени стали своими.</li>
+    <li>now(hasHome==True,defender==True,PAWN_gender==Female)-&gt;Теперь [PAWN_pronoun] охраняет селение фракции «[HOME_name]», как подобает воину, раскрашенная и молчаливая, и распри племени стали своими.</li>
+    <li>now(hasHome==True,defender==True)-&gt;Теперь [PAWN_nameDef] стоит среди стражей фракции «[HOME_name]» и о [colony] говорит, если вообще говорит, как о далёкой стране.</li>
+    <li>now(hasHome==True,defender==True)-&gt;Теперь [PAWN_nameDef] несёт дозор бок о бок с воинами фракции «[HOME_name]», с костяным оберегом на шее и верностью, которая не вызывает сомнений.</li>
+    <li>now(hasHome==True,defender==True,PAWN_gender==Male)-&gt;Теперь [PAWN_pronoun] на рассвете стоит на краю стойбища фракции «[HOME_name]», молчаливый и уверенный, один воин из многих.</li>
+    <li>now(hasHome==True,defender==True,PAWN_gender==Female)-&gt;Теперь [PAWN_pronoun] на рассвете стоит на краю стойбища фракции «[HOME_name]», молчаливая и уверенная, одна воительница из многих.</li>
+    <li>now(hasHome==True,defender==True)-&gt;Когда приближаются чужаки, [PAWN_pronoun] держит копьё и лук под рукой ради фракции «[HOME_name]» и встречает их так, как встречает племя: вместе и без речей.</li>
+    <li>now(hasHome==True,defender==True,PAWN_gender==Male)-&gt;Теперь [PAWN_nameDef] стоит с бойцами фракции «[HOME_name]» у ворот селения, словно родился для этого.</li>
+    <li>now(hasHome==True,defender==True,PAWN_gender==Female)-&gt;Теперь [PAWN_nameDef] стоит с бойцами фракции «[HOME_name]» у ворот селения, словно родилась для этого.</li>
+    <li>now(hasHome==False,defender==True,PAWN_gender==Male)-&gt;Теперь [PAWN_pronoun] охраняет селение, как подобает воину, раскрашенный и молчаливый, и распри племени стали своими.</li>
+    <li>now(hasHome==False,defender==True,PAWN_gender==Female)-&gt;Теперь [PAWN_pronoun] охраняет селение, как подобает воину, раскрашенная и молчаливая, и распри племени стали своими.</li>
+    <li>now(hasHome==False,defender==True)-&gt;Теперь [PAWN_nameDef] стоит среди стражей племени и о [colony] говорит, если вообще говорит, как о далёкой стране.</li>
+    <li>now(hasHome==False,defender==True)-&gt;Теперь [PAWN_nameDef] несёт дозор бок о бок с воинами племени, с костяным оберегом на шее и верностью, которая не вызывает сомнений.</li>
+    <li>now(hasHome==False,defender==True,PAWN_gender==Male)-&gt;Теперь [PAWN_pronoun] на рассвете стоит на краю стойбища, молчаливый и уверенный, один воин из многих.</li>
+    <li>now(hasHome==False,defender==True,PAWN_gender==Female)-&gt;Теперь [PAWN_pronoun] на рассвете стоит на краю стойбища, молчаливая и уверенная, одна воительница из многих.</li>
+    <li>now(hasHome==False,defender==True)-&gt;Когда приближаются чужаки, [PAWN_pronoun] держит копьё и лук под рукой и встречает их так, как встречает племя: вместе и без речей.</li>
+    <li>now(hasHome==False,defender==True,PAWN_gender==Male)-&gt;Теперь [PAWN_nameDef] стоит среди бойцов племени у ворот селения, словно родился для этого.</li>
+    <li>now(hasHome==False,defender==True,PAWN_gender==Female)-&gt;Теперь [PAWN_nameDef] стоит среди бойцов племени у ворот селения, словно родилась для этого.</li>
+  </PastLives_Story_Warband.rulePack.rulesStrings>
+
+  <PastLives_Story_Salvager.rulePack.rulesStrings>
+    <li>r_story-&gt;[orbit] [work] [now] [childhood]</li>
+    <li>orbit(PAWN_gender==Male)-&gt;После [colony] [PAWN_nameDef] занял место на грузовом челноке и смотрел, как мир внизу сжимается до яркой монеты.</li>
+    <li>orbit(PAWN_gender==Female)-&gt;После [colony] [PAWN_nameDef] заняла место на грузовом челноке и смотрела, как мир внизу сжимается до яркой монеты.</li>
+    <li>orbit(PAWN_gender==Male)-&gt;[PAWN_nameDef] улетел из [colony] на орбиту, где ждали остовы кораблей и никто не спрашивал, кем человек был раньше.</li>
+    <li>orbit(PAWN_gender==Female)-&gt;[PAWN_nameDef] улетела из [colony] на орбиту, где ждали остовы кораблей и никто не спрашивал, кем человек был раньше.</li>
+    <li>orbit-&gt;После [colony] вербовщик на посадочном поле уговорил [PAWN_objective] идти на орбитальные верфи, пообещав работу среди мёртвых кораблей.</li>
+    <li>orbit(PAWN_gender==Male)-&gt;Услышав слух о работе, [PAWN_nameDef] отправился из [colony] на свалочную станцию на высокой орбите.</li>
+    <li>orbit(PAWN_gender==Female)-&gt;Услышав слух о работе, [PAWN_nameDef] отправилась из [colony] на свалочную станцию на высокой орбите.</li>
+    <li>orbit(PAWN_gender==Male)-&gt;После [colony] [PAWN_objective] больше ничто не держало на земле, и [PAWN_pronoun] поднялся ввысь, а земля забыла [PAWN_objective].</li>
+    <li>orbit(PAWN_gender==Female)-&gt;После [colony] [PAWN_objective] больше ничто не держало на земле, и [PAWN_pronoun] поднялась ввысь, а земля забыла [PAWN_objective].</li>
+    <li>orbit(PAWN_gender==Male)-&gt;[PAWN_pronoun] улетел из [colony] первым же рейсом, на который [PAWN_objective] взяли, и не оглядывался на планету, пока та не стала точкой света.</li>
+    <li>orbit(PAWN_gender==Female)-&gt;[PAWN_pronoun] улетела из [colony] первым же рейсом, на который [PAWN_objective] взяли, и не оглядывалась на планету, пока та не стала точкой света.</li>
+    <li>work(PAWN_gender==Male)-&gt;Годами [PAWN_pronoun] вскрывал мёртвые корпуса и обдирал станции, забирая медь, пласталь и всё, что ещё гудело.</li>
+    <li>work(PAWN_gender==Female)-&gt;Годами [PAWN_pronoun] вскрывала мёртвые корпуса и обдирала станции, забирая медь, пласталь и всё, что ещё гудело.</li>
+    <li>work(PAWN_gender==Male)-&gt;В холоде между мирами [PAWN_pronoun] научился двигаться в скафандре, читать остов корабля как карту и оставлять мёртвых там, где они лежат.</li>
+    <li>work(PAWN_gender==Female)-&gt;В холоде между мирами [PAWN_pronoun] научилась двигаться в скафандре, читать остов корабля как карту и оставлять мёртвых там, где они лежат.</li>
+    <li>work(PAWN_gender==Male)-&gt;Команда жила в заплатанном корпусе, ела из вакуумных банок и спала по очереди, и [PAWN_nameDef] привык к тишине и полюбил её.</li>
+    <li>work(PAWN_gender==Female)-&gt;Команда жила в заплатанном корпусе, ела из вакуумных банок и спала по очереди, и [PAWN_nameDef] привыкла к тишине и полюбила её.</li>
+    <li>work(PAWN_gender==Male)-&gt;[PAWN_pronoun] работал на разбитых остовах старых грузовозов, плывя по тёмным коридорам с фонарём и режущей рукой.</li>
+    <li>work(PAWN_gender==Female)-&gt;[PAWN_pronoun] работала на разбитых остовах старых грузовозов, плывя по тёмным коридорам с фонарём и режущей рукой.</li>
+    <li>work(PAWN_gender==Male)-&gt;Остов за остовом уходил под резак, и [PAWN_nameDef] стал сухим и настороженным, со скупостью на слова, какая бывает у космических бродяг.</li>
+    <li>work(PAWN_gender==Female)-&gt;Остов за остовом уходил под резак, и [PAWN_nameDef] стала сухой и настороженной, со скупостью на слова, какая бывает у космических бродяг.</li>
+    <li>work(PAWN_gender==Male)-&gt;Сезон за сезоном [PAWN_nameDef] таскал лом к буксиру команды, считая вместо дней вдохи и часы.</li>
+    <li>work(PAWN_gender==Female)-&gt;Сезон за сезоном [PAWN_nameDef] таскала лом к буксиру команды, считая вместо дней вдохи и часы.</li>
+    <li>now(hasHome==True,defender==False)-&gt;Теперь [PAWN_pronoun] спускается на землю с бойцами фракции «[HOME_name]», как делают сборщики лома, когда мёртвые корабли иссякают, и силой берёт то, что может предложить земля.</li>
+    <li>now(hasHome==True,defender==False,PAWN_gender==Male)-&gt;Теперь [PAWN_nameDef] спускается с орбиты с бойцами фракции «[HOME_name]», отвыкший от открытого неба, и нападает на колонии так, как прежде резал остовы кораблей.</li>
+    <li>now(hasHome==True,defender==False,PAWN_gender==Female)-&gt;Теперь [PAWN_nameDef] спускается с орбиты с бойцами фракции «[HOME_name]», отвыкшая от открытого неба, и нападает на колонии так, как прежде резала остовы кораблей.</li>
+    <li>now(hasHome==True,defender==False,PAWN_gender==Male)-&gt;Фракции «[HOME_name]» понадобились руки на планете, и [PAWN_nameDef] спустился вместе с ней, принеся в наземный набег терпение космического бродяги.</li>
+    <li>now(hasHome==True,defender==False,PAWN_gender==Female)-&gt;Фракции «[HOME_name]» понадобились руки на планете, и [PAWN_nameDef] спустилась вместе с ней, принеся в наземный набег терпение космического бродяги.</li>
+    <li>now(hasHome==True,defender==False)-&gt;Теперь [PAWN_pronoun] приземляется в десантной капсуле вместе с бойцами фракции «[HOME_name]» и нападает без церемоний, всё ещё ожидая, что горизонт изогнётся.</li>
+    <li>now(hasHome==True,defender==False)-&gt;На орбите добычи всё меньше, поэтому [PAWN_nameDef] спускается с бойцами фракции «[HOME_name]» и считает колонию ещё одним остовом, который нужно обобрать.</li>
+    <li>now(hasHome==True,defender==False,PAWN_gender==Male)-&gt;Теперь [PAWN_nameDef] воюет на земле за фракцию «[HOME_name]», щурясь на открытом солнце, деловитый и несентиментальный.</li>
+    <li>now(hasHome==True,defender==False,PAWN_gender==Female)-&gt;Теперь [PAWN_nameDef] воюет на земле за фракцию «[HOME_name]», щурясь на открытом солнце, деловитая и несентиментальная.</li>
+    <li>now(hasHome==False,defender==False)-&gt;Теперь [PAWN_pronoun] спускается на землю с командой сборщиков лома, как делают они, когда мёртвые корабли иссякают, и силой берёт то, что может предложить земля.</li>
+    <li>now(hasHome==False,defender==False,PAWN_gender==Male)-&gt;Теперь [PAWN_nameDef] спускается с орбиты с командой сборщиков лома, отвыкший от открытого неба, и нападает на колонии так, как прежде резал остовы кораблей.</li>
+    <li>now(hasHome==False,defender==False,PAWN_gender==Female)-&gt;Теперь [PAWN_nameDef] спускается с орбиты с командой сборщиков лома, отвыкшая от открытого неба, и нападает на колонии так, как прежде резала остовы кораблей.</li>
+    <li>now(hasHome==False,defender==False,PAWN_gender==Male)-&gt;Команде сборщиков лома понадобились руки на планете, и [PAWN_nameDef] спустился вместе с ней, принеся в наземный набег терпение космического бродяги.</li>
+    <li>now(hasHome==False,defender==False,PAWN_gender==Female)-&gt;Команде сборщиков лома понадобились руки на планете, и [PAWN_nameDef] спустилась вместе с ней, принеся в наземный набег терпение космического бродяги.</li>
+    <li>now(hasHome==False,defender==False)-&gt;Теперь [PAWN_pronoun] приземляется в десантной капсуле вместе с командой и нападает без церемоний, всё ещё ожидая, что горизонт изогнётся.</li>
+    <li>now(hasHome==False,defender==False)-&gt;На орбите добычи всё меньше, поэтому [PAWN_nameDef] спускается с командой и считает колонию ещё одним остовом, который нужно обобрать.</li>
+    <li>now(hasHome==False,defender==False,PAWN_gender==Male)-&gt;Теперь [PAWN_nameDef] воюет на земле за команду, щурясь на открытом солнце, деловитый и несентиментальный.</li>
+    <li>now(hasHome==False,defender==False,PAWN_gender==Female)-&gt;Теперь [PAWN_nameDef] воюет на земле за команду, щурясь на открытом солнце, деловитая и несентиментальная.</li>
+    <li>now(hasHome==True,defender==True)-&gt;Теперь [PAWN_pronoun] живёт в наземном лагере фракции «[HOME_name]», как делают сборщики лома, когда мёртвые корабли иссякают, и стережёт всё, что удалось стащить вниз.</li>
+    <li>now(hasHome==True,defender==True,PAWN_gender==Male)-&gt;Теперь [PAWN_nameDef] стережёт наземный лагерь фракции «[HOME_name]», отвыкший от открытого неба, и следит за каждым подступом так, как прежде следил за темнотой между корпусами.</li>
+    <li>now(hasHome==True,defender==True,PAWN_gender==Female)-&gt;Теперь [PAWN_nameDef] стережёт наземный лагерь фракции «[HOME_name]», отвыкшая от открытого неба, и следит за каждым подступом так, как прежде следила за темнотой между корпусами.</li>
+    <li>now(hasHome==True,defender==True,PAWN_gender==Male)-&gt;Фракции «[HOME_name]» понадобились руки на планете, и [PAWN_nameDef] спустился вместе с ней, принеся в караул терпение космического бродяги.</li>
+    <li>now(hasHome==True,defender==True,PAWN_gender==Female)-&gt;Фракции «[HOME_name]» понадобились руки на планете, и [PAWN_nameDef] спустилась вместе с ней, принеся в караул терпение космического бродяги.</li>
+    <li>now(hasHome==True,defender==True)-&gt;Теперь [PAWN_pronoun] стоит на краю склада добычи фракции «[HOME_name]», всё ещё ожидая, что горизонт изогнётся.</li>
+    <li>now(hasHome==True,defender==True)-&gt;На орбите добычи всё меньше, поэтому [PAWN_nameDef] работает на земле с бойцами фракции «[HOME_name]» и видит в каждом госте возможного вора.</li>
+    <li>now(hasHome==True,defender==True,PAWN_gender==Male)-&gt;Теперь [PAWN_nameDef] сторожит склад для фракции «[HOME_name]», щурясь на открытом солнце, деловитый и несентиментальный.</li>
+    <li>now(hasHome==True,defender==True,PAWN_gender==Female)-&gt;Теперь [PAWN_nameDef] сторожит склад для фракции «[HOME_name]», щурясь на открытом солнце, деловитая и несентиментальная.</li>
+    <li>now(hasHome==False,defender==True)-&gt;Теперь [PAWN_pronoun] живёт в наземном лагере, как делают сборщики лома, когда мёртвые корабли иссякают, и стережёт всё, что удалось стащить вниз.</li>
+    <li>now(hasHome==False,defender==True,PAWN_gender==Male)-&gt;Теперь [PAWN_nameDef] стережёт этот лагерь, отвыкший от открытого неба, и следит за каждым подступом так, как прежде следил за темнотой между корпусами.</li>
+    <li>now(hasHome==False,defender==True,PAWN_gender==Female)-&gt;Теперь [PAWN_nameDef] стережёт этот лагерь, отвыкшая от открытого неба, и следит за каждым подступом так, как прежде следила за темнотой между корпусами.</li>
+    <li>now(hasHome==False,defender==True,PAWN_gender==Male)-&gt;Команде понадобились руки на планете, и [PAWN_nameDef] спустился вместе с ней, принеся в караул терпение космического бродяги.</li>
+    <li>now(hasHome==False,defender==True,PAWN_gender==Female)-&gt;Команде понадобились руки на планете, и [PAWN_nameDef] спустилась вместе с ней, принеся в караул терпение космического бродяги.</li>
+    <li>now(hasHome==False,defender==True)-&gt;Теперь [PAWN_pronoun] стоит на краю склада добычи, всё ещё ожидая, что горизонт изогнётся.</li>
+    <li>now(hasHome==False,defender==True)-&gt;На орбите добычи всё меньше, поэтому [PAWN_nameDef] работает здесь, на земле, и видит в каждом госте возможного вора.</li>
+    <li>now(hasHome==False,defender==True,PAWN_gender==Male)-&gt;Теперь [PAWN_nameDef] сторожит склад, щурясь на открытом солнце, деловитый и несентиментальный.</li>
+    <li>now(hasHome==False,defender==True,PAWN_gender==Female)-&gt;Теперь [PAWN_nameDef] сторожит склад, щурясь на открытом солнце, деловитая и несентиментальная.</li>
+  </PastLives_Story_Salvager.rulePack.rulesStrings>
+
+</LanguageData>
